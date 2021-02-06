@@ -522,6 +522,6 @@ class HdmiCec:
 		log_path = config.hdmicec.log_path.value
 		path = os.path.join(log_path, LOGFILE)
 		if pathExists(log_path):
-			fp = file(path, 'a');fp.write(output);fp.close()
+			fp = file(path, 'a'); fp.write(output); fp.close()
 
 hdmi_cec = HdmiCec()

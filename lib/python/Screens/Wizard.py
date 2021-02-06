@@ -220,7 +220,7 @@ class Wizard(Screen):
 			"red": self.red,
 			"green": self.green,
 			"yellow": self.yellow,
-			"blue":self.blue,
+			"blue": self.blue,
 			"deleteBackward": self.deleteBackward,
 			"deleteForward": self.deleteForward,
 			"1": self.keyNumberGlobal,
@@ -467,7 +467,7 @@ class Wizard(Screen):
 		return False
 
 	def getTranslation(self, text):
-		return _(text).replace("%s %s (kernel %s)","%s %s (kernel %s)" % (getBoxBrand(), getBoxType(), boxbranding.getKernelVersion())).replace("%s-%s","%s-%s" % (boxbranding.getVisionVersion(), boxbranding.getVisionRevision())).replace("%s (type %s id %s)","%s (type %s id %s)" % (boxbranding.getRCName(), boxbranding.getRCType(), boxbranding.getRCIDNum()))
+		return _(text).replace("%s %s (kernel %s)", "%s %s (kernel %s)" % (getBoxBrand(), getBoxType(), boxbranding.getKernelVersion())).replace("%s-%s", "%s-%s" % (boxbranding.getVisionVersion(), boxbranding.getVisionRevision())).replace("%s (type %s id %s)", "%s (type %s id %s)" % (boxbranding.getRCName(), boxbranding.getRCType(), boxbranding.getRCIDNum()))
 
 	def updateText(self, firstset=False):
 		text = self.getTranslation(self.wizard[self.currStep]["text"])
