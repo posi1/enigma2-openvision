@@ -38,6 +38,7 @@ def getBootdevice():
 		dev = dev[:-1]
 	return dev
 
+
 model = getBoxType()
 brand = getBoxBrand()
 platform = getMachineBuild()

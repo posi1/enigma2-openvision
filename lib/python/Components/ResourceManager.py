@@ -24,4 +24,5 @@ class ResourceManager:
 		if self.hasResource(name):
 			del self.resourceList[name]
 
+
 resourcemanager = ResourceManager()

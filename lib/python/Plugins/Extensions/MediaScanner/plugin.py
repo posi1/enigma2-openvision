@@ -50,6 +50,7 @@ def main(session, **kwargs):
 def menuEntry(*args):
 	mountpoint_choosen(args)
 
+
 from Components.Harddisk import harddiskmanager
 
 def menuHook(menuid):
@@ -57,6 +58,7 @@ def menuHook(menuid):
 		return []
 	from Tools.BoundFunction import boundFunction
 	return [(("%s (files)") % r.description, boundFunction(menuEntry, r.description, r.mountpoint), "hotplug_%s" % r.mountpoint, None) for r in harddiskmanager.getMountedPartitions(onlyhotplug=True)]
+
 
 global_session = None
 

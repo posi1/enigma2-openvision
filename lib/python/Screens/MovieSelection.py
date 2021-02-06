@@ -148,6 +148,7 @@ def canMove(item):
 		return False
 	return True
 
+
 canDelete = canMove
 canCopy = canMove
 canRename = canMove
@@ -367,6 +368,7 @@ class MovieContextMenuSummary(Screen):
 
 	def selectionChanged(self):
 		self["selected"].text = self.parent["config"].getCurrent()[0][0]
+
 
 from Screens.ParentalControlSetup import ProtectedScreen
 
@@ -2398,5 +2400,6 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 						continue
 					else:
 						items.append(item)
+
 
 playlist = []

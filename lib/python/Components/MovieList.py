@@ -62,6 +62,8 @@ class StubInfo:
 		return 0
 	def getInfoString(self, serviceref, w):
 		return ''
+
+
 justStubInfo = StubInfo()
 
 def lastPlayPosFromCache(ref):
@@ -281,36 +283,51 @@ class MovieList(GUIComponent):
 	def applySkin(self, desktop, parent):
 		def warningWrongSkinParameter(string):
 			print("[MovieList] wrong '%s' skin parameters" % string)
+
 		def font(value):
 			font = skin.parseFont(value, ((1, 1), (1, 1)))
 			self.fontName = font.family
 			self.fontSize = font.pointSize
+
 		def partIconeShift(value):
 			self.partIconeShift = int(value)
+
 		def pbarShift(value):
 			self.pbarShift = int(value)
+
 		def pbarHeight(value):
 			self.pbarHeight = int(value)
+
 		def pbarLargeWidth(value):
 			self.pbarLargeWidth = int(value)
+
 		def pbarColour(value):
 			self.pbarColour = skin.parseColor(value).argb()
+
 		def pbarColourSeen(value):
 			self.pbarColourSeen = skin.parseColor(value).argb()
+
 		def pbarColourRec(value):
 			self.pbarColourRec = skin.parseColor(value).argb()
+
 		def spaceIconeText(value):
 			self.spaceIconeText = int(value)
+
 		def iconsWidth(value):
 			self.iconsWidth = int(value)
+
 		def trashShift(value):
 			self.trashShift = int(value)
+
 		def dirShift(value):
 			self.dirShift = int(value)
+
 		def spaceRight(value):
 			self.spaceRight = int(value)
+
 		def durationWidth(value):
 			self.durationWidth = int(value)
+
 		def dateWidth(value):
 			self.dateWidth = int(value)
 			if config.usage.time.wide.value:

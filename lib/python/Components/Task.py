@@ -538,4 +538,5 @@ class FailedPostcondition(Condition):
 #	def createDescription(self):
 #		return {"device": self.device}
 
+
 job_manager = JobManager()

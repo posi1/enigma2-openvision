@@ -275,4 +275,5 @@ class SoftwareTools(PackageInfoHandler):
 				return False
 		return True
 
+
 iSoftwareTools = SoftwareTools()

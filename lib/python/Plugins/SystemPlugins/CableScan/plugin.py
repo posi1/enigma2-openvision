@@ -100,6 +100,7 @@ class CableScanStatus(Screen):
 	def cancel(self):
 		self.close()
 
+
 config.plugins.CableScan = ConfigSubsection()
 config.plugins.CableScan.keepnumbering = ConfigYesNo(default=False)
 config.plugins.CableScan.hdlist = ConfigYesNo(default=False)
@@ -242,6 +243,7 @@ class CableScanAutoScreen(CableScanScreen):
 		from Screens.Standby import StandbySummary
 		return StandbySummary
 
+
 Session = None
 CableScanAutoStartTimer = eTimer()
 
@@ -262,6 +264,7 @@ def CableScanAuto():
 			restartScanAutoStartTimer()
 		else:
 			Session.openWithCallback(restartScanAutoStartTimer, CableScanAutoScreen, nimlist)
+
 
 CableScanAutoStartTimer.callback.append(CableScanAuto)
 

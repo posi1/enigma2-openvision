@@ -56,6 +56,8 @@ from Components.config import config, configfile, ConfigText, ConfigYesNo, Confi
 config.misc.load_unlinked_userbouquets = ConfigYesNo(default=True)
 def setLoadUnlinkedUserbouquets(configElement):
 	enigma.eDVBDB.getInstance().setLoadUnlinkedUserbouquets(configElement.value)
+
+
 config.misc.load_unlinked_userbouquets.addNotifier(setLoadUnlinkedUserbouquets)
 if config.clientmode.enabled.value == False:
 	enigma.eDVBDB.getInstance().reloadBouquets()
@@ -103,6 +105,7 @@ def setEPGCachePath(configElement):
 
 #config.misc.standbyCounter.addNotifier(standbyCountChanged, initial_call = False)
 ####################################################
+
 
 profile("Twisted")
 try:
@@ -163,6 +166,7 @@ def dump(dir, p=""):
 # + ":" + str(dir.__class__)
 
 # display
+
 
 profile("LOAD:ScreenGlobals")
 from Screens.Globals import Globals
@@ -374,6 +378,7 @@ class Session:
 		if self.summary is not None:
 			self.summary.show()
 
+
 profile("Standby,PowerKey")
 import Screens.Standby
 from Screens.Menu import MainMenu, mdom
@@ -433,6 +438,7 @@ class PowerKey:
 		else:
 			return 0
 
+
 profile("Scart")
 from Screens.Scart import Scart
 
@@ -458,6 +464,7 @@ class AutoScartControl:
 				self.scartDialog.showMessageBox()
 			else:
 				self.scartDialog.switchToTV()
+
 
 profile("Load:CI")
 from Screens.Ci import CiHandler
@@ -583,6 +590,7 @@ def runScreenTest():
 	InfoBarGenerics.saveResumePoints()
 
 	return 0
+
 
 profile("Init:skin")
 import skin

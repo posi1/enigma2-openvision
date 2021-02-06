@@ -43,6 +43,7 @@ class FSBLUpdateHandler(object):
 			config.misc.fsbl_update_never.value = True
 			config.misc.fsbl_update_never.save()
 
+
 global updateHandler
 updateHandler = None
 def sessionstart(session, *args, **kwargs):

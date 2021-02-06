@@ -339,6 +339,7 @@ class TimerEntry(Screen, ConfigListScreen):
 				self.openMovieLocationBox()
 			elif len(menu) == 2:
 				text = _("Select action")
+
 				def selectAction(choice):
 					if choice:
 						if choice[1] == "timername":

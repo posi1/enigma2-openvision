@@ -63,4 +63,5 @@ class Sensors:
 			if fancontrol.hasRPMSensor(fanid):
 				self.sensors_list.append((self.TYPE_FAN_RPM, _("Fan %d") % (fanid + 1), "rpm", fanid))
 
+
 sensors = Sensors()

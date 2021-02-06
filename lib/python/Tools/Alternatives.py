@@ -63,6 +63,7 @@ def ResolveCiAlternative(ref, ignore_ref=None, record_mode=False):
 				for service in serviceList.getContent("R"):
 					if not ignore_ref or service != ignore_ref:
 						refstr = service.toString()
+
 						def resolveRecordLiveMode():
 							if record_mode:
 								is_assignment = cihelper.ServiceIsAssigned(refstr)

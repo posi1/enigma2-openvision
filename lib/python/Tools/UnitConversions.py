@@ -79,6 +79,7 @@ class UnitScaler:
 	def __call__(self, num):
 		return self.scale(num)
 
+
 if __name__ == "__main__":
 	import sys
 	sys.argv.pop(0)

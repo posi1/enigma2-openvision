@@ -356,6 +356,7 @@ class FlashImage(Screen):
 
 	def flashimage(self):
 		self["header"].setText(_("Flashing Image"))
+
 		def findimagefiles(path):
 			for path, subdirs, files in os.walk(path):
 				if not subdirs and files:

@@ -337,6 +337,7 @@ def FastScanMain(session, **kwargs):
 	else:
 		session.open(FastScanScreen)
 
+
 Session = None
 FastScanAutoStartTimer = eTimer()
 autoproviders = []
@@ -369,6 +370,7 @@ def FastScanAuto():
 				if provider:
 					lastConfiguration = (lastConfiguration[0], provider, lastConfiguration[2], lastConfiguration[3], lastConfiguration[4], len(lastConfiguration) > 5 and lastConfiguration[5])
 		Session.openWithCallback(restartScanAutoStartTimer, FastScanAutoScreen, lastConfiguration)
+
 
 FastScanAutoStartTimer.callback.append(FastScanAuto)
 

@@ -307,4 +307,5 @@ class VideoEnhancement:
 		except IOError:
 			print("[VideoEnhancement] couldn't apply pep values.")
 
+
 VideoEnhancement()

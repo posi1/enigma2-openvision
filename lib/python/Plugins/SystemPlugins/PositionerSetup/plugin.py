@@ -622,6 +622,7 @@ class PositionerSetup(Screen):
 						menu.append((_("Yes (save index in setup tuner)"), "save"))
 				index = int(self.positioner_storage.value)
 				text = _("Really store at index %2d for current position?") % index
+
 				def saveAction(choice):
 					if choice:
 						if choice[1] in ("yes", "save"):
@@ -781,6 +782,7 @@ class PositionerSetup(Screen):
 		text = _("Select action")
 		description = _("Open setup tuner ") + "%s" % chr(0x41 + self.feid)
 		menu.append((description, self.openTunerSetup))
+
 		def openAction(choice):
 			if choice:
 				choice[1]()

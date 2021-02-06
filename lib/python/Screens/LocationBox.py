@@ -367,6 +367,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 				if self.filename and not os.path.exists(ret):
 					menu = [(_("Create new folder and exit"), "folder"), (_("Save and exit"), "exit")]
 					text = _("Select action")
+
 					def dirAction(choice):
 						if choice:
 							if choice[1] == "folder":

@@ -524,4 +524,5 @@ class HdmiCec:
 		if pathExists(log_path):
 			fp = file(path, 'a'); fp.write(output); fp.close()
 
+
 hdmi_cec = HdmiCec()

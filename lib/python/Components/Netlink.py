@@ -32,6 +32,7 @@ class NetlinkSocket(socket.socket):
 				except:
 					event[None] = item
 
+
 # Quick unit test (you can run this on any Linux machine)
 if __name__ == '__main__':
 	nls = NetlinkSocket()

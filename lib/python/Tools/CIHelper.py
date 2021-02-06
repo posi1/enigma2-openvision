@@ -21,6 +21,7 @@ class CIHelper:
 		NUM_CI = SystemInfo["CommonInterface"]
 		if NUM_CI and NUM_CI > 0:
 			self.CI_ASSIGNMENT_LIST = []
+
 			def getValue(definitions, default):
 				Len = len(definitions)
 				return Len > 0 and definitions[Len - 1].text or default
@@ -187,6 +188,7 @@ class CIHelper:
 			else:
 				return 0
 		return 1
+
 
 cihelper = CIHelper()
 

@@ -64,6 +64,7 @@ def RemovePopup(id):
 			print("[Notifications] found in current notifications")
 			x[1].close()
 
+
 from Screens.MessageBox import MessageBox
 
 def AddPopup(text, type, timeout, id=None):

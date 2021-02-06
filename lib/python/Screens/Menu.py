@@ -63,11 +63,13 @@ def MenuEntryName(name):
 			if name[c - 1].isupper() and c - 1 and c - 1 <= maxlen:
 				return name[:c - 1] + "-:-" + name[c - 1:]
 		return name
+
 	def splitLowerCase(name, maxlen):
 		for c in range(len(name), 0, -1):
 			if name[c - 1].islower() and c - 1 and c - 1 <= maxlen:
 				return name[:c - 1] + "-:-" + name[c - 1:]
 		return name
+
 	def splitName(name, maxlen):
 		for s in (" ", "-", "/"):
 			pos = name.rfind(s, 0, maxlen + 1)
@@ -137,6 +139,7 @@ class MenuUpdater:
 
 	def getUpdatedMenu(self, id):
 		return self.updatedMenuItems[id]
+
 
 menuupdater = MenuUpdater()
 

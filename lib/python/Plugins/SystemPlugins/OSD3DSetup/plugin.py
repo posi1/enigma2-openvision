@@ -71,6 +71,7 @@ class OSD3DSetupScreen(Screen, ConfigListScreen):
 		applySettings()
 		self.close()
 
+
 previous = None
 isDedicated3D = False
 

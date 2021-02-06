@@ -9,6 +9,7 @@ from Tools.CList import CList
 
 def cached(f):
 	name = f.__name__
+
 	def wrapper(self):
 		cache = self.cache
 		if cache is None:

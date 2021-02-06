@@ -139,6 +139,7 @@ class Wlan:
 				self.oldInterfaceState = None
 				self.iface = None
 
+
 iWlan = Wlan()
 
 class wpaSupplicant:
@@ -442,5 +443,6 @@ class Status:
 		if self.iface in self.wlaniface and attribute in self.wlaniface[self.iface]:
 			return self.wlaniface[self.iface][attribute]
 		return None
+
 
 iStatus = Status()

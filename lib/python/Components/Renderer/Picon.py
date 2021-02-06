@@ -109,11 +109,14 @@ class PiconLocator:
 					pngname = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
 		return pngname
 
+
 piconLocator = None
 
 def initPiconPaths():
 	global piconLocator
 	piconLocator = PiconLocator()
+
+
 initPiconPaths()
 
 def getPiconName(serviceName):

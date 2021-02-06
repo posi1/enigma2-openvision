@@ -83,6 +83,7 @@ def findSafeRecordPath(dirname):
 			return None
 	return dirname
 
+
 # This code is for use by hardware with a stb device file which, when
 # non-zero, can display a visual indication on the front-panel that
 # recordings are in progress, with possibly different icons for
@@ -141,6 +142,7 @@ def RecordingsState(alter):
 		n_recordings = 0
 	SetIconDisplay(n_recordings)
 	return
+
 
 RecordingsState(0)       # Initialize
 
@@ -725,6 +727,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 			#if self.justplay or self.always_zap:
 			#	choice.insert(2, (_("Don't zap"), "continue"))
 			choice.insert(2, (_("Don't zap"), "continue"))
+
 			def zapAction(choice):
 				start_zap = True
 				if choice:

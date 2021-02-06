@@ -102,6 +102,7 @@ def listsDirPath():
 		print("[Opkg]", ex)
 	return '/var/lib/opkg/lists'
 
+
 if __name__ == '__main__':
 	for p in enumPlugins('enigma'):
 		print(p)

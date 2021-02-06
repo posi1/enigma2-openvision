@@ -690,4 +690,5 @@ class WizardManager:
 			self.wizards[-1][0].isLastWizard = True
 		return [(x[2], x[0]) for x in self.wizards if x[1] == 1]
 
+
 wizardManager = WizardManager()

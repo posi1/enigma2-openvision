@@ -72,6 +72,7 @@ class ServiceInfoList(GUIComponent):
 	def postWidgetCreate(self, instance):
 		self.instance.setContent(self.l)
 
+
 TYPE_SERVICE_INFO = 1
 TYPE_TRANSPONDER_INFO = 2
 

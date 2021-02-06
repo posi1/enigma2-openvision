@@ -161,4 +161,5 @@ class Language:
 	def addCallback(self, callback):
 		self.callbacks.append(callback)
 
+
 language = Language()

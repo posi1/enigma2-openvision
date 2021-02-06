@@ -304,6 +304,7 @@ class QuitMainloopScreen(Screen):
 		}.get(retvalue)
 		self["text"] = Label(text)
 
+
 inTryQuitMainloop = False
 
 def getReasons(session, retvalue=QUIT_SHUTDOWN):

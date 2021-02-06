@@ -277,6 +277,7 @@ class InitInputDevices:
 			print("[InputDevice] RC remap error: Unexpected error opening remote control file '%s'! (%s)" % (filename, err))
 		return domRemote
 
+
 iInputDevices = inputDevices()
 
 
@@ -305,5 +306,6 @@ class RcTypeControl():
 		if self.isSupported:
 			rc = open('/proc/stb/ir/rc/type', 'r').read().strip()
 		return int(rc)
+
 
 iRcTypeControl = RcTypeControl()

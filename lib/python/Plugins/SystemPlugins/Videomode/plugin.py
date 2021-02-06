@@ -254,6 +254,7 @@ class VideomodeHotplug:
 			print("[Videomode] setting %s/%s/%s" % (port, mode, rate))
 			self.hw.setMode(port, mode, rate)
 
+
 hotplug = None
 
 def startHotplug():

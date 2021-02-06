@@ -291,14 +291,17 @@ def InitLcd():
 					open("/proc/stb/lcd/mode", "w").write(configElement.value)
 				except:
 					pass
+
 			def setMiniTVFPS(configElement):
 				try:
 					print('[Lcd] setMiniTVFPS', configElement.value)
 					open("/proc/stb/lcd/fps", "w").write(configElement.value)
 				except:
 					pass
+
 			def setLCDModePiP(configElement):
 				pass
+
 			def setLCDScreenshot(configElement):
 				ilcd.setScreenShot(configElement.value)
 

@@ -90,4 +90,5 @@ class PiconUni(Renderer):
 					return pngname
 		return ''
 
+
 initPiconPaths()

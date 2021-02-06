@@ -37,6 +37,7 @@ def isHD():
     desktopSize = getDesktopSize()
     return desktopSize[0] == 1280
 
+
 VKB_DONE_ICON = 0
 VKB_ENTER_ICON = 1
 VKB_OK_ICON = 2

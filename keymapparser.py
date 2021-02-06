@@ -33,6 +33,7 @@ def getKeyId(id):
 			raise KeymapError("[keymapparser] key id '" + str(id) + "' is illegal")
 	return keyid
 
+
 unmapDict = {}
 
 def parseKeys(context, filename, actionmap, device, keys):

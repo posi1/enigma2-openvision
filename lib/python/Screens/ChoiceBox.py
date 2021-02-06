@@ -100,6 +100,7 @@ class ChoiceBox(Screen):
 	def autoResize(self):
 		def x_offset():
 			return max([line[1][1] for line in self["list"].list])
+
 		def x_width(textsize):
 			def getListLineTextWidth(text):
 				self["autoresize"].setText(text)

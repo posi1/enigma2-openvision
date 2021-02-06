@@ -131,6 +131,7 @@ class EventViewBase:
 			title_text = timer.repeated and _("Attention, this is repeated timer!\n") or ""
 			menu = [(_("Delete timer"), "delete"), (_("Edit timer"), "edit")]
 			buttons = ["red", "green"]
+
 			def timerAction(choice):
 				if choice is not None:
 					if choice[1] == "delete":
@@ -151,6 +152,7 @@ class EventViewBase:
 				def removeEditTimer():
 					entry.service_ref, entry.begin, entry.end, entry.external = entry.service_ref_prev, entry.begin_prev, entry.end_prev, entry.external_prev
 					self.removeTimer(entry)
+
 				def moveEditTimerError():
 					entry.external = entry.external_prev
 					self.onSelectionChanged()

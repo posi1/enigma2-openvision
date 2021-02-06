@@ -27,6 +27,7 @@ def timedStopPipPigMode():
 	global PipPigModeEnabled
 	PipPigModeEnabled = False
 
+
 PipPigModeTimer.callback.append(timedStopPipPigMode)
 
 def PipPigMode(value):

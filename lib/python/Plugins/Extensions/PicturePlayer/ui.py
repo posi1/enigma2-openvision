@@ -20,6 +20,7 @@ import skin
 def getScale():
 	return AVSwitch().getFramebufferScale()
 
+
 config.pic = ConfigSubsection()
 config.pic.framesize = ConfigInteger(default=30, limits=(5, 99))
 config.pic.slidetime = ConfigInteger(default=10, limits=(1, 60))
@@ -253,6 +254,7 @@ class Pic_Exif(Screen):
 		self.setTitle(_("Info"))
 
 #----------------------------------------------------------------------------------------
+
 
 T_INDEX = 0
 T_FRAME_POS = 1

@@ -517,6 +517,7 @@ class Network:
 		self.config_ready = False
 		self.msgPlugins()
 		commands = []
+
 		def buildCommands(iface):
 			commands.append((self.ifdown_bin, self.ifdown_bin, "-f", iface))
 			commands.append((self.ip_bin, self.ip_bin, "addr", "flush", "dev", iface, "scope", "global"))
@@ -674,6 +675,7 @@ class Network:
 				del self.ifaces[interface]
 			except KeyError:
 				pass
+
 
 iNetwork = Network()
 

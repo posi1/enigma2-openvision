@@ -136,6 +136,7 @@ def getFPWakeuptime():
 			print("[StbHardware] getFPWakeupTime failed!")
 	return ret
 
+
 wasTimerWakeup = None
 
 def getFPWasTimerWakeup(check=False):

@@ -11,6 +11,7 @@ class GiveupOnSendfile(Exception):
 def nosendfile(*args):
 	raise GiveupOnSendfile("sendfile() not available")
 
+
 try:
 	from sendfile import sendfile
 except:

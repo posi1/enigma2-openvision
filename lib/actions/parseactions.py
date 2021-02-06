@@ -103,6 +103,7 @@ def do_file(f, mode):
 
 					counter += 1
 
+
 mode = sys.argv[1]
 
 if mode == "parse":

@@ -95,6 +95,7 @@ def getInitialATSCTransponderList(tlist, nim):
 			parm.system = x[4]
 			tlist.append(parm)
 
+
 cable_bands = {
 	"DVBC_BAND_EU_VHF_I": 1 << 0,
 	"DVBC_BAND_EU_MID": 1 << 1,

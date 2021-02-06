@@ -362,6 +362,7 @@ class CiMessageHandler:
 		if slot in self.ci:
 			del self.ci[slot]
 
+
 CiHandler = CiMessageHandler()
 
 class CiSelection(Screen):

@@ -61,6 +61,7 @@ class FanControl:
 	def createConfig(self):
 		def setVlt(fancontrol, fanid, configElement):
 			fancontrol.setVoltage(fanid, configElement.value)
+
 		def setPWM(fancontrol, fanid, configElement):
 			fancontrol.setPWM(fanid, configElement.value)
 
@@ -121,5 +122,6 @@ class FanControl:
 		if value > 255:
 			return
 		open("/proc/stb/fp/fan_pwm", "w").write("%x" % value)
+
 
 fancontrol = FanControl()

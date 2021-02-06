@@ -13,6 +13,7 @@ class slot:
 		for x in self.list:
 			x()
 
+
 timers = set()
 
 import time
@@ -66,6 +67,7 @@ def runIteration():
 		running_timers[0].do()
 		running_timers = running_timers[1:]
 
+
 stopped = False
 
 def stop():
@@ -111,6 +113,7 @@ class eEPGCache:
 	def lookupEventTime(self, ref, query):
 		return None
 
+
 eEPGCache()
 
 getBestPlayableServiceReference = None
@@ -134,6 +137,7 @@ class pNavigation:
 
 	def __repr__(self):
 		return "pNavigation"
+
 
 eRCInput = None
 getPrevAsciiCode = None
@@ -179,6 +183,7 @@ class iRecordableService:
 	def __repr__(self):
 		return "iRecordableService(%s)" % repr(self.ref)
 
+
 quitMainloop = None
 
 class eAVSwitch:
@@ -208,6 +213,7 @@ class eAVSwitch:
 
 	def setInput(self, value):
 		print("[enigma] eAVSwitch wss set to %d" % value)
+
 
 eAVSwitch()
 
@@ -241,6 +247,7 @@ class eRFmod:
 	def setFinetune(self, value):
 		print("[enigma] eRFmod set finetune to %d" % value)
 
+
 eRFmod()
 
 
@@ -266,6 +273,7 @@ class eDBoxLCD:
 	def setInverted(self, value):
 		print("[enigma] eDBoxLCD set inverted to %d" % value)
 
+
 eDBoxLCD()
 
 Misc_Options = None
@@ -282,6 +290,7 @@ class eServiceCenter:
 
 	def info(self, ref):
 		return None
+
 
 eServiceCenter()
 

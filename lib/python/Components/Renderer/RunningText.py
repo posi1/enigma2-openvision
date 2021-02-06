@@ -71,6 +71,7 @@ class RunningText(Renderer):
 			except:
 					x = default
 			return x
+
 		def setWrapFlag(attrib, value):
 			if (attrib.lower() == "wrap" and value == "0") or \
 			   (attrib.lower() == "nowrap" and value != "0"):

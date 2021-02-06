@@ -44,6 +44,7 @@ class E2SharedPoll:
 			return None
 		return r
 
+
 poller = E2SharedPoll()
 
 class PollReactor(posixbase.PosixReactorBase):
@@ -215,5 +216,6 @@ def install():
 
 	p = PollReactor()
 	main.installReactor(p)
+
 
 __all__ = ["PollReactor", "install"]

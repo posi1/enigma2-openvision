@@ -132,6 +132,7 @@ def loadResumePoints():
 		print("[InfoBarGenerics] Failed to load resumepoints:", ex)
 		return {}
 
+
 resumePointCache = loadResumePoints()
 resumePointCacheLast = int(time())
 
@@ -140,6 +141,8 @@ class whitelist:
 
 def reload_whitelist_vbi():
 	whitelist.vbi = [line.strip() for line in open('/etc/enigma2/whitelist_vbi', 'r').readlines()] if os.path.isfile('/etc/enigma2/whitelist_vbi') else []
+
+
 reload_whitelist_vbi()
 
 class subservice:
@@ -154,6 +157,8 @@ def reload_subservice_groupslist(force=False):
 			subservice.groupslist = [list(g) for k, g in itertools.groupby([line.split('#')[0].strip() for line in open(groupedservices).readlines()], lambda x:not x) if not k]
 		except:
 			subservice.groupslist = []
+
+
 reload_subservice_groupslist()
 
 def getPossibleSubservicesForCurrentChannel(current_service):
@@ -761,6 +766,7 @@ class InfoBarNumberZap:
 	def zapToNumber(self, number):
 		service, bouquet = self.searchNumber(number)
 		self.selectAndStartService(service, bouquet)
+
 
 config.misc.initialchannelselection = ConfigBoolean(default=True)
 
@@ -1820,6 +1826,7 @@ class InfoBarSeek:
 		if isinstance(self, InfoBarCueSheetSupport):
 			self.jumpNextMark()
 
+
 from Screens.PVRState import PVRState, TimeshiftState
 
 class InfoBarPVRState:
@@ -2259,6 +2266,7 @@ class InfoBarTimeshift():
 			self.save_timeshift_only_current_event = True
 			self.ts_current_event_timer.startLongTimer(duration)
 
+
 from Screens.PiPSetup import PiPSetup
 
 class InfoBarExtensions:
@@ -2368,6 +2376,7 @@ class InfoBarExtensions:
 		else:
 			self.session.open(MessageBox, _("The AutoTimer plugin is not installed!\nPlease install it."), type=MessageBox.TYPE_INFO, timeout=10)
 
+
 from Tools.BoundFunction import boundFunction
 import inspect
 
@@ -2394,6 +2403,7 @@ class InfoBarPlugins:
 			plugin.__call__(session=self.session, servicelist=self.servicelist)
 		else:
 			plugin.__call__(session=self.session)
+
 
 from Components.Task import job_manager
 class InfoBarJobman:
@@ -2580,6 +2590,7 @@ class InfoBarPiP:
 			self.showPiP()
 		elif "stop" == use:
 			self.showPiP()
+
 
 from RecordTimer import parseEvent
 
@@ -3044,6 +3055,7 @@ class InfoBarSubserviceSelection:
 		if self.bsel:
 			self.bsel.close(True)
 			self.bouquets = self.bsel = self.selectedSubservice = None
+
 
 from Components.Sources.HbbtvApplication import HbbtvApplication
 gHbbtvApplication = HbbtvApplication()

@@ -18,11 +18,13 @@ def setTime(now):
 	global time_offset
 	time_offset = real_time() - now
 
+
 setIdealtime()
 setTime(0)
 
 def my_time():
 	return real_time() - time_offset
+
 
 time.time = my_time
 
@@ -30,5 +32,6 @@ def my_sleep(sleep):
 	global time_offset
 	time_offset -= sleep
 	print("[fake_time] faking %f seconds" % sleep)
+
 
 time.sleep = my_sleep

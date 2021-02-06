@@ -13,6 +13,7 @@ def event(self, name, args, kwargs):
 
 def eventfnc(f):
 	name = f.__name__
+
 	def wrapper(self, *args, **kwargs):
 		event(self, name, args, kwargs)
 		return f(self, *args, **kwargs)
