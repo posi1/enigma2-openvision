@@ -43,7 +43,7 @@ class SelectImage(Screen):
 		self["list"] = ChoiceList(list=[ChoiceEntryComponent('', ((_("Retrieving image list - Please wait...")), "Waiter"))])
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "KeyboardInputActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyOk,
 			"cancel": boundFunction(self.close, None),
 			"red": boundFunction(self.close, None),
@@ -204,7 +204,7 @@ class FlashImage(Screen):
 		self["progress"].setValue(0)
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
-		{
+									{
 			"cancel": self.abort,
 			"red": self.abort,
 			"ok": self.ok,
@@ -414,7 +414,7 @@ class MultibootSelection(SelectImage):
 		self["list"] = ChoiceList([])
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "KeyboardInputActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyOk,
 			"cancel": self.cancel,
 			"red": self.cancel,

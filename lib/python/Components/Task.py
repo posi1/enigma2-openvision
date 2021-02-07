@@ -274,7 +274,7 @@ class LoggingTask(Task):
 
 	def processOutput(self, data):
 		print("[Task] %s" % self.name, data,
-		self.log.append(data))
+			  self.log.append(data))
 
 
 class PythonTask(Task):

@@ -13,11 +13,11 @@ class EventInfo(PerServiceBase, Source, object):
 	def __init__(self, navcore, now_or_next):
 		Source.__init__(self)
 		PerServiceBase.__init__(self, navcore,
-			{
-				iPlayableService.evStart: self.gotEvent,
-				iPlayableService.evUpdatedEventInfo: self.gotEvent,
-				iPlayableService.evEnd: self.gotEvent
-			}, with_event=True)
+								{
+									iPlayableService.evStart: self.gotEvent,
+									iPlayableService.evUpdatedEventInfo: self.gotEvent,
+									iPlayableService.evEnd: self.gotEvent
+								}, with_event=True)
 		self.now_or_next = now_or_next
 		self.epgQuery = eEPGCache.getInstance().lookupEventTime
 

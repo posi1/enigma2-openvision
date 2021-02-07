@@ -194,12 +194,12 @@ class wpaSupplicant:
 		except:
 			print("[WirelessLan] Error parsing ", configfile)
 			wsconfig = {
-					'hiddenessid': False,
-					'ssid': "",
-					'encryption': "WPA2",
-					'wepkeytype': "ASCII",
-					'key': "",
-				}
+				'hiddenessid': False,
+				'ssid': "",
+				'encryption': "WPA2",
+				'wepkeytype': "ASCII",
+				'key': "",
+			}
 
 		for (k, v) in wsconf.items():
 			print("[WirelessLan] wsconf[%s] %s" % (k, v))
@@ -311,12 +311,12 @@ class wpaSupplicant:
 			config.plugins.wlan.encryption.value = encryption
 
 			wsconfig = {
-					'hiddenessid': config.plugins.wlan.hiddenessid.value,
-					'ssid': config.plugins.wlan.essid.value,
-					'encryption': config.plugins.wlan.encryption.value,
-					'wepkeytype': config.plugins.wlan.wepkeytype.value,
-					'key': config.plugins.wlan.psk.value,
-				}
+				'hiddenessid': config.plugins.wlan.hiddenessid.value,
+				'ssid': config.plugins.wlan.essid.value,
+				'encryption': config.plugins.wlan.encryption.value,
+				'wepkeytype': config.plugins.wlan.wepkeytype.value,
+				'key': config.plugins.wlan.psk.value,
+			}
 
 			for (key, item) in wsconfig.items():
 				if item is "None" or item is "":
@@ -333,12 +333,12 @@ class wpaSupplicant:
 		except:
 			print("[WirelessLan] Error parsing ", configfile)
 			wsconfig = {
-					'hiddenessid': False,
-					'ssid': "",
-					'encryption': "WPA2",
-					'wepkeytype': "ASCII",
-					'key': "",
-				}
+				'hiddenessid': False,
+				'ssid': "",
+				'encryption': "WPA2",
+				'wepkeytype': "ASCII",
+				'key': "",
+			}
 		#print("[Wlan.py] WS-CONFIG-->",wsconfig)
 		return wsconfig
 
@@ -373,7 +373,7 @@ class Status:
 					ssid = "off"
 				else:
 					if "Nickname" in line:
-						ssid = (line[line.index('ESSID') + 7:line.index('"  Nickname')])
+						ssid = (line[line.index('ESSID') + 7:line.index('"	Nickname')])
 					else:
 						ssid = (line[line.index('ESSID') + 7:len(line) - 1])
 				if ssid is not None:
@@ -384,7 +384,7 @@ class Status:
 					data['frequency'] = frequency
 			if "Access Point" in line:
 				if "Sensitivity" in line:
-					ap = line[line.index('Access Point') + 14:line.index('   Sensitivity')]
+					ap = line[line.index('Access Point') + 14:line.index('	 Sensitivity')]
 				else:
 					ap = line[line.index('Access Point') + 14:len(line)]
 				if ap is not None:
@@ -402,7 +402,7 @@ class Status:
 				if ":off" in line:
 					enc = "off"
 				elif "Security" in line:
-					enc = line[line.index('Encryption key') + 15:line.index('   Security')]
+					enc = line[line.index('Encryption key') + 15:line.index('	Security')]
 					if enc is not None:
 						enc = "on"
 				else:
@@ -413,7 +413,7 @@ class Status:
 					data['encryption'] = enc
 			if 'Quality' in line:
 				if "/100" in line:
-					qual = line[line.index('Quality') + 8:line.index('  Signal')]
+					qual = line[line.index('Quality') + 8:line.index('	Signal')]
 				else:
 					qual = line[line.index('Quality') + 8:line.index('Sig')]
 				if qual is not None:
@@ -423,12 +423,12 @@ class Status:
 					signal = line[line.index('Signal level') + 13:line.index(' dBm')] + " dBm"
 				elif "/100" in line:
 					if "Noise" in line:
-						signal = line[line.index('Signal level') + 13:line.index('  Noise')]
+						signal = line[line.index('Signal level') + 13:line.index('	Noise')]
 					else:
 						signal = line[line.index('Signal level') + 13:len(line)]
 				else:
 					if "Noise" in line:
-						signal = line[line.index('Signal level') + 13:line.index('  Noise')]
+						signal = line[line.index('Signal level') + 13:line.index('	Noise')]
 					else:
 						signal = line[line.index('Signal level') + 13:len(line)]
 				if signal is not None:
@@ -441,8 +441,8 @@ class Status:
 			if not self.WlanConsole.appContainers:
 				print("[WirelessLan] self.wlaniface after loading:", self.wlaniface)
 				if self.statusCallback is not None:
-						self.statusCallback(True, self.wlaniface)
-						self.statusCallback = None
+					self.statusCallback(True, self.wlaniface)
+					self.statusCallback = None
 
 	def getAdapterAttribute(self, iface, attribute):
 		self.iface = iface

@@ -85,7 +85,7 @@ class FactoryReset(Setup, ProtectedScreen):
 			if len(self.resumePoints):
 				self.list.append((_("Remove all resume point data"), self.resetResumePoints, _("Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected.")))
 			if len(self.settings):
-				self.list.append((_("Remove all settings data"), self.resetSettings, _("Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart.")))
+				self.list.append((_("Remove all settings data"), self.resetSettings, _("Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.	This will also cause Enigma2 to run the Welcome Wizard on restart.")))
 			if len(self.skins):
 				self.list.append((_("Remove all skin data"), self.resetSkins, _("Select 'Yes' to remove all user customisations of skin data. Selecting this option will remove all user based skin customisations. All affected skins will return to their standard settings. This will also clear any customied boot logos and backdrops.")))
 			if len(self.timers):
@@ -161,7 +161,7 @@ class FactoryReset(Setup, ProtectedScreen):
 					remove(target)
 			except (IOError, OSError) as err:
 				if err.errno != ENOENT:
-					print("[FactoryReset] Error: Unable to delete '%s'!  (%s)" % (target, str(err)))
+					print("[FactoryReset] Error: Unable to delete '%s'!	 (%s)" % (target, str(err)))
 
-	def closeConfigList(self, closeParameters=()):  # Suppress the save settings pop up on exit.
+	def closeConfigList(self, closeParameters=()):	# Suppress the save settings pop up on exit.
 		self.close(*closeParameters)

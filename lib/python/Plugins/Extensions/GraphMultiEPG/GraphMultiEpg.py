@@ -99,46 +99,46 @@ class EPGList(GUIComponent):
 		self.epg_bouquet = epg_bouquet
 		self.epgcache = eEPGCache.getInstance()
 		self.clocks = [LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_post.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_post.png')),
 
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_post.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_add.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zapclock_post.png')),
 
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_post.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_add.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/zaprecclock_post.png')),
 
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_post.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_add.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repepgclock_post.png')),
 
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_post.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_add.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzapclock_post.png')),
 
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_post.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_add.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/repzaprecclock_post.png')),
 
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_post.png'))]
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_add.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_pre.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_prepost.png')),
+					   LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_post.png'))]
 
 		self.time_base = None
 		self.time_epoch = time_epoch
@@ -349,7 +349,7 @@ class EPGList(GUIComponent):
 	def getCurrent(self):
 		if self.cur_service is None:
 			return (None, None)
-		old_service = self.cur_service  #(service, service_name, events, picon)
+		old_service = self.cur_service	#(service, service_name, events, picon)
 		events = self.cur_service[2]
 		refstr = self.cur_service[0]
 		if self.cur_event is None or not events or not len(events):
@@ -373,7 +373,7 @@ class EPGList(GUIComponent):
 			self.findBestEvent()
 
 	def findBestEvent(self):
-		old_service = self.cur_service  #(service, service_name, events, picon)
+		old_service = self.cur_service	#(service, service_name, events, picon)
 		cur_service = self.cur_service = self.l.getCurrentSelection()
 		time_base = self.getTimeBase()
 		now = time()
@@ -450,8 +450,8 @@ class EPGList(GUIComponent):
 		height = esize.height()
 		if self.showServiceTitle:
 			w = width / 10 * 2;
-		else:     # if self.showPicon:    # this must be set if showServiceTitle is None
-			w = 2 * height - 2 * self.serviceBorderVerWidth  # FIXME: could do better...
+		else:	  # if self.showPicon:	  # this must be set if showServiceTitle is None
+			w = 2 * height - 2 * self.serviceBorderVerWidth	 # FIXME: could do better...
 		self.number_width = self.showChannelNumber and 'FROM BOUQUET' in self.epg_bouquet.toString() and getTextBoundarySize(self.instance, self.serviceFont, self.instance.size(), "0000" if config.usage.alternative_number_mode.value else "00000").width() + 2 * self.serviceBorderVerWidth or 0
 		w = w + self.number_width
 		self.service_rect = Rect(0, 0, w, height)
@@ -495,21 +495,21 @@ class EPGList(GUIComponent):
 			currentservice = False
 
 		res = [None]
-		if bgpng is not None:    # bacground for service rect
+		if bgpng is not None:	 # bacground for service rect
 			res.append(MultiContentEntryPixmapAlphaTest(
-					pos=(r1.x + self.serviceBorderVerWidth, r1.y + self.serviceBorderHorWidth),
-					size=(r1.w - 2 * self.serviceBorderVerWidth, r1.h - 2 * self.serviceBorderHorWidth),
-					png=bgpng,
-					flags=BT_SCALE))
+				pos=(r1.x + self.serviceBorderVerWidth, r1.y + self.serviceBorderHorWidth),
+				size=(r1.w - 2 * self.serviceBorderVerWidth, r1.h - 2 * self.serviceBorderHorWidth),
+				png=bgpng,
+				flags=BT_SCALE))
 		else:
 			res.append(MultiContentEntryText(
-					pos=(r1.x, r1.y),
-					size=(r1.w, r1.h),
-					font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER,
-					text="",
-					color=None, color_sel=None,
-					backcolor=serviceBackColor, backcolor_sel=serviceBackColor,
-					border_width=self.serviceBorderWidth, border_color=self.borderColorService))
+				pos=(r1.x, r1.y),
+				size=(r1.w, r1.h),
+				font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER,
+				text="",
+				color=None, color_sel=None,
+				backcolor=serviceBackColor, backcolor_sel=serviceBackColor,
+				border_width=self.serviceBorderWidth, border_color=self.borderColorService))
 		displayPicon = None
 		if self.number_width:
 			res.append(MultiContentEntryText(
@@ -551,9 +551,9 @@ class EPGList(GUIComponent):
 		if self.showServiceTitle or displayPicon is None:
 			res.append(MultiContentEntryText(
 				pos=(r1.x + piconWidth + self.serviceBorderVerWidth + self.serviceNamePadding + self.number_width,
-					r1.y + self.serviceBorderHorWidth),
+					 r1.y + self.serviceBorderHorWidth),
 				size=(namewidth - 2 * (self.serviceBorderVerWidth + self.serviceNamePadding),
-					r1.h - 2 * self.serviceBorderHorWidth),
+					  r1.h - 2 * self.serviceBorderHorWidth),
 				font=namefont, flags=namefontflag,
 				text=service_name,
 				color=serviceForeColor, color_sel=serviceForeColor,
@@ -652,7 +652,7 @@ class EPGList(GUIComponent):
 		return res
 
 	def selEntry(self, dir, visible=True):
-		cur_service = self.cur_service    #(service, service_name, events, picon)
+		cur_service = self.cur_service	  #(service, service_name, events, picon)
 		self.recalcEntrySize()
 		valid_event = self.cur_event is not None
 		if cur_service:
@@ -819,7 +819,7 @@ class TimelineText(GUIComponent):
 		res = [None]
 
 		# Note: event_rect and service_rect are relative to the timeline_text position
-		#       while the time lines are relative to the GraphEPG screen position!
+		#		while the time lines are relative to the GraphEPG screen position!
 		if self.time_base != time_base or self.time_epoch != time_epoch or force:
 			service_rect = l.getServiceRect()
 			itemHeight = self.l.getItemSize().height()
@@ -921,55 +921,55 @@ class GraphMultiEPG(Screen, HelpableScreen):
 			Screen.setTitle(self, bouquetname)
 
 		self["list"] = EPGList(selChangedCB=self.onSelectionChanged,
-					timer=self.session.nav.RecordTimer,
-					time_epoch=config.misc.graph_mepg.prev_time_period.value,
-					overjump_empty=config.misc.graph_mepg.overjump.value,
-					epg_bouquet=epg_bouquet)
+							   timer=self.session.nav.RecordTimer,
+							   time_epoch=config.misc.graph_mepg.prev_time_period.value,
+							   overjump_empty=config.misc.graph_mepg.overjump.value,
+							   epg_bouquet=epg_bouquet)
 
 		HelpableScreen.__init__(self)
 		self["okactions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
-				"cancel": (self.closeScreen, _("Exit EPG")),
-				"ok": (self.eventSelected, _("Zap to selected channel, or show detailed event info (depends on configuration)"))
-			}, -1)
+											  {
+			"cancel": (self.closeScreen, _("Exit EPG")),
+			"ok": (self.eventSelected, _("Zap to selected channel, or show detailed event info (depends on configuration)"))
+		}, -1)
 		self["okactions"].csel = self
 		self["gmepgactions"] = HelpableActionMap(self, ["GMEPGSelectActions"],
-			{
-				"timerAdd": (self.timerAdd, _("Add/remove change timer for current event")),
-				"info": (self.infoKeyPressed, _("Show detailed event info")),
-				"red": (self.zapTo, _("Zap to selected channel")),
-				"blue": (self.togglePrimeNow, _("Goto primetime / now")),
-				"blue_long": (self.enterDateTime, _("Goto specific date/time")),
-				"yellow": (self.swapMode, _("Switch between normal mode and list mode")),
-				"menu": (self.furtherOptions, _("Further Options")),
-				"nextBouquet": (self.nextBouquet, self.getKeyNextBouquetHelptext),
-				"prevBouquet": (self.prevBouquet, self.getKeyPrevBouquetHelptext),
-				"nextService": (self.nextPressed, _("Goto next page of events")),
-				"prevService": (self.prevPressed, _("Goto previous page of events")),
-				"preview": (self.preview, _("Preview selected channel")),
-				"window": (self.showhideWindow, _("Show/hide window")),
-				"nextDay": (self.nextDay, _("Goto next day of events")),
-				"prevDay": (self.prevDay, _("Goto previous day of events")),
-				"moveUp": (self.moveUp, _("Goto up service")),
-				"moveDown": (self.moveDown, _("Goto down service"))
-			}, -1)
+												 {
+			"timerAdd": (self.timerAdd, _("Add/remove change timer for current event")),
+			"info": (self.infoKeyPressed, _("Show detailed event info")),
+			"red": (self.zapTo, _("Zap to selected channel")),
+			"blue": (self.togglePrimeNow, _("Goto primetime / now")),
+			"blue_long": (self.enterDateTime, _("Goto specific date/time")),
+			"yellow": (self.swapMode, _("Switch between normal mode and list mode")),
+			"menu": (self.furtherOptions, _("Further Options")),
+			"nextBouquet": (self.nextBouquet, self.getKeyNextBouquetHelptext),
+			"prevBouquet": (self.prevBouquet, self.getKeyPrevBouquetHelptext),
+			"nextService": (self.nextPressed, _("Goto next page of events")),
+			"prevService": (self.prevPressed, _("Goto previous page of events")),
+			"preview": (self.preview, _("Preview selected channel")),
+			"window": (self.showhideWindow, _("Show/hide window")),
+			"nextDay": (self.nextDay, _("Goto next day of events")),
+			"prevDay": (self.prevDay, _("Goto previous day of events")),
+			"moveUp": (self.moveUp, _("Goto up service")),
+			"moveDown": (self.moveDown, _("Goto down service"))
+		}, -1)
 		self["gmepgactions"].csel = self
 
 		self["inputactions"] = HelpableActionMap(self, ["InputActions"],
-			{
-				"left": (self.leftPressed, _("Go to previous event")),
-				"right": (self.rightPressed, _("Go to next event")),
-				"1": (self.key1, _("Set time window to 1 hour")),
-				"2": (self.key2, _("Set time window to 2 hours")),
-				"3": (self.key3, _("Set time window to 3 hours")),
-				"4": (self.key4, _("Set time window to 4 hours")),
-				"5": (self.key5, _("Set time window to 5 hours")),
-				"6": (self.key6, _("Set time window to 6 hours")),
-				"7": (self.prevPage, _("Go to previous page of service")),
-				"9": (self.nextPage, _("Go to next page of service")),
-				"8": (self.toTop, _("Go to first service")),
-				"0": (self.toEnd, _("Go to last service"))
-			}, -1)
+												 {
+			"left": (self.leftPressed, _("Go to previous event")),
+			"right": (self.rightPressed, _("Go to next event")),
+			"1": (self.key1, _("Set time window to 1 hour")),
+			"2": (self.key2, _("Set time window to 2 hours")),
+			"3": (self.key3, _("Set time window to 3 hours")),
+			"4": (self.key4, _("Set time window to 4 hours")),
+			"5": (self.key5, _("Set time window to 5 hours")),
+			"6": (self.key6, _("Set time window to 6 hours")),
+			"7": (self.prevPage, _("Go to previous page of service")),
+			"9": (self.nextPage, _("Go to next page of service")),
+			"8": (self.toTop, _("Go to first service")),
+			"0": (self.toEnd, _("Go to last service"))
+		}, -1)
 		self["inputactions"].csel = self
 
 		self.protectContextMenu = True
@@ -1179,10 +1179,10 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		if event:
 			if six.PY2:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'selectedevent' in p.__call__.func_code.co_varnames]
+						if 'selectedevent' in p.__call__.func_code.co_varnames]
 			else:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'selectedevent' in p.__call__.__code__.co_varnames]
+						if 'selectedevent' in p.__call__.__code__.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
 			keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "red", "green", "yellow"][:len(menu)] + (len(menu) - 13) * [""] + keys

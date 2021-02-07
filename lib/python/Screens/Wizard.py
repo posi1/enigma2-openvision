@@ -211,7 +211,7 @@ class Wizard(Screen):
 		self.disableKeys = False
 
 		self["actions"] = NumberActionMap(["WizardActions", "NumberActions", "ColorActions", "SetupActions", "InputAsciiActions", "KeyboardInputActions"],
-		{
+										  {
 			"gotAsciiCode": self.keyGotAscii,
 			"ok": self.ok,
 			"back": self.back,
@@ -238,7 +238,7 @@ class Wizard(Screen):
 		}, -1)
 
 		self["VirtualKB"] = NumberActionMap(["VirtualKeyboardActions"],
-		{
+											{
 			"showVirtualKeyboard": self.KeyText,
 		}, -2)
 

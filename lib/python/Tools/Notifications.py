@@ -50,7 +50,7 @@ def AddNotificationWithIDCallback(fnc, id, screen, *args, **kwargs):
 
 def AddNotificationWithUniqueIDCallback(fnc, id, screen, *args, **kwargs):
 	for x in notifications:
-		if x[4] and x[4] == id:    # Already there...
+		if x[4] and x[4] == id:	   # Already there...
 			return
 	__AddNotification(fnc, screen, id, *args, **kwargs)
 

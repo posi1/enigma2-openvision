@@ -673,7 +673,7 @@ class MenuImageTask(Task):
 		open(self.spuxmlfilename, "w").write(spuxml)
 		Task.processFinished(self, 0)
 		#except:
-			#Task.processFinished(self, 1)
+		#Task.processFinished(self, 1)
 
 	def getPosition(self, offset, left, top, right, bottom, size):
 		pos = [left, top]
@@ -730,41 +730,41 @@ def CreateAuthoringXML_singleset(job):
 	authorxml = []
 	authorxml.append('<?xml version="1.0" encoding="utf-8"?>\n')
 	authorxml.append(' <dvdauthor dest="' + (job.workspace + "/dvd") + '">\n')
-	authorxml.append('  <vmgm>\n')
-	authorxml.append('   <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
-	authorxml.append('    <pgc>\n')
-	authorxml.append('     <vob file="' + job.project.settings.vmgm.getValue() + '" />\n', )
+	authorxml.append('	<vmgm>\n')
+	authorxml.append('	 <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
+	authorxml.append('	  <pgc>\n')
+	authorxml.append('	   <vob file="' + job.project.settings.vmgm.getValue() + '" />\n', )
 	if mode.startswith("menu"):
-		authorxml.append('     <post> jump titleset 1 menu; </post>\n')
+		authorxml.append('	   <post> jump titleset 1 menu; </post>\n')
 	else:
-		authorxml.append('     <post> jump title 1; </post>\n')
-	authorxml.append('    </pgc>\n')
-	authorxml.append('   </menus>\n')
-	authorxml.append('  </vmgm>\n')
-	authorxml.append('  <titleset>\n')
+		authorxml.append('	   <post> jump title 1; </post>\n')
+	authorxml.append('	  </pgc>\n')
+	authorxml.append('	 </menus>\n')
+	authorxml.append('	</vmgm>\n')
+	authorxml.append('	<titleset>\n')
 	if mode.startswith("menu"):
-		authorxml.append('   <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
-		authorxml.append('    <video aspect="4:3"/>\n')
+		authorxml.append('	 <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
+		authorxml.append('	  <video aspect="4:3"/>\n')
 		for menu_count in range(1, job.nr_menus + 1):
 			if menu_count == 1:
-				authorxml.append('    <pgc entry="root">\n')
+				authorxml.append('	  <pgc entry="root">\n')
 			else:
-				authorxml.append('    <pgc>\n')
+				authorxml.append('	  <pgc>\n')
 			menu_start_title = (menu_count - 1) * job.titles_per_menu + 1
 			menu_end_title = (menu_count) * job.titles_per_menu + 1
 			if menu_end_title > nr_titles:
 				menu_end_title = nr_titles + 1
 			for i in range(menu_start_title, menu_end_title):
-				authorxml.append('     <button name="button' + (str(i).zfill(2)) + '"> jump title ' + str(i) + '; </button>\n')
+				authorxml.append('	   <button name="button' + (str(i).zfill(2)) + '"> jump title ' + str(i) + '; </button>\n')
 			if menu_count > 1:
-				authorxml.append('     <button name="button_prev"> jump menu ' + str(menu_count - 1) + '; </button>\n')
+				authorxml.append('	   <button name="button_prev"> jump menu ' + str(menu_count - 1) + '; </button>\n')
 			if menu_count < job.nr_menus:
-				authorxml.append('     <button name="button_next"> jump menu ' + str(menu_count + 1) + '; </button>\n')
+				authorxml.append('	   <button name="button_next"> jump menu ' + str(menu_count + 1) + '; </button>\n')
 			menuoutputfilename = job.workspace + "/dvdmenu" + str(menu_count) + ".mpg"
-			authorxml.append('     <vob file="' + menuoutputfilename + '" pause="inf"/>\n')
-			authorxml.append('    </pgc>\n')
-		authorxml.append('   </menus>\n')
-	authorxml.append('   <titles>\n')
+			authorxml.append('	   <vob file="' + menuoutputfilename + '" pause="inf"/>\n')
+			authorxml.append('	  </pgc>\n')
+		authorxml.append('	 </menus>\n')
+	authorxml.append('	 <titles>\n')
 	for i in range(nr_titles):
 		chapters = ','.join(job.project.titles[i].getChapterMarks())
 		title_no = i + 1
@@ -779,13 +779,13 @@ def CreateAuthoringXML_singleset(job):
 			post_tag = "call vmgm menu 1;"
 		else: post_tag = ""
 
-		authorxml.append('    <pgc>\n')
-		authorxml.append('     <vob file="' + title_filename + '" chapters="' + chapters + '" />\n')
-		authorxml.append('     <post> ' + post_tag + ' </post>\n')
-		authorxml.append('    </pgc>\n')
+		authorxml.append('	  <pgc>\n')
+		authorxml.append('	   <vob file="' + title_filename + '" chapters="' + chapters + '" />\n')
+		authorxml.append('	   <post> ' + post_tag + ' </post>\n')
+		authorxml.append('	  </pgc>\n')
 
-	authorxml.append('   </titles>\n')
-	authorxml.append('  </titleset>\n')
+	authorxml.append('	 </titles>\n')
+	authorxml.append('	</titleset>\n')
 	authorxml.append(' </dvdauthor>\n')
 	f = open(job.workspace + "/dvdauthor.xml", "w")
 	for x in authorxml:
@@ -799,59 +799,59 @@ def CreateAuthoringXML_multiset(job):
 	authorxml = []
 	authorxml.append('<?xml version="1.0" encoding="utf-8"?>\n')
 	authorxml.append(' <dvdauthor dest="' + (job.workspace + "/dvd") + '" jumppad="yes">\n')
-	authorxml.append('  <vmgm>\n')
-	authorxml.append('   <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
-	authorxml.append('    <video aspect="4:3"/>\n')
+	authorxml.append('	<vmgm>\n')
+	authorxml.append('	 <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
+	authorxml.append('	  <video aspect="4:3"/>\n')
 	if mode.startswith("menu"):
 		for menu_count in range(1, job.nr_menus + 1):
 			if menu_count == 1:
-				authorxml.append('    <pgc>\n')
+				authorxml.append('	  <pgc>\n')
 			else:
-				authorxml.append('    <pgc>\n')
+				authorxml.append('	  <pgc>\n')
 			menu_start_title = (menu_count - 1) * job.titles_per_menu + 1
 			menu_end_title = (menu_count) * job.titles_per_menu + 1
 			if menu_end_title > nr_titles:
 				menu_end_title = nr_titles + 1
 			for i in range(menu_start_title, menu_end_title):
-				authorxml.append('     <button name="button' + (str(i).zfill(2)) + '"> jump titleset ' + str(i) + ' title 1; </button>\n')
+				authorxml.append('	   <button name="button' + (str(i).zfill(2)) + '"> jump titleset ' + str(i) + ' title 1; </button>\n')
 			if menu_count > 1:
-				authorxml.append('     <button name="button_prev"> jump menu ' + str(menu_count - 1) + '; </button>\n')
+				authorxml.append('	   <button name="button_prev"> jump menu ' + str(menu_count - 1) + '; </button>\n')
 			if menu_count < job.nr_menus:
-				authorxml.append('     <button name="button_next"> jump menu ' + str(menu_count + 1) + '; </button>\n')
+				authorxml.append('	   <button name="button_next"> jump menu ' + str(menu_count + 1) + '; </button>\n')
 			menuoutputfilename = job.workspace + "/dvdmenu" + str(menu_count) + ".mpg"
-			authorxml.append('     <vob file="' + menuoutputfilename + '" pause="inf"/>\n')
-			authorxml.append('    </pgc>\n')
+			authorxml.append('	   <vob file="' + menuoutputfilename + '" pause="inf"/>\n')
+			authorxml.append('	  </pgc>\n')
 	else:
-		authorxml.append('    <pgc>\n')
-		authorxml.append('     <vob file="' + job.project.settings.vmgm.getValue() + '" />\n')
-		authorxml.append('     <post> jump titleset 1 title 1; </post>\n')
-		authorxml.append('    </pgc>\n')
-	authorxml.append('   </menus>\n')
-	authorxml.append('  </vmgm>\n')
+		authorxml.append('	  <pgc>\n')
+		authorxml.append('	   <vob file="' + job.project.settings.vmgm.getValue() + '" />\n')
+		authorxml.append('	   <post> jump titleset 1 title 1; </post>\n')
+		authorxml.append('	  </pgc>\n')
+	authorxml.append('	 </menus>\n')
+	authorxml.append('	</vmgm>\n')
 
 	for i in range(nr_titles):
 		title = job.project.titles[i]
-		authorxml.append('  <titleset>\n')
-		authorxml.append('   <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
-		authorxml.append('    <pgc entry="root">\n')
-		authorxml.append('     <pre>\n')
-		authorxml.append('      jump vmgm menu entry title;\n')
-		authorxml.append('     </pre>\n')
-		authorxml.append('    </pgc>\n')
-		authorxml.append('   </menus>\n')
-		authorxml.append('   <titles>\n')
+		authorxml.append('	<titleset>\n')
+		authorxml.append('	 <menus lang="' + job.project.menutemplate.settings.menulang.getValue() + '">\n')
+		authorxml.append('	  <pgc entry="root">\n')
+		authorxml.append('	   <pre>\n')
+		authorxml.append('		jump vmgm menu entry title;\n')
+		authorxml.append('	   </pre>\n')
+		authorxml.append('	  </pgc>\n')
+		authorxml.append('	 </menus>\n')
+		authorxml.append('	 <titles>\n')
 		for audiotrack in title.properties.audiotracks:
 			active = audiotrack.active.getValue()
 			if active:
 				format = audiotrack.format.getValue()
 				language = audiotrack.language.getValue()
-				audio_tag = '    <audio format="%s"' % format
+				audio_tag = '	 <audio format="%s"' % format
 				if language != "nolang":
 					audio_tag += ' lang="%s"' % language
 				audio_tag += ' />\n'
 				authorxml.append(audio_tag)
 		aspect = title.properties.aspect.getValue()
-		video_tag = '    <video aspect="' + aspect + '"'
+		video_tag = '	 <video aspect="' + aspect + '"'
 		if title.properties.widescreen.getValue() == "4:3":
 			video_tag += ' widescreen="' + title.properties.widescreen.getValue() + '"'
 		video_tag += ' />\n'
@@ -869,12 +869,12 @@ def CreateAuthoringXML_multiset(job):
 			post_tag = "call vmgm menu 1;"
 		else: post_tag = ""
 
-		authorxml.append('    <pgc>\n')
-		authorxml.append('     <vob file="' + title_filename + '" chapters="' + chapters + '" />\n')
-		authorxml.append('     <post> ' + post_tag + ' </post>\n')
-		authorxml.append('    </pgc>\n')
-		authorxml.append('   </titles>\n')
-		authorxml.append('  </titleset>\n')
+		authorxml.append('	  <pgc>\n')
+		authorxml.append('	   <vob file="' + title_filename + '" chapters="' + chapters + '" />\n')
+		authorxml.append('	   <post> ' + post_tag + ' </post>\n')
+		authorxml.append('	  </pgc>\n')
+		authorxml.append('	 </titles>\n')
+		authorxml.append('	</titleset>\n')
 	authorxml.append(' </dvdauthor>\n')
 	f = open(job.workspace + "/dvdauthor.xml", "w")
 	for x in authorxml:

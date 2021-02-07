@@ -45,13 +45,13 @@ class VideoEnhancementSetup(Screen, ConfigListScreen):
 		self.createSetup()
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions"],
-			{
-				"cancel": self.keyCancel,
-				"save": self.apply,
-				"yellow": self.keyYellow,
-				"blue": self.keyBlue,
-				"menu": self.closeRecursive,
-			}, -2)
+									{
+			"cancel": self.keyCancel,
+			"save": self.apply,
+			"yellow": self.keyYellow,
+			"blue": self.keyBlue,
+			"menu": self.closeRecursive,
+		}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
@@ -297,10 +297,10 @@ class VideoEnhancementPreview(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions"],
-			{
-				"cancel": self.keyCancel,
-				"save": self.keySave,
-			}, -2)
+									{
+			"cancel": self.keyCancel,
+			"save": self.keySave,
+		}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))

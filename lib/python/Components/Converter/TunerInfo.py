@@ -9,8 +9,8 @@ class TunerInfo(Converter, object):
 	def __init__(self, type):
 		Converter.__init__(self, type)
 		self.type = {
-				"TunerUseMask": TunerInfoSource.FE_USE_MASK
-			}[type]
+			"TunerUseMask": TunerInfoSource.FE_USE_MASK
+		}[type]
 
 	@cached
 	def getBoolean(self):

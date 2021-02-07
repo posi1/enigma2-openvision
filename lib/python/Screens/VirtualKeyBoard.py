@@ -31,13 +31,13 @@ loadSkin('/usr/share/enigma2/VirtualKeyBoard_Icons/vkskin.xml')
 
 
 def getDesktopSize():
-    s = getDesktop(0).size()
-    return (s.width(), s.height())
+	s = getDesktop(0).size()
+	return (s.width(), s.height())
 
 
 def isHD():
-    desktopSize = getDesktopSize()
-    return desktopSize[0] == 1280
+	desktopSize = getDesktopSize()
+	return desktopSize[0] == 1280
 
 
 VKB_DONE_ICON = 0
@@ -51,7 +51,7 @@ VKB_OK_TEXT = 7
 VKB_SAVE_TEXT = 8
 VKB_SEARCH_TEXT = 9
 
-SPACE = u"SPACEICON"  # Symbol to be used for a SPACE on the keyboard.  Must be u"SPACE" (any case), u"SPACEICON" or u"SPACEICONALT".
+SPACE = u"SPACEICON"  # Symbol to be used for a SPACE on the keyboard.	Must be u"SPACE" (any case), u"SPACEICON" or u"SPACEICONALT".
 
 
 class VirtualKeyBoardList(MenuList):
@@ -59,7 +59,7 @@ class VirtualKeyBoardList(MenuList):
 		MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)
 		font = fonts.get("VirtualKeyBoard", ("Regular", 28, 45))
 		self.l.setFont(0, gFont(font[0], font[1]))
-		self.l.setFont(1, gFont(font[0], font[1] * 5 // 9))  # Smaller font is 56% the height of bigger font
+		self.l.setFont(1, gFont(font[0], font[1] * 5 // 9))	 # Smaller font is 56% the height of bigger font
 		self.l.setItemHeight(font[2])
 
 
@@ -75,7 +75,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
 		self.setTitle(_("Virtual keyboard"))
-		prompt = title  # Title should only be used for screen titles!
+		prompt = title	# Title should only be used for screen titles!
 		greenLabel, self.green = {
 			VKB_DONE_ICON: ("Done", u"ENTERICON"),
 			VKB_ENTER_ICON: ("Enter", u"ENTERICON"),
@@ -202,7 +202,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			key_shift3 = LoadPixmap(path=resolveFilename(SCOPE_CURRENT_SKIN, "buttons/vkey_shift3.png"))
 			key_space = LoadPixmap(path=resolveFilename(SCOPE_CURRENT_SKIN, "buttons/vkey_space.png"))
 			key_space_alt = LoadPixmap(path=resolveFilename(SCOPE_CURRENT_SKIN, "buttons/vkey_space_alt.png"))
-		self.keyHighlights = {  # This is a table of cell highlight components (left, middle and right)
+		self.keyHighlights = {	# This is a table of cell highlight components (left, middle and right)
 			u"EXIT": (key_red_l, key_red_m, key_red_r),
 			u"EXITICON": (key_red_l, key_red_m, key_red_r),
 			u"DONE": (key_green_l, key_green_m, key_green_r),
@@ -515,13 +515,13 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			[
 				[u"\u00BA", u"1", u"2", u"3", u"4", u"5", u"6", u"7", u"8", u"9", u"0", u"'", u"\u00A1", u"BACKSPACEICON"],
 				[u"FIRSTICON", u"q", u"w", u"e", u"r", u"t", u"y", u"u", u"i", u"o", u"p", u"`", u"+", u"\u00E7"],
-				[u"LASTICON", u"a", u"s", u"d", u"f", u"g", u"h", u"j", u"k", u"l", u"\u00F1", u"\u00B4", self.green, self.green],  # [, ]
+				[u"LASTICON", u"a", u"s", u"d", u"f", u"g", u"h", u"j", u"k", u"l", u"\u00F1", u"\u00B4", self.green, self.green],	# [, ]
 				[u"CAPSLOCKICON", u"<", u"z", u"x", u"c", u"v", u"b", u"n", u"m", u",", ".", u"-", u"CAPSLOCKICON", u"CAPSLOCKICON"],
 				self.footer
 			], [
 				[u"\u00AA", u"!", u"\"", u"\u00B7", u"$", u"%", u"&", u"/", u"(", u")", u"=", u"?", u"\u00BF", u"BACKSPACEICON"],
 				[u"FIRSTICON", u"Q", u"W", u"E", u"R", u"T", u"Y", u"U", u"I", u"O", u"P", u"^", u"*", u"\u00C7"],
-				[u"LASTICON", u"A", u"S", u"D", u"F", u"G", u"H", u"J", u"K", u"L", u"\u00D1", u"\u00A8", self.green, self.green],  # {, }
+				[u"LASTICON", u"A", u"S", u"D", u"F", u"G", u"H", u"J", u"K", u"L", u"\u00D1", u"\u00A8", self.green, self.green],	# {, }
 				[u"CAPSLOCKICON", u">", u"Z", u"X", u"C", u"V", u"B", u"N", u"M", u";", u":", u"_", u"CAPSLOCKICON", u"CAPSLOCKICON"],
 				self.footer
 			], [
@@ -534,7 +534,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 		]
 		self.thai = [
 			[
-				[u"", u"", u"\u0E45", u"\u0E20", u"\u0E16", u"\u0E38", u"\u0E36", u"\u0E04", u"\u0E15", u"\u0E08", u"\u0E02", u"\u0E0A", u"", u"BACKSPACEICON"],
+					[u"", u"", u"\u0E45", u"\u0E20", u"\u0E16", u"\u0E38", u"\u0E36", u"\u0E04", u"\u0E15", u"\u0E08", u"\u0E02", u"\u0E0A", u"", u"BACKSPACEICON"],
 				[u"FIRSTICON", u"\u0E46", u"\u0E44", u"\u0E33", u"\u0E1E", u"\u0E30", u"\u0E31", u"\u0E35", u"\u0E23", u"\u0E19", u"\u0E22", u"\u0E1A", u"\u0E25", u""],
 				[u"LASTICON", u"\u0E1F", u"\u0E2B", u"\u0E01", u"\u0E14", u"\u0E40", u"\u0E49", u"\u0E48", u"\u0E32", u"\u0E2A", u"\u0E27", u"\u0E07", u"\u0E03", self.green],
 				[u"CAPSLOCKICON", u"CAPSLOCKICON", u"\u0E1C", u"\u0E1B", u"\u0E41", u"\u0E2D", u"\u0E34", u"\u0E37", u"\u0E17", u"\u0E21", u"\u0E43", u"\u0E1D", u"CAPSLOCKICON", u"CAPSLOCKICON"],
@@ -643,12 +643,12 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			self.width = self.bg_l.size().width() + self.bg_m.size().width() + self.bg_r.size().width()
 			self.height = self.bg_m.size().height()
 		# Alignment -> (Horizontal, Vertical):
-		# 	Horizontal alignment: 0=Auto, 1=Left, 2=Center, 3=Right (Auto=Left on left, Center on middle, Right on right).
-		# 	Vertical alignment: 0=Auto, 1=Top, 2=Center, 3=Bottom (Auto=Center).
+		#	Horizontal alignment: 0=Auto, 1=Left, 2=Center, 3=Right (Auto=Left on left, Center on middle, Right on right).
+		#	Vertical alignment: 0=Auto, 1=Top, 2=Center, 3=Bottom (Auto=Center).
 		self.alignment = parameters.get("VirtualKeyBoardAlignment", (0, 0))
 		# Padding -> (Left/Right, Top/Botton) in pixels
 		self.padding = parameters.get("VirtualKeyBoardPadding", (4, 4))
-		# Text color for each shift level.  (Ensure there is a color for each shift level!)
+		# Text color for each shift level.	(Ensure there is a color for each shift level!)
 		self.shiftColors = parameters.get("VirtualKeyBoardShiftColors", (0x00ffffff, 0x00ffffff, 0x0000ffff, 0x00ff00ff))
 		self.language = None
 		self.location = None
@@ -1024,13 +1024,13 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 		self.shiftLevels = len(self.keyList)  # Check the current shift level is available / valid in this layout.
 		if self.shiftLevel >= self.shiftLevels:
 			self.shiftLevel = 0
-		self.keyboardWidth = len(self.keyList[self.shiftLevel][0])  # Determine current keymap size.
+		self.keyboardWidth = len(self.keyList[self.shiftLevel][0])	# Determine current keymap size.
 		self.keyboardHeight = len(self.keyList[self.shiftLevel])
 		self.maxKey = self.keyboardWidth * (self.keyboardHeight - 1) + len(self.keyList[self.shiftLevel][-1]) - 1
 		# print("[VirtualKeyBoard] DEBUG: Width=%d, Height=%d, Keys=%d, maxKey=%d, shiftLevels=%d" % (self.keyboardWidth, self.keyboardHeight, self.maxKey + 1, self.maxKey, self.shiftLevels))
 		self.index = 0
 		self.list = []
-		for keys in self.keyList[self.shiftLevel]:  # Process all the buttons in this shift level.
+		for keys in self.keyList[self.shiftLevel]:	# Process all the buttons in this shift level.
 			self.list.append(self.virtualKeyBoardEntryComponent(keys))
 		self.previousSelectedKey = None
 		if self.selectedKey is None:  # Start on the first character of the second row (EXIT button).
@@ -1050,7 +1050,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			if key != prevKey:
 				xData = x + self.padding[0]
 				start, width = self.findStartAndWidth(self.index)
-				if self.bg_l is None or self.bg_m is None or self.bg_r is None:  # If available display the cell background.
+				if self.bg_l is None or self.bg_m is None or self.bg_r is None:	 # If available display the cell background.
 					x += self.width * width
 				else:
 					w = self.bg_l.size().width()
@@ -1062,7 +1062,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 					w = self.bg_r.size().width()
 					res.append(MultiContentEntryPixmapAlphaTest(pos=(x, 0), size=(w, self.height), png=self.bg_r))
 					x += w
-				highlight = self.keyHighlights.get(key.upper(), (None, None, None))  # Check if the cell needs to be highlighted.
+				highlight = self.keyHighlights.get(key.upper(), (None, None, None))	 # Check if the cell needs to be highlighted.
 				if highlight[0] is None or highlight[1] is None or highlight[2] is None:  # If available display the cell highlight.
 					xHighlight += self.width * width
 				else:
@@ -1075,7 +1075,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 					w = highlight[2].size().width()
 					res.append(MultiContentEntryPixmapAlphaTest(pos=(xHighlight, 0), size=(w, self.height), png=highlight[2]))
 					xHighlight += w
-				if self.alignment[0] == 1:  # Determine the cell alignment.
+				if self.alignment[0] == 1:	# Determine the cell alignment.
 					alignH = RT_HALIGN_LEFT
 				elif self.alignment[0] == 2:
 					alignH = RT_HALIGN_CENTER
@@ -1096,7 +1096,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 					alignV = RT_VALIGN_CENTER
 				w = (width * self.width) - (self.padding[0] * 2)  # Determine the cell data area.
 				h = self.height - (self.padding[1] * 2)
-				image = self.keyImages[self.shiftLevel].get(key, None)  # Check if the cell contains an image.
+				image = self.keyImages[self.shiftLevel].get(key, None)	# Check if the cell contains an image.
 				if image:  # Display the cell image.
 					left = xData
 					wImage = image.size().width()

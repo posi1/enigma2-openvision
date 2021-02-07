@@ -46,7 +46,7 @@ class PiPSetup(Screen):
 		self["text"] = Label((self.modetext % self.pip.getModeName()) + self.helptext)
 
 		self["actions"] = NumberActionMap(["PiPSetupActions", "NumberActions"],
-		{
+										  {
 			"ok": self.go,
 			"cancel": self.cancel,
 			"up": self.up,

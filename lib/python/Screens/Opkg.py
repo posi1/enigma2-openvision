@@ -43,7 +43,7 @@ class Opkg(Screen):
 		self.runNextCmd()
 
 		self["actions"] = ActionMap(["WizardActions"],
-		{
+									{
 			"ok": self.exit,
 			"back": self.exit
 		}, -1)

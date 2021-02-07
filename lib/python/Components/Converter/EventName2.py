@@ -90,7 +90,7 @@ class EventName2(Converter, object):
 						duration = _("%d min") % (int(0 if eventNext[0][2] is None else eventNext[0][2]) / 60)
 						if len(eventNext[0]) > 4 and eventNext[0][4]:
 							if self.type is self.NEXT_NAME:
-								return "%02d:%02d  (%s)  %s" % (t[3], t[4], duration, eventNext[0][4])
+								return "%02d:%02d  (%s)	 %s" % (t[3], t[4], duration, eventNext[0][4])
 							elif self.type is self.NEXT_TIME_DURATION:
 								return "%02d:%02d  (%s)" % (t[3], t[4], duration)
 							else:
@@ -106,7 +106,7 @@ class EventName2(Converter, object):
 			else:
 				return ''
 		elif self.type is self.NEXT_EVENT_LIST or self.type is self.NEXT_EVENT_LISTWT or\
-			self.type is self.NEXT_EVENT_LIST2 or self.type is self.NEXT_EVENT_LISTWT2 or self.type is self.NEXT_NAME_NEXT or self.type is self.NEXT_NAME_NEXTWT:
+				self.type is self.NEXT_EVENT_LIST2 or self.type is self.NEXT_EVENT_LISTWT2 or self.type is self.NEXT_NAME_NEXT or self.type is self.NEXT_NAME_NEXTWT:
 			reference = self.source.service
 			info = reference and self.source.info
 			countitem = 10
@@ -128,7 +128,7 @@ class EventName2(Converter, object):
 									listEpg.append("%02d:%02d %s" % (t[3], t[4], x[4]))
 						i += 1
 					if self.type is self.NEXT_EVENT_LIST2 or self.type is self.NEXT_EVENT_LISTWT2 or self.type is self.NEXT_NAME_NEXT or\
-						self.type is self.NEXT_NAME_NEXTWT:
+							self.type is self.NEXT_NAME_NEXTWT:
 						if len(listEpg) > 1:
 							listEpg.pop(0)
 						else:

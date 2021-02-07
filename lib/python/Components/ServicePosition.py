@@ -18,10 +18,10 @@ class ServicePosition(PerServiceDisplay, object):
 		self.updateTimer = eTimer()
 		self.updateTimer.callback.append(self.update)
 		PerServiceDisplay.__init__(self, navcore,
-			{
-				iPlayableService.evStart: self.newService,
-				iPlayableService.evEnd: self.stopEvent
-			})
+								   {
+									   iPlayableService.evStart: self.newService,
+									   iPlayableService.evEnd: self.stopEvent
+								   })
 		self.type = type
 		self.relative_base = 0
 #		self.setType(type)
@@ -95,11 +95,11 @@ class ServicePositionGauge(PerServiceBase, GUIComponent):
 	def __init__(self, navcore):
 		GUIComponent.__init__(self)
 		PerServiceBase.__init__(self, navcore,
-			{
-				iPlayableService.evStart: self.newService,
-				iPlayableService.evEnd: self.stopEvent,
-				iPlayableService.evCuesheetChanged: self.newCuesheet
-			})
+								{
+									iPlayableService.evStart: self.newService,
+									iPlayableService.evEnd: self.stopEvent,
+									iPlayableService.evCuesheetChanged: self.newCuesheet
+								})
 		self.instance = None
 		self.__seek_position = 0
 

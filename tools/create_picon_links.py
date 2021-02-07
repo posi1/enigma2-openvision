@@ -3,7 +3,7 @@
 from __future__ import print_function
 #
 # create links for picon
-#   usage: create_picon_links lamedb
+#	usage: create_picon_links lamedb
 # run in picon directory.
 # It will read the servicenames from the lamedb and create symlinks
 # for the servicereference names.
@@ -21,10 +21,10 @@ while len(f):
 	name = name.replace('\xc2\x87', '').replace('\xc2\x86', '')
 
 #	SID:NS:TSID:ONID:STYPE:UNUSED(channelnumber in enigma1)
-#	X   X  X    X    D     D
+#	X	X  X	X	 D	   D
 
 #	REFTYPE:FLAGS:STYPE:SID:TSID:ONID:NS:PARENT_SID:PARENT_TSID:UNUSED
-#	D       D     X     X   X    X    X  X          X           X
+#	D		D	  X		X	X	 X	  X	 X			X			X
 
 	refstr = "1:0:%X:%X:%X:%X:%X:0:0:0" % (ref[4], ref[0], ref[2], ref[3], ref[1])
 	refstr = refstr.replace(':', '_')

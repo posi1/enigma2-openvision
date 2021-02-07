@@ -357,12 +357,12 @@ class PliExtraInfo(Poll, Converter):
 			self.getCryptoInfo(info)
 			if config.usage.show_cryptoinfo.value:
 				return addspace(self.createProviderName(info)) + self.createTransponderInfo(fedata, feraw, info) + "\n" \
-				+ addspace(self.createCryptoBar(info)) + addspace(self.createCryptoSpecial(info)) + "\n" \
-				+ addspace(self.createPIDInfo(info)) + addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
+					+ addspace(self.createCryptoBar(info)) + addspace(self.createCryptoSpecial(info)) + "\n" \
+					+ addspace(self.createPIDInfo(info)) + addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
 			else:
 				return addspace(self.createProviderName(info)) + self.createTransponderInfo(fedata, feraw, info) + "\n" \
-				+ addspace(self.createCryptoBar(info)) + self.current_source + "\n" \
-				+ addspace(self.createCryptoSpecial(info)) + addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
+					+ addspace(self.createCryptoBar(info)) + self.current_source + "\n" \
+					+ addspace(self.createCryptoSpecial(info)) + addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
 
 		if self.type == "PIDInfo":
 			return self.createPIDInfo(info)
@@ -372,8 +372,8 @@ class PliExtraInfo(Poll, Converter):
 
 		if self.type == "ServiceInfo":
 			return addspace(self.createProviderName(info)) + addspace(self.createTunerSystem(fedata)) + addspace(self.createFrequency(feraw)) + addspace(self.createPolarization(fedata)) \
-			+ addspace(self.createSymbolRate(fedata, feraw)) + addspace(self.createFEC(fedata, feraw)) + addspace(self.createModulation(fedata)) + addspace(self.createOrbPos(feraw)) \
-			+ addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
+				+ addspace(self.createSymbolRate(fedata, feraw)) + addspace(self.createFEC(fedata, feraw)) + addspace(self.createModulation(fedata)) + addspace(self.createOrbPos(feraw)) \
+				+ addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
 
 		if self.type == "TransponderInfo":
 			return self.createTransponderInfo(fedata, feraw, info)

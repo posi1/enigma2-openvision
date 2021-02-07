@@ -184,7 +184,7 @@ class LCD:
 		eDBoxLCD.getInstance().setFlipped(value)
 
 	def setScreenShot(self, value):
- 		eDBoxLCD.getInstance().setDump(value)
+		eDBoxLCD.getInstance().setDump(value)
 
 	def isOled(self):
 		return eDBoxLCD.getInstance().isOled()
@@ -314,20 +314,20 @@ def InitLcd():
 				ilcd.setScreenShot(configElement.value)
 
 			config.lcd.modepip = ConfigSelection(choices={
-					"0": _("off"),
-					"5": _("PIP"),
-					"7": _("PIP with OSD")},
-					default="0")
+				"0": _("off"),
+				"5": _("PIP"),
+				"7": _("PIP with OSD")},
+				default="0")
 			config.lcd.modepip.addNotifier(setLCDModePiP)
 			config.lcd.screenshot = ConfigYesNo(default=False)
 			config.lcd.screenshot.addNotifier(setLCDScreenshot)
 
 			config.lcd.modeminitv = ConfigSelection(choices={
-					"0": _("normal"),
-					"1": _("MiniTV"),
-					"2": _("OSD"),
-					"3": _("MiniTV with OSD")},
-					default="0")
+				"0": _("normal"),
+				"1": _("MiniTV"),
+				"2": _("OSD"),
+				"3": _("MiniTV with OSD")},
+				default="0")
 			config.lcd.fpsminitv = ConfigSlider(default=30, limits=(0, 30))
 			config.lcd.modeminitv.addNotifier(setLCDModeMinitTV)
 			config.lcd.fpsminitv.addNotifier(setMiniTVFPS)
@@ -591,12 +591,12 @@ def InitLcd():
 					open(SystemInfo["VFD_initial_scroll_delay"], "w").write(el.value)
 
 			choicelist = [
-			("3000", "3 " + _("seconds")),
-			("5000", "5 " + _("seconds")),
-			("10000", "10 " + _("seconds")),
-			("20000", "20 " + _("seconds")),
-			("30000", "30 " + _("seconds")),
-			("0", _("no delay"))]
+				("3000", "3 " + _("seconds")),
+				("5000", "5 " + _("seconds")),
+				("10000", "10 " + _("seconds")),
+				("20000", "20 " + _("seconds")),
+				("30000", "30 " + _("seconds")),
+				("0", _("no delay"))]
 			config.usage.vfd_initial_scroll_delay = ConfigSelection(default="10000", choices=choicelist)
 			config.usage.vfd_initial_scroll_delay.addNotifier(initial_scroll_delay, immediate_feedback=False)
 		else:
@@ -611,12 +611,12 @@ def InitLcd():
 					open(SystemInfo["VFD_final_scroll_delay"], "w").write(el.value)
 
 			choicelist = [
-			("3000", "3 " + _("seconds")),
-			("5000", "5 " + _("seconds")),
-			("10000", "10 " + _("seconds")),
-			("20000", "20 " + _("seconds")),
-			("30000", "30 " + _("seconds")),
-			("0", _("no delay"))]
+				("3000", "3 " + _("seconds")),
+				("5000", "5 " + _("seconds")),
+				("10000", "10 " + _("seconds")),
+				("20000", "20 " + _("seconds")),
+				("30000", "30 " + _("seconds")),
+				("0", _("no delay"))]
 			config.usage.vfd_final_scroll_delay = ConfigSelection(default="10000", choices=choicelist)
 			config.usage.vfd_final_scroll_delay.addNotifier(final_scroll_delay, immediate_feedback=False)
 		else:
@@ -683,16 +683,16 @@ def InitLcd():
 		config.lcd.mode = ConfigNothing()
 		config.lcd.hdd = ConfigNothing()
 		config.lcd.scroll_speed = ConfigSelection(default="300", choices=[
-		("500", _("slow")),
-		("300", _("normal")),
-		("100", _("fast"))])
+			("500", _("slow")),
+			("300", _("normal")),
+			("100", _("fast"))])
 		config.lcd.scroll_delay = ConfigSelection(default="10000", choices=[
-		("10000", "10 " + _("seconds")),
-		("20000", "20 " + _("seconds")),
-		("30000", "30 " + _("seconds")),
-		("60000", "1 " + _("minute")),
-		("300000", "5 " + _("minutes")),
-		("noscrolling", _("off"))])
+			("10000", "10 " + _("seconds")),
+			("20000", "20 " + _("seconds")),
+			("30000", "30 " + _("seconds")),
+			("60000", "1 " + _("minute")),
+			("300000", "5 " + _("minutes")),
+			("noscrolling", _("off"))])
 		config.lcd.showoutputresolution = ConfigNothing()
 		config.lcd.ledbrightness = ConfigNothing()
 		config.lcd.ledbrightness.apply = lambda: doNothing()

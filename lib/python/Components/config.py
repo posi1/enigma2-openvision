@@ -9,7 +9,7 @@ from Components.SystemInfo import SystemInfo
 from Tools.Directories import SCOPE_CONFIG, fileExists, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.NumericalTextInput import NumericalTextInput
-from Components.Harddisk import harddiskmanager  # This import is order critical!
+from Components.Harddisk import harddiskmanager	 # This import is order critical!
 
 if PY2:
 	pyunichr = unichr
@@ -85,20 +85,20 @@ def NoSave(element):
 # ConfigElement, the base class of all ConfigElements.
 #
 # It stores:
-#   value        The current value, usefully encoded.  Usually a property which
-#                retrieves _value, and maybe does some reformatting.
-#   _value       The value as it's going to be saved in the configfile, though
-#                still in non-string form.  This is the object which is actually
-#                worked on.
-#   default      The initial value. If _value is equal to default, it will not
-#                be stored in the config file.
-#   saved_value  Is a text representation of _value, stored in the config file.
+#	value		 The current value, usefully encoded.  Usually a property which
+#				 retrieves _value, and maybe does some reformatting.
+#	_value		 The value as it's going to be saved in the configfile, though
+#				 still in non-string form.	This is the object which is actually
+#				 worked on.
+#	default		 The initial value. If _value is equal to default, it will not
+#				 be stored in the config file.
+#	saved_value	 Is a text representation of _value, stored in the config file.
 #
 # It has (at least) the following methods:
-#   load()       Loads _value from saved_value, or loads the default if
-#                saved_value is "None" (default) or invalid.
-#   save()       Stores _value into saved_value, (or stores "None" if it should
-#                not be stored).
+#	load()		 Loads _value from saved_value, or loads the default if
+#				 saved_value is "None" (default) or invalid.
+#	save()		 Stores _value into saved_value, (or stores "None" if it should
+#				 not be stored).
 #
 class ConfigElement(object):
 	def __init__(self):
@@ -115,20 +115,20 @@ class ConfigElement(object):
 	def __call__(self, selected):
 		return self.getMulti(selected)
 
-	def load(self):  # You can overide this for fancy default handling.
+	def load(self):	 # You can overide this for fancy default handling.
 		sv = self.saved_value
 		if sv is None:
 			self.value = self.default
 		else:
 			self.value = self.fromstring(sv)
 
-	def save(self):  # You need to override this if str(self.value) doesn't work.
+	def save(self):	 # You need to override this if str(self.value) doesn't work.
 		if self.save_disabled or (self.value == self.default and not self.save_forced):
 			self.saved_value = None
 		else:
 			self.saved_value = self.tostring(self.value)
 		if self.callNotifiersOnSaveAndCancel:
-			self.changedFinal()  # Call none immediate_feedback notifiers, immediate_feedback Notifiers are called as they are chanaged, so do not need to be called here.
+			self.changedFinal()	 # Call none immediate_feedback notifiers, immediate_feedback Notifiers are called as they are chanaged, so do not need to be called here.
 
 	def disableSave(self):
 		self.save_disabled = True
@@ -136,12 +136,12 @@ class ConfigElement(object):
 	def cancel(self):
 		self.load()
 		if self.callNotifiersOnSaveAndCancel:
-			self.changedFinal()  # Call none immediate_feedback notifiers, immediate_feedback Notifiers are called as they are chanaged, so do not need to be called here.
+			self.changedFinal()	 # Call none immediate_feedback notifiers, immediate_feedback Notifiers are called as they are chanaged, so do not need to be called here.
 
 	def getValue(self):
 		return self._value
 
-	def setValue(self, value):  # You need to override this to do input validation.
+	def setValue(self, value):	# You need to override this to do input validation.
 		self._value = value
 		self.changed()
 
@@ -158,7 +158,7 @@ class ConfigElement(object):
 
 	def isChanged(self):
 		# NOTE - self.saved_value should already be stringified!
-		#        self.default may be a string or None
+		#		 self.default may be a string or None
 		sv = self.saved_value or self.tostring(self.default)
 		strv = self.tostring(self.value)
 		return strv != sv
@@ -222,9 +222,9 @@ class ConfigElement(object):
 		#  - at all when adding it? (yes, though optional)
 		#  - when the default is active? (yes)
 		#  - when no value *yet* has been set,
-		#    because no config has ever been read (currently yes)
-		#    (though that's not so easy to detect.
-		#     the entry could just be new.)
+		#	 because no config has ever been read (currently yes)
+		#	 (though that's not so easy to detect.
+		#	  the entry could just be new.)
 		if initial_call:
 			if extra_args:
 				notifier(self, extra_args)
@@ -452,11 +452,11 @@ class ConfigBoolean(ConfigElement):
 			self.last_value = self.value
 
 	# For HTML Interface - Is this still used?
-	def getHTML(self, id):  # DEBUG: Is this still used?
+	def getHTML(self, id):	# DEBUG: Is this still used?
 		return "<input type=\"checkbox\" name=\"%s\" value=\"1\"%s />" % (id, " checked=\"checked\"" if self.value else "")
 
 	# This is FLAWED. and must be fixed!
-	def unsafeAssign(self, value):  # DEBUG: Is this still used?
+	def unsafeAssign(self, value):	# DEBUG: Is this still used?
 		self.value = value.lower() in self.trueValues
 
 
@@ -864,14 +864,14 @@ class ConfigMacText(ConfigElement, NumericalTextInput):
 
 # This is the control, and base class, for selection list settings.
 #
-# ConfigSelection is a "one of.."-type.  It has the "choices", usually
+# ConfigSelection is a "one of.."-type.	 It has the "choices", usually
 # a list, which contains (id, desc)-tuples (or just only the ids, in
 # case str(id) will be used as description).
 #
 # The ids in "choices" may be of any type, provided that for there
 # is a one-to-one mapping between x and str(x) for every x in "choices".
 # The ids do not necessarily all have to have the same type, but
-# managing that is left to the programmer.  For example:
+# managing that is left to the programmer.	For example:
 #  choices=[1, 2, "3", "4"] is permitted, but
 #  choices=[1, 2, "1", "2"] is not,
 # because str(1) == "1" and str("1") =="1", and because str(2) == "2"
@@ -996,7 +996,7 @@ class ConfigSelection(ConfigElement):
 		return res
 
 	def unsafeAssign(self, value):
-		self.value = value  # setValue does check if value is in choices. This is safe enough.
+		self.value = value	# setValue does check if value is in choices. This is safe enough.
 
 	description = property(lambda self: descriptionList(self.choices.choices, self.choices.type))
 
@@ -1151,8 +1151,8 @@ class ConfigSequence(ConfigElement):
 					pass
 				else:
 					blocknumber += 1
-			number_len = len(str(self.limits[blocknumber][1]))  # Length of number block.
-			posinblock = self.marked_pos - block_len_total[blocknumber]  # Position in the block.
+			number_len = len(str(self.limits[blocknumber][1]))	# Length of number block.
+			posinblock = self.marked_pos - block_len_total[blocknumber]	 # Position in the block.
 			oldvalue = abs(self._value[blocknumber])  # We are using abs() in order to allow change negative values like default -1.
 			olddec = oldvalue % 10 ** (number_len - posinblock) - (oldvalue % 10 ** (number_len - posinblock - 1))
 			newvalue = oldvalue - olddec + (10 ** (number_len - posinblock - 1) * number)
@@ -1278,7 +1278,7 @@ class ConfigCECAddress(ConfigSequence):
 			return ("text", value)
 
 	def getHTML(self, id):
-		return ".".join(["%d" % d for d in self.value])  # We definitely don't want leading zeros.
+		return ".".join(["%d" % d for d in self.value])	 # We definitely don't want leading zeros.
 
 
 clock_limits = [(0, 23), (0, 59)]
@@ -1298,10 +1298,10 @@ class ConfigClock(ConfigSequence):
 			self._value[1] = 0
 		else:  # Increment Minutes.
 			self._value[1] += 1
-		self.changed()  # Trigger change.
+		self.changed()	# Trigger change.
 
 	def decrement(self):
-		if self._value[1] == 0:  # Check if Minutes is minimum, decrement Hour, set Minutes to 59.
+		if self._value[1] == 0:	 # Check if Minutes is minimum, decrement Hour, set Minutes to 59.
 			if self._value[0] > 0:
 				self._value[0] -= 1
 			else:
@@ -1309,7 +1309,7 @@ class ConfigClock(ConfigSequence):
 			self._value[1] = 59
 		else:  # Decrement Minutes.
 			self._value[1] -= 1
-		self.changed()  # Trigger change.
+		self.changed()	# Trigger change.
 
 	def handleKey(self, key):
 		if key == ACTIONKEY_DELETE and config.usage.time.wide.value:
@@ -1338,25 +1338,25 @@ class ConfigClock(ConfigSequence):
 					pmadjust = 12
 				if hour == 0:  # 12AM & 12PM map to 12.
 					hour = 12
-				if self.marked_pos == 0 and digit >= 2:  # Only 0, 1 allowed (12 hour clock).
+				if self.marked_pos == 0 and digit >= 2:	 # Only 0, 1 allowed (12 hour clock).
 					return
 				if self.marked_pos == 1 and hour > 9 and digit >= 3:  # Only 10, 11, 12 allowed.
 					return
 				if self.marked_pos == 1 and hour < 10 and digit == 0:  # Only 01, 02, ..., 09 allowed.
 					return
 			else:
-				if self.marked_pos == 0 and digit >= 3:  # Only 0, 1, 2 allowed (24 hour clock).
+				if self.marked_pos == 0 and digit >= 3:	 # Only 0, 1, 2 allowed (24 hour clock).
 					return
 				if self.marked_pos == 1 and hour > 19 and digit >= 4:  # Only 20, 21, 22, 23 allowed.
 					return
-			if self.marked_pos == 2 and digit >= 6:  # Only 0, 1, ..., 5 allowed (tens digit of minutes).
+			if self.marked_pos == 2 and digit >= 6:	 # Only 0, 1, ..., 5 allowed (tens digit of minutes).
 				return
-			value = bytearray(b"%02d%02d" % (hour, self._value[1]))  # Must be ASCII!
+			value = bytearray(b"%02d%02d" % (hour, self._value[1]))	 # Must be ASCII!
 			value[self.marked_pos] = digit + ord(b"0")
 			hour = int(value[:2])
 			minute = int(value[2:])
 			if config.usage.time.wide.value:
-				if hour == 12:  # 12AM & 12PM map to back to 00.
+				if hour == 12:	# 12AM & 12PM map to back to 00.
 					hour = 0
 				elif hour > 12:
 					hour = 10
@@ -1417,7 +1417,7 @@ class ConfigInteger(ConfigSequence):
 	def __init__(self, default, limits=integer_limits):
 		ConfigSequence.__init__(self, seperator=":", limits=[limits], default=default)
 
-	def setValue(self, value):  # You need to override this to do input validation.
+	def setValue(self, value):	# You need to override this to do input validation.
 		self._value = [value]
 		self.changed()
 
@@ -1516,7 +1516,7 @@ class ConfigIP(ConfigSequence):
 			return ("text", value)
 
 	def getHTML(self, id):
-		return ".".join(["%d" % d for d in self.value])  # We definitely don't want leading zeros.
+		return ".".join(["%d" % d for d in self.value])	 # We definitely don't want leading zeros.
 
 
 mac_limits = [(1, 255), (1, 255), (1, 255), (1, 255), (1, 255), (1, 255)]
@@ -1613,7 +1613,7 @@ class ConfigSet(ConfigElement):
 			return ("text", " ".join([self.description[x] for x in self.value]))
 
 	def onDeselect(self, session):
-		# self.pos = 0  # Enable this to reset the position marker to the first element.
+		# self.pos = 0	# Enable this to reset the position marker to the first element.
 		if self.last_value != self.value:
 			self.changedFinal()
 			self.last_value = self.value[:]
@@ -1638,7 +1638,7 @@ class ConfigSlider(ConfigElement):
 			value = self.min
 		if value > self.max:
 			value = self.max
-		if self.value != value:  # Avoid call of setter if value not changed.
+		if self.value != value:	 # Avoid call of setter if value not changed.
 			self.value = value
 
 	def handleKey(self, key):
@@ -1864,10 +1864,10 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		if session is not None and self.help_window is not None:
 			self.help_window.hide()
 
-	def getHTML(self, id):  # DEBUG: Is this still used?
+	def getHTML(self, id):	# DEBUG: Is this still used?
 		return "<input type=\"text\" name=\"" + id + "\" value=\"" + self.value + "\" /><br>\n"
 
-	def unsafeAssign(self, value):  # DEBUG: Is this still used?
+	def unsafeAssign(self, value):	# DEBUG: Is this still used?
 		self.value = str(value)
 
 
@@ -2059,7 +2059,7 @@ class ConfigSubList(list, object):
 		return dict([(str(index), value) for index, value in enumerate(self)])
 
 
-# Same as ConfigSubList, just as a dictionary.  Care must be taken that the
+# Same as ConfigSubList, just as a dictionary.	Care must be taken that the
 # "key" has a proper str() method, because it will be used in the config file.
 #
 class ConfigSubDict(dict, object):
@@ -2232,7 +2232,7 @@ class Config(ConfigSubsection):
 			f.close()
 			rename(filename + ".writing", filename)
 		except (IOError, OSError) as err:
-			print("[config] Error %d: Couldn't write '%s'!  (%s)" % (err.errno, filename, err.strerror))
+			print("[config] Error %d: Couldn't write '%s'!	(%s)" % (err.errno, filename, err.strerror))
 
 	def loadFromFile(self, filename, base_file=True):
 		self.unpickle(open(filename, "r"), base_file)
@@ -2277,7 +2277,7 @@ configfile = ConfigFile()
 configfile.load()
 
 # def _(x):
-# 	return x
+#	return x
 #
 # config.bla = ConfigSubsection()
 # config.bla.test = ConfigYesNo()

@@ -45,7 +45,7 @@ class BackupScreen(Screen, ConfigListScreen):
 		self.session = session
 		self.runBackup = runBackup
 		self["actions"] = ActionMap(["WizardActions", "DirectionActions"],
-		{
+									{
 			"ok": self.close,
 			"back": self.close,
 			"cancel": self.close,
@@ -126,7 +126,7 @@ class BackupSelection(Screen):
 		self["checkList"] = self.filelist
 
 		self["actions"] = ActionMap(["DirectionActions", "OkCancelActions", "ShortcutActions"],
-		{
+									{
 			"cancel": self.exit,
 			"red": self.exit,
 			"yellow": self.changeSelectionState,
@@ -218,13 +218,13 @@ class RestoreMenu(Screen):
 		self.path = ""
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.KeyOk,
 			"cancel": self.keyCancel
 		}, -1)
 
 		self["shortcuts"] = ActionMap(["ShortcutActions"],
-		{
+									  {
 			"red": self.keyCancel,
 			"green": self.KeyOk,
 			"yellow": self.deleteFile,
@@ -295,7 +295,7 @@ class RestoreScreen(Screen, ConfigListScreen):
 		self.session = session
 		self.runRestore = runRestore
 		self["actions"] = ActionMap(["WizardActions", "DirectionActions"],
-		{
+									{
 			"ok": self.close,
 			"back": self.close,
 			"cancel": self.close,

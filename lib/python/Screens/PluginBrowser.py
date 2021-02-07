@@ -67,23 +67,23 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self["list"] = PluginList(self.list)
 
 		self["actions"] = ActionMap(["WizardActions", "MenuActions"],
-		{
+									{
 			"ok": self.save,
 			"back": self.close,
 			"menu": self.exit,
 		})
 		self["PluginDownloadActions"] = ActionMap(["ColorActions"],
-		{
+												  {
 			"red": self.delete,
 			"green": self.download
 		})
 		self["DirectionActions"] = ActionMap(["DirectionActions"],
-		{
+											 {
 			"moveUp": self.moveUp,
 			"moveDown": self.moveDown
 		})
 		self["NumberActions"] = NumberActionMap(["NumberActions"],
-		{
+												{
 			"1": self.keyNumberGlobal,
 			"2": self.keyNumberGlobal,
 			"3": self.keyNumberGlobal,
@@ -96,7 +96,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 			"0": self.keyNumberGlobal
 		})
 		self["HelpActions"] = ActionMap(["HelpActions"],
-		{
+										{
 			"displayHelp": self.showHelp,
 		})
 		self.help = False
@@ -283,7 +283,7 @@ class PluginDownloadBrowser(Screen):
 		self.run = 0
 		self.remainingdata = ""
 		self["actions"] = ActionMap(["WizardActions"],
-		{
+									{
 			"ok": self.go,
 			"back": self.requestClose,
 		})

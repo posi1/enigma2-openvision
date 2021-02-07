@@ -71,7 +71,7 @@ class ChoiceBox(Screen):
 		self.updateSummary(selection)
 
 		self["actions"] = NumberActionMap(["WizardActions", "InputActions", "ColorActions", "DirectionActions", "MenuActions"],
-		{
+										  {
 			"ok": self.go,
 			"back": self.cancel,
 			"1": self.keyNumberGlobal,

@@ -89,7 +89,7 @@ class WlanStatus(Screen):
 		self.updateStatusbar()
 
 		self["actions"] = NumberActionMap(["WizardActions", "InputActions", "EPGSelectActions", "ShortcutActions"],
-		{
+										  {
 			"ok": self.exit,
 			"back": self.exit,
 			"red": self.exit,
@@ -233,13 +233,13 @@ class WlanScan(Screen):
 		self["key_yellow"] = StaticText()
 
 		self["actions"] = NumberActionMap(["WizardActions", "InputActions", "EPGSelectActions"],
-		{
+										  {
 			"ok": self.select,
 			"back": self.cancel,
 		}, -1)
 
 		self["shortcuts"] = ActionMap(["ShortcutActions"],
-		{
+									  {
 			"red": self.cancel,
 			"green": self.select,
 		})

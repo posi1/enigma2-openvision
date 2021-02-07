@@ -50,7 +50,7 @@ def profile(id):
 				if model == "axodin":
 					open("/dev/dbox/oled0", "w").write("%d" % perc)
 				elif model in ("gb800solo", "gb800se", "gb800seplus", "gbultrase"):
-					open("/dev/mcu", "w").write("%d  \n" % perc)
+					open("/dev/mcu", "w").write("%d	 \n" % perc)
 				elif model in ("ebox5000", "osmini", "spycatmini", "osminiplus", "spycatminiplus"):
 					open("/proc/progress", "w").write("%d" % perc)
 				elif model in ("sezammarvel", "xpeedlx3", "atemionemesis"):

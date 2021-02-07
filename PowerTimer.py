@@ -89,7 +89,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 			TIMERTYPE.DEEPSTANDBY: "deepstandby",
 			TIMERTYPE.REBOOT: "reboot",
 			TIMERTYPE.RESTART: "restart"
-			}[self.timerType]
+		}[self.timerType]
 		if not self.disabled:
 			return "PowerTimerEntry(type=%s, begin=%s)" % (timertype, ctime(self.begin))
 		else:
@@ -100,7 +100,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 
 	def do_backoff(self):
 
-# back-off an auto-repeat timer by its autosleepdelay, not 5, 10, 20, 30 mins
+		# back-off an auto-repeat timer by its autosleepdelay, not 5, 10, 20, 30 mins
 
 		if self.autosleeprepeat == "repeated" and self.timerType in (TIMERTYPE.AUTOSTANDBY, TIMERTYPE.AUTODEEPSTANDBY):
 			self.backoff = int(self.autosleepdelay) * 60
@@ -131,9 +131,9 @@ class PowerTimerEntry(timer.TimerEntry, object):
 
 		if next_state == self.StatePrepared and (self.timerType == TIMERTYPE.AUTOSTANDBY or self.timerType == TIMERTYPE.AUTODEEPSTANDBY):
 
-# This is the first action for an auto* timer.
-# It binds any key press to keyPressed(), which resets the timer delay,
-# and sets the initial delay.
+			# This is the first action for an auto* timer.
+			# It binds any key press to keyPressed(), which resets the timer delay,
+			# and sets the initial delay.
 
 			eActionMap.getInstance().bindAction('', -0x7FFFFFFF, self.keyPressed)
 			self.begin = time() + int(self.autosleepdelay) * 60
@@ -192,30 +192,30 @@ class PowerTimerEntry(timer.TimerEntry, object):
 
 			elif self.timerType == TIMERTYPE.AUTODEEPSTANDBY:
 
-# Check for there being any active Movie playback or IPTV channel
-# or any streaming clients before going to Deep Standby.
-# However, it is possible to put the box into Standby with the
-# MoviePlayer still active (it will play if the box is taken out
-# of Standby) - similarly for the IPTV player. This should not
-# prevent a DeepStandby
-# And check for existing or imminent recordings, etc..
-# Also added () around the test and split them across lines
-# to make it clearer what each test is.
+				# Check for there being any active Movie playback or IPTV channel
+				# or any streaming clients before going to Deep Standby.
+				# However, it is possible to put the box into Standby with the
+				# MoviePlayer still active (it will play if the box is taken out
+				# of Standby) - similarly for the IPTV player. This should not
+				# prevent a DeepStandby
+				# And check for existing or imminent recordings, etc..
+				# Also added () around the test and split them across lines
+				# to make it clearer what each test is.
 
 				from Components.Converter.ClientsStreaming import ClientsStreaming;
 				if ((not Screens.Standby.inStandby and NavigationInstance.instance.getCurrentlyPlayingServiceReference() and
-					('0:0:0:0:0:0:0:0:0' in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString() or
-					 '4097:' in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString()
-				     ) or
-				     (int(ClientsStreaming("NUMBER").getText()) > 0)
-				    ) or
-				    (NavigationInstance.instance.RecordTimer.isRecording() or
-				     abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - time()) <= 900 or
-				     abs(NavigationInstance.instance.RecordTimer.getNextZapTime() - time()) <= 900) or
-				     (self.autosleepinstandbyonly == 'yes' and not Screens.Standby.inStandby) or
-				     (self.autosleepinstandbyonly == 'yes' and Screens.Standby.inStandby and internalHDDNotSleeping()
-				    )
-				   ):
+						 ('0:0:0:0:0:0:0:0:0' in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString() or
+						  '4097:' in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString()
+						  ) or
+						 (int(ClientsStreaming("NUMBER").getText()) > 0)
+						 ) or
+							(NavigationInstance.instance.RecordTimer.isRecording() or
+							 abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - time()) <= 900 or
+							 abs(NavigationInstance.instance.RecordTimer.getNextZapTime() - time()) <= 900) or
+							(self.autosleepinstandbyonly == 'yes' and not Screens.Standby.inStandby) or
+						(self.autosleepinstandbyonly == 'yes' and Screens.Standby.inStandby and internalHDDNotSleeping()
+						 )
+						):
 					self.do_backoff()
 					# retry
 					return False
@@ -375,7 +375,7 @@ def createTimer(xml):
 		"deepstandby": TIMERTYPE.DEEPSTANDBY,
 		"reboot": TIMERTYPE.REBOOT,
 		"restart": TIMERTYPE.RESTART
-		}[timertype]
+	}[timertype]
 	begin = int(xml.get("begin"))
 	end = int(xml.get("end"))
 	repeated = xml.get("repeated").encode("utf-8")
@@ -386,7 +386,7 @@ def createTimer(xml):
 		"wakeuptostandby": AFTEREVENT.WAKEUPTOSTANDBY,
 		"standby": AFTEREVENT.STANDBY,
 		"deepstandby": AFTEREVENT.DEEPSTANDBY
-		}[afterevent]
+	}[afterevent]
 	autosleepinstandbyonly = str(xml.get("autosleepinstandbyonly") or "no")
 	autosleepdelay = str(xml.get("autosleepdelay") or "0")
 	autosleeprepeat = str(xml.get("autosleeprepeat") or "once")
@@ -518,7 +518,7 @@ class PowerTimer(timer.Timer):
 				TIMERTYPE.DEEPSTANDBY: "deepstandby",
 				TIMERTYPE.REBOOT: "reboot",
 				TIMERTYPE.RESTART: "restart"
-				}[timer.timerType])) + '"')
+			}[timer.timerType])) + '"')
 			list.append(' begin="' + str(int(timer.begin)) + '"')
 			list.append(' end="' + str(int(timer.end)) + '"')
 			list.append(' repeated="' + str(int(timer.repeated)) + '"')
@@ -527,7 +527,7 @@ class PowerTimer(timer.Timer):
 				AFTEREVENT.WAKEUPTOSTANDBY: "wakeuptostandby",
 				AFTEREVENT.STANDBY: "standby",
 				AFTEREVENT.DEEPSTANDBY: "deepstandby"
-				}[timer.afterEvent])) + '"')
+			}[timer.afterEvent])) + '"')
 			list.append(' disabled="' + str(int(timer.disabled)) + '"')
 			list.append(' autosleepinstandbyonly="' + str(timer.autosleepinstandbyonly) + '"')
 			list.append(' autosleepdelay="' + str(timer.autosleepdelay) + '"')
@@ -535,8 +535,8 @@ class PowerTimer(timer.Timer):
 			list.append('>\n')
 
 #	Handle repeat entries, which never end and so never get pruned by cleanupDaily
-#       Repeating timers get autosleeprepeat="repeated" or repeated="127" (daily) or
-#       "31" (weekdays) [dow bitmap] etc.
+#		Repeating timers get autosleeprepeat="repeated" or repeated="127" (daily) or
+#		"31" (weekdays) [dow bitmap] etc.
 
 			ignore_before = 0
 			if config.recording.keep_timers.value > 0:
@@ -626,9 +626,9 @@ class PowerTimer(timer.Timer):
 		if entry.state != entry.StateEnded:
 			self.timeChanged(entry)
 
-# 		print("state: ", entry.state)
-# 		print("in processed: ", entry in self.processed_timers)
-# 		print("in running: ", entry in self.timer_list)
+#		print("state: ", entry.state)
+#		print("in processed: ", entry in self.processed_timers)
+#		print("in running: ", entry in self.timer_list)
 		# disable timer first
 		if entry.state != 3:
 			entry.disable()

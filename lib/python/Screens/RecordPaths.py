@@ -32,7 +32,7 @@ class RecordPathsSettings(Screen, ConfigListScreen):
 		self.initConfigList()
 
 		self["setupActions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions"],
-		{
+										 {
 			"green": self.save,
 			"red": self.keyCancel,
 			"cancel": self.keyCancel,
@@ -52,7 +52,7 @@ class RecordPathsSettings(Screen, ConfigListScreen):
 				MessageBox,
 				_("The directory %s is not writable.\nMake sure you select a writable directory instead.") % value,
 				type=MessageBox.TYPE_ERROR
-				)
+			)
 			return False
 
 	def initConfigList(self):

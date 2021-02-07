@@ -698,7 +698,7 @@ class Devices(Screen):
 					continue
 				else:
 					freeline = _("Free: ") + _("full")
-				line = "%s      %s" % (hddp, freeline)
+				line = "%s		%s" % (hddp, freeline)
 				self.list.append(line)
 		self.list = '\n'.join(self.list)
 		self["hdd"].setText(self.list)
@@ -707,9 +707,9 @@ class Devices(Screen):
 
 	def Stage1Complete(self, result, retval, extra_args=None):
 		if PY2:
-			result = result.replace('\n                        ', ' ').split('\n')
+			result = result.replace('\n						   ', ' ').split('\n')
 		else:
-			result = result.decode().replace('\n                        ', ' ').split('\n')
+			result = result.decode().replace('\n						', ' ').split('\n')
 		self.mountinfo = ""
 		for line in result:
 			self.parts = line.split()

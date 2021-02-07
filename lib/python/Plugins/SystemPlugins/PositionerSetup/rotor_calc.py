@@ -4,7 +4,7 @@ import math
 
 f = 1.00 / 298.257 # Earth flattning factor
 r_sat = 42164.57 # Distance from earth centre to satellite
-r_eq = 6378.14  # Earth radius
+r_eq = 6378.14	# Earth radius
 
 
 def calcElevation(SatLon, SiteLat, SiteLon, Height_over_ocean=0):
@@ -78,11 +78,11 @@ def calcAzimuth(SatLon, SiteLat, SiteLon, Height_over_ocean=0):
 
 def calcDeclination(SiteLat, Azimuth, Elevation):
 	return math.degrees(math.asin(math.sin(math.radians(Elevation)) * \
-						math.sin(math.radians(SiteLat)) + \
-						math.cos(math.radians(Elevation)) * \
-						math.cos(math.radians(SiteLat)) + \
-						math.cos(math.radians(Azimuth)) \
-						))
+								  math.sin(math.radians(SiteLat)) + \
+								  math.cos(math.radians(Elevation)) * \
+								  math.cos(math.radians(SiteLat)) + \
+								  math.cos(math.radians(Azimuth)) \
+								  ))
 
 
 def calcSatHourangle(SatLon, SiteLat, SiteLon):

@@ -32,11 +32,11 @@ config.av.edid_override = ConfigYesNo(default=True)
 class VideoHardware:
 	rates = {} # high-level, use selectable modes.
 
-	modes = {}  # a list of (high-level) modes for a certain port.
+	modes = {}	# a list of (high-level) modes for a certain port.
 
 	rates["PAL"] = {"50Hz": {50: "pal"},
-								"60Hz": {60: "pal60"},
-								"multi": {50: "pal", 60: "pal60"}}
+					"60Hz": {60: "pal60"},
+					"multi": {50: "pal", 60: "pal60"}}
 
 	rates["NTSC"] = {"60Hz": {60: "ntsc"}}
 
@@ -51,35 +51,35 @@ class VideoHardware:
 	rates["576p"] = {"50Hz": {50: "576p"}}
 
 	rates["720p"] = {"50Hz": {50: "720p50"},
-								"60Hz": {60: "720p"},
-								"multi": {50: "720p50", 60: "720p"},
-								"auto": {50: "720p50", 60: "720p", 24: "720p24"}}
+					 "60Hz": {60: "720p"},
+					 "multi": {50: "720p50", 60: "720p"},
+					 "auto": {50: "720p50", 60: "720p", 24: "720p24"}}
 
 	rates["1080i"] = {"50Hz": {50: "1080i50"},
-								"60Hz": {60: "1080i"},
-								"multi": {50: "1080i50", 60: "1080i"},
-								"auto": {50: "1080i50", 60: "1080i", 24: "1080p24"}}
+					  "60Hz": {60: "1080i"},
+					  "multi": {50: "1080i50", 60: "1080i"},
+					  "auto": {50: "1080i50", 60: "1080i", 24: "1080p24"}}
 
 	rates["1080p"] = {"50Hz": {50: "1080p50"},
-								"60Hz": {60: "1080p"},
-								"multi": {50: "1080p50", 60: "1080p"},
-								"auto": {50: "1080p50", 60: "1080p", 24: "1080p24"}}
+					  "60Hz": {60: "1080p"},
+					  "multi": {50: "1080p50", 60: "1080p"},
+					  "auto": {50: "1080p50", 60: "1080p", 24: "1080p24"}}
 
 	rates["2160p30"] = {"25Hz": {50: "2160p25"},
-								"30Hz": {60: "2160p30"},
-								"multi": {50: "2160p25", 60: "2160p30"},
-								"auto": {50: "2160p25", 60: "2160p30", 24: "2160p24"}}
+						"30Hz": {60: "2160p30"},
+						"multi": {50: "2160p25", 60: "2160p30"},
+						"auto": {50: "2160p25", 60: "2160p30", 24: "2160p24"}}
 
 	if platform in ("dm4kgen", "dmamlogic"):
 		rates["2160p"] = {"50Hz": {50: "2160p50"},
-								"60Hz": {60: "2160p60"},
-								"multi": {50: "2160p50", 60: "2160p60"},
-								"auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
+						  "60Hz": {60: "2160p60"},
+						  "multi": {50: "2160p50", 60: "2160p60"},
+						  "auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
 	else:
 		rates["2160p"] = {"50Hz": {50: "2160p50"},
-								"60Hz": {60: "2160p"},
-								"multi": {50: "2160p50", 60: "2160p"},
-								"auto": {50: "2160p50", 60: "2160p", 24: "2160p24"}}
+						  "60Hz": {60: "2160p"},
+						  "multi": {50: "2160p50", 60: "2160p"},
+						  "auto": {50: "2160p50", 60: "2160p", 24: "2160p24"}}
 
 	rates["PC"] = {
 		"1024x768": {60: "1024x768"},
@@ -289,7 +289,7 @@ class VideoHardware:
 			if size_width >= 1920:
 				Console().ePopen('fbset -fb /dev/fb0  -g 1920 1080 1920 3240  32')
 			else:
-				Console().ePopen('fbset -fb /dev/fb0  -g 1280 720 1280 2160  32')
+				Console().ePopen('fbset -fb /dev/fb0  -g 1280 720 1280 2160	 32')
 			return
 		try:
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
@@ -408,21 +408,21 @@ class VideoHardware:
 		# determine policy = {bestfit,letterbox,panscan,nonlinear}
 
 		# based on;
-		#   config.av.videoport.value: current video output device
-		#     Scart:
-		#   config.av.aspect:
-		#     4_3:            use policy_169
-		#     16_9,16_10:     use policy_43
-		#     auto            always "bestfit"
-		#   config.av.policy_169
-		#     letterbox       use letterbox
-		#     panscan         use panscan
-		#     scale           use bestfit
-		#   config.av.policy_43
-		#     pillarbox       use panscan
-		#     panscan         use letterbox  ("panscan" is just a bad term, it's inverse-panscan)
-		#     nonlinear       use nonlinear
-		#     scale           use bestfit
+		#	config.av.videoport.value: current video output device
+		#	  Scart:
+		#	config.av.aspect:
+		#	  4_3:			  use policy_169
+		#	  16_9,16_10:	  use policy_43
+		#	  auto			  always "bestfit"
+		#	config.av.policy_169
+		#	  letterbox		  use letterbox
+		#	  panscan		  use panscan
+		#	  scale			  use bestfit
+		#	config.av.policy_43
+		#	  pillarbox		  use panscan
+		#	  panscan		  use letterbox	 ("panscan" is just a bad term, it's inverse-panscan)
+		#	  nonlinear		  use nonlinear
+		#	  scale			  use bestfit
 
 		port = config.av.videoport.value
 		if port not in config.av.videomode:

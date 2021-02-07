@@ -36,13 +36,13 @@ class AudioSelection(Screen, ConfigListScreen):
 		self.infobar = infobar or self.session.infobar
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evUpdatedInfo: self.__updatedInfo
-			})
+			iPlayableService.evUpdatedInfo: self.__updatedInfo
+		})
 		self.cached_subtitle_checked = False
 		self.__selected_subtitle = None
 
 		self["actions"] = NumberActionMap(["AudioSelectionActions", "SetupActions", "DirectionActions", "MenuActions"],
-		{
+										  {
 			"red": self.keyRed,
 			"green": self.keyGreen,
 			"yellow": self.keyYellow,
@@ -231,7 +231,7 @@ class AudioSelection(Screen, ConfigListScreen):
 
 				elif x[0] == 2:
 					types = (_("unknown"), _("embedded"), _("SSA file"), _("ASS file"),
-							_("SRT file"), _("VOB file"), _("PGS file"))
+							 _("SRT file"), _("VOB file"), _("PGS file"))
 					try:
 						description = types[x[2]]
 					except:
@@ -521,7 +521,7 @@ class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 		self["videofps"] = Label("")
 
 		sub = self.infobar.selected_subtitle
-		if sub[0] == 0:  # dvb
+		if sub[0] == 0:	 # dvb
 			menu = [
 				getConfigMenuItem("config.subtitles.dvb_subtitles_yellow"),
 				getConfigMenuItem("config.subtitles.dvb_subtitles_backtrans"),
@@ -544,7 +544,7 @@ class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 				getConfigMenuItem("config.subtitles.subtitle_bad_timing_delay"),
 				getConfigMenuItem("config.subtitles.subtitle_noPTSrecordingdelay"),
 			]
-		else: 		# pango
+		else:		# pango
 			menu = [
 				getConfigMenuItem("config.subtitles.pango_subtitles_delay"),
 				getConfigMenuItem("config.subtitles.pango_subtitle_colors"),
@@ -564,7 +564,7 @@ class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 		ConfigListScreen.__init__(self, menu, self.session, on_change=self.changedEntry)
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"cancel": self.cancel,
 			"ok": self.ok,
 		}, -2)

@@ -14,9 +14,9 @@ class TitleCutter(CutListEditor):
 		self.session = session
 		self.t = t
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evUpdatedInfo: self.getPMTInfo,
-				iPlayableService.evCuesheetChanged: self.refillList
-			})
+			iPlayableService.evUpdatedInfo: self.getPMTInfo,
+			iPlayableService.evCuesheetChanged: self.refillList
+		})
 		self.onExecBegin.remove(self.showTutorial)
 
 	def getPMTInfo(self):

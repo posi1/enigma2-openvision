@@ -86,7 +86,7 @@ defaultPaths = {
 def resolveFilename(scope, base="", path_prefix=None):
 	# You can only use the ~/ if we have a prefix directory.
 	if str(base).startswith("~/"):
-		assert path_prefix is not None  # Assert only works in debug mode!
+		assert path_prefix is not None	# Assert only works in debug mode!
 		if path_prefix:
 			base = os.path.join(path_prefix, base[2:])
 		else:
@@ -113,7 +113,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 		base = data[0]
 		suffix = data[1]
 	path = base
-	# If base is "" then set path to the scope.  Otherwise use the scope to resolve the base filename.
+	# If base is "" then set path to the scope.	 Otherwise use the scope to resolve the base filename.
 	if base is "":
 		path, flags = defaultPaths.get(scope)
 		# If the scope is SCOPE_CURRENT_SKIN or SCOPE_ACTIVE_SKIN or SCOPE_SKIN_IMAGE append the current skin to the scope path.
@@ -138,11 +138,11 @@ def resolveFilename(scope, base="", path_prefix=None):
 		resolveList = [
 			os.path.join(defaultPaths[SCOPE_CONFIG][0], skin),
 			os.path.join(defaultPaths[SCOPE_CONFIG][0], "skin_common"),
-			defaultPaths[SCOPE_CONFIG][0],  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
+			defaultPaths[SCOPE_CONFIG][0],	# Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
 			os.path.join(defaultPaths[SCOPE_SKIN][0], skin),
 			os.path.join(defaultPaths[SCOPE_SKIN][0], "skin_fallback_%d" % getDesktop(0).size().height()),
 			os.path.join(defaultPaths[SCOPE_SKIN][0], "skin_default"),
-			defaultPaths[SCOPE_SKIN][0]  # Can we deprecate top level of SCOPE_SKIN directory to allow a clean up?
+			defaultPaths[SCOPE_SKIN][0]	 # Can we deprecate top level of SCOPE_SKIN directory to allow a clean up?
 		]
 		for item in resolveList:
 			file = os.path.join(item, base)
@@ -159,11 +159,11 @@ def resolveFilename(scope, base="", path_prefix=None):
 		resolveList = [
 			os.path.join(defaultPaths[SCOPE_CONFIG][0], "display", skin),
 			os.path.join(defaultPaths[SCOPE_CONFIG][0], "display", "skin_common"),
-			defaultPaths[SCOPE_CONFIG][0],  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
+			defaultPaths[SCOPE_CONFIG][0],	# Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
 			os.path.join(defaultPaths[SCOPE_LCDSKIN][0], skin),
 			os.path.join(defaultPaths[SCOPE_LCDSKIN][0], "skin_fallback_%s" % getDesktop(1).size().height()),
 			os.path.join(defaultPaths[SCOPE_LCDSKIN][0], "skin_default"),
-			defaultPaths[SCOPE_LCDSKIN][0]  # Can we deprecate top level of SCOPE_LCDSKIN directory to allow a clean up?
+			defaultPaths[SCOPE_LCDSKIN][0]	# Can we deprecate top level of SCOPE_LCDSKIN directory to allow a clean up?
 		]
 		for item in resolveList:
 			file = os.path.join(item, base)
@@ -276,7 +276,7 @@ def defaultRecordingLocation(candidate=None):
 		if os.path.isdir(movie):
 			path = movie
 		if not path.endswith("/"):
-			path += "/"  # Bad habits die hard, old code relies on this.
+			path += "/"	 # Bad habits die hard, old code relies on this.
 	return path
 
 

@@ -9,7 +9,7 @@ from Components.Element import cached
 # lines starting with '-' are fatal errors (no recovery possible),
 # lines starting with '=' are progress notices,
 # lines starting with '+' are PIDs to record:
-# 	"+d:[p:t[,p:t...]]" with d=demux nr, p: pid, t: type
+#	"+d:[p:t[,p:t...]]" with d=demux nr, p: pid, t: type
 
 
 class Streaming2(Converter):

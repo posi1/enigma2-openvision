@@ -115,45 +115,45 @@ class DVDProject:
 
 	def loadProject(self, filename):
 		#try:
-			if not fileExists(filename):
-				self.error = "xml file not found!"
-				#raise AttributeError
-			file = open(filename, "r")
-			data = file.read().decode("utf-8").replace('&', "&amp;").encode("ascii", 'xmlcharrefreplace')
-			file.close()
-			projectfiledom = xml.dom.minidom.parseString(data)
-			for node in projectfiledom.childNodes[0].childNodes:
-				print("[DVDBurn] node:", node)
-				if node.nodeType == xml.dom.minidom.Element.nodeType:
-					if node.tagName == 'settings':
-						self.xmlAttributesToConfig(node, self.settings)
-					elif node.tagName == 'titles':
-						self.xmlGetTitleNodeRecursive(node)
+		if not fileExists(filename):
+			self.error = "xml file not found!"
+			#raise AttributeError
+		file = open(filename, "r")
+		data = file.read().decode("utf-8").replace('&', "&amp;").encode("ascii", 'xmlcharrefreplace')
+		file.close()
+		projectfiledom = xml.dom.minidom.parseString(data)
+		for node in projectfiledom.childNodes[0].childNodes:
+			print("[DVDBurn] node:", node)
+			if node.nodeType == xml.dom.minidom.Element.nodeType:
+				if node.tagName == 'settings':
+					self.xmlAttributesToConfig(node, self.settings)
+				elif node.tagName == 'titles':
+					self.xmlGetTitleNodeRecursive(node)
 
-			for key in self.filekeys:
-				val = self.settings.dict()[key].getValue()
-				if not fileExists(val):
-					if val[0] != "/":
-						if key.find("font") == 0:
-							val = resolveFilename(SCOPE_FONTS) + val
-						else:
-							val = resolveFilename(SCOPE_PLUGINS) + "Extensions/DVDBurn/" + val
-						if fileExists(val):
-							self.settings.dict()[key].setValue(val)
-							continue
-					self.error += "\n%s '%s' not found" % (key, val)
+		for key in self.filekeys:
+			val = self.settings.dict()[key].getValue()
+			if not fileExists(val):
+				if val[0] != "/":
+					if key.find("font") == 0:
+						val = resolveFilename(SCOPE_FONTS) + val
+					else:
+						val = resolveFilename(SCOPE_PLUGINS) + "Extensions/DVDBurn/" + val
+					if fileExists(val):
+						self.settings.dict()[key].setValue(val)
+						continue
+				self.error += "\n%s '%s' not found" % (key, val)
 		#except AttributeError:
-			#print("loadProject AttributeError", self.error)
-			#self.error += (" in project '%s'") % (filename)
-			#return False
-			return True
+		#print("loadProject AttributeError", self.error)
+		#self.error += (" in project '%s'") % (filename)
+		#return False
+		return True
 
 	def xmlAttributesToConfig(self, node, config):
 		try:
 			i = 0
 			#if node.attributes.length < len(config.dict())-1:
-				#self.error = "project attributes missing"
-				#raise AttributeError
+			#self.error = "project attributes missing"
+			#raise AttributeError
 			while i < node.attributes.length:
 				item = node.attributes.item(i)
 				key = item.name.encode("utf-8")

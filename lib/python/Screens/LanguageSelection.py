@@ -40,7 +40,7 @@ class LanguageSelection(Screen):
 		self.onLayoutFinish.append(self.selectActiveLanguage)
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-		{
+									{
 			"ok": self.save,
 			"cancel": self.cancel,
 		}, -1)

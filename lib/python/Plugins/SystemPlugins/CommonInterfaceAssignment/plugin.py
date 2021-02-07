@@ -41,12 +41,12 @@ class CIselectMainMenu(Screen):
 		self["key_red"] = StaticText(_("Close"))
 		self["key_green"] = StaticText(_("Edit"))
 		self["actions"] = ActionMap(["ColorActions", "SetupActions"],
-			{
-				"green": self.greenPressed,
-				"red": self.close,
-				"ok": self.greenPressed,
-				"cancel": self.close
-			}, -1)
+									{
+			"green": self.greenPressed,
+			"red": self.close,
+			"ok": self.greenPressed,
+			"cancel": self.close
+		}, -1)
 
 		NUM_CI = SystemInfo["CommonInterface"]
 
@@ -129,16 +129,16 @@ class CIconfigMenu(Screen):
 		self["ServiceList_info"] = StaticText()
 
 		self["actions"] = ActionMap(["ColorActions", "SetupActions", "MenuActions"],
-			{
-				"green": self.greenPressed,
-				"red": self.redPressed,
-				"yellow": self.yellowPressed,
-				"blue": self.bluePressed,
-				"menu": self.menuPressed,
-				"cancel": self.cancel
-			}, -1)
+									{
+			"green": self.greenPressed,
+			"red": self.redPressed,
+			"yellow": self.yellowPressed,
+			"blue": self.bluePressed,
+			"menu": self.menuPressed,
+			"cancel": self.cancel
+		}, -1)
 
-		print("[CommonInterfaceAssignment] CI_Wizzard_Config Configuring CI Slots : %d  " % self.ci_slot)
+		print("[CommonInterfaceAssignment] CI_Wizzard_Config Configuring CI Slots : %d	" % self.ci_slot)
 
 		i = 0
 		self.caidlist = []
@@ -373,19 +373,19 @@ class easyCIconfigMenu(CIconfigMenu):
 			<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;19" halign="center" valign="center" backgroundColor="#a08500" transparent="1" />
 			<widget source="ServiceList_desc" render="Label" position="5,50" size="550,22" font="Regular;20" backgroundColor="#25062748" transparent="1"  />
 			<widget name="ServiceList" position="5,80" size="550,300" zPosition="1" scrollbarMode="showOnDemand" />
-			<widget source="ServiceList_info" render="Label" position="5,80" size="550,300" zPosition="2" font="Regular;20" backgroundColor="#25062748" transparent="1"  />
+			<widget source="ServiceList_info" render="Label" position="5,80" size="550,300" zPosition="2" font="Regular;20" backgroundColor="#25062748" transparent="1"	 />
 		</screen>"""
 
 	def __init__(self, session, ci_slot="9"):
 		CIconfigMenu.__init__(self, session, ci_slot)
 		self["actions"] = ActionMap(["ColorActions", "SetupActions", "MenuActions"],
-			{
-				"green": self.greenPressed,
-				"red": self.redPressed,
-				"yellow": self.yellowPressed,
-				"menu": self.menuPressed,
-				"cancel": self.cancel
-			}, -1)
+									{
+			"green": self.greenPressed,
+			"red": self.redPressed,
+			"yellow": self.yellowPressed,
+			"menu": self.menuPressed,
+			"cancel": self.cancel
+		}, -1)
 
 
 class CAidSelect(Screen):
@@ -418,7 +418,7 @@ class CAidSelect(Screen):
 		self["introduction"] = StaticText(_("Press OK to select/deselect a CAId."))
 
 		self["actions"] = ActionMap(["ColorActions", "SetupActions"],
-		{
+									{
 			"ok": self.list.toggleSelection,
 			"cancel": self.cancel,
 			"green": self.greenPressed,
@@ -456,14 +456,14 @@ class myProviderSelection(ChannelSelectionBase):
 		self.bouquet_mark_edit = EDIT_BOUQUET
 
 		self["actions"] = ActionMap(["OkCancelActions", "ChannelSelectBaseActions"],
-			{
-				"showFavourites": self.showFavourites,
-				"showAllServices": self.showAllServices,
-				"showProviders": self.showProviders,
-				"showSatellites": boundFunction(self.showSatellites, changeMode=True),
-				"cancel": self.cancel,
-				"ok": self.channelSelected
-			})
+									{
+			"showFavourites": self.showFavourites,
+			"showAllServices": self.showAllServices,
+			"showProviders": self.showProviders,
+			"showSatellites": boundFunction(self.showSatellites, changeMode=True),
+			"cancel": self.cancel,
+			"ok": self.channelSelected
+		})
 		self["key_red"] = StaticText(_("Close"))
 		self["key_green"] = StaticText()
 		self["key_yellow"] = StaticText()
@@ -594,15 +594,15 @@ class myChannelSelection(ChannelSelectionBase):
 		self.bouquet_mark_edit = OFF
 
 		self["actions"] = ActionMap(["OkCancelActions", "TvRadioActions", "ChannelSelectBaseActions"],
-			{
-				"showProviders": self.showProviders,
-				"showSatellites": boundFunction(self.showSatellites, changeMode=True),
-				"showAllServices": self.showAllServices,
-				"cancel": self.cancel,
-				"ok": self.channelSelected,
-				"keyRadio": self.setModeRadio,
-				"keyTV": self.setModeTv
-			})
+									{
+			"showProviders": self.showProviders,
+			"showSatellites": boundFunction(self.showSatellites, changeMode=True),
+			"showAllServices": self.showAllServices,
+			"cancel": self.cancel,
+			"ok": self.channelSelected,
+			"keyRadio": self.setModeRadio,
+			"keyTV": self.setModeTv
+		})
 
 		self["key_red"] = StaticText(_("All"))
 		self["key_green"] = StaticText(_("Close"))

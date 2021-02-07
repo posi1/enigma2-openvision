@@ -38,9 +38,9 @@ class HelpMenu(Screen, Rc):
 		self.selectKey(selection[0])
 		# if selection is None:
 		print("[HelpMenu] Select arrow.")
-		# 	arrow.moveTo(selection[1], selection[2], 1)
-		# 	arrow.startMoving()
-		# 	arrow.show()
+		#	arrow.moveTo(selection[1], selection[2], 1)
+		#	arrow.startMoving()
+		#	arrow.show()
 
 
 class HelpableScreen:

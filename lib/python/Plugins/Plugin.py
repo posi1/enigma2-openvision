@@ -13,9 +13,9 @@ class PluginDescriptor(object):
 	# so you might not be able to combine them.
 
 	# supported arguments are:
-	#   session
-	#   servicereference
-	#   reason
+	#	session
+	#	servicereference
+	#	reason
 
 	# you have to ignore unknown kwargs!
 

@@ -37,8 +37,8 @@ def mountpoint_choosen(option):
 		return
 
 	session.openWithCallback(execute, ChoiceBox,
-		title=_("The following files were found..."),
-		list=list)
+							 title=_("The following files were found..."),
+							 list=list)
 
 
 def scan(session):
@@ -80,7 +80,7 @@ def partitionListChanged(action, device):
 		else:
 			print("[MediaScanner] main infobar is not execing... so we ignore hotplug event!")
 	else:
-			print("[MediaScanner] hotplug event.. but no infobar")
+		print("[MediaScanner] hotplug event.. but no infobar")
 
 
 def sessionstart(reason, session):
@@ -100,7 +100,7 @@ def autostart(reason, **kwargs):
 def Plugins(**kwargs):
 	return [
 		PluginDescriptor(name=_("Media scanner"), description=_("Scan files..."), where=PluginDescriptor.WHERE_PLUGINMENU, icon="MediaScanner.png", needsRestart=True, fnc=main),
-#		PluginDescriptor(where = PluginDescriptor.WHERE_MENU, fnc=menuHook),
+		#		PluginDescriptor(where = PluginDescriptor.WHERE_MENU, fnc=menuHook),
 		PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, needsRestart=True, fnc=sessionstart),
 		PluginDescriptor(where=PluginDescriptor.WHERE_AUTOSTART, needsRestart=True, fnc=autostart)
-		]
+	]

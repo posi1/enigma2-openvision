@@ -32,7 +32,7 @@ class Console(Screen):
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Hide"))
 		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"],
-		{
+									{
 			"ok": self.closeConsole,
 			"back": self.closeConsole,
 			"up": self["text"].pageUp,

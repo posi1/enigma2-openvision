@@ -12,8 +12,8 @@ from PowerTimer import AFTEREVENT, TIMERTYPE
 
 class PowerTimerList(GUIComponent, object):
 
-#  | <Service>     <Name of the Timer>  |
-#  | <start, end>              <state>  |
+	#  | <Service>	   <Name of the Timer>	|
+	#  | <start, end>			   <state>	|
 
 	def buildTimerEntry(self, timer, processed):
 		screenwidth = getDesktop(0).size().width()
@@ -26,14 +26,14 @@ class PowerTimerList(GUIComponent, object):
 			TIMERTYPE.DEEPSTANDBY: _("Deep standby"),
 			TIMERTYPE.REBOOT: _("Reboot"),
 			TIMERTYPE.RESTART: _("Restart GUI")
-			}[timer.timerType]
+		}[timer.timerType]
 
 		afterevent = {
 			AFTEREVENT.NONE: _("Nothing"),
 			AFTEREVENT.WAKEUPTOSTANDBY: _("Wake up to standby"),
 			AFTEREVENT.STANDBY: _("Standby"),
 			AFTEREVENT.DEEPSTANDBY: _("Deep standby")
-			}[timer.afterEvent]
+		}[timer.afterEvent]
 
 		height = self.l.getItemSize().height()
 		width = self.l.getItemSize().width()

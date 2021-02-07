@@ -85,10 +85,10 @@ class CableScanStatus(Screen):
 		self["scan_state"] = Label(_("Scan state"))
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self.ok,
-				"cancel": self.cancel
-			})
+									{
+			"ok": self.ok,
+			"cancel": self.cancel
+		})
 
 		self.onFirstExecBegin.append(self.doServiceScan)
 
@@ -111,10 +111,10 @@ config.plugins.CableScan.symbolrate = ConfigInteger(default=6875, limits=(1, 999
 config.plugins.CableScan.networkid = ConfigInteger(default=5555, limits=(0, 99999))
 config.plugins.CableScan.modulation = ConfigSelection(
 	choices=[(str(eDVBFrontendParametersCable.Modulation_QAM16), "16-QAM"),
-		(str(eDVBFrontendParametersCable.Modulation_QAM32), "32-QAM"),
-		(str(eDVBFrontendParametersCable.Modulation_QAM64), "64-QAM"),
-		(str(eDVBFrontendParametersCable.Modulation_QAM128), "128-QAM"),
-		(str(eDVBFrontendParametersCable.Modulation_QAM256), "256-QAM")],
+			 (str(eDVBFrontendParametersCable.Modulation_QAM32), "32-QAM"),
+			 (str(eDVBFrontendParametersCable.Modulation_QAM64), "64-QAM"),
+			 (str(eDVBFrontendParametersCable.Modulation_QAM128), "128-QAM"),
+			 (str(eDVBFrontendParametersCable.Modulation_QAM256), "256-QAM")],
 	default=str(eDVBFrontendParametersCable.Modulation_QAM64))
 config.plugins.CableScan.auto = ConfigYesNo(default=True)
 
@@ -138,7 +138,7 @@ class CableScanScreen(ConfigListScreen, Screen):
 		self["key_green"] = StaticText(_("Save"))
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyGo,
 			"cancel": self.keyCancel,
 			"save": self.keySave,
@@ -212,7 +212,7 @@ class CableScanAutoScreen(CableScanScreen):
 		self.skinName = "Standby"
 
 		self["actions"] = ActionMap(["StandbyActions"],
-		{
+									{
 			"power": self.Power,
 			"discrete_on": self.Power
 		}, -1)
@@ -253,7 +253,7 @@ CableScanAutoStartTimer = eTimer()
 
 
 def CableScanMain(session, **kwargs):
-		session.open(CableScanScreen, nimmanager.getEnabledNimListOfType("DVB-C"))
+	session.open(CableScanScreen, nimmanager.getEnabledNimListOfType("DVB-C"))
 
 
 def restartScanAutoStartTimer(reply=False):
@@ -307,6 +307,6 @@ def CableScanStart(menuid, **kwargs):
 def Plugins(**kwargs):
 	if nimmanager.hasNimType("DVB-C"):
 		return [PluginDescriptor(name=_("Cable Scan"), description="Scan cable provider channels", where=PluginDescriptor.WHERE_MENU, fnc=CableScanStart),
-			PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART, PluginDescriptor.WHERE_AUTOSTART], fnc=autostart)]
+				PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART, PluginDescriptor.WHERE_AUTOSTART], fnc=autostart)]
 	else:
 		return []

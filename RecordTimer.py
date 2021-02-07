@@ -30,10 +30,10 @@ from bisect import insort
 from sys import maxint
 
 # ok, for descriptions etc we have:
-# service reference  (to get the service name)
-# name               (title)
-# description        (description)
-# event data         (ONLY for time adjustments etc.)
+# service reference	 (to get the service name)
+# name				 (title)
+# description		 (description)
+# event data		 (ONLY for time adjustments etc.)
 
 # We need to handle concurrency when updating timers.xml and
 # when checking was_rectimer_wakeup
@@ -109,17 +109,17 @@ n_recordings = 0  # Must be when we start running...
 
 
 def SetIconDisplay(nrec):
-	if SID_code_states[0] == None:  # Not the code for us
+	if SID_code_states[0] == None:	# Not the code for us
 		return
 	(wdev, max_states) = SID_code_states
-	if nrec == 0:                   # An absolute setting - clear it...
+	if nrec == 0:					# An absolute setting - clear it...
 		open(wdev, "w").write("0")
 		return
 #
 	sym = nrec
 	if sym > max_states:
 		sym = max_states
-	if sym < 0:      # Sanity check - just in case...
+	if sym < 0:		 # Sanity check - just in case...
 		sym = 0
 	open(wdev, "w").write(str(sym))
 	return
@@ -132,25 +132,25 @@ def SetIconDisplay(nrec):
 
 
 def RecordingsState(alter):
-# Since we are about to modify it we need to declare it as global
-#
+	# Since we are about to modify it we need to declare it as global
+	#
 	global n_recordings
 	if not -1 <= alter <= 1:
 		return
 
 # Adjust the number of currently running recordings...
 #
-	if alter == 0:              # Initialize
+	if alter == 0:				# Initialize
 		n_recordings = 0
 	else:
 		n_recordings += alter
-	if n_recordings < 0:        # Sanity check - just in case...
+	if n_recordings < 0:		# Sanity check - just in case...
 		n_recordings = 0
 	SetIconDisplay(n_recordings)
 	return
 
 
-RecordingsState(0)       # Initialize
+RecordingsState(0)		 # Initialize
 
 wasRecTimerWakeup = False
 
@@ -164,14 +164,14 @@ def checkForRecordings():
 
 def createRecordTimerEntry(timer):
 	return RecordTimerEntry(timer.service_ref, timer.begin, timer.end, timer.name, timer.description,\
-		timer.eit, timer.disabled, timer.justplay, timer.afterEvent, dirname=timer.dirname,\
-		tags=timer.tags, descramble=timer.descramble, record_ecm=timer.record_ecm, always_zap=timer.always_zap,\
-		zap_wakeup=timer.zap_wakeup, rename_repeat=timer.rename_repeat, conflict_detection=timer.conflict_detection,\
-		pipzap=timer.pipzap)
+							timer.eit, timer.disabled, timer.justplay, timer.afterEvent, dirname=timer.dirname,\
+							tags=timer.tags, descramble=timer.descramble, record_ecm=timer.record_ecm, always_zap=timer.always_zap,\
+							zap_wakeup=timer.zap_wakeup, rename_repeat=timer.rename_repeat, conflict_detection=timer.conflict_detection,\
+							pipzap=timer.pipzap)
 
 # please do not translate log messages
 class RecordTimerEntry(timer.TimerEntry, object):
-######### the following static methods and members are only in use when the box is in (soft) standby
+	######### the following static methods and members are only in use when the box is in (soft) standby
 	wasInStandby = False
 	wasInDeepStandby = False
 	receiveRecordEvents = False
@@ -809,7 +809,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 
 	# Report the tuner that the current recording is using
 	def log_tuner(self, level, state):
-# If we have a Zap timer then the tuner is for the current service
+		# If we have a Zap timer then the tuner is for the current service
 		if self.justplay:
 			timer_rs = NavigationInstance.instance.getCurrentService()
 		else:
@@ -891,7 +891,7 @@ def createTimer(xml):
 		"standby": AFTEREVENT.STANDBY,
 		"deepstandby": AFTEREVENT.DEEPSTANDBY,
 		"auto": AFTEREVENT.AUTO
-		}[afterevent]
+	}[afterevent]
 	eit = xml.get("eit")
 	if eit and eit != "None":
 		eit = long(eit)
@@ -1037,37 +1037,37 @@ class RecordTimer(timer.Timer):
 		#root_element.text = "\n"
 
 		#for timer in self.timer_list + self.processed_timers:
-			# some timers (instant records) don't want to be saved.
-			# skip them
-			#if timer.dontSave:
-				#continue
-			#t = xml.etree.cElementTree.SubElement(root_element, 'timers')
-			#t.set("begin", str(int(timer.begin)))
-			#t.set("end", str(int(timer.end)))
-			#t.set("serviceref", str(timer.service_ref))
-			#t.set("repeated", str(timer.repeated))
-			#t.set("name", timer.name)
-			#t.set("description", timer.description)
-			#t.set("afterevent", str({
-			#	AFTEREVENT.NONE: "nothing",
-			#	AFTEREVENT.STANDBY: "standby",
-			#	AFTEREVENT.DEEPSTANDBY: "deepstandby",
-			#	AFTEREVENT.AUTO: "auto"}))
-			#if timer.eit is not None:
-			#	t.set("eit", str(timer.eit))
-			#if timer.dirname is not None:
-			#	t.set("location", str(timer.dirname))
-			#t.set("disabled", str(int(timer.disabled)))
-			#t.set("justplay", str(int(timer.justplay)))
-			#t.text = "\n"
-			#t.tail = "\n"
+		# some timers (instant records) don't want to be saved.
+		# skip them
+		#if timer.dontSave:
+		#continue
+		#t = xml.etree.cElementTree.SubElement(root_element, 'timers')
+		#t.set("begin", str(int(timer.begin)))
+		#t.set("end", str(int(timer.end)))
+		#t.set("serviceref", str(timer.service_ref))
+		#t.set("repeated", str(timer.repeated))
+		#t.set("name", timer.name)
+		#t.set("description", timer.description)
+		#t.set("afterevent", str({
+		#	AFTEREVENT.NONE: "nothing",
+		#	AFTEREVENT.STANDBY: "standby",
+		#	AFTEREVENT.DEEPSTANDBY: "deepstandby",
+		#	AFTEREVENT.AUTO: "auto"}))
+		#if timer.eit is not None:
+		#	t.set("eit", str(timer.eit))
+		#if timer.dirname is not None:
+		#	t.set("location", str(timer.dirname))
+		#t.set("disabled", str(int(timer.disabled)))
+		#t.set("justplay", str(int(timer.justplay)))
+		#t.text = "\n"
+		#t.tail = "\n"
 
-			#for time, code, msg in timer.log_entries:
-				#l = xml.etree.cElementTree.SubElement(t, 'log')
-				#l.set("time", str(time))
-				#l.set("code", str(code))
-				#l.text = str(msg)
-				#l.tail = "\n"
+		#for time, code, msg in timer.log_entries:
+		#l = xml.etree.cElementTree.SubElement(t, 'log')
+		#l.set("time", str(time))
+		#l.set("code", str(code))
+		#l.text = str(msg)
+		#l.tail = "\n"
 
 		#doc = xml.etree.cElementTree.ElementTree(root_element)
 		#doc.write(self.Filename)
@@ -1093,7 +1093,7 @@ class RecordTimer(timer.Timer):
 				AFTEREVENT.STANDBY: "standby",
 				AFTEREVENT.DEEPSTANDBY: "deepstandby",
 				AFTEREVENT.AUTO: "auto"
-				}[timer.afterEvent])) + '"')
+			}[timer.afterEvent])) + '"')
 			if timer.eit is not None:
 				list.append(' eit="' + str(timer.eit) + '"')
 			if timer.dirname:

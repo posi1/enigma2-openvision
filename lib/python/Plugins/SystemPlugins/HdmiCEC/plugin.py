@@ -23,7 +23,7 @@ class HdmiCECSetupScreen(Screen, ConfigListScreen):
 		self["description"] = Label("")
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyOk,
 			"save": self.keyGo,
 			"cancel": self.keyCancel,
@@ -135,9 +135,9 @@ class HdmiCECSetupScreen(Screen, ConfigListScreen):
 		from Screens.LocationBox import LocationBox
 		txt = _("Select directory for logfile")
 		self.session.openWithCallback(self.logPath, LocationBox, text=txt, currDir=config.hdmicec.log_path.value,
-				bookmarks=config.hdmicec.bookmarks, autoAdd=False, editDir=True,
-				inhibitDirs=inhibitDirs, minFree=1
-				)
+									  bookmarks=config.hdmicec.bookmarks, autoAdd=False, editDir=True,
+									  inhibitDirs=inhibitDirs, minFree=1
+									  )
 
 
 def main(session, **kwargs):

@@ -14,9 +14,9 @@ class RefString(Converter, object):
 		Converter.__init__(self, type)
 		self.CHANSEL = None
 		self.type = {
-				"CurrentRef": self.CURRENT,
-				"ServicelistRef": self.EVENT
-			}[type]
+			"CurrentRef": self.CURRENT,
+			"ServicelistRef": self.EVENT
+		}[type]
 
 	@cached
 	def getText(self):

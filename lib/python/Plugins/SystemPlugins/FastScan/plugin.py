@@ -38,17 +38,17 @@ providers = [
 	('UPC Direct Thor', (2, 81, False))]
 
 transponders = ((12515000, 22000000, eDVBFrontendParametersSatellite.FEC_5_6, 192,
-	eDVBFrontendParametersSatellite.Polarisation_Horizontal, eDVBFrontendParametersSatellite.Inversion_Unknown,
-	eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
-	eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off),
-	(12070000, 27500000, eDVBFrontendParametersSatellite.FEC_3_4, 235,
-	eDVBFrontendParametersSatellite.Polarisation_Horizontal, eDVBFrontendParametersSatellite.Inversion_Unknown,
-	eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
-	eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off),
-	(11727000, 28000000, eDVBFrontendParametersSatellite.FEC_7_8, 3592,
-	eDVBFrontendParametersSatellite.Polarisation_Vertical, eDVBFrontendParametersSatellite.Inversion_Unknown,
-	eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
-	eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off))
+				 eDVBFrontendParametersSatellite.Polarisation_Horizontal, eDVBFrontendParametersSatellite.Inversion_Unknown,
+				 eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
+				 eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off),
+				(12070000, 27500000, eDVBFrontendParametersSatellite.FEC_3_4, 235,
+				 eDVBFrontendParametersSatellite.Polarisation_Horizontal, eDVBFrontendParametersSatellite.Inversion_Unknown,
+				 eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
+				 eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off),
+				(11727000, 28000000, eDVBFrontendParametersSatellite.FEC_7_8, 3592,
+				 eDVBFrontendParametersSatellite.Polarisation_Vertical, eDVBFrontendParametersSatellite.Inversion_Unknown,
+				 eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
+				 eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off))
 
 
 def getProviderList():
@@ -89,10 +89,10 @@ class FastScanStatus(Screen):
 		self.session.nav.stopService()
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self.ok,
-				"cancel": self.cancel
-			})
+									{
+			"ok": self.ok,
+			"cancel": self.cancel
+		})
 
 		self.onFirstExecBegin.append(self.doServiceScan)
 
@@ -161,7 +161,7 @@ class FastScanScreen(ConfigListScreen, Screen):
 		self.setTitle(_("FastScan"))
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyGo,
 			"save": self.keySave,
 			"cancel": self.keyCancel,
@@ -279,9 +279,9 @@ class FastScanScreen(ConfigListScreen, Screen):
 			pid += 1
 		if self.scan_nims.value:
 			self.session.open(FastScanStatus, scanTuner=int(self.scan_nims.value),
-				transponderParameters=self.getTransponderParameters(parameters[0]),
-				scanPid=pid, keepNumbers=self.scan_keepnumbering.value, keepSettings=self.scan_keepsettings.value, createRadioBouquet=self.scan_create_radio_bouquet.value,
-				providerName=self.scan_provider.getText())
+							  transponderParameters=self.getTransponderParameters(parameters[0]),
+							  scanPid=pid, keepNumbers=self.scan_keepnumbering.value, keepSettings=self.scan_keepsettings.value, createRadioBouquet=self.scan_create_radio_bouquet.value,
+							  providerName=self.scan_provider.getText())
 
 	def keyCancel(self):
 		self.close()
@@ -295,7 +295,7 @@ class FastScanAutoScreen(FastScanScreen):
 		self.skinName = "Standby"
 
 		self["actions"] = ActionMap(["StandbyActions"],
-		{
+									{
 			"power": self.Power,
 			"discrete_on": self.Power
 		}, -1)
@@ -413,6 +413,6 @@ def FastScanStart(menuid, **kwargs):
 def Plugins(**kwargs):
 	if (nimmanager.hasNimType("DVB-S")):
 		return [PluginDescriptor(name=_("FastScan"), description="Scan M7 Brands, BE/NL/DE/AT/CZ", where=PluginDescriptor.WHERE_MENU, fnc=FastScanStart),
-			PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART, PluginDescriptor.WHERE_AUTOSTART], fnc=autostart)]
+				PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART, PluginDescriptor.WHERE_AUTOSTART], fnc=autostart)]
 	else:
 		return []

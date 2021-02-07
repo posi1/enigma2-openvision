@@ -426,7 +426,7 @@ class ServiceList(GUIComponent):
 		self.l.setElementFont(self.l.celServiceInfo, ServiceInfoFont)
 		if show_two_lines and two_lines_val == "2":
 			self.l.setElementFont(self.l.celServiceNextInfo, ServiceNextInfoFont)
-			nextTitle = _("NEXT") + ":  "
+			nextTitle = _("NEXT") + ":	"
 			self.l.setNextTitle(nextTitle)
 		if "perc" in config.usage.show_event_progress_in_servicelist.value:
 			self.l.setElementFont(self.l.celServiceEventProgressbar, ServiceInfoFont)

@@ -86,7 +86,7 @@ class HelpableActionMap(ActionMap):
 	# A context list is allowed, and for backward compatibility, a single
 	# string context name also is allowed.
 	#
-	# Sorry for this complicated code.  It's not more than converting a
+	# Sorry for this complicated code.	It's not more than converting a
 	# "documented" actionmap (where the values are possibly (function,
 	# help)-tuples) into a "classic" actionmap, where values are just
 	# functions.  The classic actionmap is then passed to the

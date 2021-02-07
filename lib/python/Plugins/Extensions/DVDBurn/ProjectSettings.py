@@ -53,11 +53,11 @@ class FileBrowser(Screen, HelpableScreen):
 		self["filelist"] = self.filelist
 
 		self["FilelistActions"] = ActionMap(["SetupActions"],
-			{
-				"save": self.ok,
-				"ok": self.ok,
-				"cancel": self.exit
-			})
+											{
+			"save": self.ok,
+			"ok": self.ok,
+			"cancel": self.exit
+		})
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))
 		self.onLayoutFinish.append(self.layoutFinished)
@@ -127,7 +127,7 @@ class ProjectSettings(Screen, ConfigListScreen):
 		self.initConfigList()
 
 		self["setupActions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
+										 {
 			"green": self.exit,
 			"red": self.cancel,
 			"blue": self.saveProject,

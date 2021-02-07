@@ -718,7 +718,7 @@ class MovieList(GUIComponent):
 				this_tags_fullname = set(this_tags_fullname)
 				this_tags = set(this_tags)
 				if not this_tags.issuperset(filter_tags) and not this_tags_fullname.issuperset(filter_tags):
-#					print("Skipping", name, "tags=", this_tags, " filter=", filter_tags)
+					#					print("Skipping", name, "tags=", this_tags, " filter=", filter_tags)
 					continue
 			if begin2 != 0:
 				self.list.append((serviceref, info, begin, -1, begin2))

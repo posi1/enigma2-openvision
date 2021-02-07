@@ -65,7 +65,7 @@ def parseKeys(context, filename, actionmap, device, keys):
 
 			# if a key was unmapped, it can only be assigned a new function in the same keymap file (avoid file parsing sequence dependency)
 			if unmapDict.get((context, id, mapto)) in [filename, None]:
-#				print("[keymapparser] " + context + "::" + mapto + " -> " + device + "." + hex(keyid))
+				#				print("[keymapparser] " + context + "::" + mapto + " -> " + device + "." + hex(keyid))
 				actionmap.bindKey(filename, device, keyid, flags, context, mapto)
 				addKeyBinding(filename, keyid, context, mapto, flags)
 

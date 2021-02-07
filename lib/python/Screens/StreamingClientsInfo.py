@@ -28,7 +28,7 @@ class StreamingClientsInfo(Screen):
 		self["info"] = Label()
 		self.updateClients()
 		self["actions"] = ActionMap(["ColorActions", "SetupActions"],
-		{
+									{
 			"cancel": self.close,
 			"ok": self.stopCurrentStream,
 			"red": self.close,

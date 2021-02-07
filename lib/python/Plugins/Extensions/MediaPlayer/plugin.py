@@ -178,36 +178,36 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 				return NumberActionMap.action(self, contexts, action)
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
-				"ok": (self.ok, _("Add file to playlist")),
-				"cancel": (self.exit, _("Exit mediaplayer")),
-			}, -2)
+													{
+			"ok": (self.ok, _("Add file to playlist")),
+			"cancel": (self.exit, _("Exit mediaplayer")),
+		}, -2)
 
 		self["MediaPlayerActions"] = HelpableActionMap(self, ["MediaPlayerActions"],
-			{
-				"play": (self.xplayEntry, _("Play entry")),
-				"pause": (self.pauseEntry, _("Pause")),
-				"stop": (self.stopEntry, _("Stop entry")),
-				"previous": (self.previousMarkOrEntry, _("Play from previous mark or playlist entry")),
-				"next": (self.nextMarkOrEntry, _("Play from next mark or playlist entry")),
-				"menu": (self.showMenu, _("Menu")),
-				"skipListbegin": (self.skip_listbegin, _("Jump to beginning of list")),
-				"skipListend": (self.skip_listend, _("Jump to end of list")),
-				"prevBouquet": (self.prevBouquet, self.prevBouquetHelpText),
-				"nextBouquet": (self.nextBouquet, self.nextBouquetHelptext),
-				"delete": (self.deletePlaylistEntry, _("Delete playlist entry")),
-				"shift_stop": (self.clear_playlist, _("Clear playlist")),
-				"shift_record": (self.playlist.PlayListShuffle, _("Shuffle playlist")),
-				"subtitles": (self.subtitleSelection, _("Subtitle selection")),
-			}, -2)
+													   {
+			"play": (self.xplayEntry, _("Play entry")),
+			"pause": (self.pauseEntry, _("Pause")),
+			"stop": (self.stopEntry, _("Stop entry")),
+			"previous": (self.previousMarkOrEntry, _("Play from previous mark or playlist entry")),
+			"next": (self.nextMarkOrEntry, _("Play from next mark or playlist entry")),
+			"menu": (self.showMenu, _("Menu")),
+			"skipListbegin": (self.skip_listbegin, _("Jump to beginning of list")),
+			"skipListend": (self.skip_listend, _("Jump to end of list")),
+			"prevBouquet": (self.prevBouquet, self.prevBouquetHelpText),
+			"nextBouquet": (self.nextBouquet, self.nextBouquetHelptext),
+			"delete": (self.deletePlaylistEntry, _("Delete playlist entry")),
+			"shift_stop": (self.clear_playlist, _("Clear playlist")),
+			"shift_record": (self.playlist.PlayListShuffle, _("Shuffle playlist")),
+			"subtitles": (self.subtitleSelection, _("Subtitle selection")),
+		}, -2)
 
 		self["InfobarEPGActions"] = HelpableActionMap(self, ["InfobarEPGActions"],
-			{
-				"showEventInfo": (self.showEventInformation, _("show event details")),
-			})
+													  {
+			"showEventInfo": (self.showEventInformation, _("show event details")),
+		})
 
 		self["actions"] = MoviePlayerActionMap(self, ["DirectionActions"],
-		{
+											   {
 			"right": self.rightDown,
 			"rightRepeated": self.doNothing,
 			"rightUp": self.rightUp,
@@ -257,12 +257,12 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			self.playlist.updateList()
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evUpdatedInfo: self.__evUpdatedInfo,
-				iPlayableService.evUser + 10: self.__evAudioDecodeError,
-				iPlayableService.evUser + 11: self.__evVideoDecodeError,
-				iPlayableService.evUser + 12: self.__evPluginError,
-				iPlayableService.evUser + 13: self["coverArt"].embeddedCoverArt
-			})
+			iPlayableService.evUpdatedInfo: self.__evUpdatedInfo,
+			iPlayableService.evUser + 10: self.__evAudioDecodeError,
+			iPlayableService.evUser + 11: self.__evVideoDecodeError,
+			iPlayableService.evUser + 12: self.__evPluginError,
+			iPlayableService.evUser + 13: self["coverArt"].embeddedCoverArt
+		})
 
 		self.servicelist = None
 		self.pipZapAvailable = False
@@ -1145,12 +1145,12 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 
 class MediaPlayerLCDScreen(Screen):
 	skin = (
-	"""<screen name="MediaPlayerLCDScreen" position="0,0" size="132,64" id="1">
+		"""<screen name="MediaPlayerLCDScreen" position="0,0" size="132,64" id="1">
 		<widget name="text1" position="4,0" size="132,35" font="Regular;16"/>
 		<widget name="text3" position="4,36" size="132,14" font="Regular;10"/>
 		<widget name="text4" position="4,49" size="132,14" font="Regular;10"/>
 	</screen>""",
-	"""<screen name="MediaPlayerLCDScreen" position="0,0" size="96,64" id="2">
+		"""<screen name="MediaPlayerLCDScreen" position="0,0" size="96,64" id="2">
 		<widget name="text1" position="0,0" size="96,35" font="Regular;14"/>
 		<widget name="text3" position="0,36" size="96,14" font="Regular;10"/>
 		<widget name="text4" position="0,49" size="96,14" font="Regular;10"/>
@@ -1166,7 +1166,7 @@ class MediaPlayerLCDScreen(Screen):
 		if len(text) > 10:
 			if text[-4:] == ".mp3":
 				text = text[:-4]
-		textleer = "    "
+		textleer = "	"
 		text = text + textleer * 10
 		if line == 1:
 			self["text1"].setText(text)
@@ -1283,40 +1283,40 @@ def filescan(**kwargs):
 	from Components.Scanner import Scanner, ScanPath
 	return [
 		Scanner(mimetypes=["video/mpeg", "video/mp2t", "video/x-msvideo", "video/mkv", "video/x-ms-wmv", "video/x-matroska", "video/ogg", "video/dvd", "video/mp4", "video/avi", "video/divx", "video/x-mpeg", "video/x-flv", "video/quicktime", "video/x-ms-asf", "video/3gpp", "video/3gpp2", "application/vnd.rn-realmedia", "application/vnd.rn-realmedia-vbr", "video/mts"],
-			paths_to_scan=[
-					ScanPath(path="", with_subdirs=False),
-					ScanPath(path="PRIVATE/AVCHD/BDMV/STREAM", with_subdirs=False),
+				paths_to_scan=[
+				ScanPath(path="", with_subdirs=False),
+				ScanPath(path="PRIVATE/AVCHD/BDMV/STREAM", with_subdirs=False),
 				],
-			name="Movie",
-			description=_("Watch movies..."),
-			openfnc=movielist_open,
-		),
+				name="Movie",
+				description=_("Watch movies..."),
+				openfnc=movielist_open,
+				),
 		Scanner(mimetypes=["video/x-vcd"],
-			paths_to_scan=[
-					ScanPath(path="mpegav", with_subdirs=False),
-					ScanPath(path="MPEGAV", with_subdirs=False),
+				paths_to_scan=[
+				ScanPath(path="mpegav", with_subdirs=False),
+				ScanPath(path="MPEGAV", with_subdirs=False),
 				],
-			name="Video CD",
-			description=_("View video CD..."),
-			openfnc=filescan_open,
-		),
+				name="Video CD",
+				description=_("View video CD..."),
+				openfnc=filescan_open,
+				),
 		Scanner(mimetypes=["audio/mpeg", "audio/x-wav", "audio/dts", "audio/ogg", "audio/flac", "audio/mp4", "audio/x-ms-wma", "audio/ac3", "audio/x-matroska", "audio/x-aac", "audio/x-monkeys-audio"],
-			paths_to_scan=[
-					ScanPath(path="", with_subdirs=False),
+				paths_to_scan=[
+				ScanPath(path="", with_subdirs=False),
 				],
-			name="Music",
-			description=_("Play music..."),
-			openfnc=filescan_open,
-		),
+				name="Music",
+				description=_("Play music..."),
+				openfnc=filescan_open,
+				),
 		Scanner(mimetypes=["audio/x-cda"],
-			paths_to_scan=[
-					ScanPath(path="", with_subdirs=False),
+				paths_to_scan=[
+				ScanPath(path="", with_subdirs=False),
 				],
-			name="Audio-CD",
-			description=_("Play audio-CD..."),
-			openfnc=audioCD_open,
-		),
-		]
+				name="Audio-CD",
+				description=_("Play audio-CD..."),
+				openfnc=audioCD_open,
+				),
+	]
 
 
 from Plugins.Plugin import PluginDescriptor

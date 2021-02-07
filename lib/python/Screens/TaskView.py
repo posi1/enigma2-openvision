@@ -51,7 +51,7 @@ class JobView(InfoBarNotifications, Screen, ConfigListScreen):
 		self.onHide.append(self.windowHide)
 
 		self["setupActions"] = ActionMap(["ColorActions", "SetupActions"],
-		{
+										 {
 			"green": self.ok,
 			"red": self.abort,
 			"blue": self.background,

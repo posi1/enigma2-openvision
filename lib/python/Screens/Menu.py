@@ -296,23 +296,23 @@ class Menu(Screen, ProtectedScreen):
 		self.skinName.append("Menu")
 		ProtectedScreen.__init__(self)
 		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "NumberActions", "HelpActions", "ColorActions"],
-			{
-				"ok": self.okbuttonClick,
-				"cancel": self.closeNonRecursive,
-				"menu": self.closeRecursive,
-				"0": self.keyNumberGlobal,
-				"1": self.keyNumberGlobal,
-				"2": self.keyNumberGlobal,
-				"3": self.keyNumberGlobal,
-				"4": self.keyNumberGlobal,
-				"5": self.keyNumberGlobal,
-				"6": self.keyNumberGlobal,
-				"7": self.keyNumberGlobal,
-				"8": self.keyNumberGlobal,
-				"9": self.keyNumberGlobal,
-				"displayHelp": self.showHelp,
-				"blue": self.keyBlue,
-			})
+										  {
+			"ok": self.okbuttonClick,
+			"cancel": self.closeNonRecursive,
+			"menu": self.closeRecursive,
+			"0": self.keyNumberGlobal,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"displayHelp": self.showHelp,
+			"blue": self.keyBlue,
+		})
 		title = parent.get("title", "").encode("UTF-8") or None
 		title = title and _(title) or _(parent.get("text", "").encode("UTF-8"))
 		title = self.__class__.__name__ == "MenuSort" and _("Menusort (%s)") % title or title
@@ -539,13 +539,13 @@ class MenuSort(Menu):
 		self["menu"].onSelectionChanged.append(self.selectionChanged)
 
 		self["MoveActions"] = ActionMap(["WizardActions", "DirectionActions"],
-		{
+										{
 			"moveUp": boundFunction(self.moveChoosen, -1),
 			"moveDown": boundFunction(self.moveChoosen, +1),
-			}, -1
+		}, -1
 		)
 		self["EditActions"] = ActionMap(["ColorActions"],
-		{
+										{
 			"red": self.closeMenuSort,
 			"green": self.keySave,
 			"yellow": self.keyToggleShowHide,
@@ -658,28 +658,28 @@ class AnimMain(Screen):
 		self['green'] = Button(_('Select'))
 		self['yellow'] = Button(_('Config'))
 		self['actions'] = NumberActionMap(['OkCancelActions',
-		 'MenuActions',
-		 'DirectionActions',
-		 'NumberActions',
-		 'ColorActions'], {'ok': self.okbuttonClick,
-		 'cancel': self.closeNonRecursive,
-		 'left': self.key_left,
-		 'right': self.key_right,
-		 'up': self.key_up,
-		 'down': self.key_down,
-		 'red': self.cancel,
-		 'green': self.okbuttonClick,
-		 'yellow': self.key_menu,
-		 'menu': self.closeRecursive,
-		 '1': self.keyNumberGlobal,
-		 '2': self.keyNumberGlobal,
-		 '3': self.keyNumberGlobal,
-		 '4': self.keyNumberGlobal,
-		 '5': self.keyNumberGlobal,
-		 '6': self.keyNumberGlobal,
-		 '7': self.keyNumberGlobal,
-		 '8': self.keyNumberGlobal,
-		 '9': self.keyNumberGlobal})
+										   'MenuActions',
+										   'DirectionActions',
+										   'NumberActions',
+										   'ColorActions'], {'ok': self.okbuttonClick,
+															 'cancel': self.closeNonRecursive,
+															 'left': self.key_left,
+															 'right': self.key_right,
+															 'up': self.key_up,
+															 'down': self.key_down,
+															 'red': self.cancel,
+															 'green': self.okbuttonClick,
+															 'yellow': self.key_menu,
+															 'menu': self.closeRecursive,
+															 '1': self.keyNumberGlobal,
+															 '2': self.keyNumberGlobal,
+															 '3': self.keyNumberGlobal,
+															 '4': self.keyNumberGlobal,
+															 '5': self.keyNumberGlobal,
+															 '6': self.keyNumberGlobal,
+															 '7': self.keyNumberGlobal,
+															 '8': self.keyNumberGlobal,
+															 '9': self.keyNumberGlobal})
 		nop = len(self.tlist)
 		self.nop = nop
 		nh = 1
@@ -818,28 +818,28 @@ class IconMain(Screen):
 		self['green'] = Button(_('Select'))
 		self['yellow'] = Button(_('Config'))
 		self['actions'] = NumberActionMap(['OkCancelActions',
-		 'MenuActions',
-		 'DirectionActions',
-		 'NumberActions',
-		 'ColorActions'], {'ok': self.okbuttonClick,
-		 'cancel': self.closeNonRecursive,
-		 'left': self.key_left,
-		 'right': self.key_right,
-		 'up': self.key_up,
-		 'down': self.key_down,
-		 'red': self.cancel,
-		 'green': self.okbuttonClick,
-		 'yellow': self.key_menu,
-		 'menu': self.closeRecursive,
-		 '1': self.keyNumberGlobal,
-		 '2': self.keyNumberGlobal,
-		 '3': self.keyNumberGlobal,
-		 '4': self.keyNumberGlobal,
-		 '5': self.keyNumberGlobal,
-		 '6': self.keyNumberGlobal,
-		 '7': self.keyNumberGlobal,
-		 '8': self.keyNumberGlobal,
-		 '9': self.keyNumberGlobal})
+										   'MenuActions',
+										   'DirectionActions',
+										   'NumberActions',
+										   'ColorActions'], {'ok': self.okbuttonClick,
+															 'cancel': self.closeNonRecursive,
+															 'left': self.key_left,
+															 'right': self.key_right,
+															 'up': self.key_up,
+															 'down': self.key_down,
+															 'red': self.cancel,
+															 'green': self.okbuttonClick,
+															 'yellow': self.key_menu,
+															 'menu': self.closeRecursive,
+															 '1': self.keyNumberGlobal,
+															 '2': self.keyNumberGlobal,
+															 '3': self.keyNumberGlobal,
+															 '4': self.keyNumberGlobal,
+															 '5': self.keyNumberGlobal,
+															 '6': self.keyNumberGlobal,
+															 '7': self.keyNumberGlobal,
+															 '8': self.keyNumberGlobal,
+															 '9': self.keyNumberGlobal})
 		self.index = 0
 		i = 0
 		self.maxentry = 29

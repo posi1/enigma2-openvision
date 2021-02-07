@@ -70,17 +70,17 @@ class EventViewBase:
 			self["key_yellow"] = Button("")
 			self["key_blue"] = Button("")
 		self["actions"] = ActionMap(["OkCancelActions", "EventViewActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"pageUp": self.pageUp,
-				"pageDown": self.pageDown,
-				"prevEvent": self.prevEvent,
-				"nextEvent": self.nextEvent,
-				"timerAdd": self.timerAdd,
-				"openSimilarList": self.openSimilarList,
-				"contextMenu": self.doContext,
-			})
+									{
+			"cancel": self.close,
+			"ok": self.close,
+			"pageUp": self.pageUp,
+			"pageDown": self.pageDown,
+			"prevEvent": self.prevEvent,
+			"nextEvent": self.nextEvent,
+			"timerAdd": self.timerAdd,
+			"openSimilarList": self.openSimilarList,
+			"contextMenu": self.doContext,
+		})
 		if parent and hasattr(parent, "fallbackTimer"):
 			self.fallbackTimer = parent.fallbackTimer
 			self.onLayoutFinish.append(self.onCreate)
@@ -352,11 +352,11 @@ class EventViewBase:
 			text = _("Select action")
 			if six.PY2:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'servicelist' not in p.__call__.func_code.co_varnames \
+						if 'servicelist' not in p.__call__.func_code.co_varnames \
 						if 'selectedevent' not in p.__call__.func_code.co_varnames]
 			else:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'servicelist' not in p.__call__.__code__.co_varnames \
+						if 'servicelist' not in p.__call__.__code__.co_varnames \
 						if 'selectedevent' not in p.__call__.__code__.co_varnames]
 			if len(menu) == 1:
 				menu and menu[0][1]()
@@ -388,10 +388,10 @@ class EventViewEPGSelect(Screen, EventViewBase):
 		self["key_yellow"].setText(_("Single EPG"))
 		self["key_blue"].setText(_("Multi EPG"))
 		self["epgactions"] = ActionMap(["EventViewEPGActions"],
-			{
-				"openSingleServiceEPG": self.openSingleEPG,
-				"openMultiServiceEPG": self.openMultiEPG,
-			})
+									   {
+			"openSingleServiceEPG": self.openSingleEPG,
+			"openMultiServiceEPG": self.openMultiEPG,
+		})
 
 	def openSingleEPG(self):
 		self.hide()

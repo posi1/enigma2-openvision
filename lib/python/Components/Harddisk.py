@@ -514,7 +514,7 @@ class Harddisk:
 			if not idle:
 				self.timer.stop()
 			else:
-				self.timer.start(idle * 100, False)  # poll 10 times per period.
+				self.timer.start(idle * 100, False)	 # poll 10 times per period.
 
 	def isSleeping(self):
 		return self.is_sleeping
@@ -978,7 +978,7 @@ def isSleepStateDevice(device):
 	ret = os.popen("hdparm -C %s" % device).read()
 	if 'SG_IO' in ret or 'HDIO_DRIVE_CMD' in ret:
 		return None
-	if 'drive state is:  standby' in ret or 'drive state is:  idle' in ret:
+	if 'drive state is:	 standby' in ret or 'drive state is:  idle' in ret:
 		return True
 	elif 'drive state is:  active/idle' in ret:
 		return False

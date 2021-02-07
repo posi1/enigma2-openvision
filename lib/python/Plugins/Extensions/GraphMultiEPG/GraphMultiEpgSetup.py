@@ -31,7 +31,7 @@ class GraphMultiEpgSetup(Screen, ConfigListScreen):
 		self["key_red"] = self["canceltext"] = Label(_("Cancel"))
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions", "ColorActions"],
-		{
+									{
 			"ok": self.keySave,
 			"save": self.keySave,
 			"green": self.keySave,

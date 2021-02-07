@@ -85,7 +85,7 @@ class ServiceInfo(Screen):
 		Screen.__init__(self, session)
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
-		{
+									{
 			"ok": self.close,
 			"cancel": self.close,
 			"red": self.close,
@@ -165,30 +165,30 @@ class ServiceInfo(Screen):
 					resolution += " - " + gamma
 			self.service = self.session.nav.getCurrentService()
 			if "%3a//" in refstr and reftype not in (1, 257, 4098, 4114):
-			#IPTV 4097 5001, no PIDs shown
+				#IPTV 4097 5001, no PIDs shown
 				fillList = [(_("Service name"), name, TYPE_TEXT),
-					(_("Videocodec, size & format"), resolution, TYPE_TEXT),
-					(_("Service reference"), ":".join(refstr.split(":")[:9]), TYPE_TEXT),
-					(_("URL"), refstr.split(":")[10].replace("%3a", ":"), TYPE_TEXT)]
+							(_("Videocodec, size & format"), resolution, TYPE_TEXT),
+							(_("Service reference"), ":".join(refstr.split(":")[:9]), TYPE_TEXT),
+							(_("URL"), refstr.split(":")[10].replace("%3a", ":"), TYPE_TEXT)]
 				subList = self.getSubtitleList()
 			else:
 				if ":/" in refstr:
-				# mp4 videos, dvb-s-t recording
+					# mp4 videos, dvb-s-t recording
 					fillList = [(_("Service name"), name, TYPE_TEXT),
-						(_("Videocodec, size & format"), resolution, TYPE_TEXT),
-						(_("Service reference"), ":".join(refstr.split(":")[:9]), TYPE_TEXT),
-						(_("Filename"), refstr.split(":")[10], TYPE_TEXT)]
+								(_("Videocodec, size & format"), resolution, TYPE_TEXT),
+								(_("Service reference"), ":".join(refstr.split(":")[:9]), TYPE_TEXT),
+								(_("Filename"), refstr.split(":")[10], TYPE_TEXT)]
 				else:
-				# fallback, movistartv, live dvb-s-t
+					# fallback, movistartv, live dvb-s-t
 					fillList = [(_("Service name"), name, TYPE_TEXT),
-						(_("Provider"), self.getServiceInfoValue(iServiceInformation.sProvider), TYPE_TEXT),
-						(_("Videocodec, size & format"), resolution, TYPE_TEXT)]
+								(_("Provider"), self.getServiceInfoValue(iServiceInformation.sProvider), TYPE_TEXT),
+								(_("Videocodec, size & format"), resolution, TYPE_TEXT)]
 					if "%3a//" in refstr:
-					#fallback, movistartv
+						#fallback, movistartv
 						fillList = fillList + [(_("Service reference"), ":".join(refstr.split(":")[:9]), TYPE_TEXT),
-							(_("URL"), refstr.split(":")[10].replace("%3a", ":"), TYPE_TEXT)]
+											   (_("URL"), refstr.split(":")[10].replace("%3a", ":"), TYPE_TEXT)]
 					else:
-					#live dvb-s-t
+						#live dvb-s-t
 						fillList = fillList + [(_("Service reference"), refstr, TYPE_TEXT)]
 				self.audio = self.service and self.service.audioTracks()
 				self.numberofTracks = self.audio and self.audio.getNumberOfTracks()
@@ -196,13 +196,13 @@ class ServiceInfo(Screen):
 				self.togglePIDButton()
 				trackList = self.getTrackList()
 				fillList = fillList + ([(_("Namespace & Orbital pos."), self.namespace(self.getServiceInfoValue(iServiceInformation.sNamespace)), TYPE_TEXT),
-					(_("TSID"), self.getServiceInfoValue(iServiceInformation.sTSID), TYPE_VALUE_HEX_DEC, 4),
-					(_("ONID"), self.getServiceInfoValue(iServiceInformation.sONID), TYPE_VALUE_HEX_DEC, 4),
-					(_("Service ID"), self.getServiceInfoValue(iServiceInformation.sSID), TYPE_VALUE_HEX_DEC, 4),
-					(_("Video PID"), self.getServiceInfoValue(iServiceInformation.sVideoPID), TYPE_VALUE_HEX_DEC, 4)]
-					+ trackList + [(_("PCR PID"), self.getServiceInfoValue(iServiceInformation.sPCRPID), TYPE_VALUE_HEX_DEC, 4),
-					(_("PMT PID"), self.getServiceInfoValue(iServiceInformation.sPMTPID), TYPE_VALUE_HEX_DEC, 4),
-					(_("TXT PID"), self.getServiceInfoValue(iServiceInformation.sTXTPID), TYPE_VALUE_HEX_DEC, 4)])
+										(_("TSID"), self.getServiceInfoValue(iServiceInformation.sTSID), TYPE_VALUE_HEX_DEC, 4),
+										(_("ONID"), self.getServiceInfoValue(iServiceInformation.sONID), TYPE_VALUE_HEX_DEC, 4),
+										(_("Service ID"), self.getServiceInfoValue(iServiceInformation.sSID), TYPE_VALUE_HEX_DEC, 4),
+										(_("Video PID"), self.getServiceInfoValue(iServiceInformation.sVideoPID), TYPE_VALUE_HEX_DEC, 4)]
+									   + trackList + [(_("PCR PID"), self.getServiceInfoValue(iServiceInformation.sPCRPID), TYPE_VALUE_HEX_DEC, 4),
+													  (_("PMT PID"), self.getServiceInfoValue(iServiceInformation.sPMTPID), TYPE_VALUE_HEX_DEC, 4),
+													  (_("TXT PID"), self.getServiceInfoValue(iServiceInformation.sTXTPID), TYPE_VALUE_HEX_DEC, 4)])
 				if self.showAll == True:
 					fillList = fillList + self.subList
 
@@ -277,7 +277,7 @@ class ServiceInfo(Screen):
 
 				elif x[0] == 2: # File
 					types = (_("unknown"), _("Embedded"), _("SSA File"), _("ASS File"),
-							_("SRT File"), _("VOB File"), _("PGS File"))
+							 _("SRT File"), _("VOB File"), _("PGS File"))
 					try:
 						description = types[x[2]]
 					except:
@@ -315,34 +315,34 @@ class ServiceInfo(Screen):
 				issy = lambda x: 0 if x == -1 else x
 				t2mi = lambda x: None if x == -1 else str(x)
 				return (tuner,
-					(_("System & Modulation"), frontendData["system"] + " " + frontendData["modulation"], TYPE_TEXT),
-					(_("Orbital position"), frontendData["orbital_position"], TYPE_VALUE_DEC),
-					(_("Frequency & Polarization"), "%s MHz" % (frontendData.get("frequency", 0) / 1000) + " - " + frontendData["polarization"], TYPE_TEXT),
-					(_("Symbol rate & FEC"), "%s KSymb/s" % (frontendData.get("symbol_rate", 0) / 1000) + " - " + frontendData["fec_inner"], TYPE_TEXT),
-					(_("Inversion, Pilot & Roll-off"), frontendData["inversion"] + " - " + str(frontendData.get("pilot", None)) + " - " + str(frontendData.get("rolloff", None)), TYPE_TEXT),
-					(_("Input Stream ID"), issy(frontendData.get("is_id", 0)), TYPE_VALUE_DEC),
-					(_("PLS Mode"), frontendData.get("pls_mode", None), TYPE_TEXT),
-					(_("PLS Code"), frontendData.get("pls_code", 0), TYPE_VALUE_DEC),
-					(_("T2MI PLP ID"), t2mi(frontendData.get("t2mi_plp_id", -1)), TYPE_TEXT),
-					(_("T2MI PID"), None if frontendData.get("t2mi_plp_id", -1) == -1 else str(frontendData.get("t2mi_pid", eDVBFrontendParametersSatellite.T2MI_Default_Pid)), TYPE_TEXT))
+						(_("System & Modulation"), frontendData["system"] + " " + frontendData["modulation"], TYPE_TEXT),
+						(_("Orbital position"), frontendData["orbital_position"], TYPE_VALUE_DEC),
+						(_("Frequency & Polarization"), "%s MHz" % (frontendData.get("frequency", 0) / 1000) + " - " + frontendData["polarization"], TYPE_TEXT),
+						(_("Symbol rate & FEC"), "%s KSymb/s" % (frontendData.get("symbol_rate", 0) / 1000) + " - " + frontendData["fec_inner"], TYPE_TEXT),
+						(_("Inversion, Pilot & Roll-off"), frontendData["inversion"] + " - " + str(frontendData.get("pilot", None)) + " - " + str(frontendData.get("rolloff", None)), TYPE_TEXT),
+						(_("Input Stream ID"), issy(frontendData.get("is_id", 0)), TYPE_VALUE_DEC),
+						(_("PLS Mode"), frontendData.get("pls_mode", None), TYPE_TEXT),
+						(_("PLS Code"), frontendData.get("pls_code", 0), TYPE_VALUE_DEC),
+						(_("T2MI PLP ID"), t2mi(frontendData.get("t2mi_plp_id", -1)), TYPE_TEXT),
+						(_("T2MI PID"), None if frontendData.get("t2mi_plp_id", -1) == -1 else str(frontendData.get("t2mi_pid", eDVBFrontendParametersSatellite.T2MI_Default_Pid)), TYPE_TEXT))
 			elif frontendDataOrg["tuner_type"] == "DVB-C":
 				return (tuner,
-					(_("Modulation"), frontendData["modulation"], TYPE_TEXT),
-					(_("Frequency"), frontendData.get("frequency", 0), TYPE_VALUE_FREQ_FLOAT),
-					(_("Symbol rate & FEC"), "%s KSymb/s" % (frontendData.get("symbol_rate", 0) / 1000) + " - " + frontendData["fec_inner"], TYPE_TEXT),
-					(_("Inversion"), frontendData["inversion"], TYPE_TEXT))
+						(_("Modulation"), frontendData["modulation"], TYPE_TEXT),
+						(_("Frequency"), frontendData.get("frequency", 0), TYPE_VALUE_FREQ_FLOAT),
+						(_("Symbol rate & FEC"), "%s KSymb/s" % (frontendData.get("symbol_rate", 0) / 1000) + " - " + frontendData["fec_inner"], TYPE_TEXT),
+						(_("Inversion"), frontendData["inversion"], TYPE_TEXT))
 			elif frontendDataOrg["tuner_type"] == "DVB-T":
 				return (tuner,
-					(_("Frequency & Channel"), "%.3f MHz" % ((frontendData.get("frequency", 0) / 1000) / 1000.0) + " - " + frontendData["channel"], TYPE_TEXT),
-					(_("Inversion & Bandwidth"), frontendData["inversion"] + " - " + str(frontendData["bandwidth"]), TYPE_TEXT),
-					(_("Code R. LP-HP & Guard Int."), frontendData["code_rate_lp"] + " - " + frontendData["code_rate_hp"] + " - " + frontendData["guard_interval"], TYPE_TEXT),
-					(_("Constellation & FFT mode"), frontendData["constellation"] + " - " + frontendData["transmission_mode"], TYPE_TEXT),
-					(_("Hierarchy info"), frontendData["hierarchy_information"], TYPE_TEXT))
+						(_("Frequency & Channel"), "%.3f MHz" % ((frontendData.get("frequency", 0) / 1000) / 1000.0) + " - " + frontendData["channel"], TYPE_TEXT),
+						(_("Inversion & Bandwidth"), frontendData["inversion"] + " - " + str(frontendData["bandwidth"]), TYPE_TEXT),
+						(_("Code R. LP-HP & Guard Int."), frontendData["code_rate_lp"] + " - " + frontendData["code_rate_hp"] + " - " + frontendData["guard_interval"], TYPE_TEXT),
+						(_("Constellation & FFT mode"), frontendData["constellation"] + " - " + frontendData["transmission_mode"], TYPE_TEXT),
+						(_("Hierarchy info"), frontendData["hierarchy_information"], TYPE_TEXT))
 			elif frontendDataOrg["tuner_type"] == "ATSC":
 				return (tuner,
-					(_("System & Modulation"), frontendData["system"] + " " + frontendData["modulation"], TYPE_TEXT),
-					(_("Frequency"), frontendData.get("frequency", 0) / 1000, TYPE_VALUE_FREQ_FLOAT),
-					(_("Inversion"), frontendData["inversion"], TYPE_TEXT))
+						(_("System & Modulation"), frontendData["system"] + " " + frontendData["modulation"], TYPE_TEXT),
+						(_("Frequency"), frontendData.get("frequency", 0) / 1000, TYPE_VALUE_FREQ_FLOAT),
+						(_("Inversion"), frontendData["inversion"], TYPE_TEXT))
 		return []
 
 	def fillList(self, Labels):

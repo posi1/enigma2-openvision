@@ -59,16 +59,16 @@ class InputDeviceSelection(Screen, HelpableScreen):
 		print("[InputDeviceSetup] found devices :->", len(self.devices), self.devices)
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.close, _("Exit input device selection.")),
 			"ok": (self.okbuttonClick, _("Select input device.")),
-			}, -2)
+		}, -2)
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.close, _("Exit input device selection.")),
 			"green": (self.okbuttonClick, _("Select input device.")),
-			}, -2)
+		}, -2)
 
 		self.currentIndex = 0
 		self.list = []
@@ -169,11 +169,11 @@ class InputDeviceSetup(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
-			{
-				"cancel": self.keyCancel,
-				"save": self.apply,
-				"menu": self.closeRecursive,
-			}, -2)
+									{
+			"cancel": self.keyCancel,
+			"save": self.apply,
+			"menu": self.closeRecursive,
+		}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))
@@ -296,39 +296,39 @@ class InputDeviceSetup(Screen, ConfigListScreen):
 
 class RemoteControlType(Screen, ConfigListScreen):
 	rcList = [
-			("0", _("Default")),
-			("3", _("Mara M9")),
-			("4", _("DMM normal")),
-			("5", _("et9000/et9100")),
-			("6", _("DMM advanced")),
-			("7", _("et5000/et6000")),
-			("8", _("VU+")),
-			("9", _("et8000/et10000/et13000")),
-			("11", _("et9200/et9500/et6500")),
-			("13", _("et4000")),
-			("14", _("XP1000")),
-			("16", _("HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500")),
-			("17", _("XP3000")),
-			("18", _("F1/F3/F4/F4-TURBO/TRIPLEX")),
-			("19", _("HD2400")),
-			("20", _("Zgemma Star S/2S/H1/H2")),
-			("21", _("Zgemma H.S/H.2S/H.2H/H5/H7")),
-			("22", _("Zgemma i55")),
-			("23", _("WWIO 4K")),
-			("24", _("Axas E4HD Ultra")),
-			("25", _("Zgemma H0/H8/H9/I55Plus old model")),
-			("26", _("Protek 4K UHD/HD61")),
-			("27", _("HD60")),
-			("28", _("I55SE/H7/H9/H9SE/H9COMBO/H9COMBOSE/H10 new Model")),
-			("500", _("WWIO_BRE2ZE_TC")),
-			("501", _("OCTAGON SF4008")),
-			("502", _("GIGABLUE Black")),
-			("503", _("MIRACLEBOX TWINPLUS")),
-			("504", _("E3HD/XPEEDLX/GI")),
-			("505", _("ODIN M7")),
-			("507", _("Beyonwiz U4")),
-			("511", _("OCTAGON SF5008"))
-		]
+		("0", _("Default")),
+		("3", _("Mara M9")),
+		("4", _("DMM normal")),
+		("5", _("et9000/et9100")),
+		("6", _("DMM advanced")),
+		("7", _("et5000/et6000")),
+		("8", _("VU+")),
+		("9", _("et8000/et10000/et13000")),
+		("11", _("et9200/et9500/et6500")),
+		("13", _("et4000")),
+		("14", _("XP1000")),
+		("16", _("HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500")),
+		("17", _("XP3000")),
+		("18", _("F1/F3/F4/F4-TURBO/TRIPLEX")),
+		("19", _("HD2400")),
+		("20", _("Zgemma Star S/2S/H1/H2")),
+		("21", _("Zgemma H.S/H.2S/H.2H/H5/H7")),
+		("22", _("Zgemma i55")),
+		("23", _("WWIO 4K")),
+		("24", _("Axas E4HD Ultra")),
+		("25", _("Zgemma H0/H8/H9/I55Plus old model")),
+		("26", _("Protek 4K UHD/HD61")),
+		("27", _("HD60")),
+		("28", _("I55SE/H7/H9/H9SE/H9COMBO/H9COMBOSE/H10 new Model")),
+		("500", _("WWIO_BRE2ZE_TC")),
+		("501", _("OCTAGON SF4008")),
+		("502", _("GIGABLUE Black")),
+		("503", _("MIRACLEBOX TWINPLUS")),
+		("504", _("E3HD/XPEEDLX/GI")),
+		("505", _("ODIN M7")),
+		("507", _("Beyonwiz U4")),
+		("511", _("OCTAGON SF5008"))
+	]
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -336,7 +336,7 @@ class RemoteControlType(Screen, ConfigListScreen):
 		self.setTitle(_("Remote control type setup"))
 
 		self["actions"] = ActionMap(["SetupActions"],
-		{
+									{
 			"cancel": self.keyCancel,
 			"save": self.keySave,
 		}, -1)

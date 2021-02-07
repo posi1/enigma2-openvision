@@ -212,7 +212,7 @@ class FCCSupport:
 					iPlayableService.evEnd: self.getEvEnd,
 					iPlayableService.evTunedIn: self.getEvTunedIn,
 					iPlayableService.evTuneFailed: self.getEvTuneFailed
-					})
+				})
 
 		elif self.__event_tracker:
 			# run ServiceEventTracker.__del_event()
@@ -407,7 +407,7 @@ class FCCSupport:
 		fccServiceList = self.fccmgr.getFCCServiceList()
 		for (sref, value) in fccServiceList.items():
 			state = value[0]
-			if state != 1: # 1  : fcc_state_decoding
+			if state != 1: # 1	: fcc_state_decoding
 				self.fccmgr.stopFCCService(eServiceReference(sref))
 
 	def FCCDisableServices(self):
@@ -467,7 +467,7 @@ class FCCSetup(Screen, ConfigListScreen):
 		self.title = _("Fast Channel Change Setup")
 		self.session = session
 		self["shortcuts"] = ActionMap(["ShortcutActions", "SetupActions"],
-		{
+									  {
 			"ok": self.keySave,
 			"cancel": self.keyCancel,
 			"red": self.keyCancel,
@@ -587,21 +587,21 @@ def Plugins(**kwargs):
 	if g_max_fcc:
 		list.append(
 			PluginDescriptor(name="FCCSupport",
-			description="Fast Channel Change support",
-			where=[PluginDescriptor.WHERE_SESSIONSTART],
-			fnc=FCCSupportInit))
+							 description="Fast Channel Change support",
+							 where=[PluginDescriptor.WHERE_SESSIONSTART],
+							 fnc=FCCSupportInit))
 
 		list.append(
 			PluginDescriptor(name="FCCExtensionMenu",
-			description="Fast Channel Change menu",
-			where=[PluginDescriptor.WHERE_EXTENSIONSINGLE],
-			fnc=addExtentions))
+							 description="Fast Channel Change menu",
+							 where=[PluginDescriptor.WHERE_EXTENSIONSINGLE],
+							 fnc=addExtentions))
 
 	list.append(
 		PluginDescriptor(name=_("FCCSetup"),
-		description=_("Fast Channel Change setup"),
-		where=[PluginDescriptor.WHERE_PLUGINMENU],
-		needsRestart=False,
-		fnc=main))
+						 description=_("Fast Channel Change setup"),
+						 where=[PluginDescriptor.WHERE_PLUGINMENU],
+						 needsRestart=False,
+						 fnc=main))
 
 	return list

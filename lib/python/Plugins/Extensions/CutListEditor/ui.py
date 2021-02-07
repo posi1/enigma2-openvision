@@ -21,7 +21,7 @@ from Components.Sources.List import List
 from Components.config import config, ConfigYesNo
 from Screens.MovieSelection import MovieSelection
 
-apscParser = Struct(">qq")    # big-endian, 64-bit offset and 64-bit PTS/data
+apscParser = Struct(">qq")	  # big-endian, 64-bit offset and 64-bit PTS/data
 
 config.usage.cutlisteditor_tutorial_seen = ConfigYesNo(default=False)
 
@@ -244,25 +244,25 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		self["Video"] = VideoWindow(decoder=0, fb_width=desktopSize.width(), fb_height=desktopSize.height())
 
 		self["actions"] = HelpableActionMap(self, ["CutListEditorActions"],
-			{
-				"setIn": (self.setIn, _("Make this mark an 'in' point")),
-				"setOut": (self.setOut, _("Make this mark an 'out' point")),
-				"setStart": (self.setStart, _("Make this mark the initial 'in' point")),
-				"setEnd": (self.setEnd, _("Make this mark the final 'out' point")),
-				"setMark": (self.setMark, _("Make this mark just a mark")),
-				"addMark": (self.__addMark, _("Add a mark")),
-				"removeMark": (self.__removeMark, _("Remove a mark")),
-				"execute": (self.execute, _("Execute cuts and exit")),
-				"quickExecute": (self.quickExecute, _("Quick execute...")),
-				"leave": (self.exit, _("Exit editor")),
-				"showMenu": (self.showMenu, _("Menu")),
-				"backMenu": (self.backMenu, _("Restore previous cuts...")),
-			}, prio=-4)
+											{
+			"setIn": (self.setIn, _("Make this mark an 'in' point")),
+			"setOut": (self.setOut, _("Make this mark an 'out' point")),
+			"setStart": (self.setStart, _("Make this mark the initial 'in' point")),
+			"setEnd": (self.setEnd, _("Make this mark the final 'out' point")),
+			"setMark": (self.setMark, _("Make this mark just a mark")),
+			"addMark": (self.__addMark, _("Add a mark")),
+			"removeMark": (self.__removeMark, _("Remove a mark")),
+			"execute": (self.execute, _("Execute cuts and exit")),
+			"quickExecute": (self.quickExecute, _("Quick execute...")),
+			"leave": (self.exit, _("Exit editor")),
+			"showMenu": (self.showMenu, _("Menu")),
+			"backMenu": (self.backMenu, _("Restore previous cuts...")),
+		}, prio=-4)
 
 		self.onExecBegin.append(self.showTutorial)
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evCuesheetChanged: self.refillList
-			})
+			iPlayableService.evCuesheetChanged: self.refillList
+		})
 
 		# to track new entries we save the last version of the cutlist
 		self.last_cuts = self.getCutlist()

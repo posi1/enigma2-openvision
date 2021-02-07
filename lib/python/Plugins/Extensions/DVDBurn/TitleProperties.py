@@ -54,7 +54,7 @@ class TitleProperties(Screen, ConfigListScreen):
 			audiotrack.active.addNotifier(self.initConfigList)
 
 		self["setupActions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
+										 {
 			"green": self.exit,
 			"red": self.cancel,
 			"yellow": self.editTitle,
@@ -141,7 +141,7 @@ class TitleProperties(Screen, ConfigListScreen):
 	def ok(self):
 		#key = self.keydict[self["config"].getCurrent()[1]]
 		#if key in self.project.filekeys:
-			#self.session.openWithCallback(self.FileBrowserClosed, FileBrowser, key, self.settings)
+		#self.session.openWithCallback(self.FileBrowserClosed, FileBrowser, key, self.settings)
 		pass
 
 	def cancel(self):

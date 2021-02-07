@@ -632,7 +632,7 @@ class ServiceName2(Converter, object):
 		if what[0] != self.CHANGED_SPECIFIC or what[1] in (iPlayableService.evStart,):
 			self.refstr = self.isStream = self.ref = self.info = self.tpdata = None
 			if self.type in (self.NUMBER, self.BOUQUET) or \
-				(self.type == self.FORMAT and ('%n' in self.sfmt or '%B' in self.sfmt)):
+					(self.type == self.FORMAT and ('%n' in self.sfmt or '%B' in self.sfmt)):
 				self.what = what
 				self.Timer.start(200, True)
 			else:

@@ -273,7 +273,7 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 		self.createSetup()
 
 		self["actions"] = ActionMap(["SetupActions", 'ColorActions'],
-		{
+									{
 			"red": self.cancel,
 			"green": self.save,
 			"save": self.save,
@@ -305,7 +305,7 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 		if not config.movielist.settings_per_directory.value:
 			self.list += [getConfigListEntry(_("Permanent sort key changes"), config.movielist.perm_sort_changes, _("When set, sort changes via the sort key will be permanent.") + "\n" + _("When unset, sort changes will be temporary - just for this view of a directory."))]
 		self.list += [getConfigListEntry(_("Stop service on return to movie list"), config.movielist.stop_service, _("Stop previous broadcasted service on return to movie list.")),
-					 getConfigListEntry(_("Show status icons in movie list"), config.usage.show_icons_in_movielist, _("Shows the watched status of the movie."))]
+					  getConfigListEntry(_("Show status icons in movie list"), config.usage.show_icons_in_movielist, _("Shows the watched status of the movie."))]
 		if config.usage.show_icons_in_movielist.value != 'o':
 			self.list.append(getConfigListEntry(_("Show icon for new/unseen items"), config.usage.movielist_unseen, _("Shows the icons when new/unseen, otherwise it will not show an icon.")))
 		self.list.append(getConfigListEntry(_("Service Title mode"), config.usage.movielist_servicename_mode, _("Show picons in the movie list.")))
@@ -408,24 +408,24 @@ class MovieContextMenu(Screen, ProtectedScreen):
 		self.title = _("Movielist menu")
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "NumberActions", "MenuActions"],
-			{
-				"red": self.cancelClick,
-				"ok": self.okbuttonClick,
-				"cancel": self.cancelClick,
-				"green": self.do_showDeviceMounts,
-				"yellow": self.do_showNetworkMounts,
-				"blue": self.do_selectSortby,
-				"menu": self.do_configure,
-				"1": self.do_addbookmark,
-				"2": self.do_createdir,
-				"3": self.do_delete,
-				"4": self.do_move,
-				"5": self.do_copy,
-				"6": self.do_rename,
-				"7": self.do_reset,
-				"8": self.do_decode,
-				"9": self.do_unhideParentalServices
-			})
+									{
+			"red": self.cancelClick,
+			"ok": self.okbuttonClick,
+			"cancel": self.cancelClick,
+			"green": self.do_showDeviceMounts,
+			"yellow": self.do_showNetworkMounts,
+			"blue": self.do_selectSortby,
+			"menu": self.do_configure,
+			"1": self.do_addbookmark,
+			"2": self.do_createdir,
+			"3": self.do_delete,
+			"4": self.do_move,
+			"5": self.do_copy,
+			"6": self.do_rename,
+			"7": self.do_reset,
+			"8": self.do_decode,
+			"9": self.do_unhideParentalServices
+		})
 
 		self["key_red"] = StaticText(_("Cancel"))
 
@@ -678,69 +678,69 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		self["TrashcanSize"] = self.trashinfo = TrashInfo(config.movielist.last_videodir.value, TrashInfo.USED, update=False)
 
 		self["InfobarActions"] = HelpableActionMap(self, ["InfobarActions"],
-			{
-				"showMovies": (self.doPathSelect, _("Select the movie path")),
-				"showRadio": (self.btn_radio, boundFunction(self.getinitUserDefinedActionsDescription, "btn_radio")),
-				"showTv": (self.btn_tv, boundFunction(self.getinitUserDefinedActionsDescription, "btn_tv")),
-				"showText": (self.btn_text, boundFunction(self.getinitUserDefinedActionsDescription, "btn_text")),
-			})
+												   {
+			"showMovies": (self.doPathSelect, _("Select the movie path")),
+			"showRadio": (self.btn_radio, boundFunction(self.getinitUserDefinedActionsDescription, "btn_radio")),
+			"showTv": (self.btn_tv, boundFunction(self.getinitUserDefinedActionsDescription, "btn_tv")),
+			"showText": (self.btn_text, boundFunction(self.getinitUserDefinedActionsDescription, "btn_text")),
+		})
 
 		self["NumberActions"] = NumberActionMap(["NumberActions", "InputAsciiActions"],
-			{
-				"gotAsciiCode": self.keyAsciiCode,
-				"0": self.keyNumberGlobal,
-				"1": self.keyNumberGlobal,
-				"2": self.keyNumberGlobal,
-				"3": self.keyNumberGlobal,
-				"4": self.keyNumberGlobal,
-				"5": self.keyNumberGlobal,
-				"6": self.keyNumberGlobal,
-				"7": self.keyNumberGlobal,
-				"8": self.keyNumberGlobal,
-				"9": self.keyNumberGlobal
-			})
+												{
+			"gotAsciiCode": self.keyAsciiCode,
+			"0": self.keyNumberGlobal,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal
+		})
 
 		self["playbackActions"] = HelpableActionMap(self, ["MoviePlayerActions"],
-			{
-				"leavePlayer": (self.playbackStop, _("Stop")),
-				"moveNext": (self.playNext, _("Play next")),
-				"movePrev": (self.playPrev, _("Play previous")),
-				"channelUp": (self.moveToFirstOrFirstFile, _("Go to first movie or top of list")),
-				"channelDown": (self.moveToLastOrFirstFile, _("Go to first movie or last item")),
-			})
+													{
+			"leavePlayer": (self.playbackStop, _("Stop")),
+			"moveNext": (self.playNext, _("Play next")),
+			"movePrev": (self.playPrev, _("Play previous")),
+			"channelUp": (self.moveToFirstOrFirstFile, _("Go to first movie or top of list")),
+			"channelDown": (self.moveToLastOrFirstFile, _("Go to first movie or last item")),
+		})
 		self["MovieSelectionActions"] = HelpableActionMap(self, ["MovieSelectionActions"],
-			{
-				"contextMenu": (self.doContext, _("Menu")),
-				"showEventInfo": (self.showEventInformation, _("Show event details")),
-			})
+														  {
+			"contextMenu": (self.doContext, _("Menu")),
+			"showEventInfo": (self.showEventInformation, _("Show event details")),
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
-				"red": (self.btn_red, boundFunction(self.getinitUserDefinedActionsDescription, "btn_red")),
-				"green": (self.btn_green, boundFunction(self.getinitUserDefinedActionsDescription, "btn_green")),
-				"yellow": (self.btn_yellow, boundFunction(self.getinitUserDefinedActionsDescription, "btn_yellow")),
-				"blue": (self.btn_blue, boundFunction(self.getinitUserDefinedActionsDescription, "btn_blue")),
-				"redlong": (self.btn_redlong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_redlong")),
-				"greenlong": (self.btn_greenlong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_greenlong")),
-				"yellowlong": (self.btn_yellowlong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_yellowlong")),
-				"bluelong": (self.btn_bluelong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_bluelong")),
-			})
+												 {
+			"red": (self.btn_red, boundFunction(self.getinitUserDefinedActionsDescription, "btn_red")),
+			"green": (self.btn_green, boundFunction(self.getinitUserDefinedActionsDescription, "btn_green")),
+			"yellow": (self.btn_yellow, boundFunction(self.getinitUserDefinedActionsDescription, "btn_yellow")),
+			"blue": (self.btn_blue, boundFunction(self.getinitUserDefinedActionsDescription, "btn_blue")),
+			"redlong": (self.btn_redlong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_redlong")),
+			"greenlong": (self.btn_greenlong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_greenlong")),
+			"yellowlong": (self.btn_yellowlong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_yellowlong")),
+			"bluelong": (self.btn_bluelong, boundFunction(self.getinitUserDefinedActionsDescription, "btn_bluelong")),
+		})
 		self["FunctionKeyActions"] = HelpableActionMap(self, ["FunctionKeyActions"],
-			{
-				"f1": (self.btn_F1, boundFunction(self.getinitUserDefinedActionsDescription, "btn_F1")),
-				"f2": (self.btn_F2, boundFunction(self.getinitUserDefinedActionsDescription, "btn_F2")),
-				"f3": (self.btn_F3, boundFunction(self.getinitUserDefinedActionsDescription, "btn_F3")),
-			})
+													   {
+			"f1": (self.btn_F1, boundFunction(self.getinitUserDefinedActionsDescription, "btn_F1")),
+			"f2": (self.btn_F2, boundFunction(self.getinitUserDefinedActionsDescription, "btn_F2")),
+			"f3": (self.btn_F3, boundFunction(self.getinitUserDefinedActionsDescription, "btn_F3")),
+		})
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
-				"cancel": (self.abort, _("Exit movie list")),
-				"ok": (self.itemSelected, _("Select movie")),
-			})
+													{
+			"cancel": (self.abort, _("Exit movie list")),
+			"ok": (self.itemSelected, _("Select movie")),
+		})
 		self["DirectionActions"] = HelpableActionMap(self, ["DirectionActions"],
-			{
-				"up": (self.keyUp, _("Go up the list")),
-				"down": (self.keyDown, _("Go down the list"))
-			}, prio=-2)
+													 {
+			"up": (self.keyUp, _("Go up the list")),
+			"down": (self.keyDown, _("Go down the list"))
+		}, prio=-2)
 
 		tPreview = _("Preview")
 		tFwd = _("skip forward") + " (" + tPreview + ")"
@@ -750,24 +750,24 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		sback = lambda: self.seekRelative(-1, config.seek.selfdefined_46.value * 90000)
 		ssback = lambda: self.seekRelative(-1, config.seek.selfdefined_79.value * 90000)
 		self["SeekActions"] = HelpableActionMap(self, ["MovielistSeekActions"],
-			{
-				"playpauseService": (self.preview, _("Preview")),
-				"seekFwd": (sfwd, tFwd),
-				"seekFwdManual": (ssfwd, tFwd),
-				"seekBack": (sback, tBack),
-				"seekBackManual": (ssback, tBack),
-			}, prio=5)
+												{
+			"playpauseService": (self.preview, _("Preview")),
+			"seekFwd": (sfwd, tFwd),
+			"seekFwdManual": (ssfwd, tFwd),
+			"seekBack": (sback, tBack),
+			"seekBackManual": (ssback, tBack),
+		}, prio=5)
 		self.onShown.append(self.onFirstTimeShown)
 		self.onLayoutFinish.append(self.saveListsize)
 		self.list.connectSelChanged(self.updateButtons)
 		self.onClose.append(self.__onClose)
 		NavigationInstance.instance.RecordTimer.on_state_change.append(self.list.updateRecordings)
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				#iPlayableService.evSeekableStatusChanged: self.__seekableStatusChanged,
-				iPlayableService.evStart: self.__serviceStarted,
-				iPlayableService.evEOF: self.__evEOF,
-				#iPlayableService.evSOF: self.__evSOF,
-			})
+			#iPlayableService.evSeekableStatusChanged: self.__seekableStatusChanged,
+			iPlayableService.evStart: self.__serviceStarted,
+			iPlayableService.evEOF: self.__evEOF,
+			#iPlayableService.evSOF: self.__evSOF,
+		})
 		self.onExecBegin.append(self.asciiOn)
 		config.misc.standbyCounter.addNotifier(self.standbyCountChanged, initial_call=False)
 
@@ -851,21 +851,21 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			config.movielist.btn_F2 = ConfigSelection(default='preview', choices=userDefinedActions)
 			config.movielist.btn_F3 = ConfigSelection(default='/media', choices=userDefinedActions)
 		userDefinedButtons = {
-				'red': config.movielist.btn_red,
-				'green': config.movielist.btn_green,
-				'yellow': config.movielist.btn_yellow,
-				'blue': config.movielist.btn_blue,
-				'redlong': config.movielist.btn_redlong,
-				'greenlong': config.movielist.btn_greenlong,
-				'yellowlong': config.movielist.btn_yellowlong,
-				'bluelong': config.movielist.btn_bluelong,
-				'Radio': config.movielist.btn_radio,
-				'TV': config.movielist.btn_tv,
-				'Text': config.movielist.btn_text,
-				'F1': config.movielist.btn_F1,
-				'F2': config.movielist.btn_F2,
-				'F3': config.movielist.btn_F3
-			}
+			'red': config.movielist.btn_red,
+			'green': config.movielist.btn_green,
+			'yellow': config.movielist.btn_yellow,
+			'blue': config.movielist.btn_blue,
+			'redlong': config.movielist.btn_redlong,
+			'greenlong': config.movielist.btn_greenlong,
+			'yellowlong': config.movielist.btn_yellowlong,
+			'bluelong': config.movielist.btn_bluelong,
+			'Radio': config.movielist.btn_radio,
+			'TV': config.movielist.btn_tv,
+			'Text': config.movielist.btn_text,
+			'F1': config.movielist.btn_F1,
+			'F2': config.movielist.btn_F2,
+			'F3': config.movielist.btn_F3
+		}
 
 	def getinitUserDefinedActionsDescription(self, key):
 		return _(userDefinedActions.get(eval("config.movielist." + key + ".value"), _("Not Defined")))
@@ -1416,7 +1416,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				"moviesort": config.movielist.moviesort.value,
 				"description": config.movielist.description.value,
 				"movieoff": config.usage.on_movie_eof.value
-				}
+			}
 			self.applyConfigSettings(updates)
 
 # Remember this starting sort method for this dir.
@@ -1451,10 +1451,10 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			if config.movielist.settings_per_directory.getValue():
 				self.saveLocalSettings()
 			else:
-# ..otherwise, if we are setting permanent sort methods, save it,
-# while, for temporary sort methods, indicate to MovieList.py to
-# use a temporary sort override.
-#
+				# ..otherwise, if we are setting permanent sort methods, save it,
+				# while, for temporary sort methods, indicate to MovieList.py to
+				# use a temporary sort override.
+				#
 				if config.movielist.perm_sort_changes.getValue():
 					config.movielist.moviesort.setValue(newType)
 					config.movielist.moviesort.save()
@@ -1497,7 +1497,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 	def configureDone(self, result):
 		if result:
 			self.applyConfigSettings({
-			"moviesort": config.movielist.moviesort.value,
+				"moviesort": config.movielist.moviesort.value,
 				"description": config.movielist.description.value,
 				"movieoff": config.usage.on_movie_eof.value})
 			self.saveLocalSettings()
@@ -1695,7 +1695,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 					_("Directory %s does not exist.") % res,
 					type=MessageBox.TYPE_ERROR,
 					timeout=5
-					)
+				)
 				mbox.setTitle(self.getTitle())
 
 	def pinEntered(self, answer):
@@ -1871,8 +1871,8 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			if full_name == dirname: # split extensions for files without metafile
 				dirname, self.extension = os.path.splitext(dirname)
 		self.session.openWithCallback(self.createDirCallback, VirtualKeyBoard,
-			title=_("Please enter the name of the new directory"),
-			text=dirname)
+									  title=_("Please enter the name of the new directory"),
+									  text=dirname)
 
 	def createDirCallback(self, name):
 		if not name:
@@ -1916,8 +1916,8 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				name, self.extension = os.path.splitext(name)
 
 		self.session.openWithCallback(self.renameCallback, VirtualKeyBoard,
-			title=_("Rename"),
-			text=name)
+									  title=_("Rename"),
+									  text=name)
 
 	def do_decode(self):
 		from ServiceReference import ServiceReference

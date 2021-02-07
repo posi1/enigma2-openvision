@@ -46,13 +46,13 @@ except:
 
 
 class InfoBar(InfoBarBase, InfoBarShowHide,
-	InfoBarNumberZap, InfoBarChannelSelection, InfoBarMenu, InfoBarEPG, InfoBarRdsDecoder, InfoBarResolutionSelection, InfoBarAspectSelection,
-	InfoBarInstantRecord, InfoBarAudioSelection, InfoBarRedButton, InfoBarTimerButton, InfoBarVmodeButton,
-	HelpableScreen, InfoBarAdditionalInfo, InfoBarNotifications, InfoBarDish, InfoBarUnhandledKey,
-	InfoBarSubserviceSelection, InfoBarTimeshift, InfoBarSeek, InfoBarCueSheetSupport, InfoBarBuffer,
-	InfoBarSummarySupport, InfoBarTimeshiftState, InfoBarTeletextPlugin, InfoBarExtensions,
-	InfoBarPiP, InfoBarPlugins, InfoBarSubtitleSupport, InfoBarServiceErrorPopupSupport, InfoBarJobman, InfoBarZoom, InfoBarPowersaver,
-	InfoBarHDMI, InfoBarHdmi2, InfoBarHotkey, Screen):
+			  InfoBarNumberZap, InfoBarChannelSelection, InfoBarMenu, InfoBarEPG, InfoBarRdsDecoder, InfoBarResolutionSelection, InfoBarAspectSelection,
+			  InfoBarInstantRecord, InfoBarAudioSelection, InfoBarRedButton, InfoBarTimerButton, InfoBarVmodeButton,
+			  HelpableScreen, InfoBarAdditionalInfo, InfoBarNotifications, InfoBarDish, InfoBarUnhandledKey,
+			  InfoBarSubserviceSelection, InfoBarTimeshift, InfoBarSeek, InfoBarCueSheetSupport, InfoBarBuffer,
+			  InfoBarSummarySupport, InfoBarTimeshiftState, InfoBarTeletextPlugin, InfoBarExtensions,
+			  InfoBarPiP, InfoBarPlugins, InfoBarSubtitleSupport, InfoBarServiceErrorPopupSupport, InfoBarJobman, InfoBarZoom, InfoBarPowersaver,
+			  InfoBarHDMI, InfoBarHdmi2, InfoBarHotkey, Screen):
 
 	ALLOW_SUSPEND = True
 	instance = None
@@ -60,14 +60,14 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self["actions"] = HelpableActionMap(self, ["InfobarActions"],
-			{
-				"showMovies": (self.showMovies, _("Play recorded movies...")),
-				"showRadio": (self.showRadioButton, _("Show the radio player...")),
-				"showTv": (self.showTvButton, _("Show the tv player...")),
-				"toggleTvRadio": (self.toggleTvRadio, _("Toggle the tv and the radio player...")),
-				"ZoomInOut": (self.ZoomInOut, _("Zoom In/Out TV...")),
-				"ZoomOff": (self.ZoomOff, _("Zoom Off...")),
-			}, prio=2)
+											{
+			"showMovies": (self.showMovies, _("Play recorded movies...")),
+			"showRadio": (self.showRadioButton, _("Show the radio player...")),
+			"showTv": (self.showTvButton, _("Show the tv player...")),
+			"toggleTvRadio": (self.toggleTvRadio, _("Toggle the tv and the radio player...")),
+			"ZoomInOut": (self.ZoomInOut, _("Zoom In/Out TV...")),
+			"ZoomOff": (self.ZoomOff, _("Zoom Off...")),
+		}, prio=2)
 
 		self.radioTV = 0
 		self.allowPiP = True
@@ -86,8 +86,8 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.helpList.append((self["actions"], "InfobarActions", [("showRadio", _("Listen to the radio..."))]))
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				enigma.iPlayableService.evUpdatedEventInfo: self.__eventInfoChanged
-			})
+			enigma.iPlayableService.evUpdatedEventInfo: self.__eventInfoChanged
+		})
 
 		self.current_begin_time = 0
 		if InfoBar.instance is not None:
@@ -160,7 +160,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 			self.showRadio()
 
 	def ChannelSelectionRadioClosed(self, *arg):
-		self.rds_display.show()  # in InfoBarRdsDecoder
+		self.rds_display.show()	 # in InfoBarRdsDecoder
 		self.servicelist.correctChannelNumber()
 
 	def restartLastMovie(self):
@@ -219,9 +219,9 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 
 
 class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBarShowMovies, InfoBarInstantRecord, InfoBarVmodeButton, InfoBarResolutionSelection, InfoBarAspectSelection,
-		InfoBarAudioSelection, HelpableScreen, InfoBarNotifications, InfoBarServiceNotifications, InfoBarPVRState,
-		InfoBarCueSheetSupport, InfoBarMoviePlayerSummarySupport, InfoBarSubtitleSupport, Screen, InfoBarTeletextPlugin,
-		InfoBarServiceErrorPopupSupport, InfoBarExtensions, InfoBarPlugins, InfoBarPiP, InfoBarZoom, InfoBarHDMI, InfoBarHdmi2, InfoBarHotkey):
+				  InfoBarAudioSelection, HelpableScreen, InfoBarNotifications, InfoBarServiceNotifications, InfoBarPVRState,
+				  InfoBarCueSheetSupport, InfoBarMoviePlayerSummarySupport, InfoBarSubtitleSupport, Screen, InfoBarTeletextPlugin,
+				  InfoBarServiceErrorPopupSupport, InfoBarExtensions, InfoBarPlugins, InfoBarPiP, InfoBarZoom, InfoBarHDMI, InfoBarHdmi2, InfoBarHotkey):
 
 	ENABLE_RESUME_SUPPORT = True
 	ALLOW_SUSPEND = True
@@ -231,18 +231,18 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 		Screen.__init__(self, session)
 
 		self["actions"] = HelpableActionMap(self, ["MoviePlayerActions"],
-			{
-				"leavePlayer": (self.leavePlayer, _("leave movie player...")),
-				"leavePlayerOnExit": (self.leavePlayerOnExit, _("leave movie player...")),
-				"channelUp": (self.channelUp, _("when PiPzap enabled zap channel up...")),
-				"channelDown": (self.channelDown, _("when PiPzap enabled zap channel down...")),
-			})
+											{
+			"leavePlayer": (self.leavePlayer, _("leave movie player...")),
+			"leavePlayerOnExit": (self.leavePlayerOnExit, _("leave movie player...")),
+			"channelUp": (self.channelUp, _("when PiPzap enabled zap channel up...")),
+			"channelDown": (self.channelDown, _("when PiPzap enabled zap channel down...")),
+		})
 
 		self["DirectionActions"] = HelpableActionMap(self, "DirectionActions",
-			{
-				"left": self.left,
-				"right": self.right
-			}, prio=-2)
+													 {
+														 "left": self.left,
+														 "right": self.right
+													 }, prio=-2)
 
 		self.allowPiP = True
 

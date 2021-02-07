@@ -38,12 +38,12 @@ class SessionGlobals(Screen):
 		combine.connect(self["RecordState"])
 		combine.connect(self["HddSleepingState"])
 
-		#                      |  two leds  | single led |
-		# recordstate  standby   red green
-		#    false      false    off   on     off
-		#    true       false    blnk  on     blnk
-		#    false      true      on   off    off
-		#    true       true     blnk  off    blnk
+		#					   |  two leds	| single led |
+		# recordstate  standby	 red green
+		#	 false		false	 off   on	  off
+		#	 true		false	 blnk  on	  blnk
+		#	 false		true	  on   off	  off
+		#	 true		true	 blnk  off	  blnk
 
 		PATTERN_ON = (20, 0xffffffff, 0xffffffff)
 		PATTERN_OFF = (20, 0, 0)

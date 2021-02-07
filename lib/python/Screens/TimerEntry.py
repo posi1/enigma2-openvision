@@ -59,7 +59,7 @@ class TimerEntry(Screen, ConfigListScreen):
 			self["cancel"] = Pixmap()
 
 		self["actions"] = NumberActionMap(["SetupActions", "GlobalActions", "PiPSetupActions", "ColorActions"],
-		{
+										  {
 			"ok": self.keySelect,
 			"save": self.keyGo,
 			"cancel": self.keyCancel,
@@ -92,7 +92,7 @@ class TimerEntry(Screen, ConfigListScreen):
 			AFTEREVENT.DEEPSTANDBY: "deepstandby",
 			AFTEREVENT.STANDBY: "standby",
 			AFTEREVENT.AUTO: "auto"
-			}[self.timer.afterEvent]
+		}[self.timer.afterEvent]
 
 		if self.timer.record_ecm and self.timer.descramble:
 			recordingtype = "descrambled+ecm"
@@ -321,7 +321,7 @@ class TimerEntry(Screen, ConfigListScreen):
 			self.timerentry_dirname.value,
 			filename=answer,
 			minFree=100 # We require at least 100MB free space
-			)
+		)
 
 	def keySelect(self):
 		cur = self["config"].getCurrent()
@@ -384,10 +384,10 @@ class TimerEntry(Screen, ConfigListScreen):
 
 	def selectChannelSelector(self, *args):
 		self.session.openWithCallback(
-				self.finishedChannelSelectionCorrection,
-				ChannelSelection.SimpleChannelSelection,
-				_("Select channel to record from")
-			)
+			self.finishedChannelSelectionCorrection,
+			ChannelSelection.SimpleChannelSelection,
+			_("Select channel to record from")
+		)
 
 	def finishedChannelSelectionCorrection(self, *args):
 		if args:
@@ -428,7 +428,7 @@ class TimerEntry(Screen, ConfigListScreen):
 				"deepstandby": AFTEREVENT.DEEPSTANDBY,
 				"standby": AFTEREVENT.STANDBY,
 				"auto": AFTEREVENT.AUTO
-				}[self.timerentry_afterevent.value]
+			}[self.timerentry_afterevent.value]
 # There is no point doing anything after a Zap-only timer!
 # For a start, you can't actually configure anything in the menu, but
 # leaving it as AUTO means that the code may try to shutdown at Zap time
@@ -440,12 +440,12 @@ class TimerEntry(Screen, ConfigListScreen):
 				"normal": True,
 				"descrambled+ecm": True,
 				"scrambled+ecm": False,
-				}[self.timerentry_recordingtype.value]
+			}[self.timerentry_recordingtype.value]
 			self.timer.record_ecm = {
 				"normal": False,
 				"descrambled+ecm": True,
 				"scrambled+ecm": True,
-				}[self.timerentry_recordingtype.value]
+			}[self.timerentry_recordingtype.value]
 			self.timer.service_ref = self.timerentry_service_ref
 			self.timer.tags = self.timerentry_tags
 
@@ -594,7 +594,7 @@ class TimerLog(Screen):
 		self.onShown.append(self.updateText)
 
 		self["actions"] = NumberActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
-		{
+										  {
 			"ok": self.keyClose,
 			"cancel": self.keyClose,
 			"up": self.up,

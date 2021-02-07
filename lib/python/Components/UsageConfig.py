@@ -389,29 +389,29 @@ def InitUsageConfig():
 
 	if displaytype == "7segment" or "7seg" in displaytype:
 		config.usage.blinking_display_clock_during_recording = ConfigSelection(default="Rec", choices=[
-						("Rec", _("REC")),
-						("RecBlink", _("Blinking REC")),
-						("Time", _("Time")),
-						("Nothing", _("Nothing"))])
+			("Rec", _("REC")),
+			("RecBlink", _("Blinking REC")),
+			("Time", _("Time")),
+			("Nothing", _("Nothing"))])
 	else:
 		config.usage.blinking_display_clock_during_recording = ConfigYesNo(default=False)
 
 	if displaytype == "textlcd" or "text" in displaytype:
 		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default="Channel", choices=[
-						("Rec", _("REC Symbol")),
-						("RecBlink", _("Blinking REC Symbol")),
-						("Channel", _("Channelname"))])
+			("Rec", _("REC Symbol")),
+			("RecBlink", _("Blinking REC Symbol")),
+			("Channel", _("Channelname"))])
 	if displaytype == "7segment" or "7seg" in displaytype:
 		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default="Rec", choices=[
-						("Rec", _("REC")),
-						("RecBlink", _("Blinking REC")),
-						("Time", _("Time"))])
+			("Rec", _("REC")),
+			("RecBlink", _("Blinking REC")),
+			("Time", _("Time"))])
 	else:
 		config.usage.blinking_rec_symbol_during_recording = ConfigYesNo(default=True)
 
 	config.usage.show_in_standby = ConfigSelection(default="time", choices=[
-					("time", _("Time")),
-					("nothing", _("Nothing"))])
+		("time", _("Time")),
+		("nothing", _("Nothing"))])
 
 	config.usage.show_message_when_recording_starts = ConfigYesNo(default=True)
 
@@ -1123,19 +1123,19 @@ def InitUsageConfig():
 		else:
 			if model == "vuzero4k" or getMachineBuild() == "dm4kgen":
 				config.av.hdmicolorspace = ConfigSelection(choices={
-						"Edid(Auto)": _("Auto"),
-						"Hdmi_Rgb": _("RGB"),
-						"Itu_R_BT_709": _("BT709"),
-						"DVI_Full_Range_RGB": _("Full Range RGB"),
-						"FCC": _("FCC 1953"),
-						"Itu_R_BT_470_2_BG": _("BT470 BG"),
-						"Smpte_170M": _("Smpte 170M"),
-						"Smpte_240M": _("Smpte 240M"),
-						"Itu_R_BT_2020_NCL": _("BT2020 NCL"),
-						"Itu_R_BT_2020_CL": _("BT2020 CL"),
-						"XvYCC_709": _("BT709 XvYCC"),
-						"XvYCC_601": _("BT601 XvYCC")},
-						default="Edid(Auto)")
+					"Edid(Auto)": _("Auto"),
+					"Hdmi_Rgb": _("RGB"),
+					"Itu_R_BT_709": _("BT709"),
+					"DVI_Full_Range_RGB": _("Full Range RGB"),
+					"FCC": _("FCC 1953"),
+					"Itu_R_BT_470_2_BG": _("BT470 BG"),
+					"Smpte_170M": _("Smpte 170M"),
+					"Smpte_240M": _("Smpte 240M"),
+					"Itu_R_BT_2020_NCL": _("BT2020 NCL"),
+					"Itu_R_BT_2020_CL": _("BT2020 CL"),
+					"XvYCC_709": _("BT709 XvYCC"),
+					"XvYCC_601": _("BT601 XvYCC")},
+					default="Edid(Auto)")
 			else:
 				config.av.hdmicolorspace = ConfigSelection(default="auto", choices={"auto": _("auto"), "rgb": _("rgb"), "420": _("420"), "422": _("422"), "444": _("444")})
 		config.av.hdmicolorspace.addNotifier(setHaveColorspace)
@@ -1168,13 +1168,13 @@ def InitUsageConfig():
 		def setHlgSupport(configElement):
 			open("/proc/stb/hdmi/hlg_support", "w").write(configElement.value)
 		config.av.hlg_support = ConfigSelection(default="auto(EDID)",
-			choices=[("auto(EDID)", _("controlled by HDMI")), ("yes", _("force enabled")), ("no", _("force disabled"))])
+												choices=[("auto(EDID)", _("controlled by HDMI")), ("yes", _("force enabled")), ("no", _("force disabled"))])
 		config.av.hlg_support.addNotifier(setHlgSupport)
 
 		def setHdr10Support(configElement):
 			open("/proc/stb/hdmi/hdr10_support", "w").write(configElement.value)
 		config.av.hdr10_support = ConfigSelection(default="auto(EDID)",
-			choices=[("auto(EDID)", _("controlled by HDMI")), ("yes", _("force enabled")), ("no", _("force disabled"))])
+												  choices=[("auto(EDID)", _("controlled by HDMI")), ("yes", _("force enabled")), ("no", _("force disabled"))])
 		config.av.hdr10_support.addNotifier(setHdr10Support)
 
 		def setDisable12Bit(configElement):
@@ -1400,7 +1400,7 @@ def InitUsageConfig():
 			eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
 			eEPGCache.getInstance().timeUpdated()
 			if not os.path.islink('/etc/network/if-up.d/ntpdate-sync'):
-				Console().ePopen("echo '30 * * * *    /usr/bin/ntpdate-sync silent' >>/etc/cron/crontabs/root;ln -s /usr/bin/ntpdate-sync /etc/network/if-up.d/ntpdate-sync")
+				Console().ePopen("echo '30 * * * *	  /usr/bin/ntpdate-sync silent' >>/etc/cron/crontabs/root;ln -s /usr/bin/ntpdate-sync /etc/network/if-up.d/ntpdate-sync")
 	config.ntp.timesync = ConfigSelection(default="auto", choices=[("auto", _("auto")), ("dvb", _("Transponder Time")), ("ntp", _("Internet (ntp)"))])
 	config.ntp.timesync.addNotifier(timesyncChanged)
 	config.ntp.server = ConfigText("pool.ntp.org", fixed_size=False)
@@ -1447,64 +1447,64 @@ def patchTuxtxtConfFile(dummyConfigElement):
 	print("[UsageConfig] patching tuxtxt2.conf")
 	if config.usage.tuxtxt_font_and_res.value == "X11_SD":
 		tuxtxt2 = [["UseTTF", 0],
-					["TTFBold", 1],
-					["TTFScreenResX", 720],
-					["StartX", 50],
-					["EndX", 670],
-					["StartY", 30],
-					["EndY", 555],
-					["TTFShiftY", 0],
-					["TTFShiftX", 0],
-					["TTFWidthFactor16", 26],
-					["TTFHeightFactor16", 14]]
+				   ["TTFBold", 1],
+				   ["TTFScreenResX", 720],
+				   ["StartX", 50],
+				   ["EndX", 670],
+				   ["StartY", 30],
+				   ["EndY", 555],
+				   ["TTFShiftY", 0],
+				   ["TTFShiftX", 0],
+				   ["TTFWidthFactor16", 26],
+				   ["TTFHeightFactor16", 14]]
 	elif config.usage.tuxtxt_font_and_res.value == "TTF_SD":
 		tuxtxt2 = [["UseTTF", 1],
-					["TTFBold", 1],
-					["TTFScreenResX", 720],
-					["StartX", 50],
-					["EndX", 670],
-					["StartY", 30],
-					["EndY", 555],
-					["TTFShiftY", 2],
-					["TTFShiftX", 0],
-					["TTFWidthFactor16", 29],
-					["TTFHeightFactor16", 14]]
+				   ["TTFBold", 1],
+				   ["TTFScreenResX", 720],
+				   ["StartX", 50],
+				   ["EndX", 670],
+				   ["StartY", 30],
+				   ["EndY", 555],
+				   ["TTFShiftY", 2],
+				   ["TTFShiftX", 0],
+				   ["TTFWidthFactor16", 29],
+				   ["TTFHeightFactor16", 14]]
 	elif config.usage.tuxtxt_font_and_res.value == "TTF_HD":
 		tuxtxt2 = [["UseTTF", 1],
-					["TTFBold", 0],
-					["TTFScreenResX", 1280],
-					["StartX", 80],
-					["EndX", 1200],
-					["StartY", 35],
-					["EndY", 685],
-					["TTFShiftY", -3],
-					["TTFShiftX", 0],
-					["TTFWidthFactor16", 26],
-					["TTFHeightFactor16", 14]]
+				   ["TTFBold", 0],
+				   ["TTFScreenResX", 1280],
+				   ["StartX", 80],
+				   ["EndX", 1200],
+				   ["StartY", 35],
+				   ["EndY", 685],
+				   ["TTFShiftY", -3],
+				   ["TTFShiftX", 0],
+				   ["TTFWidthFactor16", 26],
+				   ["TTFHeightFactor16", 14]]
 	elif config.usage.tuxtxt_font_and_res.value == "TTF_FHD":
 		tuxtxt2 = [["UseTTF", 1],
-					["TTFBold", 0],
-					["TTFScreenResX", 1920],
-					["StartX", 140],
-					["EndX", 1780],
-					["StartY", 52],
-					["EndY", 1027],
-					["TTFShiftY", -6],
-					["TTFShiftX", 0],
-					["TTFWidthFactor16", 26],
-					["TTFHeightFactor16", 14]]
+				   ["TTFBold", 0],
+				   ["TTFScreenResX", 1920],
+				   ["StartX", 140],
+				   ["EndX", 1780],
+				   ["StartY", 52],
+				   ["EndY", 1027],
+				   ["TTFShiftY", -6],
+				   ["TTFShiftX", 0],
+				   ["TTFWidthFactor16", 26],
+				   ["TTFHeightFactor16", 14]]
 	elif config.usage.tuxtxt_font_and_res.value == "expert_mode":
 		tuxtxt2 = [["UseTTF", int(config.usage.tuxtxt_UseTTF.value)],
-					["TTFBold", int(config.usage.tuxtxt_TTFBold.value)],
-					["TTFScreenResX", int(config.usage.tuxtxt_TTFScreenResX.value)],
-					["StartX", config.usage.tuxtxt_StartX.value],
-					["EndX", config.usage.tuxtxt_EndX.value],
-					["StartY", config.usage.tuxtxt_StartY.value],
-					["EndY", config.usage.tuxtxt_EndY.value],
-					["TTFShiftY", int(config.usage.tuxtxt_TTFShiftY.value)],
-					["TTFShiftX", int(config.usage.tuxtxt_TTFShiftX.value)],
-					["TTFWidthFactor16", config.usage.tuxtxt_TTFWidthFactor16.value],
-					["TTFHeightFactor16", config.usage.tuxtxt_TTFHeightFactor16.value]]
+				   ["TTFBold", int(config.usage.tuxtxt_TTFBold.value)],
+				   ["TTFScreenResX", int(config.usage.tuxtxt_TTFScreenResX.value)],
+				   ["StartX", config.usage.tuxtxt_StartX.value],
+				   ["EndX", config.usage.tuxtxt_EndX.value],
+				   ["StartY", config.usage.tuxtxt_StartY.value],
+				   ["EndY", config.usage.tuxtxt_EndY.value],
+				   ["TTFShiftY", int(config.usage.tuxtxt_TTFShiftY.value)],
+				   ["TTFShiftX", int(config.usage.tuxtxt_TTFShiftX.value)],
+				   ["TTFWidthFactor16", config.usage.tuxtxt_TTFWidthFactor16.value],
+				   ["TTFHeightFactor16", config.usage.tuxtxt_TTFHeightFactor16.value]]
 	tuxtxt2.append(["CleanAlgo", config.usage.tuxtxt_CleanAlgo.value])
 
 	TUXTXT_CFG_FILE = "/etc/tuxtxt/tuxtxt2.conf"

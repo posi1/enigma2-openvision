@@ -328,7 +328,7 @@ import Components.config
 print("[enigma] done")
 
 my_config = [
-"config.skin.primary_skin=None\n"
+	"config.skin.primary_skin=None\n"
 ]
 
 Components.config.config.unpickle(my_config)

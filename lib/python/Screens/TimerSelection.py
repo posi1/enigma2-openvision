@@ -15,10 +15,10 @@ class TimerSelection(Screen):
 		self["timerlist"] = TimerList(self.list)
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self.selected,
-				"cancel": self.leave,
-			}, -1)
+									{
+			"ok": self.selected,
+			"cancel": self.leave,
+		}, -1)
 
 	def leave(self):
 		self.close(None)

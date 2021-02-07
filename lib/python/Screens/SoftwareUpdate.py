@@ -66,7 +66,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		self.onClose.append(self.__close)
 
 		self["actions"] = ActionMap(["WizardActions"],
-		{
+									{
 			"ok": self.exit,
 			"back": self.exit
 		}, -1)
@@ -231,7 +231,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 						message += " " + _("Reflash recommended!")
 					else:
 						choices = [(_("Update and reboot (recommended)"), "cold"),
-						(_("Update and ask to reboot"), "hot")]
+								   (_("Update and ask to reboot"), "hot")]
 					choices.append((_("Update channel list only"), "channels"))
 					choices.append((_("Show packages to be updated"), "showlist"))
 				else:

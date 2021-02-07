@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from Tools.CList import CList
 
-# down                       up
+# down						 up
 # Render Converter Converter Source
 
 # a bidirectional connection
@@ -30,11 +30,11 @@ class ElementError(Exception):
 
 
 class Element(object):
-	CHANGED_DEFAULT = 0   # initial "pull" state
-	CHANGED_ALL = 1       # really everything changed
-	CHANGED_CLEAR = 2     # we're expecting a real update soon. don't bother polling NOW, but clear data.
+	CHANGED_DEFAULT = 0	  # initial "pull" state
+	CHANGED_ALL = 1		  # really everything changed
+	CHANGED_CLEAR = 2	  # we're expecting a real update soon. don't bother polling NOW, but clear data.
 	CHANGED_SPECIFIC = 3  # second tuple will specify what exactly changed
-	CHANGED_POLL = 4      # a timer expired
+	CHANGED_POLL = 4	  # a timer expired
 
 	SINGLE_SOURCE = True
 

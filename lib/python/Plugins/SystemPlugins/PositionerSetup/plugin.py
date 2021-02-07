@@ -144,7 +144,7 @@ class PositionerSetup(Screen):
 					del feInfo
 					del service
 					InfoBar.instance and hasattr(InfoBar.instance, "showPiP") and InfoBar.instance.showPiP()
-					if hasattr(session, 'pip'):  # try to disable pip again
+					if hasattr(session, 'pip'):	 # try to disable pip again
 						del session.pip
 						session.pipshown = False
 					if not self.openFrontend():
@@ -161,20 +161,20 @@ class PositionerSetup(Screen):
 		self.tuner = Tuner(self.frontend, ignore_rotor=True)
 
 		tp = (cur.get("frequency", 0) / 1000,
-			cur.get("symbol_rate", 0) / 1000,
-			cur.get("polarization", eDVBFrontendParametersSatellite.Polarisation_Horizontal),
-			cur.get("fec_inner", eDVBFrontendParametersSatellite.FEC_Auto),
-			cur.get("inversion", eDVBFrontendParametersSatellite.Inversion_Unknown),
-			cur.get("orbital_position", 0),
-			cur.get("system", eDVBFrontendParametersSatellite.System_DVB_S),
-			cur.get("modulation", eDVBFrontendParametersSatellite.Modulation_QPSK),
-			cur.get("rolloff", eDVBFrontendParametersSatellite.RollOff_alpha_0_35),
-			cur.get("pilot", eDVBFrontendParametersSatellite.Pilot_Unknown),
-			cur.get("is_id", eDVBFrontendParametersSatellite.No_Stream_Id_Filter),
-			cur.get("pls_mode", eDVBFrontendParametersSatellite.PLS_Gold),
-			cur.get("pls_code", eDVBFrontendParametersSatellite.PLS_Default_Gold_Code),
-			cur.get("t2mi_plp_id", eDVBFrontendParametersSatellite.No_T2MI_PLP_Id),
-			cur.get("t2mi_pid", eDVBFrontendParametersSatellite.T2MI_Default_Pid))
+			  cur.get("symbol_rate", 0) / 1000,
+			  cur.get("polarization", eDVBFrontendParametersSatellite.Polarisation_Horizontal),
+			  cur.get("fec_inner", eDVBFrontendParametersSatellite.FEC_Auto),
+			  cur.get("inversion", eDVBFrontendParametersSatellite.Inversion_Unknown),
+			  cur.get("orbital_position", 0),
+			  cur.get("system", eDVBFrontendParametersSatellite.System_DVB_S),
+			  cur.get("modulation", eDVBFrontendParametersSatellite.Modulation_QPSK),
+			  cur.get("rolloff", eDVBFrontendParametersSatellite.RollOff_alpha_0_35),
+			  cur.get("pilot", eDVBFrontendParametersSatellite.Pilot_Unknown),
+			  cur.get("is_id", eDVBFrontendParametersSatellite.No_Stream_Id_Filter),
+			  cur.get("pls_mode", eDVBFrontendParametersSatellite.PLS_Gold),
+			  cur.get("pls_code", eDVBFrontendParametersSatellite.PLS_Default_Gold_Code),
+			  cur.get("t2mi_plp_id", eDVBFrontendParametersSatellite.No_T2MI_PLP_Id),
+			  cur.get("t2mi_pid", eDVBFrontendParametersSatellite.T2MI_Default_Pid))
 
 		self.tuner.tune(tp)
 		self.isMoving = False
@@ -231,7 +231,7 @@ class PositionerSetup(Screen):
 		self.tuningChangedTo(tp)
 
 		self["actions"] = NumberActionMap(["DirectionActions", "OkCancelActions", "ColorActions", "TimerEditActions", "InputActions", "InfobarMenuActions"],
-		{
+										  {
 			"ok": self.keyOK,
 			"cancel": self.keyCancel,
 			"up": self.keyUp,
@@ -590,8 +590,8 @@ class PositionerSetup(Screen):
 		if entry == "tune":
 			# Auto focus
 			self.printMsg(_("Auto focus"))
-			print((_("Site latitude") + "      : %5.1f %s") % PositionerSetup.latitude2orbital(self.sitelat), file=log)
-			print((_("Site longitude") + "     : %5.1f %s") % PositionerSetup.longitude2orbital(self.sitelon), file=log)
+			print((_("Site latitude") + "	   : %5.1f %s") % PositionerSetup.latitude2orbital(self.sitelat), file=log)
+			print((_("Site longitude") + "	   : %5.1f %s") % PositionerSetup.longitude2orbital(self.sitelon), file=log)
 			Thread(target=self.autofocus).start()
 		elif entry == "move":
 			if self.isMoving:
@@ -682,8 +682,8 @@ class PositionerSetup(Screen):
 		elif entry == "tune":
 			# Start USALS calibration
 			self.printMsg(_("USALS calibration"))
-			print((_("Site latitude") + "      : %5.1f %s") % PositionerSetup.latitude2orbital(self.sitelat), file=log)
-			print((_("Site longitude") + "     : %5.1f %s") % PositionerSetup.longitude2orbital(self.sitelon), file=log)
+			print((_("Site latitude") + "	   : %5.1f %s") % PositionerSetup.latitude2orbital(self.sitelat), file=log)
+			print((_("Site longitude") + "	   : %5.1f %s") % PositionerSetup.longitude2orbital(self.sitelon), file=log)
 			Thread(target=self.gotoXcalibration).start()
 
 	def blueKey(self):
@@ -737,8 +737,8 @@ class PositionerSetup(Screen):
 	def recalcConfirmed(self, yesno):
 		if yesno:
 			self.printMsg(_("Calculate all positions"))
-			print((_("Site latitude") + "      : %5.1f %s") % PositionerSetup.latitude2orbital(self.sitelat), file=log)
-			print((_("Site longitude") + "     : %5.1f %s") % PositionerSetup.longitude2orbital(self.sitelon), file=log)
+			print((_("Site latitude") + "	   : %5.1f %s") % PositionerSetup.latitude2orbital(self.sitelat), file=log)
+			print((_("Site longitude") + "	   : %5.1f %s") % PositionerSetup.longitude2orbital(self.sitelon), file=log)
 			lon = self.sitelon
 			if lon >= 180:
 				lon -= 360
@@ -982,7 +982,7 @@ class PositionerSetup(Screen):
 
 		def reportlevels(pos, level, lock):
 			print((_("Signal quality") + " %5.1f" + chr(176) + "   : %6.2f") % (pos, level), file=log)
-			print((_("Lock ratio") + "     %5.1f" + chr(176) + "   : %6.2f") % (pos, lock), file=log)
+			print((_("Lock ratio") + "	   %5.1f" + chr(176) + "   : %6.2f") % (pos, lock), file=log)
 
 		def optimise(readings):
 			xi = readings.keys()
@@ -1043,7 +1043,7 @@ class PositionerSetup(Screen):
 		measurements = {}
 		self.measure()
 		print((_("Initial signal quality") + " %5.1f" + chr(176) + ": %6.2f") % (x, self.snr_percentage), file=log)
-		print((_("Initial lock ratio") + "     %5.1f" + chr(176) + ": %6.2f") % (x, self.lock_count), file=log)
+		print((_("Initial lock ratio") + "	   %5.1f" + chr(176) + ": %6.2f") % (x, self.lock_count), file=log)
 		measurements[x] = (self.snr_percentage, self.lock_count)
 
 		start_pos = x
@@ -1100,8 +1100,8 @@ class PositionerSetup(Screen):
 			satlon -= 360
 		x0 += satlon
 		xm += satlon
-		print((_("Weighted position") + "     : %5.1f" + chr(176) + " %s") % (abs(x0), toGeopos(x0)), file=log)
-		print((_("Strongest position") + "    : %5.1f" + chr(176) + " %s") % (abs(xm), toGeopos(xm)), file=log)
+		print((_("Weighted position") + "	  : %5.1f" + chr(176) + " %s") % (abs(x0), toGeopos(x0)), file=log)
+		print((_("Strongest position") + "	  : %5.1f" + chr(176) + " %s") % (abs(xm), toGeopos(xm)), file=log)
 		self.logMsg((_("Final position at") + " %5.1f" + chr(176) + " %s / %d; " + _("offset is") + " %4.1f" + chr(176)) % (abs(x0), toGeopos(x0), x, x0 - satlon), timeout=10)
 
 	def autofocus(self):
@@ -1117,7 +1117,7 @@ class PositionerSetup(Screen):
 
 		def reportlevels(pos, level, lock):
 			print((_("Signal quality") + " [%2d]   : %6.2f") % (pos, level), file=log)
-			print((_("Lock ratio") + " [%2d]       : %6.2f") % (pos, lock), file=log)
+			print((_("Lock ratio") + " [%2d]	   : %6.2f") % (pos, lock), file=log)
 
 		def optimise(readings):
 			xi = readings.keys()
@@ -1138,7 +1138,7 @@ class PositionerSetup(Screen):
 		maxsteps = max(min(round(self.MAX_FOCUS_ANGLE / self.tuningstepsize), 0x1F), 3)
 		self.measure()
 		print((_("Initial signal quality:") + " %6.2f") % self.snr_percentage, file=log)
-		print((_("Initial lock ratio") + "    : %6.2f") % self.lock_count, file=log)
+		print((_("Initial lock ratio") + "	  : %6.2f") % self.lock_count, file=log)
 		if self.lock_count < 1 - self.LOCK_LIMIT:
 			msg = _("There is no signal to lock on !")
 			self.printMsg(msg)
@@ -1155,7 +1155,7 @@ class PositionerSetup(Screen):
 		while nsteps < maxsteps:
 			x += dir
 			self.statusMsg((_("Moving") + " " + toGeoposEx(dir) + " %2d") % abs(x), blinking=True)
-			move(dir) 		# one step
+			move(dir)		# one step
 			self.measure()
 			measurements[x] = (self.snr_percentage, self.lock_count)
 			reportlevels(x, self.snr_percentage, self.lock_count)
@@ -1169,7 +1169,7 @@ class PositionerSetup(Screen):
 			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, timeout=5)
 			return
 		dir = -dir
-		self.statusMsg(_("Moving") + " " + toGeoposEx(dir) + "  0", blinking=True)
+		self.statusMsg(_("Moving") + " " + toGeoposEx(dir) + "	0", blinking=True)
 		move(-x)
 		if not self.sync():
 			msg = _("Sync failure moving back to origin !")
@@ -1182,7 +1182,7 @@ class PositionerSetup(Screen):
 		while nsteps < maxsteps:
 			x += dir
 			self.statusMsg((_("Moving") + " " + toGeoposEx(dir) + " %2d") % abs(x), blinking=True)
-			move(dir) 		# one step
+			move(dir)		# one step
 			self.measure()
 			measurements[x] = (self.snr_percentage, self.lock_count)
 			reportlevels(x, self.snr_percentage, self.lock_count)
@@ -1196,8 +1196,8 @@ class PositionerSetup(Screen):
 			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, timeout=5)
 			return
 		(x0, xm) = optimise(measurements)
-		print((_("Weighted position") + "     : %2d") % x0, file=log)
-		print((_("Strongest position") + "    : %2d") % xm, file=log)
+		print((_("Weighted position") + "	  : %2d") % x0, file=log)
+		print((_("Strongest position") + "	  : %2d") % xm, file=log)
 		self.logMsg((_("Final position at index") + " %2d (%5.1f" + chr(176) + ")") % (x0, x0 * self.tuningstepsize), timeout=6)
 		move(x0 - x)
 
@@ -1246,12 +1246,12 @@ class Diseqc:
 class PositionerSetupLog(Screen):
 	skin = """
 		<screen position="center,center" size="560,400" title="Positioner setup log" >
-			<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="buttons/red.png" transparent="1" alphatest="on" />
+			<ePixmap name="red"	   position="0,0"	zPosition="2" size="140,40" pixmap="buttons/red.png" transparent="1" alphatest="on" />
 			<ePixmap name="green"  position="230,0" zPosition="2" size="140,40" pixmap="buttons/green.png" transparent="1" alphatest="on" />
 			<ePixmap name="blue"   position="420,0" zPosition="2" size="140,40" pixmap="buttons/blue.png" transparent="1" alphatest="on" />
 
 			<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-			<widget name="key_green" position="230,0" size="140,40" halign="center" valign="center"  zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+			<widget name="key_green" position="230,0" size="140,40" halign="center" valign="center"	 zPosition="4"	foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 			<widget name="key_blue" position="420,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 
 			<ePixmap alphatest="on" pixmap="icons/clock.png" position="480,383" size="14,14" zPosition="3"/>
@@ -1270,7 +1270,7 @@ class PositionerSetupLog(Screen):
 		self["key_blue"] = Button(_("Clear"))
 		self["list"] = ScrollLabel(log.getvalue())
 		self["actions"] = ActionMap(["DirectionActions", "OkCancelActions", "ColorActions"],
-		{
+									{
 			"red": self.cancel,
 			"green": self.save,
 			"save": self.save,
@@ -1329,7 +1329,7 @@ class TunerScreen(ConfigListScreen, Screen):
 		self.scan_sat.system.addNotifier(self.systemChanged)
 
 		self["actions"] = NumberActionMap(["SetupActions", "ColorActions"],
-		{
+										  {
 			"ok": self.keyGo,
 			"cancel": self.keyCancel,
 			"red": self.keyCancel,
@@ -1345,9 +1345,9 @@ class TunerScreen(ConfigListScreen, Screen):
 		orb_pos = self.fe_data.get("orbital_position", None)
 		self.tuning = ConfigSubsection()
 		self.tuning.type = ConfigSelection(
-				default="manual_transponder",
-				choices={"manual_transponder": _("Manual transponder"),
-							"predefined_transponder": _("Predefined transponder")})
+			default="manual_transponder",
+			choices={"manual_transponder": _("Manual transponder"),
+					 "predefined_transponder": _("Predefined transponder")})
 		self.tuning.sat = ConfigSatlist(list=satlist)
 		if orb_pos is not None:
 			orb_pos_str = str(orb_pos)
@@ -1554,7 +1554,7 @@ class TunerScreen(ConfigListScreen, Screen):
 		elif self.tuning.type.value == "predefined_transponder":
 			transponder = nimmanager.getTransponders(satpos)[self.tuning.transponder.index]
 			returnvalue = (transponder[1] / 1000, transponder[2] / 1000,
-				transponder[3], transponder[4], 2, satpos, transponder[5], transponder[6], transponder[8], transponder[9], transponder[10], transponder[11], transponder[12], transponder[13], transponder[14])
+						   transponder[3], transponder[4], 2, satpos, transponder[5], transponder[6], transponder[8], transponder[9], transponder[10], transponder[11], transponder[12], transponder[13], transponder[14])
 		self.close(returnvalue)
 
 	def keyCancel(self):
@@ -1577,7 +1577,7 @@ class RotorNimSelection(Screen):
 		self["nimlist"] = MenuList(nimMenuList)
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-		{
+									{
 			"ok": self.okbuttonClick,
 			"cancel": self.close
 		}, -1)

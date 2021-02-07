@@ -56,8 +56,8 @@ class OscamInfo:
 	ECMTIME = 5
 	IP_PORT = 6
 	HEAD = {NAME: _("Label"), PROT: _("Protocol"),
-		CAID_SRVID: _("CAID:SrvID"), SRVNAME: _("Serv.Name"),
-		ECMTIME: _("ECM-Time"), IP_PORT: _("IP address")}
+			CAID_SRVID: _("CAID:SrvID"), SRVNAME: _("Serv.Name"),
+			ECMTIME: _("ECM-Time"), IP_PORT: _("IP address")}
 	version = ""
 
 	def confPath(self):
@@ -115,7 +115,7 @@ class OscamInfo:
 			ret = _("OScam webif disabled")
 
 		if webif and port is not None:
-		# oscam reports it got webif support and webif is running (Port != 0)
+			# oscam reports it got webif support and webif is running (Port != 0)
 			if conf is not None and os.path.exists(conf):
 				# If we have a config file, we need to investigate it further
 				with open(conf, 'r') as data:
@@ -363,7 +363,7 @@ class OscamInfo:
 								readers.append((_("%s ( %s Cards )") % (name, cards), name))
 						else:
 							if cl.attrib["name"] != "" and cl.attrib["name"] != "" and cl.attrib["protocol"] != "":
-								readers.append((cl.attrib["name"], cl.attrib["name"]))  # return tuple for later use in Choicebox
+								readers.append((cl.attrib["name"], cl.attrib["name"]))	# return tuple for later use in Choicebox
 			return readers
 		else:
 			return None
@@ -378,7 +378,7 @@ class OscamInfo:
 			for cl in clients:
 				if "type" in cl.attrib:
 					if cl.attrib["type"] == "c":
-						readers.append((cl.attrib["name"], cl.attrib["name"]))  # return tuple for later use in Choicebox
+						readers.append((cl.attrib["name"], cl.attrib["name"]))	# return tuple for later use in Choicebox
 			return clientnames
 		else:
 			return None
@@ -447,26 +447,26 @@ class OscamInfoMenu(Screen):
 		self.osc = OscamInfo()
 		self["mainmenu"] = oscMenuList([])
 		self["actions"] = NumberActionMap(["OkCancelActions", "InputActions", "ColorActions"],
-					{
-						"ok": self.ok,
-						"cancel": self.exit,
-						"red": self.red,
-						"green": self.green,
-						"yellow": self.yellow,
-						"blue": self.blue,
-						"1": self.keyNumberGlobal,
-						"2": self.keyNumberGlobal,
-						"3": self.keyNumberGlobal,
-						"4": self.keyNumberGlobal,
-						"5": self.keyNumberGlobal,
-						"6": self.keyNumberGlobal,
-						"7": self.keyNumberGlobal,
-						"8": self.keyNumberGlobal,
-						"9": self.keyNumberGlobal,
-						"0": self.keyNumberGlobal,
-						"up": self.up,
-						"down": self.down
-						}, -1)
+										  {
+			"ok": self.ok,
+			"cancel": self.exit,
+			"red": self.red,
+			"green": self.green,
+			"yellow": self.yellow,
+			"blue": self.blue,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"0": self.keyNumberGlobal,
+			"up": self.up,
+			"down": self.down
+		}, -1)
 		self.onLayoutFinish.append(self.showMenu)
 
 	def ok(self):
@@ -639,10 +639,10 @@ class oscECMInfo(Screen, OscamInfo):
 			timeout = config.oscaminfo.intervall.value * 1000
 			self.loop.start(int(100))
 		self["actions"] = ActionMap(["OkCancelActions"],
-					{
-						"ok": self.exit,
-						"cancel": self.exit
-					}, -1)
+									{
+			"ok": self.exit,
+										"cancel": self.exit
+		}, -1)
 		self.onLayoutFinish.append(self.showData)
 
 	def exit(self):
@@ -655,7 +655,7 @@ class oscECMInfo(Screen, OscamInfo):
 			"",
 			(eListboxPythonMultiContent.TYPE_TEXT, 10 * f, 2 * f, 300 * f, 30 * f, 0, RT_HALIGN_LEFT, listentry[0]),
 			(eListboxPythonMultiContent.TYPE_TEXT, 300 * f, 2 * f, 300 * f, 30 * f, 0, RT_HALIGN_LEFT, listentry[1])
-			]
+		]
 
 	def showData(self):
 		data = self.getECMInfo(self.ecminfo)
@@ -718,20 +718,20 @@ class oscInfo(Screen, OscamInfo):
 			timeout = config.oscaminfo.intervall.value * 1000
 			self.loop.start(int(100))
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions"],
-					{
-						"ok": self.key_ok,
-						"cancel": self.exit,
-						"red": self.exit,
-						"green": self.key_green,
-						"yellow": self.key_yellow,
-						"blue": self.key_blue,
-						"up": self.key_up,
-						"down": self.key_down,
-						"right": self.key_right,
-						"left": self.key_left,
-						"moveUp": self.key_moveUp,
-						"moveDown": self.key_moveDown
-					}, -1)
+									{
+			"ok": self.key_ok,
+										"cancel": self.exit,
+										"red": self.exit,
+										"green": self.key_green,
+										"yellow": self.key_yellow,
+										"blue": self.key_blue,
+										"up": self.key_up,
+										"down": self.key_down,
+										"right": self.key_right,
+										"left": self.key_left,
+										"moveUp": self.key_moveUp,
+										"moveDown": self.key_moveDown
+		}, -1)
 		self.onLayoutFinish.append(self.showData)
 
 	def key_ok(self):
@@ -812,7 +812,7 @@ class oscInfo(Screen, OscamInfo):
 
 		ypos = 2
 		if isinstance(self.errmsg, tuple):
-			useFont = 0  # overrides previous font-size in case of an error message. (if self.errmsg is a tuple, an error occurred which will be displayed instead of regular results
+			useFont = 0	 # overrides previous font-size in case of an error message. (if self.errmsg is a tuple, an error occurred which will be displayed instead of regular results
 		elif heading:
 			useFont = 1
 			ypos = -2
@@ -858,7 +858,7 @@ class oscInfo(Screen, OscamInfo):
 		if not isinstance(data, str):
 			if self.what != "l":
 				heading = (self.HEAD[self.NAME], self.HEAD[self.PROT], self.HEAD[self.CAID_SRVID],
-						self.HEAD[self.SRVNAME], self.HEAD[self.ECMTIME], self.HEAD[self.IP_PORT], "")
+						   self.HEAD[self.SRVNAME], self.HEAD[self.ECMTIME], self.HEAD[self.IP_PORT], "")
 				self.out = [self.buildListEntry(heading, heading=True)]
 				for i in data:
 					self.out.append(self.buildListEntry(i))
@@ -979,10 +979,10 @@ class oscEntitlements(Screen, OscamInfo):
 		self.cccamreader = reader
 		self["output"] = List([])
 		self["actions"] = ActionMap(["OkCancelActions"],
-					{
-						"ok": self.showData,
-						"cancel": self.exit
-					}, -1)
+									{
+			"ok": self.showData,
+										"cancel": self.exit
+		}, -1)
 		self.onLayoutFinish.append(self.showData)
 
 	def exit(self):
@@ -1010,10 +1010,10 @@ class oscEntitlements(Screen, OscamInfo):
 			for j in prov:
 				providertxt += "%s - %s%s" % (j[0], j[1], linefeed)
 			res.append((ca_id,
-					csystem,
-					str(hops[1]), str(hops[2]), str(hops[3]), str(hops[4]), str(hops[5]), str(csum), str(creshare),
-					providertxt[:-1]
-					))
+						csystem,
+						str(hops[1]), str(hops[2]), str(hops[3]), str(hops[4]), str(hops[5]), str(csum), str(creshare),
+						providertxt[:-1]
+						))
 			outlist.append(res)
 		return res
 
@@ -1120,10 +1120,10 @@ class oscReaderStats(Screen, OscamInfo):
 		self.mlist = oscMenuList([])
 		self["output"] = List([])
 		self["actions"] = ActionMap(["OkCancelActions"],
-					{
-						"ok": self.showData,
-						"cancel": self.exit
-					}, -1)
+									{
+			"ok": self.showData,
+										"cancel": self.exit
+		}, -1)
 		self.onLayoutFinish.append(self.showData)
 
 	def exit(self):
@@ -1151,10 +1151,10 @@ class oscReaderStats(Screen, OscamInfo):
 			for j in prov:
 				providertxt += "%s - %s%s" % (j[0], j[1], linefeed)
 			res.append((ca_id,
-					csystem,
-					str(hops[1]), str(hops[2]), str(hops[3]), str(hops[4]), str(hops[5]), str(csum), str(creshare),
-					providertxt[:-1]
-					))
+						csystem,
+						str(hops[1]), str(hops[2]), str(hops[3]), str(hops[4]), str(hops[5]), str(csum), str(creshare),
+						providertxt[:-1]
+						))
 			outlist.append(res)
 		return res
 
@@ -1285,7 +1285,7 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 		self["status"] = StaticText(self.msg)
 		self["config"] = ConfigList(self.oscamconfig)
 		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
+									{
 			"red": self.cancel,
 			"green": self.save,
 			"save": self.save,

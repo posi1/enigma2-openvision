@@ -140,7 +140,7 @@ def getFPWakeuptime():
 	except IOError:
 		try:
 			fp = open("/dev/dbox/fp0")
-			ret = unpack('L', ioctl(fp.fileno(), 5, '    '))[0] # get wakeuptime
+			ret = unpack('L', ioctl(fp.fileno(), 5, '	 '))[0] # get wakeuptime
 		except IOError:
 			print("[StbHardware] getFPWakeupTime failed!")
 	return ret

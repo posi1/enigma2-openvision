@@ -12,7 +12,7 @@ from Tools.StbHardware import setRTCoffset
 # of "Classic" is used then images that use the "Time zone area" and
 # "Time zone" settings will have the "Time zone area" set to "Classic" and the
 # "Time zone" field will be an expanded version of the classic list of GMT
-# related offsets.  Images that only use the "Time zone" setting should use
+# related offsets.	Images that only use the "Time zone" setting should use
 # "Classic" to maintain their chosen UI for time zone selection.  That is,
 # users will only be presented with the list of GMT related offsets.
 #
@@ -35,8 +35,8 @@ from Tools.StbHardware import setRTCoffset
 #
 DEFAULT_AREA = "Europe"
 DEFAULT_ZONE = "London"
-TIMEZONE_FILE = "/etc/timezone.xml"  # This should be SCOPE_TIMEZONES_FILE!  This file moves arond the filesystem!!!  :(
-TIMEZONE_DATA = "/usr/share/zoneinfo/"  # This should be SCOPE_TIMEZONES_DATA!
+TIMEZONE_FILE = "/etc/timezone.xml"	 # This should be SCOPE_TIMEZONES_FILE!	 This file moves arond the filesystem!!!  :(
+TIMEZONE_DATA = "/usr/share/zoneinfo/"	# This should be SCOPE_TIMEZONES_DATA!
 
 
 def InitTimeZones():
@@ -98,7 +98,7 @@ class Timezones:
 			"Antarctica/DumontDUrville": "Dumont d'Urville",
 			"Asia/Ho_Chi_Minh": "Ho Chi Minh City",
 			"Atlantic/Canary": "Canary Islands",
-			"Australia/LHI": None,  # Duplicate entry - Exclude from list.
+			"Australia/LHI": None,	# Duplicate entry - Exclude from list.
 			"Australia/Lord_Howe": "Lord Howe Island",
 			"Australia/North": "Northern Territory",
 			"Australia/South": "South Australia",
@@ -167,7 +167,7 @@ class Timezones:
 	def readTimezones(self, filename=TIMEZONE_FILE):
 		root = None
 		try:
-			with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+			with open(filename, "r") as fd:	 # This open gets around a possible file handle leak in Python's XML parser.
 				try:
 					root = parse(fd).getroot()
 				except ParseError as err:
@@ -183,7 +183,7 @@ class Timezones:
 					root = None
 					print("[Timezones] Error: Unable to parse time zone data in '%s' - '%s'!" % (filename, err))
 		except (IOError, OSError) as err:
-			if err.errno == ENOENT:  # No such file or directory.
+			if err.errno == ENOENT:	 # No such file or directory.
 				print("[Timezones] Note: Classic time zones in '%s' are not available." % filename)
 			else:
 				print("[Timezones] Error %d: Opening time zone file '%s'! (%s)" % (err.errno, filename, err.strerror))
@@ -216,7 +216,7 @@ class Timezones:
 			area = config.timezone.area.value
 		return self.timezones.get(area, [("UTC", "UTC")])
 
-	# Return a default Zone for any given Area.  If there is no specific
+	# Return a default Zone for any given Area.	 If there is no specific
 	# default then the first Zone in the Area will be returned.
 	#
 	def getTimezoneDefault(self, area=None, choices=None):
@@ -238,14 +238,14 @@ class Timezones:
 		tz = zone if area in ("Classic", "Generic") else path.join(area, zone)
 		file = path.join(TIMEZONE_DATA, tz)
 		if not path.isfile(file):
-			print("[Timezones] Error: The time zone '%s' is not available!  Using 'UTC' instead." % tz)
+			print("[Timezones] Error: The time zone '%s' is not available!	Using 'UTC' instead." % tz)
 			tz = "UTC"
 			file = path.join(TIMEZONE_DATA, tz)
 		print("[Timezones] Setting time zone to '%s'." % tz)
 		try:
 			unlink("/etc/localtime")
 		except (IOError, OSError) as err:
-			if err.errno != ENOENT:  # No such file or directory.
+			if err.errno != ENOENT:	 # No such file or directory.
 				print("[Timezones] Error %d: Unlinking '/etc/localtime'! (%s)" % (err.errno, err.strerror))
 		try:
 			symlink(file, "/etc/localtime")

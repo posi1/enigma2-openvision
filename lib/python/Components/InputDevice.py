@@ -113,10 +113,10 @@ class inputDevices:
 		self.setDeviceAttribute(device, 'configuredName', value)
 
 	#struct input_event {
-	#	struct timeval time;    -> ignored
-	#	__u16 type;             -> EV_REP (0x14)
-	#	__u16 code;             -> REP_DELAY (0x00) or REP_PERIOD (0x01)
-	#	__s32 value;            -> DEFAULTS: 700(REP_DELAY) or 100(REP_PERIOD)
+	#	struct timeval time;	-> ignored
+	#	__u16 type;				-> EV_REP (0x14)
+	#	__u16 code;				-> REP_DELAY (0x00) or REP_PERIOD (0x01)
+	#	__s32 value;			-> DEFAULTS: 700(REP_DELAY) or 100(REP_PERIOD)
 	#}; -> size = 16
 
 	def setDefaults(self, device):
@@ -255,7 +255,7 @@ class InitInputDevices:
 	def loadRemoteControl(self, filename):
 		domRemote = None
 		try:
-			with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+			with open(filename, "r") as fd:	 # This open gets around a possible file handle leak in Python's XML parser.
 				try:
 					domRemote = xml.etree.cElementTree.parse(fd).getroot()
 				except xml.etree.cElementTree.ParseError as err:

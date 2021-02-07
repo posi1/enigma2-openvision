@@ -14,10 +14,10 @@ from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
 
 
 class TimerList(GUIComponent, object):
-#
-#  | <Name of the Timer>     <Service>  |
-#  | <state>  <orb.pos.>  <start, end>  |
-#
+	#
+	#  | <Name of the Timer>	 <Service>	|
+	#  | <state>  <orb.pos.>  <start, end>	|
+	#
 	def buildTimerEntry(self, timer, processed):
 		width = self.l.getItemSize().width()
 		res = [None]

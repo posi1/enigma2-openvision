@@ -79,20 +79,20 @@ class ChapterZap(Screen):
 		self["number"] = Label(self.field)
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-			{
-				"cancel": self.quit,
-				"ok": self.keyOK,
-				"1": self.keyNumberGlobal,
-				"2": self.keyNumberGlobal,
-				"3": self.keyNumberGlobal,
-				"4": self.keyNumberGlobal,
-				"5": self.keyNumberGlobal,
-				"6": self.keyNumberGlobal,
-				"7": self.keyNumberGlobal,
-				"8": self.keyNumberGlobal,
-				"9": self.keyNumberGlobal,
-				"0": self.keyNumberGlobal
-			})
+										  {
+			"cancel": self.quit,
+			"ok": self.keyOK,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"0": self.keyNumberGlobal
+		})
 
 		self.Timer = eTimer()
 		self.Timer.callback.append(self.keyOK)
@@ -175,72 +175,72 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 		self.currentTitle = 0
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evEnd: self.__serviceStopped,
-				iPlayableService.evStopped: self.__serviceStopped,
-				iPlayableService.evUser: self.__timeUpdated,
-				iPlayableService.evUser + 1: self.__statePlay,
-				iPlayableService.evUser + 2: self.__statePause,
-				iPlayableService.evUser + 3: self.__osdFFwdInfoAvail,
-				iPlayableService.evUser + 4: self.__osdFBwdInfoAvail,
-				iPlayableService.evUser + 5: self.__osdStringAvail,
-				iPlayableService.evUser + 6: self.__osdAudioInfoAvail,
-				iPlayableService.evUser + 7: self.__osdSubtitleInfoAvail,
-				iPlayableService.evUser + 8: self.__chapterUpdated,
-				iPlayableService.evUser + 9: self.__titleUpdated,
-				iPlayableService.evUser + 11: self.__menuOpened,
-				iPlayableService.evUser + 12: self.__menuClosed,
-				iPlayableService.evUser + 13: self.__osdAngleInfoAvail
-			})
+			iPlayableService.evEnd: self.__serviceStopped,
+			iPlayableService.evStopped: self.__serviceStopped,
+			iPlayableService.evUser: self.__timeUpdated,
+			iPlayableService.evUser + 1: self.__statePlay,
+			iPlayableService.evUser + 2: self.__statePause,
+			iPlayableService.evUser + 3: self.__osdFFwdInfoAvail,
+			iPlayableService.evUser + 4: self.__osdFBwdInfoAvail,
+			iPlayableService.evUser + 5: self.__osdStringAvail,
+			iPlayableService.evUser + 6: self.__osdAudioInfoAvail,
+			iPlayableService.evUser + 7: self.__osdSubtitleInfoAvail,
+			iPlayableService.evUser + 8: self.__chapterUpdated,
+			iPlayableService.evUser + 9: self.__titleUpdated,
+			iPlayableService.evUser + 11: self.__menuOpened,
+			iPlayableService.evUser + 12: self.__menuClosed,
+			iPlayableService.evUser + 13: self.__osdAngleInfoAvail
+		})
 
 		self["DVDPlayerDirectionActions"] = ActionMap(["DirectionActions"],
-			{
-				#MENU KEY DOWN ACTIONS
-				"left": self.keyLeft,
-				"right": self.keyRight,
-				"up": self.keyUp,
-				"down": self.keyDown,
+													  {
+			#MENU KEY DOWN ACTIONS
+			"left": self.keyLeft,
+			"right": self.keyRight,
+			"up": self.keyUp,
+			"down": self.keyDown,
 
-				#MENU KEY REPEATED ACTIONS
-				"leftRepeated": self.doNothing,
-				"rightRepeated": self.doNothing,
-				"upRepeated": self.doNothing,
-				"downRepeated": self.doNothing,
+			#MENU KEY REPEATED ACTIONS
+			"leftRepeated": self.doNothing,
+			"rightRepeated": self.doNothing,
+			"upRepeated": self.doNothing,
+			"downRepeated": self.doNothing,
 
-				#MENU KEY UP ACTIONS
-				"leftUp": self.doNothing,
-				"rightUp": self.doNothing,
-				"upUp": self.doNothing,
-				"downUp": self.doNothing,
-			})
+			#MENU KEY UP ACTIONS
+			"leftUp": self.doNothing,
+			"rightUp": self.doNothing,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+		})
 
 		self["OkCancelActions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self.keyOk,
-				"cancel": self.keyCancel,
-			}, -2)
+											{
+			"ok": self.keyOk,
+			"cancel": self.keyCancel,
+		}, -2)
 
 		self["DVDPlayerPlaybackActions"] = HelpableActionMap(self, ["DVDPlayerActions"],
-			{
-				#PLAYER ACTIONS
-				"dvdMenu": (self.enterDVDMenu, _("show DVD main menu")),
-				"toggleInfo": (self.toggleInfo, _("toggle time, chapter, audio, subtitle info")),
-				"nextChapter": (self.nextChapter, _("forward to the next chapter")),
-				"prevChapter": (self.prevChapter, _("rewind to the previous chapter")),
-				"nextTitle": (self.nextTitle, _("jump forward to the next title")),
-				"prevTitle": (self.prevTitle, _("jump back to the previous title")),
-				"tv": (self.askLeavePlayer, _("exit DVD player or return to file browser")),
-				"dvdAudioMenu": (self.enterDVDAudioMenu, _("(show optional DVD audio menu)")),
-				"AudioSelection": (self.enterAudioSelection, _("Select audio track")),
-				"nextAudioTrack": (self.nextAudioTrack, _("switch to the next audio track")),
-				"nextSubtitleTrack": (self.nextSubtitleTrack, _("switch to the next subtitle language")),
-				"nextAngle": (self.nextAngle, _("switch to the next angle")),
-				"seekBeginning": self.seekBeginning,
-			}, -2)
+															 {
+			#PLAYER ACTIONS
+			"dvdMenu": (self.enterDVDMenu, _("show DVD main menu")),
+			"toggleInfo": (self.toggleInfo, _("toggle time, chapter, audio, subtitle info")),
+			"nextChapter": (self.nextChapter, _("forward to the next chapter")),
+			"prevChapter": (self.prevChapter, _("rewind to the previous chapter")),
+			"nextTitle": (self.nextTitle, _("jump forward to the next title")),
+			"prevTitle": (self.prevTitle, _("jump back to the previous title")),
+			"tv": (self.askLeavePlayer, _("exit DVD player or return to file browser")),
+			"dvdAudioMenu": (self.enterDVDAudioMenu, _("(show optional DVD audio menu)")),
+			"AudioSelection": (self.enterAudioSelection, _("Select audio track")),
+			"nextAudioTrack": (self.nextAudioTrack, _("switch to the next audio track")),
+			"nextSubtitleTrack": (self.nextSubtitleTrack, _("switch to the next subtitle language")),
+			"nextAngle": (self.nextAngle, _("switch to the next angle")),
+			"seekBeginning": self.seekBeginning,
+		}, -2)
 
 		self["DVDPlayerColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
-				"blue": (self.chapterZap, _("jump to chapter by number")),
-			}, -2)
+														  {
+			"blue": (self.chapterZap, _("jump to chapter by number")),
+		}, -2)
 
 		self.onClose.append(self.__onClose)
 
@@ -603,7 +603,7 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 
 		ifofile = None
 		try:
-#			Try to read the IFO header to determine PAL/NTSC format and the resolution
+			#			Try to read the IFO header to determine PAL/NTSC format and the resolution
 			ifofile = open(isofilename, "r")
 			ifofile.seek(offset)
 			video_attr_high = ord(ifofile.read(1))
@@ -614,8 +614,8 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 			isNTSC = (video_attr_high & 0x10 == 0)
 			isLowResolution = (video_attr_low & 0x18 == 0x18)
 		except:
-#			If the service is an .iso or .img or .nrg file we assume it is PAL
-#			Sorry we cannot open image files here.
+			#			If the service is an .iso or .img or .nrg file we assume it is PAL
+			#			Sorry we cannot open image files here.
 			print("[DVD] Cannot read file or is ISO/IMG/NRG")
 		finally:
 			if ifofile is not None:

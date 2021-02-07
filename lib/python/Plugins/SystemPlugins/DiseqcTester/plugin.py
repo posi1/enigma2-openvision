@@ -141,7 +141,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 			</widget>
 			<widget name="Overall_progress" position="20,162" size="480,22" font="Regular;21" halign="center" transparent="1" />
 			<widget source="overall_progress" render="Progress" position="20,192" size="480,20" borderWidth="2" backgroundColor="#254f7497" />
-			<widget name="Progress"  position="20,222" size="480,22" font="Regular;21" halign="center" transparent="1" />
+			<widget name="Progress"	 position="20,222" size="480,22" font="Regular;21" halign="center" transparent="1" />
 			<widget source="sub_progress" render="Progress" position="20,252" size="480,20" borderWidth="2" backgroundColor="#254f7497" />
 			<widget name="Failed" position="20,282" size="140,22" font="Regular;21" halign="left" transparent="1" />
 			<widget source="failed_counter" render="Label" position="160,282" size="100,20" font="Regular;21" />
@@ -174,7 +174,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 		self["Not_tested"] = Label(_("Not tested:"))
 		self["With_errors"] = Label(_("With errors:"))
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.select,
 			"cancel": self.keyCancel,
 		}, -2)
@@ -519,12 +519,12 @@ class DiseqcTesterTestTypeSelection(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
-			{
-				"cancel": self.keyCancel,
-				"save": self.keyOK,
-				"ok": self.keyOK,
-				"menu": self.closeRecursive,
-			}, -2)
+									{
+			"cancel": self.keyCancel,
+			"save": self.keyOK,
+			"ok": self.keyOK,
+			"menu": self.closeRecursive,
+		}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))

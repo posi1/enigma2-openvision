@@ -58,16 +58,16 @@ class PowerTimerEditList(Screen):
 		self["description"] = Label()
 
 		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ShortcutActions", "TimerEditActions"],
-			{
-				"ok": self.openEdit,
-				"cancel": self.leave,
-				"green": self.addCurrentTimer,
-				"log": self.showLog,
-				"left": self.left,
-				"right": self.right,
-				"up": self.up,
-				"down": self.down
-			}, -1)
+									{
+			"ok": self.openEdit,
+			"cancel": self.leave,
+			"green": self.addCurrentTimer,
+			"log": self.showLog,
+			"left": self.left,
+			"right": self.right,
+			"up": self.up,
+			"down": self.down
+		}, -1)
 		self.session.nav.PowerTimer.on_state_change.append(self.onStateChange)
 		self.onShown.append(self.updateState)
 

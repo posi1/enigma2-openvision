@@ -321,7 +321,7 @@ def GetIPsFromNetworkInterfaces():
 			names.append(0)
 		outbytes = struct.unpack('iL', fcntl.ioctl(
 			s.fileno(),
-			0x8912,  # SIOCGIFCONF
+			0x8912,	 # SIOCGIFCONF
 			struct.pack('iL', _bytes, names.buffer_info()[0])
 		))[0]
 		if outbytes == _bytes:

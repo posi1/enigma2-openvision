@@ -16,8 +16,8 @@ RIGHT = 1
 TOP = 2
 BOTTOM = 3
 # halign:
-#LEFT     = 0
-#RIGHT    = 1
+#LEFT	  = 0
+#RIGHT	  = 1
 CENTER = 2
 BLOCK = 3
 
@@ -73,7 +73,7 @@ class VRunningText(Renderer):
 				else:
 					x = max(limit, int(val))
 			except:
-					x = default
+				x = default
 			return x
 
 		self.halign = valign = eLabel.alignLeft
@@ -215,8 +215,8 @@ class VRunningText(Renderer):
 		text_height = text_size.height()
 
 #		self.type =		0 - NONE; 1 - RUNNING; 2 - SWIMMING; 3 - AUTO(???)
-#		self.direction =	0 - LEFT; 1 - RIGHT;   2 - TOP;      3 - BOTTOM
-#		self.halign =		0 - LEFT; 1 - RIGHT;   2 -CENTER;    3 - BLOCK
+#		self.direction =	0 - LEFT; 1 - RIGHT;   2 - TOP;		 3 - BOTTOM
+#		self.halign =		0 - LEFT; 1 - RIGHT;   2 -CENTER;	 3 - BLOCK
 
 		if self.direction in (LEFT, RIGHT):
 			if self.type == RUNNING:		# scroll_type == RUNNING

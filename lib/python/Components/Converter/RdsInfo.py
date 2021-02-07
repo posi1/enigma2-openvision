@@ -14,10 +14,10 @@ class RdsInfo(Converter, object):
 	def __init__(self, type):
 		Converter.__init__(self, type)
 		self.type, self.interesting_events = {
-				"RadioText": (self.RADIO_TEXT_CHANGED, (iPlayableService.evUpdatedRadioText,)),
-				"RtpText": (self.RTP_TEXT_CHANGED, (iPlayableService.evUpdatedRtpText,)),
-				"RasInteractiveAvailable": (self.RASS_INTERACTIVE_AVAILABLE, (iPlayableService.evUpdatedRassInteractivePicMask,))
-			}[type]
+			"RadioText": (self.RADIO_TEXT_CHANGED, (iPlayableService.evUpdatedRadioText,)),
+			"RtpText": (self.RTP_TEXT_CHANGED, (iPlayableService.evUpdatedRtpText,)),
+			"RasInteractiveAvailable": (self.RASS_INTERACTIVE_AVAILABLE, (iPlayableService.evUpdatedRassInteractivePicMask,))
+		}[type]
 
 	@cached
 	def getText(self):

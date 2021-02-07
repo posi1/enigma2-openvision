@@ -125,7 +125,7 @@ class VideoWizard(WizardLanguage, Rc):
 		print("[Videomode] VideoWizard modes for port", self.port)
 		for mode in self.hw.getModeList(self.port):
 			#if mode[0] != "PC":
-				list.append((mode[0], mode[0]))
+			list.append((mode[0], mode[0]))
 		print("[Videomode] VideoWizard modeslist:", list)
 		return list
 

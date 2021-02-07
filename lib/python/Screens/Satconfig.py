@@ -100,14 +100,14 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 		self.list = []
 
 		self.multiType = self.configMode = self.diseqcModeEntry = self.advancedSatsEntry = self.advancedLnbsEntry = self.advancedDiseqcMode = self.advancedUsalsEntry = self.advancedLof =\
-		self.advancedPowerMeasurement = self.turningSpeed = self.turnFastEpochBegin = self.turnFastEpochEnd = self.toneburst = self.committedDiseqcCommand = self.uncommittedDiseqcCommand =\
-		self.commandOrder = self.cableScanType = self.cableConfigScanDetails = self.advancedUnicable = self.advancedFormat = self.advancedPosition = self.advancedType = self.advancedManufacturer =\
-		self.advancedSCR = self.advancedConnected = self.showAdditionalMotorOptions = self.selectSatsEntry = self.advancedSelectSatsEntry = self.singleSatEntry = self.toneamplitude = self.scpc =\
-		self.t2mirawmode = self.forcelnbpower = self.forcetoneburst = self.terrestrialRegionsEntry = self.cableRegionsEntry = self.configModeDVBS = self.configModeDVBC = self.configModeDVBT =\
-		self.configModeATSC = self.externallyPowered = None
+			self.advancedPowerMeasurement = self.turningSpeed = self.turnFastEpochBegin = self.turnFastEpochEnd = self.toneburst = self.committedDiseqcCommand = self.uncommittedDiseqcCommand =\
+			self.commandOrder = self.cableScanType = self.cableConfigScanDetails = self.advancedUnicable = self.advancedFormat = self.advancedPosition = self.advancedType = self.advancedManufacturer =\
+			self.advancedSCR = self.advancedConnected = self.showAdditionalMotorOptions = self.selectSatsEntry = self.advancedSelectSatsEntry = self.singleSatEntry = self.toneamplitude = self.scpc =\
+			self.t2mirawmode = self.forcelnbpower = self.forcetoneburst = self.terrestrialRegionsEntry = self.cableRegionsEntry = self.configModeDVBS = self.configModeDVBC = self.configModeDVBT =\
+			self.configModeATSC = self.externallyPowered = None
 
 		self.have_advanced = False
-		self.indent = "  %s" if self.nim.isCombined() else "%s"
+		self.indent = "	 %s" if self.nim.isCombined() else "%s"
 		if not hasattr(self, "terrestrialCountriesEntry"):
 			self.terrestrialCountriesEntry = None
 		if not hasattr(self, "cableCountriesEntry"):
@@ -321,11 +321,11 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 			self.nim = nimmanager.nim_slots[self.slotid]
 			self.nimConfig = self.nim.config
 		if self["config"].getCurrent() in (self.configMode, self.configModeDVBS, self.configModeDVBC, self.configModeDVBT, self.configModeATSC, self.diseqcModeEntry, self.advancedSatsEntry, self.advancedLnbsEntry, self.advancedDiseqcMode, self.advancedUsalsEntry,\
-			self.advancedLof, self.advancedPowerMeasurement, self.turningSpeed, self.advancedType, self.advancedSCR, self.advancedPosition, self.advancedFormat, self.advancedManufacturer,\
-			self.advancedUnicable, self.advancedConnected, self.toneburst, self.committedDiseqcCommand, self.uncommittedDiseqcCommand, self.singleSatEntry, self.commandOrder,\
-			self.showAdditionalMotorOptions, self.cableScanType, self.multiType, self.cableConfigScanDetails, self.terrestrialCountriesEntry, self.cableCountriesEntry, \
-			self.toneamplitude, self.scpc, self.t2mirawmode, self.forcelnbpower, self.forcetoneburst, self.externallyPowered):
-				self.createSetup()
+										   self.advancedLof, self.advancedPowerMeasurement, self.turningSpeed, self.advancedType, self.advancedSCR, self.advancedPosition, self.advancedFormat, self.advancedManufacturer,\
+										   self.advancedUnicable, self.advancedConnected, self.toneburst, self.committedDiseqcCommand, self.uncommittedDiseqcCommand, self.singleSatEntry, self.commandOrder,\
+										   self.showAdditionalMotorOptions, self.cableScanType, self.multiType, self.cableConfigScanDetails, self.terrestrialCountriesEntry, self.cableCountriesEntry, \
+										   self.toneamplitude, self.scpc, self.t2mirawmode, self.forcelnbpower, self.forcetoneburst, self.externallyPowered):
+			self.createSetup()
 
 	def run(self):
 		if self.nimConfig.configMode.value == "simple" and (not self.nim.isCombined() or self.nimConfig.configModeDVBS.value):
@@ -596,7 +596,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 		self["key_blue"] = StaticText("")
 		self["description"] = Label("")
 		self["actions"] = ActionMap(["SetupActions", "SatlistShortcutAction"],
-		{
+									{
 			"ok": self.keyOk,
 			"save": self.keySave,
 			"cancel": self.keyCancel,
@@ -730,7 +730,7 @@ class NimSelection(Screen):
 		self["key_yellow"] = StaticText(_("Client Mode"))
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions", "ChannelSelectEPGActions"],
-		{
+									{
 			"ok": self.okbuttonClick,
 			"info": self.extraInfo,
 			"epg": self.extraInfo,
@@ -801,7 +801,7 @@ class NimSelection(Screen):
 							text = _("FBC automatic\nconnected to")
 						else:
 							text = "%s %s" % ({"loopthrough": _("Loop through from"), "equal": _("Equal to"), "satposdepends": _("Second cable of motorized LNB")}[nimConfig.configMode.value],
-								nimmanager.getNim(int(nimConfig.connectedTo.value)).slot_name)
+											  nimmanager.getNim(int(nimConfig.connectedTo.value)).slot_name)
 					elif nimConfig.configMode.value == "nothing":
 						if x.isFBCLink():
 							link = getLinkedSlotID(x.slot)
@@ -815,7 +815,7 @@ class NimSelection(Screen):
 					elif nimConfig.configMode.value == "simple":
 						if nimConfig.diseqcMode.value in ("single", "toneburst_a_b", "diseqc_a_b", "diseqc_a_b_c_d"):
 							text = "%s\n%s: " % ({"single": _("Single"), "toneburst_a_b": _("Toneburst A/B"), "diseqc_a_b": _("DiSEqC A/B"), "diseqc_a_b_c_d": _("DiSEqC A/B/C/D")}[nimConfig.diseqcMode.value],
-								_("Sats"))
+												 _("Sats"))
 							satnames = []
 							if nimConfig.diseqcA.orbital_position < 3600:
 								satnames.append(nimmanager.getSatName(int(nimConfig.diseqcA.value)))
@@ -880,7 +880,7 @@ class NimSelection(Screen):
 class SelectSatsEntryScreen(Screen):
 	skin = """
 		<screen name="SelectSatsEntryScreen" position="center,center" size="560,410" title="Select Sats Entry" >
-			<ePixmap name="red" position="0,0"   zPosition="2" size="140,40" pixmap="buttons/red.png" transparent="1" alphatest="on" />
+			<ePixmap name="red" position="0,0"	 zPosition="2" size="140,40" pixmap="buttons/red.png" transparent="1" alphatest="on" />
 			<ePixmap name="green" position="140,0" zPosition="2" size="140,40" pixmap="buttons/green.png" transparent="1" alphatest="on" />
 			<ePixmap name="yellow" position="280,0" zPosition="2" size="140,40" pixmap="buttons/yellow.png" transparent="1" alphatest="on" />
 			<ePixmap name="blue" position="420,0" zPosition="2" size="140,40" pixmap="buttons/blue.png" transparent="1" alphatest="on" />
@@ -914,7 +914,7 @@ class SelectSatsEntryScreen(Screen):
 		sat_list = [SelectionEntryComponent(x[1], x[0], x[2], x[3]) for x in SatList]
 		self["list"] = SelectionList(sat_list, enableWrapAround=True)
 		self["setupActions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
+										 {
 			"red": self.cancel,
 			"green": self.save,
 			"yellow": self.sortBy,

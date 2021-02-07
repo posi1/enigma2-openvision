@@ -48,9 +48,9 @@ class Tuner:
 			self.frontend.tune(feparm)
 
 	def tuneTerr(self, frequency,
-		inversion=2, bandwidth=7000000, fechigh=6, feclow=6,
-		modulation=2, transmission=2, guard=4,
-		hierarchy=4, system=0, plp_id=0):
+				 inversion=2, bandwidth=7000000, fechigh=6, feclow=6,
+				 modulation=2, transmission=2, guard=4,
+				 hierarchy=4, system=0, plp_id=0):
 		if self.frontend:
 			print("[TuneTest] tuning to transponder with data", [frequency, inversion, bandwidth, fechigh, feclow, modulation, transmission, guard, hierarchy, system, plp_id])
 			parm = eDVBFrontendParametersTerrestrial()
@@ -198,13 +198,13 @@ class TuneTest:
 							self.failedTune.append([self.currTuned, self.oldTuned, "pids_failed", {"real": (self.tsid, self.onid), "expected": (self.currTuned[15], self.currTuned[16])}, dict])  # last parameter is the frontend status
 							pidsFailed = True
 						else:
-							self.successfullyTune.append([self.currTuned, self.oldTuned, dict])  # 3rd parameter is the frontend status
+							self.successfullyTune.append([self.currTuned, self.oldTuned, dict])	 # 3rd parameter is the frontend status
 							if self.stopOnSuccess != -1 and self.stopOnSuccess <= len(self.successfullyTune):
 								stop = True
 				elif not self.checkPIDs or (self.checkPids and not pidsFailed):
 					self.successfullyTune.append([self.currTuned, self.oldTuned, dict]) # 3rd parameter is the frontend status
 					if self.stopOnSuccess != -1 and self.stopOnSuccess <= len(self.successfullyTune):
-								stop = True
+						stop = True
 				self.tuningtransponder = self.nextTransponder()
 			else:
 				print("************* tuner_state:", dict["tuner_state"])

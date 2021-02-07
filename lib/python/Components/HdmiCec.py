@@ -48,7 +48,7 @@ cmdList = {
 	0x9d: "<Inactive Source>",
 	0x9e: "<CEC Version>",
 	0x9f: "<Get CEC Version>",
-	}
+}
 
 config.hdmicec = ConfigSubsection()
 config.hdmicec.enabled = ConfigYesNo(default=False)
@@ -60,20 +60,20 @@ config.hdmicec.handle_tv_standby = ConfigYesNo(default=True)
 config.hdmicec.handle_tv_wakeup = ConfigYesNo(default=True)
 config.hdmicec.tv_wakeup_detection = ConfigSelection(
 	choices={
-	"wakeup": _("Wakeup"),
-	"requestphysicaladdress": _("Request for physical address report"),
-	"tvreportphysicaladdress": _("TV physical address report"),
-	"sourcerequest": _("Source request"),
-	"streamrequest": _("Stream request"),
-	"requestvendor": _("Request for vendor report"),
-	"osdnamerequest": _("OSD name request"),
-	"activity": _("Any activity"),
+		"wakeup": _("Wakeup"),
+		"requestphysicaladdress": _("Request for physical address report"),
+		"tvreportphysicaladdress": _("TV physical address report"),
+		"sourcerequest": _("Source request"),
+		"streamrequest": _("Stream request"),
+		"requestvendor": _("Request for vendor report"),
+		"osdnamerequest": _("OSD name request"),
+		"activity": _("Any activity"),
 	},
 	default="streamrequest")
 config.hdmicec.tv_wakeup_command = ConfigSelection(
 	choices={
-	"imageview": _("Image View On"),
-	"textview": _("Text View On"),
+		"imageview": _("Image View On"),
+		"textview": _("Text View On"),
 	},
 	default="imageview")
 config.hdmicec.fixed_physical_address = ConfigText(default="0.0.0.0")
@@ -266,24 +266,24 @@ class HdmiCec:
 				self.sendStandbyMessages()
 
 	def sendStandbyMessages(self):
-			messages = []
-			if config.hdmicec.control_tv_standby.value:
-				if self.useStandby and not self.handlingStandbyFromTV:
-					messages.append("standby")
-				else:
-					messages.append("sourceinactive")
-					self.useStandby = True
+		messages = []
+		if config.hdmicec.control_tv_standby.value:
+			if self.useStandby and not self.handlingStandbyFromTV:
+				messages.append("standby")
 			else:
-				if config.hdmicec.report_active_source.value:
-					messages.append("sourceinactive")
-				if config.hdmicec.report_active_menu.value:
-					messages.append("menuinactive")
-			if messages:
-				self.sendMessages(0, messages)
+				messages.append("sourceinactive")
+				self.useStandby = True
+		else:
+			if config.hdmicec.report_active_source.value:
+				messages.append("sourceinactive")
+			if config.hdmicec.report_active_menu.value:
+				messages.append("menuinactive")
+		if messages:
+			self.sendMessages(0, messages)
 
-			if config.hdmicec.control_receiver_standby.value:
-				self.sendMessage(5, "keypoweroff")
-				self.sendMessage(5, "standby")
+		if config.hdmicec.control_receiver_standby.value:
+			self.sendMessage(5, "keypoweroff")
+			self.sendMessage(5, "standby")
 
 	def secondBoxActive(self):
 		self.sendMessage(0, "getpowerstatus")
@@ -394,7 +394,7 @@ class HdmiCec:
 				if cmd == 0x04 and config.hdmicec.tv_wakeup_detection.value == "wakeup":
 					self.wakeup()
 				elif cmd == 0x83 and config.hdmicec.tv_wakeup_detection.value == "requestphysicaladdress":
-						self.wakeup()
+					self.wakeup()
 				elif cmd == 0x84 and config.hdmicec.tv_wakeup_detection.value == "tvreportphysicaladdress":
 					if (ord(data[0]) * 256 + ord(data[1])) == 0 and ord(data[2]) == 0:
 						self.wakeup()
@@ -406,7 +406,7 @@ class HdmiCec:
 					if physicaladdress == ouraddress:
 						self.wakeup()
 				elif cmd == 0x8C and config.hdmicec.tv_wakeup_detection.value == "requestvendor":
-						self.wakeup()
+					self.wakeup()
 				elif cmd == 0x46 and config.hdmicec.tv_wakeup_detection.value == "osdnamerequest":
 					self.wakeup()
 				elif cmd != 0x36 and config.hdmicec.tv_wakeup_detection.value == "activity":

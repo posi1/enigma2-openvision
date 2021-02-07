@@ -68,7 +68,7 @@ class StandbyScreen(Screen):
 			Console().ePopen("/usr/script/standby_enter.sh")
 
 		self["actions"] = ActionMap(["StandbyActions"],
-		{
+									{
 			"power": self.Power,
 			"discrete_on": self.Power
 		}, -1)

@@ -68,19 +68,19 @@ class MessageBox(Screen):
 
 		if enable_input:
 			self["actions"] = ActionMap(["MsgBoxActions", "DirectionActions"],
-				{
-					"cancel": self.cancel,
-					"ok": self.ok,
-					"alwaysOK": self.alwaysOK,
-					"up": self.up,
-					"down": self.down,
-					"left": self.left,
-					"right": self.right,
-					"upRepeated": self.up,
-					"downRepeated": self.down,
-					"leftRepeated": self.left,
-					"rightRepeated": self.right
-				}, -1)
+										{
+				"cancel": self.cancel,
+				"ok": self.ok,
+				"alwaysOK": self.alwaysOK,
+				"up": self.up,
+				"down": self.down,
+				"left": self.left,
+				"right": self.right,
+				"upRepeated": self.up,
+				"downRepeated": self.down,
+				"leftRepeated": self.left,
+				"rightRepeated": self.right
+			}, -1)
 		self.setTitle(self.title, showPath=False)
 
 	def initTimeout(self, timeout):

@@ -37,10 +37,10 @@ class Screen(dict):
 		self.execing = False
 		self.shown = True
 		# DEBUG: Variable already_shown used in CutListEditor/ui.py and StartKodi/plugin.py...
-		# DEBUG: self.alreadyShown = False  # Already shown is false until the screen is really shown (after creation).
-		self.already_shown = False  # Already shown is false until the screen is really shown (after creation).
+		# DEBUG: self.alreadyShown = False	# Already shown is false until the screen is really shown (after creation).
+		self.already_shown = False	# Already shown is false until the screen is really shown (after creation).
 		self.renderer = []
-		self.helpList = []  # In order to support screens *without* a help, we need the list in every screen. how ironic.
+		self.helpList = []	# In order to support screens *without* a help, we need the list in every screen. how ironic.
 		self.close_on_next_exec = None
 		# DEBUG: Variable already_shown used in webinterface/src/WebScreens.py...
 		# DEBUG: self.standAlone = False  # Stand alone screens (for example web screens) don't care about having or not having focus.
@@ -96,7 +96,7 @@ class Screen(dict):
 		for x in self.onExecEnd:
 			x()
 
-	def doClose(self):  # Never call this directly - it will be called from the session!
+	def doClose(self):	# Never call this directly - it will be called from the session!
 		self.hide()
 		for x in self.onClose:
 			x()
@@ -105,7 +105,7 @@ class Screen(dict):
 		# First disconnect all render from their sources. We might split this out into
 		# a "unskin"-call, but currently we destroy the screen afterwards anyway.
 		for val in self.renderer:
-			val.disconnectAll()  # Disconnect converter/sources and probably destroy them. Sources will not be destroyed.
+			val.disconnectAll()	 # Disconnect converter/sources and probably destroy them. Sources will not be destroyed.
 		del self.session
 		for (name, val) in self.items():
 			val.destroy()
@@ -120,7 +120,7 @@ class Screen(dict):
 			self.session.close(self, *retval)
 
 	def show(self):
-		print("[Screen] Showing screen '%s'." % self.skinName)  # To ease identification of screens.
+		print("[Screen] Showing screen '%s'." % self.skinName)	# To ease identification of screens.
 		# DEBUG: if (self.shown and self.alreadyShown) or not self.instance:
 		if (self.shown and self.already_shown) or not self.instance:
 			return

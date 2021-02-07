@@ -31,7 +31,7 @@ class ClientModeScreen(ConfigListScreen, Screen):
 		ConfigListScreen.__init__(self, [], session=session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions", "ColorActions"],
-		{
+									{
 			"ok": self.keyGo,
 			"menu": self.keyCancel,
 			"cancel": self.keyCancel,

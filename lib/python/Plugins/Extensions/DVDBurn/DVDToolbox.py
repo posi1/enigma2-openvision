@@ -15,7 +15,7 @@ from Plugins.SystemPlugins.Hotplug.plugin import hotplugNotifier
 
 class DVDToolbox(Screen):
 	skin = """
-		<screen name="DVDToolbox" position="center,center"  size="560,445" title="DVD media toolbox" >
+		<screen name="DVDToolbox" position="center,center"	size="560,445" title="DVD media toolbox" >
 			<ePixmap pixmap="buttons/red.png" position="0,0" size="140,40" alphatest="on" />
 			<ePixmap pixmap="buttons/green.png" position="140,0" size="140,40" alphatest="on" />
 			<ePixmap pixmap="buttons/yellow.png" position="280,0" size="140,40" alphatest="on" />
@@ -44,7 +44,7 @@ class DVDToolbox(Screen):
 		self["info"] = StaticText()
 
 		self["toolboxactions"] = ActionMap(["ColorActions", "DVDToolbox", "OkCancelActions"],
-		{
+										   {
 			"red": self.exit,
 			"green": self.update,
 			"yellow": self.format,
@@ -205,7 +205,7 @@ class DVDformatTask(Task):
 		if line.startswith("- media is already formatted"):
 			self.error = self.ERROR_ALREADYFORMATTED
 			self.retryargs = ["-force"]
-		if line.startswith("- media is not blank") or line.startswith("  -format=full  to perform full (lengthy) reformat;"):
+		if line.startswith("- media is not blank") or line.startswith("	 -format=full  to perform full (lengthy) reformat;"):
 			self.error = self.ERROR_ALREADYFORMATTED
 			self.retryargs = ["-blank"]
 		if line.startswith(":-( mounted media doesn't appear to be"):

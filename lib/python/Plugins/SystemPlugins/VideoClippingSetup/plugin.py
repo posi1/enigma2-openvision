@@ -34,7 +34,7 @@ class VideoClippingCoordinates(Screen, ConfigListScreen):
 		self["cancel"] = Button(_("Cancel"))
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyGo,
 			"save": self.keyGo,
 			"cancel": self.keyCancel,
@@ -135,5 +135,5 @@ def Plugins(**kwargs):
 	if path.exists("/proc/stb/vmpeg/0/clip_left"):
 		from Plugins.Plugin import PluginDescriptor
 		return [PluginDescriptor(name=_("Video clipping setup"), description=_("clip overscan / letterbox borders"), where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
-					PluginDescriptor(name=_("Video clipping setup"), description="", where=PluginDescriptor.WHERE_SESSIONSTART, fnc=startup)]
+				PluginDescriptor(name=_("Video clipping setup"), description="", where=PluginDescriptor.WHERE_SESSIONSTART, fnc=startup)]
 	return []

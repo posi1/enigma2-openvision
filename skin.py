@@ -20,11 +20,11 @@ USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
 SUBTITLE_SKIN = "skin_subtitles.xml"
 
-GUI_SKIN_ID = 0  # Main frame-buffer.
-DISPLAY_SKIN_ID = 1  # Front panel / display / LCD.
+GUI_SKIN_ID = 0	 # Main frame-buffer.
+DISPLAY_SKIN_ID = 1	 # Front panel / display / LCD.
 
-domScreens = {}  # Dictionary of skin based screens.
-colors = {  # Dictionary of skin color names.
+domScreens = {}	 # Dictionary of skin based screens.
+colors = {	# Dictionary of skin color names.
 	"key_back": gRGB(0x00313131),
 	"key_blue": gRGB(0x0018188b),
 	"key_green": gRGB(0x001f771f),
@@ -36,9 +36,9 @@ fonts = {  # Dictionary of predefined and skin defined font aliases.
 	"Body": ("Regular", 18, 22, 16),
 	"ChoiceList": ("Regular", 20, 24, 18)
 }
-menus = {}  # Dictionary of images associated with menu entries.
-parameters = {}  # Dictionary of skin parameters used to modify code behavior.
-setups = {}  # Dictionary of images associated with setup menus.
+menus = {}	# Dictionary of images associated with menu entries.
+parameters = {}	 # Dictionary of skin parameters used to modify code behavior.
+setups = {}	 # Dictionary of images associated with setup menus.
 switchPixmap = {}  # Dictionary of switch images.
 windowStyles = {}  # Dictionary of window styles for each screen ID.
 
@@ -56,12 +56,12 @@ callbacks = []
 runCallbacks = False
 
 # Skins are loaded in order of priority.  Skin with highest priority is
-# loaded last.  This is usually the user-specified skin.  In this way
+# loaded last.	This is usually the user-specified skin.  In this way
 # any duplicated screens will be replaced by a screen of the same name
 # with a higher priority.
 #
 # GUI skins are saved in the settings file as the path relative to
-# SCOPE_SKIN.  The full path is NOT saved.  E.g. "MySkin/skin.xml"
+# SCOPE_SKIN.  The full path is NOT saved.	E.g. "MySkin/skin.xml"
 #
 # Display skins are saved in the settings file as the path relative to
 # SCOPE_CURRENT_LCDSKIN.  The full path is NOT saved.
@@ -80,7 +80,7 @@ def InitSkins():
 	# Add the front panel / display / lcd skin.
 	result = []
 	for skin, name in [(config.skin.display_skin.value, "current"), (DEFAULT_DISPLAY_SKIN, "default")]:
-		if skin in result:  # Don't try to add a skin that has already failed.
+		if skin in result:	# Don't try to add a skin that has already failed.
 			continue
 		config.skin.display_skin.value = skin
 		if loadSkin(config.skin.display_skin.value, scope=SCOPE_CURRENT_LCDSKIN, desktop=getDesktop(DISPLAY_SKIN_ID), screenID=DISPLAY_SKIN_ID):
@@ -91,7 +91,7 @@ def InitSkins():
 	# Add the main GUI skin.
 	result = []
 	for skin, name in [(config.skin.primary_skin.value, "current"), (DEFAULT_SKIN, "default")]:
-		if skin in result:  # Don't try to add a skin that has already failed.
+		if skin in result:	# Don't try to add a skin that has already failed.
 			continue
 		config.skin.primary_skin.value = skin
 		if loadSkin(config.skin.primary_skin.value, scope=SCOPE_CURRENT_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID):
@@ -126,24 +126,24 @@ def loadSkin(filename, scope=SCOPE_SKIN, desktop=getDesktop(GUI_SKIN_ID), screen
 	filename = resolveFilename(scope, filename)
 	print("[Skin] Loading skin file '%s'." % filename)
 	try:
-		with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+		with open(filename, "r") as fd:	 # This open gets around a possible file handle leak in Python's XML parser.
 			try:
 				domSkin = xml.etree.cElementTree.parse(fd).getroot()
-				# print("[Skin] DEBUG: Extracting non screen blocks from '%s'.  (scope='%s')" % (filename, scope))
+				# print("[Skin] DEBUG: Extracting non screen blocks from '%s'.	(scope='%s')" % (filename, scope))
 				# For loadSingleSkinData colors, bordersets etc. are applied one after
 				# the other in order of ascending priority.
 				loadSingleSkinData(desktop, screenID, domSkin, filename, scope=scope)
 				for element in domSkin:
-					if element.tag == "screen":  # Process all screen elements.
+					if element.tag == "screen":	 # Process all screen elements.
 						name = element.attrib.get("name", None)
 						if name:  # Without a name, it's useless!
 							scrnID = element.attrib.get("id", None)
 							if scrnID is None or scrnID == screenID:  # If there is a screen ID is it for this display.
 								# print("[Skin] DEBUG: Extracting screen '%s' from '%s'.  (scope='%s')" % (name, filename, scope))
 								domScreens[name] = (element, "%s/" % dirname(filename))
-					elif element.tag == "windowstyle":  # Process the windowstyle element.
+					elif element.tag == "windowstyle":	# Process the windowstyle element.
 						scrnID = element.attrib.get("id", None)
-						if scrnID is not None:  # Without an scrnID, it is useless!
+						if scrnID is not None:	# Without an scrnID, it is useless!
 							scrnID = int(scrnID)
 							# print("[Skin] DEBUG: Processing a windowstyle ID='%s'." % scrnID)
 							domStyle = xml.etree.cElementTree.ElementTree(xml.etree.cElementTree.Element("skin"))
@@ -226,7 +226,7 @@ def getParentSize(object, desktop):
 		# For some widgets (e.g. ScrollLabel) the skin attributes are applied to a
 		# child widget, instead of to the widget itself.  In that case, the parent
 		# we have here is not the real parent, but it is the main widget.  We have
-		# to go one level higher to get the actual parent.  We can detect this
+		# to go one level higher to get the actual parent.	We can detect this
 		# because the 'parent' will not have a size yet.  (The main widget's size
 		# will be calculated internally, as soon as the child widget has parsed the
 		# skin attributes.)
@@ -249,25 +249,25 @@ def parseColor(value):
 
 # Convert a coordinate string into a number.  Used to convert object position and
 # size attributes into a number.
-#    s is the input string.
-#    e is the the parent object size to do relative calculations on parent
-#    size is the size of the object size (e.g. width or height)
-#    font is a font object to calculate relative to font sizes
+#	 s is the input string.
+#	 e is the the parent object size to do relative calculations on parent
+#	 size is the size of the object size (e.g. width or height)
+#	 font is a font object to calculate relative to font sizes
 # Note some constructs for speeding up simple cases that are very common.
 #
 # Can do things like:  10+center-10w+4%
 # To center the widget on the parent widget,
-#    but move forward 10 pixels and 4% of parent width
-#    and 10 character widths backward
+#	 but move forward 10 pixels and 4% of parent width
+#	 and 10 character widths backward
 # Multiplication, division and subexpressions are also allowed: 3*(e-c/2)
 #
 # Usage:  center : Center the object on parent based on parent size and object size.
-#         e      : Take the parent size/width.
-#         c      : Take the center point of parent size/width.
-#         %      : Take given percentage of parent size/width.
-#         w      : Multiply by current font width. (Only to be used in elements where the font attribute is available, i.e. not "None")
-#         h      : Multiply by current font height. (Only to be used in elements where the font attribute is available, i.e. not "None")
-#         f      : Replace with getSkinFactor().
+#		  e		 : Take the parent size/width.
+#		  c		 : Take the center point of parent size/width.
+#		  %		 : Take given percentage of parent size/width.
+#		  w		 : Multiply by current font width. (Only to be used in elements where the font attribute is available, i.e. not "None")
+#		  h		 : Multiply by current font height. (Only to be used in elements where the font attribute is available, i.e. not "None")
+#		  f		 : Replace with getSkinFactor().
 #
 
 
@@ -279,7 +279,7 @@ def parseCoordinate(value, parent, size=0, font=None):
 		return None
 	else:
 		try:
-			result = int(value)  # For speed try a simple number first.
+			result = int(value)	 # For speed try a simple number first.
 		except ValueError:
 			if font is None:
 				font = "Body"
@@ -344,32 +344,32 @@ def parseFont(value, scale=((1, 1), (1, 1))):
 	# print("[Skin] DEBUG: Scale font %d -> %d." % (size, int(size) * scale[1][0] / scale[1][1]))
 	return gFont(name, int(size) * scale[0][0] / scale[0][1])
 
-# Convert a parameter string into a value based on string triggers.  The type
+# Convert a parameter string into a value based on string triggers.	 The type
 # and value returned is based on the trigger.
 #
-# Usage:  *string   : The paramater is a string with the "*" is removed (Type: String).
-#         #aarrggbb : The parameter is a HEX colour string (Type: Integer).
-#         0xABCD    : The parameter is a HEX integer (Type: Integer).
-#         5.3       : The parameter is a floating point number (Type: Float).
-#         red       : The parameter is a named color (Type: Integer).
-#         font;zize : The parameter is a font name with a font size (Type: List[Font, Size]).
-#         123       : The parameter is an integer (Type: Integer).
+# Usage:  *string	: The paramater is a string with the "*" is removed (Type: String).
+#		  #aarrggbb : The parameter is a HEX colour string (Type: Integer).
+#		  0xABCD	: The parameter is a HEX integer (Type: Integer).
+#		  5.3		: The parameter is a floating point number (Type: Float).
+#		  red		: The parameter is a named color (Type: Integer).
+#		  font;zize : The parameter is a font name with a font size (Type: List[Font, Size]).
+#		  123		: The parameter is an integer (Type: Integer).
 #
 
 
 def parseParameter(value):
 	"""This function is responsible for parsing parameters in the skin, it can parse integers, floats, hex colors, hex integers, named colors, fonts and strings."""
-	if value[0] == "*":  # String.
+	if value[0] == "*":	 # String.
 		return value[1:]
 	elif value[0] == "#":  # HEX Color.
 		return int(value[1:], 16)
-	elif value[:2] == "0x":  # HEX Integer.
+	elif value[:2] == "0x":	 # HEX Integer.
 		return int(value, 16)
-	elif "." in value:  # Float number.
+	elif "." in value:	# Float number.
 		return float(value)
 	elif value in colors:  # Named color.
 		return colors[value].argb()
-	elif value.find(";") != -1:  # Font.
+	elif value.find(";") != -1:	 # Font.
 		(font, size) = [x.strip() for x in value.split(";", 1)]
 		return [font, int(size)]
 	else:  # Integer.
@@ -385,9 +385,9 @@ def parseSize(value, scale, object=None, desktop=None):
 
 
 def parseValuePair(value, scale, object=None, desktop=None, size=None):
-	(xValue, yValue) = value.split(",")  # These values will be stripped in parseCoordinate().
+	(xValue, yValue) = value.split(",")	 # These values will be stripped in parseCoordinate().
 	parentsize = eSize()
-	if object and ("c" in xValue or "c" in yValue or "e" in xValue or "e" in yValue or "%" in xValue or "%" in yValue):  # Need parent size for 'c', 'e' and '%'.
+	if object and ("c" in xValue or "c" in yValue or "e" in xValue or "e" in yValue or "%" in xValue or "%" in yValue):	 # Need parent size for 'c', 'e' and '%'.
 		parentsize = getParentSize(object, desktop)
 	xValue = parseCoordinate(xValue, parentsize.width(), size and size.width() or 0)
 	yValue = parseCoordinate(yValue, parentsize.height(), size and size.height() or 0)
@@ -411,7 +411,7 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 	size = None
 	pos = None
 	font = None
-	for attrib, value in node.items():  # Walk all attributes.
+	for attrib, value in node.items():	# Walk all attributes.
 		if attrib not in ignore:
 			if attrib in filenames:
 				value = resolveFilename(SCOPE_CURRENT_SKIN, value, path_prefix=skinPath)
@@ -419,7 +419,7 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 			# it needs to be set at least before the size is set, in order for the
 			# window dimensions to be calculated correctly in all situations.
 			# If wfNoBorder is applied after the size has been set, the window will
-			# fail to clear the title area.  Similar situation for a scrollbar in a
+			# fail to clear the title area.	 Similar situation for a scrollbar in a
 			# listbox; when the scrollbar setting is applied after the size, a scrollbar
 			# will not be shown until the selection moves for the first time.
 			if attrib == "size":
@@ -484,7 +484,7 @@ class AttributeParser:
 	def applyVerticalScale(self, value):
 		return int(int(value) * self.scaleTuple[1][0] / self.scaleTuple[1][1])
 
-	def alphatest(self, value):  # This legacy definition uses an inconsistent name!
+	def alphatest(self, value):	 # This legacy definition uses an inconsistent name!
 		self.alphaTest(value)
 
 	def alphaTest(self, value):
@@ -628,7 +628,7 @@ class AttributeParser:
 	def overScan(self, value):
 		self.guiObject.setOverscan(value)
 
-	def OverScan(self, value):  # This legacy definition uses an inconsistent name!
+	def OverScan(self, value):	# This legacy definition uses an inconsistent name!
 		self.overScan(value)
 
 	def pixmap(self, value):
@@ -655,7 +655,7 @@ class AttributeParser:
 	def scrollbarBackgroundPixmap(self, value):
 		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
 
-	def scrollbarbackgroundPixmap(self, value):  # This legacy definition uses an inconsistent name!
+	def scrollbarbackgroundPixmap(self, value):	 # This legacy definition uses an inconsistent name!
 		self.scrollbarBackgroundPixmap(value)
 
 	def scrollbarMode(self, value):
@@ -696,7 +696,7 @@ class AttributeParser:
 		pos = parsePosition(pos, self.scaleTuple)
 		self.guiObject.setPointer(1, ptr, pos)
 
-	def seek_pointer(self, value):  # This legacy definition uses an inconsistent name!
+	def seek_pointer(self, value):	# This legacy definition uses an inconsistent name!
 		self.seekPointer(value)
 
 	def selection(self, value):
@@ -897,14 +897,14 @@ def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT
 		fallbackFont = resolveFilename(SCOPE_FONTS, "fallback.font", path_prefix=pathSkin)
 		if isfile(fallbackFont):
 			addFont(fallbackFont, "Fallback", 100, -1, 0)
-		# else:  # As this is optional don't raise an error.
-		# 	raise SkinError("Fallback font '%s' not found" % fallbackFont)
+		# else:	 # As this is optional don't raise an error.
+		#	raise SkinError("Fallback font '%s' not found" % fallbackFont)
 		for alias in tag.findall("alias"):
 			name = alias.attrib.get("name")
 			font = alias.attrib.get("font")
 			size = int(alias.attrib.get("size"))
 			# size = int(size) if size and size.isdigit() else 0  # This assumes that the attributes are always strings!
-			height = int(alias.attrib.get("height", size))  # To be calculated some day.
+			height = int(alias.attrib.get("height", size))	# To be calculated some day.
 			width = int(alias.attrib.get("width", size))  # To be calculated some day.
 			if name and font and size:
 				fonts[name] = (font, size, height, width)
@@ -956,7 +956,7 @@ def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT
 				borderColor = shadowColor = gRGB(0)
 			borderwidth = substyle.attrib.get("borderWidth")
 			if borderwidth is None:
-				borderWidth = 3  # Default: Use a subtitle border.
+				borderWidth = 3	 # Default: Use a subtitle border.
 			else:
 				borderWidth = int(borderwidth)
 			face = eSubtitleWidget.__dict__[substyle.attrib.get("name")]
@@ -964,7 +964,7 @@ def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT
 	for tag in domSkin.findall("windowstyle"):
 		style = eWindowStyleSkinned()
 		scrnID = int(tag.attrib.get("id", GUI_SKIN_ID))
-		font = gFont("Regular", 20)  # Default
+		font = gFont("Regular", 20)	 # Default
 		offset = eSize(20, 5)  # Default
 		for title in tag.findall("title"):
 			offset = parseSize(title.attrib.get("offset"), ((1, 1), (1, 1)))
@@ -1116,7 +1116,7 @@ class SkinContextStack(SkinContext):
 def readSkin(screen, skin, names, desktop):
 	if not isinstance(names, list):
 		names = [names]
-	for n in names:  # Try all skins, first existing one has priority.
+	for n in names:	 # Try all skins, first existing one has priority.
 		myScreen, path = domScreens.get(n, (None, None))
 		if myScreen is not None:
 			if screen.mandatoryWidgets is None:
@@ -1133,7 +1133,7 @@ def readSkin(screen, skin, names, desktop):
 		name = "<embedded-in-%s>" % screen.__class__.__name__
 	if myScreen is None:  # Otherwise try embedded skin.
 		myScreen = getattr(screen, "parsedSkin", None)
-	if myScreen is None and getattr(screen, "skin", None):  # Try uncompiled embedded skin.
+	if myScreen is None and getattr(screen, "skin", None):	# Try uncompiled embedded skin.
 		if isinstance(screen.skin, list):
 			print("[Skin] Resizable embedded skin template found in '%s'." % name)
 			skin = screen.skin[0] % tuple([int(x * getSkinFactor()) for x in screen.skin[1:]])
@@ -1194,7 +1194,7 @@ def readSkin(screen, skin, names, desktop):
 			collectAttributes(attributes, widget, context, skinPath, ignore=("name",))
 		elif wsource:
 			# print("[Skin] DEBUG: Widget source='%s'." % wsource)
-			while True:  # Get corresponding source until we found a non-obsolete source.
+			while True:	 # Get corresponding source until we found a non-obsolete source.
 				# Parse our current "wsource", which might specify a "related screen" before the dot,
 				# for example to reference a parent, global or session-global screen.
 				scr = screen
@@ -1245,7 +1245,7 @@ def readSkin(screen, skin, names, desktop):
 				rendererClass = my_import(".".join(("Components", "Renderer", wrender))).__dict__.get(wrender)
 			except ImportError as err:
 				raise SkinError("Renderer '%s' not found" % wrender)
-			renderer = rendererClass()  # Instantiate renderer.
+			renderer = rendererClass()	# Instantiate renderer.
 			renderer.connect(source)  # Connect to source.
 			attributes = renderer.skinAttributes = []
 			collectAttributes(attributes, widget, context, skinPath, ignore=("render", "source"))
@@ -1370,7 +1370,7 @@ def findWidgets(name):
 	return widgetSet
 
 # Return a scaling factor (float) that can be used to rescale screen displays
-# to suit the current resolution of the screen.  The scales are based on a
+# to suit the current resolution of the screen.	 The scales are based on a
 # default screen resolution of HD (720p).  That is the scale factor for a HD
 # screen will be 1.
 #
@@ -1379,12 +1379,12 @@ def findWidgets(name):
 def getSkinFactor():
 	skinfactor = getDesktop(GUI_SKIN_ID).size().height() / 720.0
 	# if skinfactor not in [0.8, 1, 1.5, 3, 6]:
-	# 	print("[Skin] Warning: Unexpected result for getSkinFactor '%0.4f'!" % skinfactor)
+	#	print("[Skin] Warning: Unexpected result for getSkinFactor '%0.4f'!" % skinfactor)
 	return skinfactor
 
 # Search the domScreens dictionary to see if any of the screen names provided
-# have a skin based screen.  This will allow coders to know if the named
-# screen will be skinned by the skin code.  A return of None implies that the
+# have a skin based screen.	 This will allow coders to know if the named
+# screen will be skinned by the skin code.	A return of None implies that the
 # code must provide its own skin for the screen to be displayed to the user.
 #
 
@@ -1392,7 +1392,7 @@ def getSkinFactor():
 def findSkinScreen(names):
 	if not isinstance(names, list):
 		names = [names]
-	for name in names:  # Try all names given, the first one found is the one that will be used by the skin engine.
+	for name in names:	# Try all names given, the first one found is the one that will be used by the skin engine.
 		screen, path = domScreens.get(name, (None, None))
 		if screen is not None:
 			return name

@@ -144,7 +144,7 @@ class VNetSpeedInfo(Poll, Converter, object):
 		sp = []
 		while bw:
 			bw = bwm.readline()
-			while bw.find('  ') is not -1:
+			while bw.find('	 ') is not -1:
 				bw = bw.replace('  ', ' ')
 
 			if bw.find('eth') is not -1:

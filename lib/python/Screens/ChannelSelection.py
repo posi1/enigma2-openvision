@@ -64,10 +64,10 @@ class BouquetSelector(Screen):
 		self.selectedFunc = selectedFunc
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self.okbuttonClick,
-				"cancel": self.cancelClick
-			})
+									{
+			"ok": self.okbuttonClick,
+			"cancel": self.cancelClick
+		})
 		entrys = [(x[0], x[1]) for x in bouquets]
 		self["menu"] = MenuList(entrys, enableWrapAround)
 
@@ -136,19 +136,19 @@ class ChannelContextMenu(Screen):
 			self.onFirstExecBegin.append(boundFunction(self.session.openWithCallback, self.protectResult, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the correct pin code"), windowTitle=_("Enter pin code")))
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "NumberActions", "MenuActions"],
-			{
-				"ok": self.okbuttonClick,
-				"cancel": self.cancelClick,
-				"blue": self.showServiceInPiP,
-				"red": self.playMain,
-				"menu": self.openSetup,
-				"1": self.unhideParentalServices,
-				"2": self.renameEntry,
-				"3": self.findCurrentlyPlayed,
-				"5": self.addServiceToBouquetOrAlternative,
-				"6": self.toggleMoveModeSelect,
-				"8": self.removeEntry
-			})
+									{
+			"ok": self.okbuttonClick,
+			"cancel": self.cancelClick,
+			"blue": self.showServiceInPiP,
+			"red": self.playMain,
+			"menu": self.openSetup,
+			"1": self.unhideParentalServices,
+			"2": self.renameEntry,
+			"3": self.findCurrentlyPlayed,
+			"5": self.addServiceToBouquetOrAlternative,
+			"6": self.toggleMoveModeSelect,
+			"8": self.removeEntry
+		})
 		menu = []
 
 		self.removeFunction = False
@@ -252,20 +252,20 @@ class ChannelContextMenu(Screen):
 				if current_root and ("flags == %d" % (FLAG_SERVICE_NEW_FOUND)) in current_root.getPath():
 					append_when_current_valid(current, menu, (_("Remove new found flag"), self.removeNewFoundFlag), level=0)
 			else:
-					if self.parentalControlEnabled:
-						if self.parentalControl.blacklist and config.ParentalControl.hideBlacklist.value and not self.parentalControl.sessionPinCached and config.ParentalControl.storeservicepin.value != "never":
-							append_when_current_valid(current, menu, (_("Unhide parental control services"), self.unhideParentalServices), level=0, key="1")
-						if self.parentalControl.getProtectionLevel(current.toCompareString()) == -1:
-							append_when_current_valid(current, menu, (_("Add bouquet to parental protection"), boundFunction(self.addParentalProtection, current)), level=0)
-						else:
-							append_when_current_valid(current, menu, (_("Remove bouquet from parental protection"), boundFunction(self.removeParentalProtection, current)), level=0)
-					menu.append(ChoiceEntryComponent("dummy", (_("Add bouquet"), self.showBouquetInputBox)))
-					append_when_current_valid(current, menu, (_("Rename entry"), self.renameEntry), level=0, key="2")
-					append_when_current_valid(current, menu, (_("Remove entry"), self.removeEntry), level=0, key="8")
-					self.removeFunction = self.removeBouquet
-					if removed_userbouquets_available():
-						append_when_current_valid(current, menu, (_("Purge deleted user bouquets"), self.purgeDeletedBouquets), level=0)
-						append_when_current_valid(current, menu, (_("Restore deleted user bouquets"), self.restoreDeletedBouquets), level=0)
+				if self.parentalControlEnabled:
+					if self.parentalControl.blacklist and config.ParentalControl.hideBlacklist.value and not self.parentalControl.sessionPinCached and config.ParentalControl.storeservicepin.value != "never":
+						append_when_current_valid(current, menu, (_("Unhide parental control services"), self.unhideParentalServices), level=0, key="1")
+					if self.parentalControl.getProtectionLevel(current.toCompareString()) == -1:
+						append_when_current_valid(current, menu, (_("Add bouquet to parental protection"), boundFunction(self.addParentalProtection, current)), level=0)
+					else:
+						append_when_current_valid(current, menu, (_("Remove bouquet from parental protection"), boundFunction(self.removeParentalProtection, current)), level=0)
+				menu.append(ChoiceEntryComponent("dummy", (_("Add bouquet"), self.showBouquetInputBox)))
+				append_when_current_valid(current, menu, (_("Rename entry"), self.renameEntry), level=0, key="2")
+				append_when_current_valid(current, menu, (_("Remove entry"), self.removeEntry), level=0, key="8")
+				self.removeFunction = self.removeBouquet
+				if removed_userbouquets_available():
+					append_when_current_valid(current, menu, (_("Purge deleted user bouquets"), self.purgeDeletedBouquets), level=0)
+					append_when_current_valid(current, menu, (_("Restore deleted user bouquets"), self.restoreDeletedBouquets), level=0)
 		if self.inBouquet: # current list is editable?
 			if csel.bouquet_mark_edit == OFF:
 				if csel.movemode:
@@ -738,9 +738,9 @@ class SelectionEventInfo:
 class ChannelSelectionEPG(InfoBarHotkey):
 	def __init__(self):
 		self.hotkeys = [("Info (EPG)", "info", "Infobar/openEventView"),
-			("Info (EPG)" + " " + _("long"), "info_long", "Infobar/showEventInfoPlugins"),
-			("Epg/Guide", "epg", "Plugins/Extensions/GraphMultiEPG/1"),
-			("Epg/Guide" + " " + _("long"), "epg_long", "Infobar/showEventInfoPlugins")]
+						("Info (EPG)" + " " + _("long"), "info_long", "Infobar/showEventInfoPlugins"),
+						("Epg/Guide", "epg", "Plugins/Extensions/GraphMultiEPG/1"),
+						("Epg/Guide" + " " + _("long"), "epg_long", "Infobar/showEventInfoPlugins")]
 		self["ChannelSelectEPGActions"] = hotkeyActionMap(["ChannelSelectEPGActions"], dict((x[1], self.hotkeyGlobal) for x in self.hotkeys))
 		self.eventViewEPG = self.start_bouquet = self.epg_bouquet = None
 		self.currentSavedPath = []
@@ -760,10 +760,10 @@ class ChannelSelectionEPG(InfoBarHotkey):
 	def getEPGPluginList(self, getAll=False):
 		if six.PY2:
 			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'selectedevent' not in p.__call__.func_code.co_varnames] or []
+						  if 'selectedevent' not in p.__call__.func_code.co_varnames] or []
 		else:
 			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
+						  if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
 		from Components.ServiceEventTracker import InfoBarCount
 		if getAll or InfoBarCount == 1:
 			pluginlist.append((_("Show EPG for current channel..."), self.openSingleServiceEPG, _("Display EPG list for current channel")))
@@ -961,9 +961,9 @@ class ChannelSelectionEdit:
 					return ActionMap.action(self, contexts, action)
 
 		self["ChannelSelectEditActions"] = ChannelSelectionEditActionMap(self, ["ChannelSelectEditActions", "OkCancelActions"],
-			{
-				"contextMenu": self.doContext,
-			})
+																		 {
+			"contextMenu": self.doContext,
+		})
 
 	def getMutableList(self, root=eServiceReference()):
 		if not self.mutableList is None:
@@ -1413,31 +1413,31 @@ class ChannelSelectionBase(Screen):
 		self.showSatDetails = False
 
 		self["ChannelSelectBaseActions"] = NumberActionMap(["ChannelSelectBaseActions", "NumberActions", "InputAsciiActions"],
-			{
-				"showFavourites": self.showFavourites,
-				"showAllServices": self.showAllServices,
-				"showProviders": self.showProviders,
-				"showSatellites": boundFunction(self.showSatellites, changeMode=True),
-				"nextBouquet": self.nextBouquet,
-				"prevBouquet": self.prevBouquet,
-				"nextMarker": self.nextMarker,
-				"prevMarker": self.prevMarker,
-				"gotAsciiCode": self.keyAsciiCode,
-				"keyLeft": self.keyLeft,
-				"keyRight": self.keyRight,
-				"keyRecord": self.keyRecord,
-				"toggleTwoLines": self.toggleTwoLines,
-				"1": self.keyNumberGlobal,
-				"2": self.keyNumberGlobal,
-				"3": self.keyNumberGlobal,
-				"4": self.keyNumberGlobal,
-				"5": self.keyNumberGlobal,
-				"6": self.keyNumberGlobal,
-				"7": self.keyNumberGlobal,
-				"8": self.keyNumberGlobal,
-				"9": self.keyNumberGlobal,
-				"0": self.keyNumber0
-			}, -2)
+														   {
+			"showFavourites": self.showFavourites,
+			"showAllServices": self.showAllServices,
+			"showProviders": self.showProviders,
+			"showSatellites": boundFunction(self.showSatellites, changeMode=True),
+			"nextBouquet": self.nextBouquet,
+			"prevBouquet": self.prevBouquet,
+			"nextMarker": self.nextMarker,
+			"prevMarker": self.prevMarker,
+			"gotAsciiCode": self.keyAsciiCode,
+			"keyLeft": self.keyLeft,
+			"keyRight": self.keyRight,
+			"keyRecord": self.keyRecord,
+			"toggleTwoLines": self.toggleTwoLines,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"0": self.keyNumber0
+		}, -2)
 		self.maintitle = _("Channel selection")
 		self.recallBouquetMode()
 
@@ -1985,22 +1985,22 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 		SelectionEventInfo.__init__(self)
 
 		self["actions"] = ActionMap(["OkCancelActions", "TvRadioActions"],
-			{
-				"cancel": self.cancel,
-				"ok": self.channelSelected,
-				"keyRadio": self.doRadioButton,
-				"keyTV": self.doTVButton,
-			})
+									{
+			"cancel": self.cancel,
+			"ok": self.channelSelected,
+			"keyRadio": self.doRadioButton,
+			"keyTV": self.doTVButton,
+		})
 
 		self["ChannelSelectEPGActions"] = ActionMap(["ChannelSelectEPGActions"],
-			{
-				"showEPGList": self.showEPGList,
-			})
+													{
+			"showEPGList": self.showEPGList,
+		})
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evStart: self.__evServiceStart,
-				iPlayableService.evEnd: self.__evServiceEnd
-			})
+			iPlayableService.evStart: self.__evServiceStart,
+			iPlayableService.evEnd: self.__evServiceEnd
+		})
 
 		self.startServiceRef = None
 
@@ -2526,24 +2526,24 @@ class ChannelSelectionRadio(ChannelSelectionBase, ChannelSelectionEdit, ChannelS
 			self.info.setAnimationMode(0)
 
 		self["actions"] = ActionMap(["OkCancelActions", "TvRadioActions"],
-			{
-				"keyTV": self.cancel,
-				"keyRadio": self.cancel,
-				"cancel": self.cancel,
-				"ok": self.channelSelected,
-				"audio": self.audioSelection
-			})
+									{
+			"keyTV": self.cancel,
+			"keyRadio": self.cancel,
+			"cancel": self.cancel,
+			"ok": self.channelSelected,
+			"audio": self.audioSelection
+		})
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evStart: self.__evServiceStart,
-				iPlayableService.evEnd: self.__evServiceEnd
-			})
+			iPlayableService.evStart: self.__evServiceStart,
+			iPlayableService.evEnd: self.__evServiceEnd
+		})
 
 ########## RDS Radiotext / Rass Support BEGIN
 		self.infobar = infobar # reference to real infobar (the one and only)
 		self["RdsDecoder"] = self.info["RdsDecoder"]
 		self["RdsActions"] = HelpableActionMap(self, ["InfobarRdsActions"],
-		{
+											   {
 			"startRassInteractive": (self.startRassInteractive, _("View Rass interactive..."))
 		}, -1)
 		self["RdsActions"].setEnabled(False)
@@ -2674,12 +2674,12 @@ class SimpleChannelSelection(ChannelSelectionBase, SelectionEventInfo):
 		ChannelSelectionBase.__init__(self, session)
 		SelectionEventInfo.__init__(self)
 		self["actions"] = ActionMap(["OkCancelActions", "TvRadioActions"],
-			{
-				"cancel": self.close,
-				"ok": self.channelSelected,
-				"keyRadio": self.setModeRadio,
-				"keyTV": self.setModeTv,
-			})
+									{
+			"cancel": self.close,
+			"ok": self.channelSelected,
+			"keyRadio": self.setModeRadio,
+			"keyTV": self.setModeTv,
+		})
 		self.bouquet_mark_edit = OFF
 		if isinstance(title, str):
 			self.maintitle = title

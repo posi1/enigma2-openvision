@@ -29,7 +29,7 @@ class OSD3DSetupScreen(Screen, ConfigListScreen):
 		self["key_green"] = Label(_("Save"))
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions"],
-		{
+									{
 			"ok": self.keyGo,
 			"save": self.keyGo,
 			"cancel": self.keyCancel,
@@ -95,22 +95,22 @@ class auto3D(Screen):
 		Screen.__init__(self, session)
 		self.session = session
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evStart: self.__evStart
-			})
+			iPlayableService.evStart: self.__evStart
+		})
 
 	def checkIfDedicated3D(self):
-			service = self.session.nav.getCurrentlyPlayingServiceReference()
-			servicepath = service and service.getPath()
-			if servicepath and servicepath.startswith("/"):
-				if service.toString().startswith("1:"):
-					info = eServiceCenter.getInstance().info(service)
-					service = info and info.getInfoString(service, iServiceInformation.sServiceref)
-					return service and eDVBDB.getInstance().getFlag(eServiceReference(service)) & FLAG_IS_DEDICATED_3D == FLAG_IS_DEDICATED_3D and "sidebyside"
-				else:
-					return ".3d." in servicepath.lower() and "sidebyside" or ".tab." in servicepath.lower() and "topandbottom"
-			service = self.session.nav.getCurrentService()
-			info = service and service.info()
-			return info and info.getInfo(iServiceInformation.sIsDedicated3D) == 1 and "sidebyside"
+		service = self.session.nav.getCurrentlyPlayingServiceReference()
+		servicepath = service and service.getPath()
+		if servicepath and servicepath.startswith("/"):
+			if service.toString().startswith("1:"):
+				info = eServiceCenter.getInstance().info(service)
+				service = info and info.getInfoString(service, iServiceInformation.sServiceref)
+				return service and eDVBDB.getInstance().getFlag(eServiceReference(service)) & FLAG_IS_DEDICATED_3D == FLAG_IS_DEDICATED_3D and "sidebyside"
+			else:
+				return ".3d." in servicepath.lower() and "sidebyside" or ".tab." in servicepath.lower() and "topandbottom"
+		service = self.session.nav.getCurrentService()
+		info = service and service.info()
+		return info and info.getInfo(iServiceInformation.sIsDedicated3D) == 1 and "sidebyside"
 
 	def __evStart(self):
 		if config.plugins.OSD3DSetup.mode.value == "auto":
@@ -141,5 +141,5 @@ def Plugins(**kwargs):
 	if SystemInfo["3DMode"]:
 		from Plugins.Plugin import PluginDescriptor
 		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart),
-			PluginDescriptor(name=_("OSD 3D setup"), description=_("Adjust 3D settings"), where=PluginDescriptor.WHERE_MENU, fnc=startSetup)]
+				PluginDescriptor(name=_("OSD 3D setup"), description=_("Adjust 3D settings"), where=PluginDescriptor.WHERE_MENU, fnc=startSetup)]
 	return []

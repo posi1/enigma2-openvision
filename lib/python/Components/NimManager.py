@@ -243,15 +243,15 @@ class SecConfigure:
 									turning_speed = ((beg_time.tm_hour + 1) * 60 + beg_time.tm_min + 1) << 16
 									turning_speed |= (end_time.tm_hour + 1) * 60 + end_time.tm_min + 1
 							self.addLNBSimple(sec, slotid=x, diseqcmode=current_mode,
-								orbpos=sat,
-								longitude=nim.longitude.float,
-								loDirection=loValue,
-								latitude=nim.latitude.float,
-								laDirection=laValue,
-								turningSpeed=turning_speed,
-								useInputPower=useInputPower,
-								inputPowerDelta=inputPowerDelta,
-								diseqc13V=nim.diseqc13V.value)
+											  orbpos=sat,
+											  longitude=nim.longitude.float,
+											  loDirection=loValue,
+											  latitude=nim.latitude.float,
+											  laDirection=laValue,
+											  turningSpeed=turning_speed,
+											  useInputPower=useInputPower,
+											  inputPowerDelta=inputPowerDelta,
+											  diseqc13V=nim.diseqc13V.value)
 					elif nim.configMode.value == "advanced": #advanced config
 						self.updateAdvanced(sec, x)
 		print("[NimManager] sec config completed")
@@ -397,10 +397,10 @@ class SecConfigure:
 					cdc = currLnb.commitedDiseqcCommand.value
 
 					c = {"none": diseqcParam.SENDNO,
-						"AA": diseqcParam.AA,
-						"AB": diseqcParam.AB,
-						"BA": diseqcParam.BA,
-						"BB": diseqcParam.BB}
+						 "AA": diseqcParam.AA,
+						 "AB": diseqcParam.AB,
+						 "BA": diseqcParam.BA,
+						 "BB": diseqcParam.BB}
 
 					if cdc in c:
 						sec.setCommittedCommand(c[cdc])
@@ -527,16 +527,16 @@ class NIM(object):
 		self.__is_empty = is_empty
 
 		self.compatible = {
-				None: (None,),
-				"DVB-S": ("DVB-S", None),
-				"DVB-C": ("DVB-C", None),
-				"DVB-T": ("DVB-T", None),
-				"DVB-S2": ("DVB-S", "DVB-S2", None),
-				"DVB-S2X": ("DVB-S", "DVB-S2", "DVB-S2X", None),
-				"DVB-C2": ("DVB-C", "DVB-C2", None),
-				"DVB-T2": ("DVB-T", "DVB-T2", None),
-				"ATSC": ("ATSC", None),
-			}
+			None: (None,),
+			"DVB-S": ("DVB-S", None),
+			"DVB-C": ("DVB-C", None),
+			"DVB-T": ("DVB-T", None),
+			"DVB-S2": ("DVB-S", "DVB-S2", None),
+			"DVB-S2X": ("DVB-S", "DVB-S2", "DVB-S2X", None),
+			"DVB-C2": ("DVB-C", "DVB-C2", None),
+			"DVB-T2": ("DVB-T", "DVB-T2", None),
+			"ATSC": ("ATSC", None),
+		}
 
 		# get multi type using delsys information
 		self.combined = False
@@ -558,10 +558,10 @@ class NIM(object):
 		try:
 			if self.combined:
 				return [x for x in self.multi_type.values() if
-					self.config.configModeDVBS.value and x.startswith("DVB-S") or
-					self.config.configModeDVBC.value and x.startswith("DVB-C") or
-					self.config.configModeDVBT.value and x.startswith("DVB-T") or
-					self.config.configModeATSC.value and x.startswith("ATSC")]
+						self.config.configModeDVBS.value and x.startswith("DVB-S") or
+						self.config.configModeDVBC.value and x.startswith("DVB-C") or
+						self.config.configModeDVBT.value and x.startswith("DVB-T") or
+						self.config.configModeATSC.value and x.startswith("ATSC")]
 		except:
 			pass
 		return [self.getType()]
@@ -584,15 +584,15 @@ class NIM(object):
 
 	def connectableTo(self):
 		connectable = {
-				"DVB-S": ("DVB-S", "DVB-S2", "DVB-S2X"),
-				"DVB-C": ("DVB-C", "DVB-C2"),
-				"DVB-T": ("DVB-T", "DVB-T2"),
-				"DVB-S2": ("DVB-S", "DVB-S2", "DVB-S2X"),
-				"DVB-S2X": ("DVB-S", "DVB-S2", "DVB-S2X"),
-				"DVB-C2": ("DVB-C", "DVB-C2"),
-				"DVB-T2": ("DVB-T", "DVB-T2"),
-				"ATSC": ("ATSC"),
-			}
+			"DVB-S": ("DVB-S", "DVB-S2", "DVB-S2X"),
+			"DVB-C": ("DVB-C", "DVB-C2"),
+			"DVB-T": ("DVB-T", "DVB-T2"),
+			"DVB-S2": ("DVB-S", "DVB-S2", "DVB-S2X"),
+			"DVB-S2X": ("DVB-S", "DVB-S2", "DVB-S2X"),
+			"DVB-C2": ("DVB-C", "DVB-C2"),
+			"DVB-T2": ("DVB-T", "DVB-T2"),
+			"ATSC": ("ATSC"),
+		}
 		return connectable[self.getType()]
 
 	def getSlotID(self, slot=None):
@@ -822,17 +822,17 @@ class NimManager:
 		# the result will be stored into nim_slots.
 		# the content of /proc/bus/nim_sockets looks like:
 		# NIM Socket 0:
-		#          Type: DVB-S
-		#          Name: BCM4501 DVB-S2 NIM (internal)
+		#		   Type: DVB-S
+		#		   Name: BCM4501 DVB-S2 NIM (internal)
 		# NIM Socket 1:
-		#          Type: DVB-S
-		#          Name: BCM4501 DVB-S2 NIM (internal)
+		#		   Type: DVB-S
+		#		   Name: BCM4501 DVB-S2 NIM (internal)
 		# NIM Socket 2:
-		#          Type: DVB-T
-		#          Name: Philips TU1216
+		#		   Type: DVB-T
+		#		   Name: Philips TU1216
 		# NIM Socket 3:
-		#          Type: DVB-S
-		#          Name: Alps BSBE1 702A
+		#		   Type: DVB-S
+		#		   Name: Alps BSBE1 702A
 
 		#
 		# Type will be either "DVB-S", "DVB-S2", "DVB-T", "DVB-C" or None.
@@ -1356,7 +1356,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 					section.scrList = ConfigSelection([("%d" % (x + 1), "User Band %d" % (x + 1)) for x in range(configEntry.value == "jess" and 32 or 8)])
 					section.scrList.save_forced = True
 					srcfrequencyList = configEntry.value == "jess" and (1210, 1420, 1680, 2040, 984, 1020, 1056, 1092, 1128, 1164, 1256, 1292, 1328, 1364, 1458, 1494, 1530, 1566, 1602,\
-						1638, 1716, 1752, 1788, 1824, 1860, 1896, 1932, 1968, 2004, 2076, 2112, 2148) or (1284, 1400, 1516, 1632, 1748, 1864, 1980, 2096)
+																		1638, 1716, 1752, 1788, 1824, 1860, 1896, 1932, 1968, 2004, 2076, 2112, 2148) or (1284, 1400, 1516, 1632, 1748, 1864, 1980, 2096)
 					section.scrList.addNotifier(boundFunction(userScrListChanged, srcfrequencyList))
 					section.bootuptime = ConfigInteger(default=1000, limits=(0, 9999))
 					section.bootuptime.save_forced = True

@@ -42,17 +42,17 @@ class SkinSelector(Screen, HelpableScreen):
 		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center" />
 		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center" />
 	</screen>""",
-		670, 570,
-		10, 356, 200,
-		230, 650, 240,
-		10, 350, 30,
-		370, 260, 30,
-		25,
-		30,
-		85, 650, 25, 20,
-		10, 50, 140, 40, 20,
-		160, 50, 140, 40, 20
-	]
+			670, 570,
+			10, 356, 200,
+			230, 650, 240,
+			10, 350, 30,
+			370, 260, 30,
+			25,
+			30,
+			85, 650, 25, 20,
+			10, 50, 140, 40, 20,
+			160, 50, 140, 40, 20
+			]
 
 	def __init__(self, session, screenTitle=_("GUI Skin")):
 		Screen.__init__(self, session, mandatoryWidgets=["description", "skins"])

@@ -19,7 +19,7 @@ class TimeDateInput(Screen, ConfigListScreen):
 		self.createConfig(config_date, config_time)
 
 		self["actions"] = NumberActionMap(["SetupActions", "OkCancelActions", "ColorActions"],
-		{
+										  {
 			"ok": self.keyGo,
 			"green": self.keyGo,
 			"save": self.keyGo,

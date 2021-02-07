@@ -38,7 +38,7 @@ class ETSIClassifications(dict):
 
 class AusClassifications(dict):
 	# In Australia "Not Classified" (NC) is to be displayed as an empty string.
-	#            0   1   2    3    4    5    6    7    8     9     10   11   12    13    14    15
+	#			 0	 1	 2	  3	   4	5	 6	  7	   8	 9	   10	11	 12	   13	 14	   15
 	SHORTTEXT = ("", "", "P", "P", "C", "C", "G", "G", "PG", "PG", "M", "M", "MA", "MA", "AV", "R")
 	LONGTEXT = {
 		"": _("Not Classified"),
@@ -53,14 +53,14 @@ class AusClassifications(dict):
 	}
 	IMAGES = {
 		"": "ratings/blank.png",
-		"P": "ratings/AUS-P.png",
-		"C": "ratings/AUS-C.png",
-		"G": "ratings/AUS-G.png",
-		"PG": "ratings/AUS-PG.png",
-		"M": "ratings/AUS-M.png",
-		"MA": "ratings/AUS-MA.png",
-		"AV": "ratings/AUS-AV.png",
-		"R": "ratings/AUS-R.png"
+			"P": "ratings/AUS-P.png",
+			"C": "ratings/AUS-C.png",
+			"G": "ratings/AUS-G.png",
+			"PG": "ratings/AUS-PG.png",
+			"M": "ratings/AUS-M.png",
+			"MA": "ratings/AUS-MA.png",
+			"AV": "ratings/AUS-AV.png",
+			"R": "ratings/AUS-R.png"
 	}
 
 	def __init__(self):
@@ -281,7 +281,7 @@ class EventName(Converter, object):
 				reference = self.source.service
 				info = reference and self.source.info
 				if info:
-					test = ["ITSECX", (reference.toString(), 1, -1, 1440)]  # Search next 24 hours
+					test = ["ITSECX", (reference.toString(), 1, -1, 1440)]	# Search next 24 hours
 					self.list = [] if self.epgcache is None else self.epgcache.lookupEvent(test)
 					if self.list:
 						if self.type == self.NAME_NEXT and self.list[1][1]:

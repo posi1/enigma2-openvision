@@ -77,24 +77,24 @@ class MMIDialog(Screen):
 		self["entries"] = ConfigList([])
 
 		self["actions"] = NumberActionMap(["SetupActions", "MenuActions"],
-			{
-				"ok": self.okbuttonClick,
-				"cancel": self.keyCancel,
-				"menu": self.forceExit,
-				#for PIN
-				"left": self.keyLeft,
-				"right": self.keyRight,
-				"1": self.keyNumberGlobal,
-				"2": self.keyNumberGlobal,
-				"3": self.keyNumberGlobal,
-				"4": self.keyNumberGlobal,
-				"5": self.keyNumberGlobal,
-				"6": self.keyNumberGlobal,
-				"7": self.keyNumberGlobal,
-				"8": self.keyNumberGlobal,
-				"9": self.keyNumberGlobal,
-				"0": self.keyNumberGlobal
-			}, -1)
+										  {
+			"ok": self.okbuttonClick,
+			"cancel": self.keyCancel,
+			"menu": self.forceExit,
+			#for PIN
+			"left": self.keyLeft,
+			"right": self.keyRight,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"0": self.keyNumberGlobal
+		}, -1)
 
 		self.action = action
 		self.screen_data = screen_data
@@ -376,12 +376,12 @@ class CiSelection(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self["actions"] = ActionMap(["OkCancelActions", "CiSelectionActions"],
-			{
-				"left": self.keyLeft,
-				"right": self.keyLeft,
-				"ok": self.okbuttonClick,
-				"cancel": self.cancel
-			}, -1)
+									{
+			"left": self.keyLeft,
+			"right": self.keyLeft,
+			"ok": self.okbuttonClick,
+			"cancel": self.cancel
+		}, -1)
 
 		self.dlg = None
 		self.state = {}
@@ -541,7 +541,7 @@ class PermanentPinEntry(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list)
 
 		self["actions"] = NumberActionMap(["DirectionActions", "ColorActions", "OkCancelActions"],
-		{
+										  {
 			"cancel": self.cancel,
 			"red": self.cancel,
 			"save": self.keyOK,

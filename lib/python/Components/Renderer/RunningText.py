@@ -16,8 +16,8 @@ RIGHT = 1
 TOP = 2
 BOTTOM = 3
 # halign:
-#LEFT     = 0
-#RIGHT    = 1
+#LEFT	  = 0
+#RIGHT	  = 1
 CENTER = 2
 BLOCK = 3
 
@@ -69,7 +69,7 @@ class RunningText(Renderer):
 				else:
 					x = max(limit, int(val))
 			except:
-					x = default
+				x = default
 			return x
 
 		def setWrapFlag(attrib, value):
@@ -204,8 +204,8 @@ class RunningText(Renderer):
 		self.scroll_label.setText(self.txtext)
 
 		if self.txtext == "" or \
-			self.type == NONE or \
-			self.scroll_label is None:
+				self.type == NONE or \
+				self.scroll_label is None:
 			return False
 
 		if self.direction in (LEFT, RIGHT) or not (self.txtflags & RT_WRAP):
@@ -225,8 +225,8 @@ class RunningText(Renderer):
 
 
 #		self.type =		0 - NONE; 1 - RUNNING; 2 - SWIMMING; 3 - AUTO(???)
-#		self.direction =	0 - LEFT; 1 - RIGHT;   2 - TOP;      3 - BOTTOM
-#		self.halign =		0 - LEFT; 1 - RIGHT;   2 - CENTER;   3 - BLOCK
+#		self.direction =	0 - LEFT; 1 - RIGHT;   2 - TOP;		 3 - BOTTOM
+#		self.halign =		0 - LEFT; 1 - RIGHT;   2 - CENTER;	 3 - BLOCK
 
 		if self.direction in (LEFT, RIGHT):
 			if not self.mAlways and text_width <= self.W:

@@ -19,11 +19,11 @@ POLLTIME = 5 # seconds
 
 
 def SymbolsCheck(session, **kwargs):
-		global symbolspoller, POLLTIME
-		if SystemInfo["VFDSymbol"]:
-			POLLTIME = 1
-		symbolspoller = SymbolsCheckPoller(session)
-		symbolspoller.start()
+	global symbolspoller, POLLTIME
+	if SystemInfo["VFDSymbol"]:
+		POLLTIME = 1
+	symbolspoller = SymbolsCheckPoller(session)
+	symbolspoller.start()
 
 
 class SymbolsCheckPoller:
@@ -34,8 +34,8 @@ class SymbolsCheckPoller:
 		self.timer = eTimer()
 		self.onClose = []
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				iPlayableService.evUpdatedInfo: self.__evUpdatedInfo,
-			})
+			iPlayableService.evUpdatedInfo: self.__evUpdatedInfo,
+		})
 
 	def __onClose(self):
 		pass

@@ -14,7 +14,7 @@ class TemplatedMultiContent(StringList):
 		from Components.MultiContent import MultiContentEntryPixmap, MultiContentEntryPixmapAlphaBlend, MultiContentEntryPixmapAlphaTest, MultiContentEntryProgress, MultiContentEntryProgressPixmap, MultiContentEntryText, MultiContentTemplateColor
 		f = getSkinFactor()
 		loc = locals()
-		del loc["self"]  # Cleanup locals a bit.
+		del loc["self"]	 # Cleanup locals a bit.
 		del loc["args"]
 		self.active_style = None
 		self.template = eval(args, {}, loc)
@@ -22,7 +22,7 @@ class TemplatedMultiContent(StringList):
 		assert "itemHeight" in self.template
 		assert "template" in self.template or "templates" in self.template
 		assert "template" in self.template or "default" in self.template["templates"]  # We need to have a default template.
-		if "template" not in self.template:  # Default template can be ["template"] or ["templates"]["default"].
+		if "template" not in self.template:	 # Default template can be ["template"] or ["templates"]["default"].
 			self.template["template"] = self.template["templates"]["default"][1]
 			self.template["itemHeight"] = self.template["template"][0]
 
@@ -32,7 +32,7 @@ class TemplatedMultiContent(StringList):
 			self.content = eListboxPythonMultiContent()
 			for index, font in enumerate(self.template["fonts"]):  # Setup fonts (also given by source).
 				self.content.setFont(index, font)
-		if what[0] == self.CHANGED_SPECIFIC and what[1] == "style":  # If only template changed, don't reload list.
+		if what[0] == self.CHANGED_SPECIFIC and what[1] == "style":	 # If only template changed, don't reload list.
 			pass
 		elif self.source:
 			try:
@@ -44,8 +44,8 @@ class TemplatedMultiContent(StringList):
 					else:
 						tmp.append(src[x])
 			except Exception as error:
-					print('[TemplatedMultiContent] - %s' % error)
-					tmp = self.source.list
+				print('[TemplatedMultiContent] - %s' % error)
+				tmp = self.source.list
 			self.content.setList(tmp)
 		self.setTemplate()
 		self.downstream_elements.changed(what)
@@ -55,12 +55,12 @@ class TemplatedMultiContent(StringList):
 			style = self.source.style
 			if style == self.active_style:
 				return
-			templates = self.template.get("templates")  # If skin defined "templates", that means that it defines multiple styles in a dict. template should still be a default.
+			templates = self.template.get("templates")	# If skin defined "templates", that means that it defines multiple styles in a dict. template should still be a default.
 			template = self.template.get("template")
 			itemheight = self.template["itemHeight"]
 			selectionEnabled = self.template.get("selectionEnabled", True)
 			scrollbarMode = self.template.get("scrollbarMode", "showOnDemand")
-			if templates and style and style in templates:  # If we have a custom style defined in the source, and different templates in the skin, look it up
+			if templates and style and style in templates:	# If we have a custom style defined in the source, and different templates in the skin, look it up
 				template = templates[style][1]
 				itemheight = templates[style][0]
 				if len(templates[style]) > 2:

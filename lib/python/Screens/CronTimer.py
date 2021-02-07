@@ -220,18 +220,18 @@ class CronTimers(Screen):
 					elif parts[3] == '*':
 						if parts[4] == "*":
 							try:
-								line2 = 'M:  Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6] + parts[7] + parts[8] + parts[9]
+								line2 = 'M:	 Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6] + parts[7] + parts[8] + parts[9]
 							except:
 								try:
-									line2 = 'M:  Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6] + parts[7] + parts[8]
+									line2 = 'M:	 Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6] + parts[7] + parts[8]
 								except:
 									try:
-										line2 = 'M:  Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6] + parts[7]
+										line2 = 'M:	 Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6] + parts[7]
 									except:
 										try:
-											line2 = 'M:  Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6]
+											line2 = 'M:	 Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5] + parts[6]
 										except:
-											line2 = 'M:  Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5]
+											line2 = 'M:	 Day ' + parts[2] + '  ' + parts[1].zfill(2) + ':' + parts[0].zfill(2) + '\t' + parts[5]
 						header = 'W:  '
 						day = ""
 						if str(parts[4]).find('0') >= 0:
@@ -316,7 +316,7 @@ class CronTimersConfig(Screen, ConfigListScreen):
 		self['key_red'] = Label(_("Close"))
 		self['key_green'] = Label(_("Save"))
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions', "MenuActions"],
-		{
+									{
 			'red': self.close,
 			'green': self.checkentry,
 			'back': self.close,

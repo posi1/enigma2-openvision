@@ -210,7 +210,7 @@ keyDescriptions = [{  # id=0 - dmm0 remote directory, DM8000.
 	KEYIDS["KEY_TV"]: ("TV",),
 	KEYIDS["KEY_UP"]: ("UP",),
 	KEYIDS["KEY_VIDEO"]: ("VIDEO",),
-	# KEYIDS["KEY_VMODE"]: ("VMODE",),  # This value is deprecated use KEY_SWITCHVIDEOMODE instead.
+	# KEYIDS["KEY_VMODE"]: ("VMODE",),	# This value is deprecated use KEY_SWITCHVIDEOMODE instead.
 	KEYIDS["KEY_VOLUMEDOWN"]: ("VOL-",),
 	KEYIDS["KEY_VOLUMEUP"]: ("VOL+",),
 	KEYIDS["KEY_YELLOW"]: ("YELLOW",),
@@ -274,7 +274,7 @@ keyDescriptions = [{  # id=0 - dmm0 remote directory, DM8000.
 	KEYIDS["KEY_TV"]: ("TV",),
 	KEYIDS["KEY_UP"]: ("UP",),
 	KEYIDS["KEY_VIDEO"]: ("PVR",),
-	# KEYIDS["KEY_VMODE"]: ("VMODE",),  # This value is deprecated use KEY_SWITCHVIDEOMODE instead.
+	# KEYIDS["KEY_VMODE"]: ("VMODE",),	# This value is deprecated use KEY_SWITCHVIDEOMODE instead.
 	KEYIDS["KEY_VOLUMEDOWN"]: ("VOL-",),
 	KEYIDS["KEY_VOLUMEUP"]: ("VOL+",),
 	KEYIDS["KEY_YELLOW"]: ("YELLOW",)
@@ -373,7 +373,7 @@ def getKeyDescription(key):
 	# print("[KeyBindings] RC type is '%s'." % rcType)
 	if rcType == 14:  # XP1000
 		idx = 3
-	elif rcType == 18:  # F1
+	elif rcType == 18:	# F1
 		idx = 4
 	else:
 		idx = 2

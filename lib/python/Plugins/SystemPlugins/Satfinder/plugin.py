@@ -67,7 +67,7 @@ class Satfinder(ScanSetup, ServiceScan):
 		self["Frontend"] = FrontendStatus(frontend_source=lambda: self.frontend, update_interval=100)
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
+									{
 			"save": self.keyGoScan,
 			"ok": self.keyGoScan,
 			"cancel": self.keyCancel,
@@ -116,14 +116,14 @@ class Satfinder(ScanSetup, ServiceScan):
 	def newConfig(self):
 		cur = self["config"].getCurrent()
 		if cur in (
-					self.typeOfTuningEntry,
-					self.systemEntry,
-					self.typeOfInputEntry,
-					self.systemEntryATSC,
-					self.DVB_TypeEntry,
-					self.systemEntryTerr,
-					self.satEntry
-					):  # update screen and retune
+			self.typeOfTuningEntry,
+			self.systemEntry,
+			self.typeOfInputEntry,
+			self.systemEntryATSC,
+			self.DVB_TypeEntry,
+			self.systemEntryTerr,
+			self.satEntry
+		):	# update screen and retune
 			self.createSetup()
 			self.retune()
 
@@ -322,19 +322,19 @@ class Satfinder(ScanSetup, ServiceScan):
 		# The following are updated in self.newConfig(). Do not add here.
 		# self.scan_sat.system, self.tuning_type, self.scan_input_as, self.scan_ats.system, self.DVB_type, self.scan_ter.system, self.satfinder_scan_nims, self.tuning_sat
 		for x in (self.scan_sat.frequency,
-			self.scan_sat.inversion, self.scan_sat.symbolrate,
-			self.scan_sat.polarization, self.scan_sat.fec, self.scan_sat.pilot,
-			self.scan_sat.fec_s2, self.scan_sat.fec, self.scan_sat.modulation,
-			self.scan_sat.rolloff,
-			self.scan_sat.is_id, self.scan_sat.pls_mode, self.scan_sat.pls_code,
-			self.scan_sat.t2mi_plp_id, self.scan_sat.t2mi_pid,
-			self.scan_ter.channel, self.scan_ter.frequency, self.scan_ter.inversion,
-			self.scan_ter.bandwidth, self.scan_ter.fechigh, self.scan_ter.feclow,
-			self.scan_ter.modulation, self.scan_ter.transmission,
-			self.scan_ter.guard, self.scan_ter.hierarchy, self.scan_ter.plp_id,
-			self.scan_cab.frequency, self.scan_cab.inversion, self.scan_cab.symbolrate,
-			self.scan_cab.modulation, self.scan_cab.fec,
-			self.scan_ats.frequency, self.scan_ats.modulation, self.scan_ats.inversion):
+				  self.scan_sat.inversion, self.scan_sat.symbolrate,
+				  self.scan_sat.polarization, self.scan_sat.fec, self.scan_sat.pilot,
+				  self.scan_sat.fec_s2, self.scan_sat.fec, self.scan_sat.modulation,
+				  self.scan_sat.rolloff,
+				  self.scan_sat.is_id, self.scan_sat.pls_mode, self.scan_sat.pls_code,
+				  self.scan_sat.t2mi_plp_id, self.scan_sat.t2mi_pid,
+				  self.scan_ter.channel, self.scan_ter.frequency, self.scan_ter.inversion,
+				  self.scan_ter.bandwidth, self.scan_ter.fechigh, self.scan_ter.feclow,
+				  self.scan_ter.modulation, self.scan_ter.transmission,
+				  self.scan_ter.guard, self.scan_ter.hierarchy, self.scan_ter.plp_id,
+				  self.scan_cab.frequency, self.scan_cab.inversion, self.scan_cab.symbolrate,
+				  self.scan_cab.modulation, self.scan_cab.fec,
+				  self.scan_ats.frequency, self.scan_ats.modulation, self.scan_ats.inversion):
 			x.addNotifier(self.retune, initial_call=False)
 
 		satfinder_nim_list = []
@@ -497,7 +497,7 @@ class Satfinder(ScanSetup, ServiceScan):
 			if len(tps) > self.preDefTransponders.index:
 				tp = tps[self.preDefTransponders.index]
 				transponder = (tp[1] / 1000, tp[2] / 1000,
-					tp[3], tp[4], 2, satpos, tp[5], tp[6], tp[8], tp[9], tp[10], tp[11], tp[12], tp[13], tp[14])
+							   tp[3], tp[4], 2, satpos, tp[5], tp[6], tp[8], tp[9], tp[10], tp[11], tp[12], tp[13], tp[14])
 				if self.initcomplete:
 					self.tuner.tune(transponder)
 				self.transponder = transponder
@@ -520,22 +520,22 @@ class Satfinder(ScanSetup, ServiceScan):
 		tlist = []
 		if self.DVB_type.value == "DVB-S":
 			self.addSatTransponder(tlist,
-				self.transponder[0], # frequency
-				self.transponder[1], # sr
-				self.transponder[2], # pol
-				self.transponder[3], # fec
-				self.transponder[4], # inversion
-				self.tuning_sat.orbital_position,
-				self.transponder[6], # system
-				self.transponder[7], # modulation
-				self.transponder[8], # rolloff
-				self.transponder[9], # pilot
-				self.transponder[10],# input stream id
-				self.transponder[11],# pls mode
-				self.transponder[12],# pls code
-				self.transponder[13],# t2mi_plp_id
-				self.transponder[14] # t2mi_pid
-			)
+								   self.transponder[0], # frequency
+								   self.transponder[1], # sr
+								   self.transponder[2], # pol
+								   self.transponder[3], # fec
+								   self.transponder[4], # inversion
+								   self.tuning_sat.orbital_position,
+								   self.transponder[6], # system
+								   self.transponder[7], # modulation
+								   self.transponder[8], # rolloff
+								   self.transponder[9], # pilot
+								   self.transponder[10],# input stream id
+								   self.transponder[11],# pls mode
+								   self.transponder[12],# pls code
+								   self.transponder[13],# t2mi_plp_id
+								   self.transponder[14] # t2mi_pid
+								   )
 		elif self.DVB_type.value == "DVB-T":
 			parm = buildTerTransponder(
 				self.transponder[1],  # frequency
@@ -553,19 +553,19 @@ class Satfinder(ScanSetup, ServiceScan):
 			tlist.append(parm)
 		elif self.DVB_type.value == "DVB-C":
 			self.addCabTransponder(tlist,
-				self.transponder[0], # frequency
-				self.transponder[1], # sr
-				self.transponder[2], # modulation
-				self.transponder[3], # fec_inner
-				self.transponder[4]  # inversion
-			)
+								   self.transponder[0], # frequency
+								   self.transponder[1], # sr
+								   self.transponder[2], # modulation
+								   self.transponder[3], # fec_inner
+								   self.transponder[4]	# inversion
+								   )
 		elif self.DVB_type.value == "ATSC":
 			self.addATSCTransponder(tlist,
-				self.transponder[0], # frequency
-				self.transponder[1], # modulation
-				self.transponder[2], # inversion
-				self.transponder[3]  # system
-			)
+									self.transponder[0], # frequency
+									self.transponder[1], # modulation
+									self.transponder[2], # inversion
+									self.transponder[3]	 # system
+									)
 		self.startScan(tlist, self.feid)
 
 	def startScan(self, tlist, feid):
@@ -599,7 +599,7 @@ class SatfinderExtra(Satfinder):
 		self["key_yellow"] = StaticText("")
 
 		self["actions2"] = ActionMap(["ColorActions"],
-		{
+									 {
 			"yellow": self.keyReadServices,
 		}, -3)
 		self["actions2"].setEnabled(False)
@@ -901,7 +901,7 @@ class ServicesFound(Screen):
 		self["servicesfound"] = ScrollLabel(text)
 
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
-		{
+									{
 			"back": self.close,
 			"red": self.close,
 			"up": self.pageUp,

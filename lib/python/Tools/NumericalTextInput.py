@@ -217,7 +217,7 @@ class NumericalTextInput:
 			self.mapping = mapping
 		else:
 			if mode is None:
-				if search:  # NOTE: This will be removed when deprecated "search" is removed and "mode" is widely adopted.
+				if search:	# NOTE: This will be removed when deprecated "search" is removed and "mode" is widely adopted.
 					mode = "Search"
 				if isinstance(mapping, str):  # NOTE: Legacy interface for previous and deprecated versions of NumericalTextInput.
 					mode = mapping

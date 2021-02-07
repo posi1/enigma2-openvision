@@ -55,7 +55,7 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		360, 50, 80, 40, 20,  # key_menu
 		150, 50, 80, 40, 20,  # key_info
 		180, 50, 80, 40, 20,  # key_text
-		90, 50, 80, 40, 20  # key_help
+		90, 50, 80, 40, 20	# key_help
 	]
 
 	def __init__(self, session, setup, plugin=None, PluginLanguageDomain=None):
@@ -70,7 +70,7 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		else:
 			self.skinName = []
 		if setup:
-			self.skinName.append("Setup%s" % setup)  # DEBUG: Proposed for new setup screens.
+			self.skinName.append("Setup%s" % setup)	 # DEBUG: Proposed for new setup screens.
 			self.skinName.append("setup_%s" % setup)
 		self.skinName.append("Setup")
 		self.list = []
@@ -165,14 +165,14 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		item = eval(element.text or "")
 		if item != "" and not isinstance(item, ConfigNothing):
 			itemDefault = item.toDisplayString(item.default)
-			itemDescription = _("%s  (Default: %s)") % (itemDescription, itemDefault) if itemDescription and itemDescription != " " else _("Default: '%s'.") % itemDefault
-			self.list.append((itemText, item, itemDescription))  # Add the item to the config list.
+			itemDescription = _("%s	 (Default: %s)") % (itemDescription, itemDefault) if itemDescription and itemDescription != " " else _("Default: '%s'.") % itemDefault
+			self.list.append((itemText, item, itemDescription))	 # Add the item to the config list.
 		if item is config.usage.boolean_graphic:
 			self.switch = True
 
 	def includeElement(self, element):
 		itemLevel = int(element.get("level", 0))
-		if itemLevel > config.usage.setup_level.index:  # The item is higher than the current setup level.
+		if itemLevel > config.usage.setup_level.index:	# The item is higher than the current setup level.
 			return False
 		requires = element.get("requires")
 		if requires:
@@ -232,8 +232,8 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 class SetupSummary(ScreenSummary):
 	def __init__(self, session, parent):
 		ScreenSummary.__init__(self, session, parent=parent)
-		self["entry"] = StaticText("")  # DEBUG: Proposed for new summary screens.
-		self["value"] = StaticText("")  # DEBUG: Proposed for new summary screens.
+		self["entry"] = StaticText("")	# DEBUG: Proposed for new summary screens.
+		self["value"] = StaticText("")	# DEBUG: Proposed for new summary screens.
 		self["SetupTitle"] = StaticText(parent.getTitle())
 		self["SetupEntry"] = StaticText("")
 		self["SetupValue"] = StaticText("")
@@ -256,8 +256,8 @@ class SetupSummary(ScreenSummary):
 			self.parent["config"].onSelectionChanged.remove(self.selectionChanged)
 
 	def selectionChanged(self):
-		self["entry"].text = self.parent.getCurrentEntry()  # DEBUG: Proposed for new summary screens.
-		self["value"].text = self.parent.getCurrentValue()  # DEBUG: Proposed for new summary screens.
+		self["entry"].text = self.parent.getCurrentEntry()	# DEBUG: Proposed for new summary screens.
+		self["value"].text = self.parent.getCurrentValue()	# DEBUG: Proposed for new summary screens.
 		self["SetupEntry"].text = self.parent.getCurrentEntry()
 		self["SetupValue"].text = self.parent.getCurrentValue()
 
@@ -266,13 +266,13 @@ class SetupSummary(ScreenSummary):
 #
 def setupDom(setup=None, plugin=None):
 	# Constants for checkItems()
-	ROOT_ALLOWED = ("setup", )  # Tags allowed in top level of setupxml entry.
+	ROOT_ALLOWED = ("setup", )	# Tags allowed in top level of setupxml entry.
 	ELEMENT_ALLOWED = ("item", "if")  # Tags allowed in top level of setup entry.
-	IF_ALLOWED = ("item", "if", "elif", "else")  # Tags allowed inside <if />.
-	AFTER_ELSE_ALLOWED = ("item", "if")  # Tags allowed after <elif /> or <else />.
+	IF_ALLOWED = ("item", "if", "elif", "else")	 # Tags allowed inside <if />.
+	AFTER_ELSE_ALLOWED = ("item", "if")	 # Tags allowed after <elif /> or <else />.
 	CHILDREN_ALLOWED = ("setup", "if", )  # Tags that may have children.
 	TEXT_ALLOWED = ("item", )  # Tags that may have non-whitespace text (or tail).
-	KEY_ATTRIBUTES = {  # Tags that have a reference key mandatory attribute.
+	KEY_ATTRIBUTES = {	# Tags that have a reference key mandatory attribute.
 		"setup": "key",
 		"item": "text"
 	}
@@ -285,7 +285,7 @@ def setupDom(setup=None, plugin=None):
 		keyText = " in '%s'" % key if key else ""
 		for element in parentNode:
 			if element.tag not in allowed:
-				print("[Setup] Error: Tag '%s' not permitted%s!  (Permitted: '%s')" % (element.tag, keyText, ", ".join(allowed)))
+				print("[Setup] Error: Tag '%s' not permitted%s!	 (Permitted: '%s')" % (element.tag, keyText, ", ".join(allowed)))
 				continue
 			if mandatory and element.tag in mandatory:
 				valid = True
@@ -344,7 +344,7 @@ def setupDom(setup=None, plugin=None):
 				setupModTimes[setupFile] = modTime
 				for setup in setupFileDom.findall("setup"):
 					key = setup.get("key")
-					if key:  # If there is no key then this element is useless and can be skipped!
+					if key:	 # If there is no key then this element is useless and can be skipped!
 						title = setup.get("title", "").encode("UTF-8", errors="ignore") if PY2 else setup.get("title", "")
 						if title == "":
 							print("[Setup] Error: Setup key '%s' title is missing or blank!" % key)

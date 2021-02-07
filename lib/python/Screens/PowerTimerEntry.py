@@ -34,7 +34,7 @@ class TimerEntry(Screen, ConfigListScreen):
 		self.createConfig()
 
 		self["actions"] = NumberActionMap(["SetupActions", "GlobalActions", "PiPSetupActions"],
-		{
+										  {
 			"ok": self.keySelect,
 			"save": self.keyGo,
 			"cancel": self.keyCancel,
@@ -54,7 +54,7 @@ class TimerEntry(Screen, ConfigListScreen):
 			AFTEREVENT.WAKEUPTOSTANDBY: "wakeuptostandby",
 			AFTEREVENT.STANDBY: "standby",
 			AFTEREVENT.DEEPSTANDBY: "deepstandby"
-			}[self.timer.afterEvent]
+		}[self.timer.afterEvent]
 
 		timertype = {
 			TIMERTYPE.WAKEUP: "wakeup",
@@ -65,7 +65,7 @@ class TimerEntry(Screen, ConfigListScreen):
 			TIMERTYPE.DEEPSTANDBY: "deepstandby",
 			TIMERTYPE.REBOOT: "reboot",
 			TIMERTYPE.RESTART: "restart"
-			}[self.timer.timerType]
+		}[self.timer.timerType]
 
 		weekday_table = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
@@ -239,13 +239,13 @@ class TimerEntry(Screen, ConfigListScreen):
 			"deepstandby": TIMERTYPE.DEEPSTANDBY,
 			"reboot": TIMERTYPE.REBOOT,
 			"restart": TIMERTYPE.RESTART
-			}[self.timerentry_timertype.value]
+		}[self.timerentry_timertype.value]
 		self.timer.afterEvent = {
 			"nothing": AFTEREVENT.NONE,
 			"wakeuptostandby": AFTEREVENT.WAKEUPTOSTANDBY,
 			"standby": AFTEREVENT.STANDBY,
 			"deepstandby": AFTEREVENT.DEEPSTANDBY
-			}[self.timerentry_afterevent.value]
+		}[self.timerentry_afterevent.value]
 
 		if self.timerentry_type.value == "once":
 			self.timer.begin, self.timer.end = self.getBeginEnd()
@@ -356,7 +356,7 @@ class TimerLog(Screen):
 		self.onShown.append(self.updateText)
 
 		self["actions"] = NumberActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
-		{
+										  {
 			"ok": self.keyClose,
 			"cancel": self.keyClose,
 			"up": self.up,

@@ -49,11 +49,11 @@ config.plugins.configurationbackup.backupdirs = ConfigLocations(default=[eEnv.re
 
 config.plugins.softwaremanager = ConfigSubsection()
 config.plugins.softwaremanager.overwriteConfigFiles = ConfigSelection(
-				[
-					("Y", _("Yes, always")),
-					("N", _("No, never")),
-					("ask", _("Always ask"))
-				], "Y")
+	[
+		("Y", _("Yes, always")),
+		("N", _("No, never")),
+		("ask", _("Always ask"))
+	], "Y")
 config.plugins.softwaremanager.onSetupMenu = ConfigYesNo(default=True)
 config.plugins.softwaremanager.onBlueButton = ConfigYesNo(default=False)
 config.plugins.softwaremanager.epgcache = ConfigYesNo(default=False)
@@ -173,7 +173,7 @@ class UpdatePluginMenu(Screen):
 		self["status"] = StaticText(self.menutext)
 
 		self["shortcuts"] = NumberActionMap(["ShortcutActions", "WizardActions", "InfobarEPGActions", "MenuActions", "NumberActions"],
-		{
+											{
 			"ok": self.go,
 			"back": self.close,
 			"red": self.close,
@@ -366,11 +366,11 @@ class SoftwareManagerSetup(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
-			{
-				"cancel": self.keyCancel,
-				"save": self.apply,
-				"menu": self.closeRecursive,
-			}, -2)
+									{
+			"cancel": self.keyCancel,
+			"save": self.apply,
+			"menu": self.closeRecursive,
+		}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))
@@ -490,10 +490,10 @@ class SoftwareManagerInfo(Screen):
 			self.skin_path = resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/SoftwareManager")
 
 		self["actions"] = ActionMap(["ShortcutActions", "WizardActions"],
-			{
-				"back": self.close,
-				"red": self.close,
-			}, -2)
+									{
+			"back": self.close,
+			"red": self.close,
+		}, -2)
 
 		self.list = []
 		self["list"] = List(self.list)
@@ -563,7 +563,7 @@ class PluginManager(Screen, PackageInfoHandler):
 			self.skin_path = resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/SoftwareManager")
 
 		self["shortcuts"] = ActionMap(["ShortcutActions", "WizardActions", "InfobarEPGActions", "HelpActions"],
-		{
+									  {
 			"ok": self.handleCurrent,
 			"back": self.exit,
 			"red": self.exit,
@@ -1002,7 +1002,7 @@ class PluginManagerInfo(Screen):
 		self.cmdlist = cmdlist
 
 		self["shortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
-		{
+									  {
 			"ok": self.process_all,
 			"back": self.exit,
 			"red": self.exit,
@@ -1102,7 +1102,7 @@ class PluginManagerHelp(Screen):
 		self.skin_path = plugin_path
 
 		self["shortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
-		{
+									  {
 			"back": self.exit,
 			"red": self.exit,
 		}, -1)
@@ -1179,7 +1179,7 @@ class PluginDetails(Screen, PackageInfoHandler):
 		self.thumbnail = ""
 
 		self["shortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
-		{
+									  {
 			"back": self.exit,
 			"red": self.exit,
 			"green": self.go,
@@ -1375,13 +1375,13 @@ class OPKGMenu(Screen):
 		self.path = ""
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.KeyOk,
 			"cancel": self.keyCancel
 		}, -1)
 
 		self["shortcuts"] = ActionMap(["ShortcutActions"],
-		{
+									  {
 			"red": self.keyCancel,
 			"green": self.KeyOk,
 		})
@@ -1459,7 +1459,7 @@ class OPKGSource(Screen):
 			self["text"] = Input(text, maxSize=False, visible_width=55, type=Input.TEXT)
 
 		self["actions"] = NumberActionMap(["WizardActions", "InputActions", "TextEntryActions", "KeyboardInputActions", "ShortcutActions"],
-		{
+										  {
 			"ok": self.go,
 			"back": self.close,
 			"red": self.close,
@@ -1553,7 +1553,7 @@ class PacketManager(Screen, NumericalTextInput):
 		self.setUseableChars(u'1234567890abcdefghijklmnopqrstuvwxyz')
 
 		self["shortcuts"] = NumberActionMap(["ShortcutActions", "WizardActions", "NumberActions", "InputActions", "InputAsciiActions", "KeyboardInputActions"],
-		{
+											{
 			"ok": self.go,
 			"back": self.exit,
 			"red": self.exit,
@@ -1584,7 +1584,7 @@ class PacketManager(Screen, NumericalTextInput):
 		self.Console = Console()
 		self.cmdList = []
 		self.cachelist = []
-		self.cache_ttl = 86400  #600 is default, 0 disables, Seconds cache is considered valid (24h should be ok for caching opkgs)
+		self.cache_ttl = 86400	#600 is default, 0 disables, Seconds cache is considered valid (24h should be ok for caching opkgs)
 		self.cache_file = eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/SoftwareManager/packetmanager.cache') #Path to cache directory
 		self.oktext = _("\nAfter pressing OK, please wait!")
 		if config.misc.extraopkgpackages.value is True:
@@ -1888,7 +1888,7 @@ class OpkgInstaller(Screen):
 		self["introduction"] = StaticText(_("Press OK to toggle the selection."))
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
-		{
+									{
 			"ok": self.list.toggleSelection,
 			"cancel": self.close,
 			"red": self.close,
@@ -1913,10 +1913,10 @@ def filescan(**kwargs):
 	from Components.Scanner import Scanner, ScanPath
 	return \
 		Scanner(mimetypes=["application/x-debian-package"],
-			paths_to_scan=[
-					ScanPath(path="ipk", with_subdirs=True),
-					ScanPath(path="", with_subdirs=False),
-				],
+				paths_to_scan=[
+			ScanPath(path="ipk", with_subdirs=True),
+			ScanPath(path="", with_subdirs=False),
+		],
 			name="Opkg",
 			description=_("Install extensions"),
 			openfnc=filescan_open, )

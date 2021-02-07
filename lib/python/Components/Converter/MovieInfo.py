@@ -36,12 +36,12 @@ class MovieInfo(Converter):
 					# Short description for Directory is the full path
 					return service.getPath()
 				return (info.getInfoString(service, iServiceInformation.sDescription)
-					or (event and event.getShortDescription())
-					or service.getPath())
+						or (event and event.getShortDescription())
+						or service.getPath())
 			elif self.type == self.MOVIE_META_DESCRIPTION:
 				return ((event and (event.getExtendedDescription() or event.getShortDescription()))
-					or info.getInfoString(service, iServiceInformation.sDescription)
-					or service.getPath())
+						or info.getInfoString(service, iServiceInformation.sDescription)
+						or service.getPath())
 			elif self.type == self.MOVIE_REC_SERVICE_NAME:
 				rec_ref_str = info.getInfoString(service, iServiceInformation.sServiceref)
 				return ServiceReference(rec_ref_str).getServiceName()

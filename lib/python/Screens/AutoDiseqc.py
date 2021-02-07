@@ -309,7 +309,7 @@ class AutoDiseqc(Screen, ConfigListScreen):
 			self.raw_channel.receivedTsidOnid.get().append(self.gotTsidOnid)
 
 		self["actions"] = ActionMap(["SetupActions"],
-		{
+									{
 			"cancel": self.keyCancel,
 		}, -2)
 

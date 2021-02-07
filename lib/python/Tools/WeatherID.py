@@ -12,7 +12,7 @@ WOEID_QUERY_STRING = 'select line1, line2, line3, line4, woeid from geo.placefin
 def get_woeid_from_yahoo(search_string):
 	encoded_string = search_string.encode('utf-8')
 	params = {'q': WOEID_QUERY_STRING % encoded_string,
-		'format': 'json'}
+			  'format': 'json'}
 	url = '?'.join((WOEID_SEARCH_URL, urlencode(params)))
 	try:
 		handler = urlopen(url, timeout=10)
@@ -47,9 +47,9 @@ def get_woeid_from_yahoo(search_string):
 			place_data = result
 
 		name_lines = [place_data[tag] for tag in ['line1',
-			'line2',
-			'line3',
-			'line4'] if place_data[tag] is not None]
+												  'line2',
+												  'line3',
+												  'line4'] if place_data[tag] is not None]
 		place_name = ', '.join(name_lines)
 		woeid_data[i] = (place_data['woeid'], place_name)
 

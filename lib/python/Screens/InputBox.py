@@ -25,7 +25,7 @@ class InputBox(Screen):
 			self["input"].setUseableChars(useableChars)
 
 		self["actions"] = NumberActionMap(["WizardActions", "InputBoxActions", "InputAsciiActions", "KeyboardInputActions"],
-		{
+										  {
 			"gotAsciiCode": self.gotAsciiCode,
 			"ok": self.go,
 			"back": self.cancel,
@@ -93,7 +93,7 @@ class InputBox(Screen):
 
 class PinInput(InputBox):
 	def __init__(self, session, service="", triesEntry=None, pinList=[], popup=False, simple=True, zap=False, *args, **kwargs):
-		InputBox.__init__(self, session=session, text="    ", maxSize=True, type=Input.PIN, *args, **kwargs)
+		InputBox.__init__(self, session=session, text="	   ", maxSize=True, type=Input.PIN, *args, **kwargs)
 		self.zap = zap
 		self.waitTime = 15
 		self.triesEntry = triesEntry
@@ -101,7 +101,7 @@ class PinInput(InputBox):
 		self["service"] = Label(service)
 
 		self["ChannelSelectActions"] = ActionMap(["InfobarChannelSelection"],
-		{
+												 {
 			"keyUp": self.keyUp,
 			"keyDown": self.keyDown,
 			"keyChannelUp": self.keyChannelUp,
@@ -155,7 +155,7 @@ class PinInput(InputBox):
 				self.setTries(3)
 				self.closePinCorrect()
 			else:
-				self["input"].setText("    ")
+				self["input"].setText("	   ")
 				self.keyHome()
 				self.decTries()
 				if self.getTries() == 0:
@@ -196,16 +196,16 @@ class PinInput(InputBox):
 		self["tries"].setText(self.triesEntry and _("Tries left:") + " " + str(self.getTries() or ""))
 
 	def keyRight(self):
-		if self.zap and self["input"].getText() == "    ":
+		if self.zap and self["input"].getText() == "	":
 			self.close("zapdown")
 
 	def keyLeft(self, setCursor=True):
-		if self.zap and self["input"].getText() == "    ":
+		if self.zap and self["input"].getText() == "	":
 			self.close("zapup")
 		elif setCursor:
 			self["input"].left()
 			pos = self["input"].currPos
-			self["input"].setText("%s%s" % (self["input"].getText()[:pos], "    "[:4 - pos]))
+			self["input"].setText("%s%s" % (self["input"].getText()[:pos], "	"[:4 - pos]))
 			self.zap = False
 
 	def keyUp(self):

@@ -12,10 +12,10 @@ class FrontendInfo(Source, PerServiceBase):
 		Source.__init__(self)
 		if navcore:
 			PerServiceBase.__init__(self, navcore,
-			{
-				iPlayableService.evTunedIn: self.updateFrontendData,
-				iPlayableService.evEnd: self.serviceEnd
-			})
+									{
+										iPlayableService.evTunedIn: self.updateFrontendData,
+										iPlayableService.evEnd: self.serviceEnd
+									})
 		res_mgr = eDVBResourceManager.getInstance()
 		if res_mgr:
 			res_mgr.frontendUseMaskChanged.get().append(self.updateTunerMask)
@@ -25,8 +25,8 @@ class FrontendInfo(Source, PerServiceBase):
 		self.updateFrontendData()
 
 	def serviceEnd(self):
-#		import pdb
-#		pdb.set_trace()
+		#		import pdb
+		#		pdb.set_trace()
 		self.slot_number = self.frontend_type = None
 		self.changed((self.CHANGED_CLEAR, ))
 

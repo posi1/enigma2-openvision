@@ -125,9 +125,9 @@ class RemainingToText(Poll, Converter, object):
 					if config.usage.swap_time_remaining_on_osd.value == "1": # Elapsed
 						return sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 					elif config.usage.swap_time_remaining_on_osd.value == "2": # Elapsed & Remaining
-						return sign_p + "%d  " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
+						return sign_p + "%d	 " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 					elif config.usage.swap_time_remaining_on_osd.value == "3": # Remaining & Elapsed
-						return sign_r + "%d  " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
+						return sign_r + "%d	 " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 					else:
 						return sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 				else:
@@ -199,9 +199,9 @@ class RemainingToText(Poll, Converter, object):
 						if config.usage.swap_time_remaining_on_osd.value == "1": # Elapsed
 							return sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 						elif config.usage.swap_time_remaining_on_osd.value == "2": # Elapsed & Remaining
-							return sign_p + "%d  " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
+							return sign_p + "%d	 " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 						elif config.usage.swap_time_remaining_on_osd.value == "3": # Remaining & Elapsed
-							return sign_r + "%d  " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
+							return sign_r + "%d	 " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 						else:
 							return sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 					else:
@@ -235,9 +235,9 @@ class RemainingToText(Poll, Converter, object):
 						if config.usage.swap_time_remaining_on_osd.value == "1": # Elapsed
 							return sign_p + "%d " % p
 						elif config.usage.swap_time_remaining_on_osd.value == "2": # Elapsed & Remaining
-							return sign_p + "%d  " % p + sign_r + "%d " % r
+							return sign_p + "%d	 " % p + sign_r + "%d " % r
 						elif config.usage.swap_time_remaining_on_osd.value == "3": # Remaining & Elapsed
-							return sign_r + "%d  " % r + sign_p + "%d " % p
+							return sign_r + "%d	 " % r + sign_p + "%d " % p
 						else:
 							return sign_r + "%d " % r
 					else:
@@ -278,9 +278,9 @@ class RemainingToText(Poll, Converter, object):
 					if config.usage.swap_time_remaining_on_vfd.value == "1": # Elapsed
 						return sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 					elif config.usage.swap_time_remaining_on_vfd.value == "2": # Elapsed & Remaining
-						return sign_p + "%d  " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
+						return sign_p + "%d	 " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 					elif config.usage.swap_time_remaining_on_vfd.value == "3": # Remaining & Elapsed
-						return sign_r + "%d  " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
+						return sign_r + "%d	 " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 					else:
 						return sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 				else:
@@ -352,9 +352,9 @@ class RemainingToText(Poll, Converter, object):
 						if config.usage.swap_time_remaining_on_vfd.value == "1": # Elapsed
 							return sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 						elif config.usage.swap_time_remaining_on_vfd.value == "2": # Elapsed & Remaining
-							return sign_p + "%d  " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
+							return sign_p + "%d	 " % (p / 60) + sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 						elif config.usage.swap_time_remaining_on_vfd.value == "3": # Remaining & Elapsed
-							return sign_r + "%d  " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
+							return sign_r + "%d	 " % (r / 60) + sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
 						else:
 							return sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
 					else:
@@ -388,9 +388,9 @@ class RemainingToText(Poll, Converter, object):
 						if config.usage.swap_time_remaining_on_vfd.value == "1": # Elapsed
 							return sign_p + "%d " % p
 						elif config.usage.swap_time_remaining_on_vfd.value == "2": # Elapsed & Remaining
-							return sign_p + "%d  " % p + sign_r + "%d " % r
+							return sign_p + "%d	 " % p + sign_r + "%d " % r
 						elif config.usage.swap_time_remaining_on_vfd.value == "3": # Remaining & Elapsed
-							return sign_r + "%d  " % r + sign_p + "%d " % p
+							return sign_r + "%d	 " % r + sign_p + "%d " % p
 						else:
 							return sign_r + "%d " % r
 					else:

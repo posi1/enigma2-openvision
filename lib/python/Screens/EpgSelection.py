@@ -104,25 +104,25 @@ class EPGSelection(Screen):
 		self["list"] = EPGList(type=self.type, selChangedCB=self.onSelectionChanged, timer=session.nav.RecordTimer)
 
 		self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
-			{
-				"cancel": self.closeScreen,
-				"ok": self.eventSelected,
-				"timerAdd": self.timerAdd,
-				"yellow": self.yellowButtonPressed,
-				"blue": self.blueButtonPressed,
-				"info": self.infoKeyPressed,
-				"menu": self.furtherOptions,
-				"nextBouquet": self.nextBouquet, # just used in multi epg yet
-				"prevBouquet": self.prevBouquet, # just used in multi epg yet
-				"nextService": self.nextService, # just used in single epg yet
-				"prevService": self.prevService, # just used in single epg yet
-				"preview": self.eventPreview,
-			})
+									{
+			"cancel": self.closeScreen,
+			"ok": self.eventSelected,
+			"timerAdd": self.timerAdd,
+			"yellow": self.yellowButtonPressed,
+			"blue": self.blueButtonPressed,
+			"info": self.infoKeyPressed,
+			"menu": self.furtherOptions,
+			"nextBouquet": self.nextBouquet, # just used in multi epg yet
+			"prevBouquet": self.prevBouquet, # just used in multi epg yet
+			"nextService": self.nextService, # just used in single epg yet
+			"prevService": self.prevService, # just used in single epg yet
+			"preview": self.eventPreview,
+		})
 
 		self['colouractions'] = HelpableActionMap(self, ["ColorActions"],
-			{
-				"red": (self.GoToTmbd, _("Search event in TMBD"))
-			})
+												  {
+			"red": (self.GoToTmbd, _("Search event in TMBD"))
+		})
 
 		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py"))
 		if self.isTMBD:
@@ -139,7 +139,7 @@ class EPGSelection(Screen):
 		else:
 			if baseEPGSelection__init__ is not None:
 				self["trailerActions"] = ActionMap(["InfobarActions", "InfobarTeletextActions"],
-				{
+												   {
 					"showTv": self.showTrailer,
 					"showRadio": self.showTrailerList,
 					"startTeletext": self.showConfig
@@ -236,10 +236,10 @@ class EPGSelection(Screen):
 		if event:
 			if six.PY2:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'selectedevent' in p.__call__.func_code.co_varnames]
+						if 'selectedevent' in p.__call__.func_code.co_varnames]
 			else:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO) \
-					if 'selectedevent' in p.__call__.__code__.co_varnames]
+						if 'selectedevent' in p.__call__.__code__.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
 		if self.type == EPG_TYPE_MULTI:

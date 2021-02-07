@@ -138,13 +138,13 @@ class PollReactor(posixbase.PosixReactorBase):
 		return result
 
 	def doPoll(self, timeout,
-			reads=reads,
-			writes=writes,
-			selectables=selectables,
-			select=select,
-			log=log,
-			POLLIN=select.POLLIN,
-			POLLOUT=select.POLLOUT):
+			   reads=reads,
+			   writes=writes,
+			   selectables=selectables,
+			   select=select,
+			   log=log,
+			   POLLIN=select.POLLIN,
+			   POLLOUT=select.POLLOUT):
 		"""Poll the poller for new events."""
 
 		if timeout is not None:
@@ -174,10 +174,10 @@ class PollReactor(posixbase.PosixReactorBase):
 	doIteration = doPoll
 
 	def _doReadOrWrite(self, selectable, fd, event, POLLIN, POLLOUT, log,
-		faildict={
-			error.ConnectionDone: failure.Failure(error.ConnectionDone()),
-			error.ConnectionLost: failure.Failure(error.ConnectionLost())
-		}):
+					   faildict={
+						   error.ConnectionDone: failure.Failure(error.ConnectionDone()),
+						   error.ConnectionLost: failure.Failure(error.ConnectionLost())
+					   }):
 		why = None
 		inRead = False
 		if event & POLL_DISCONNECTED and not (event & POLLIN):

@@ -153,22 +153,22 @@ class NetworkAdapterSelection(Screen, HelpableScreen):
 		self["introduction"] = StaticText(self.edittext)
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.close, _("Exit network interface list")),
 			"ok": (self.okbuttonClick, _("Select interface")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.close, _("Exit network interface list")),
 			"green": (self.okbuttonClick, _("Select interface")),
 			"blue": (self.openNetworkWizard, _("Use the network wizard to configure selected network adapter")),
-			})
+		})
 
 		self["DefaultInterfaceAction"] = HelpableActionMap(self, ["ColorActions"],
-			{
+														   {
 			"yellow": (self.setDefaultInterface, [_("Set interface as default Interface"), _("* Only available if more than one interface is active.")]),
-			})
+		})
 
 		self.adapters = [(iNetwork.getFriendlyAdapterName(x), x) for x in iNetwork.getAdapterList()]
 
@@ -340,20 +340,20 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.createConfig()
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.cancel, _("Exit nameserver configuration")),
 			"ok": (self.ok, _("Activate current configuration")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.cancel, _("Exit nameserver configuration")),
 			"green": (self.add, _("Add a nameserver entry")),
 			"yellow": (self.remove, _("Remove a nameserver entry")),
-			})
+		})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.ok,
 		}, -2)
 
@@ -442,19 +442,19 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 		self["introduction"] = StaticText(_("Press OK to set the MAC address."))
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.cancel, _("Exit nameserver configuration")),
 			"ok": (self.ok, _("Activate current configuration")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.cancel, _("Exit MAC address configuration")),
 			"green": (self.ok, _("Activate MAC address configuration")),
-			})
+		})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.ok,
 		}, -2)
 
@@ -521,20 +521,20 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self["introduction"] = StaticText(_("Enable or disable IPv6"))
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.cancel, _("Exit IPv6 configuration")),
 			"ok": (self.ok, _("Activate IPv6 configuration")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.cancel, _("Exit IPv6 configuration")),
 			"green": (self.ok, _("Activate IPv6 configuration")),
 			"blue": (self.restoreinetdData2, _("Restore inetd.conf")),
-			})
+		})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.ok,
 		}, -2)
 
@@ -563,7 +563,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 			sockTypetcp = "tcp6"
 			sockTypeudp = "udp6"
 
-		inetdData = "# /etc/inetd.conf:  see inetd(8) for further informations.\n"
+		inetdData = "# /etc/inetd.conf:	 see inetd(8) for further informations.\n"
 		inetdData += "#\n"
 		inetdData += "# Internet server configuration database\n"
 		inetdData += "#\n"
@@ -648,7 +648,7 @@ class InetdRecovery(Screen, ConfigListScreen):
 			sockTypetcp = "tcp6"
 			sockTypeudp = "udp6"
 
-		inetdData = "# /etc/inetd.conf:  see inetd(8) for further informations.\n"
+		inetdData = "# /etc/inetd.conf:	 see inetd(8) for further informations.\n"
 		inetdData += "#\n"
 		inetdData += "# Internet server configuration database\n"
 		inetdData += "#\n"
@@ -716,20 +716,20 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.createConfig()
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.keyCancel, _("exit network adapter configuration")),
 			"ok": (self.keySave, _("activate network adapter configuration")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.keyCancel, _("exit network adapter configuration")),
 			"green": (self.keySave, _("activate network adapter configuration")),
 			"blue": (self.KeyBlue, _("open nameserver configuration")),
-			})
+		})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
-		{
+										  {
 			"ok": self.keySave,
 		}, -2)
 
@@ -1079,26 +1079,26 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self.missingwlanplugintxt = _("The wireless LAN plugin is not installed!\nPlease install it.")
 
 		self["WizardActions"] = HelpableActionMap(self, ["WizardActions"],
-			{
+												  {
 			"up": (self.up, _("move up to previous entry")),
 			"down": (self.down, _("move down to next entry")),
 			"left": (self.left, _("move up to first entry")),
 			"right": (self.right, _("move down to last entry")),
-			})
+		})
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.close, _("exit networkadapter setup menu")),
 			"ok": (self.ok, _("select menu entry")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.close, _("exit networkadapter setup menu")),
-			})
+		})
 
 		self["actions"] = NumberActionMap(["WizardActions", "ShortcutActions"],
-		{
+										  {
 			"ok": self.ok,
 			"back": self.close,
 			"up": self.up,
@@ -1410,7 +1410,7 @@ class NetworkAdapterTest(Screen):
 		self.onHide.append(self.cleanup)
 
 		self["updown_actions"] = NumberActionMap(["WizardActions", "ShortcutActions"],
-		{
+												 {
 			"ok": self.KeyOK,
 			"blue": self.KeyOK,
 			"up": lambda: self.updownhandler('up'),
@@ -1419,25 +1419,25 @@ class NetworkAdapterTest(Screen):
 		}, -2)
 
 		self["shortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
-		{
+									  {
 			"red": self.cancel,
 			"back": self.cancel,
 		}, -2)
 		self["infoshortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
-		{
+										  {
 			"red": self.closeInfo,
 			"back": self.closeInfo,
 		}, -2)
 		self["shortcutsgreen"] = ActionMap(["ShortcutActions"],
-		{
+										   {
 			"green": self.KeyGreen,
 		}, -2)
 		self["shortcutsgreen_restart"] = ActionMap(["ShortcutActions"],
-		{
+												   {
 			"green": self.KeyGreenRestart,
 		}, -2)
 		self["shortcutsyellow"] = ActionMap(["ShortcutActions"],
-		{
+											{
 			"yellow": self.KeyYellow,
 		}, -2)
 
@@ -1494,22 +1494,22 @@ class NetworkAdapterTest(Screen):
 			self["EditSettings_Text"].setForegroundColorNum(0)
 			self["NetworkInfo"].setPixmapNum(0)
 			self["NetworkInfo_Text"].setForegroundColorNum(1)
-			self["AdapterInfo"].setPixmapNum(1) 		  # active
+			self["AdapterInfo"].setPixmapNum(1)			  # active
 			self["AdapterInfo_Text"].setForegroundColorNum(2) # active
 		if button == 2:
 			self["AdapterInfo_Text"].setForegroundColorNum(1)
 			self["AdapterInfo"].setPixmapNum(0)
 			self["DhcpInfo"].setPixmapNum(0)
 			self["DhcpInfo_Text"].setForegroundColorNum(1)
-			self["NetworkInfo"].setPixmapNum(1) 		  # active
+			self["NetworkInfo"].setPixmapNum(1)			  # active
 			self["NetworkInfo_Text"].setForegroundColorNum(2) # active
 		if button == 3:
 			self["NetworkInfo"].setPixmapNum(0)
 			self["NetworkInfo_Text"].setForegroundColorNum(1)
 			self["IPInfo"].setPixmapNum(0)
 			self["IPInfo_Text"].setForegroundColorNum(1)
-			self["DhcpInfo"].setPixmapNum(1) 		  # active
-			self["DhcpInfo_Text"].setForegroundColorNum(2) 	  # active
+			self["DhcpInfo"].setPixmapNum(1)		  # active
+			self["DhcpInfo_Text"].setForegroundColorNum(2)	  # active
 		if button == 4:
 			self["DhcpInfo"].setPixmapNum(0)
 			self["DhcpInfo_Text"].setForegroundColorNum(1)
@@ -1527,7 +1527,7 @@ class NetworkAdapterTest(Screen):
 		if button == 6:
 			self["DNSInfo"].setPixmapNum(0)
 			self["DNSInfo_Text"].setForegroundColorNum(1)
-			self["EditSettingsButton"].setPixmapNum(1) 	   # active
+			self["EditSettingsButton"].setPixmapNum(1)	   # active
 			self["EditSettings_Text"].setForegroundColorNum(2) # active
 			self["AdapterInfo"].setPixmapNum(0)
 			self["AdapterInfo_Text"].setForegroundColorNum(1)
@@ -1833,26 +1833,26 @@ class NetworkMountsMenu(Screen, HelpableScreen):
 		self["introduction"] = StaticText()
 
 		self["WizardActions"] = HelpableActionMap(self, ["WizardActions"],
-			{
+												  {
 			"up": (self.up, _("Move up to previous entry")),
 			"down": (self.down, _("Move down to next entry")),
 			"left": (self.left, _("Move up to first entry")),
 			"right": (self.right, _("Move down to last entry")),
-			})
+		})
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
+													{
 			"cancel": (self.close, _("Exit mounts setup menu")),
 			"ok": (self.ok, _("Select menu entry")),
-			})
+		})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
+												 {
 			"red": (self.close, _("Exit networkadapter setup menu")),
-			})
+		})
 
 		self["actions"] = NumberActionMap(["WizardActions", "ShortcutActions"],
-		{
+										  {
 			"ok": self.ok,
 			"back": self.close,
 			"up": self.up,
@@ -2859,9 +2859,9 @@ class NetworkInadynLog(Screen):
 		self.skinName = "NetworkServiceLog"
 		self['infotext'] = ScrollLabel('')
 		self['actions'] = ActionMap(['WizardActions', 'DirectionActions', 'ColorActions'], {'ok': self.close,
-		 'back': self.close,
-		 'up': self['infotext'].pageUp,
-		 'down': self['infotext'].pageDown})
+																							'back': self.close,
+																							'up': self['infotext'].pageUp,
+																							'down': self['infotext'].pageDown})
 		strview = ''
 		if fileExists('/tmp/inadyn_ip.cache'):
 			f = open('/tmp/inadyn_ip.cache', 'r')
@@ -3229,7 +3229,7 @@ class uShareSelection(Screen):
 		self["checkList"] = self.filelist
 
 		self["actions"] = ActionMap(["DirectionActions", "OkCancelActions", "ShortcutActions"],
-		{
+									{
 			"cancel": self.exit,
 			"red": self.exit,
 			"yellow": self.changeSelectionState,
@@ -3634,7 +3634,7 @@ class MiniDLNASelection(Screen):
 		self["checkList"] = self.filelist
 
 		self["actions"] = ActionMap(["DirectionActions", "OkCancelActions", "ShortcutActions"],
-		{
+									{
 			"cancel": self.exit,
 			"red": self.exit,
 			"yellow": self.changeSelectionState,
@@ -3779,7 +3779,7 @@ class NetworkPassword(ConfigListScreen, Screen):
 	def updateList(self):
 		self.password = NoSave(ConfigPassword(default=""))
 		instructions = _("You must set a root password in order to be able to use network services,"
-						" such as FTP, telnet or ssh.")
+						 " such as FTP, telnet or ssh.")
 		self.list.append(getConfigListEntry(_('New password'), self.password, instructions))
 		self['config'].list = self.list
 		self['config'].l.setList(self.list)

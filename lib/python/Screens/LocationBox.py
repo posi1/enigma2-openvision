@@ -127,37 +127,37 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 		# Actions that will reset quickselect
 		self["WizardActions"] = LocationBoxActionMap(self, "WizardActions",
-			{
-				"left": self.left,
-				"right": self.right,
-				"up": self.up,
-				"down": self.down,
-				"ok": (self.ok, _("Select")),
-				"back": (self.cancel, _("Cancel")),
-			}, -2)
+													 {
+														 "left": self.left,
+														 "right": self.right,
+														 "up": self.up,
+														 "down": self.down,
+														 "ok": (self.ok, _("Select")),
+														 "back": (self.cancel, _("Cancel")),
+													 }, -2)
 
 		self["ColorActions"] = LocationBoxActionMap(self, "ColorActions",
-			{
-				"red": self.cancel,
-				"green": self.select,
-				"yellow": self.changeName,
-				"blue": self.addRemoveBookmark,
-			}, -2)
+													{
+														"red": self.cancel,
+														"green": self.select,
+														"yellow": self.changeName,
+														"blue": self.addRemoveBookmark,
+													}, -2)
 
 		self["EPGSelectActions"] = LocationBoxActionMap(self, "EPGSelectActions",
-			{
-				"prevBouquet": (self.switchToBookList, _("Switch to bookmarks")),
-				"nextBouquet": (self.switchToFileList, _("Switch to filelist")),
-			}, -2)
+														{
+															"prevBouquet": (self.switchToBookList, _("Switch to bookmarks")),
+															"nextBouquet": (self.switchToFileList, _("Switch to filelist")),
+														}, -2)
 
 		self["MenuActions"] = LocationBoxActionMap(self, "MenuActions",
-			{
-				"menu": (self.showMenu, _("Menu")),
-			}, -2)
+												   {
+													   "menu": (self.showMenu, _("Menu")),
+												   }, -2)
 
 		# Actions used by quickselect
 		self["NumberActions"] = NumberActionMap(["NumberActions"],
-		{
+												{
 			"1": self.keyNumberGlobal,
 			"2": self.keyNumberGlobal,
 			"3": self.keyNumberGlobal,
@@ -561,15 +561,15 @@ def MovieLocationBox(session, text, dir, filename="", minFree=None):
 class TimeshiftLocationBox(LocationBox):
 	def __init__(self, session):
 		LocationBox.__init__(
-				self,
-				session,
-				text=_("Where to save temporary timeshift recordings?"),
-				currDir=config.usage.timeshift_path.value,
-				bookmarks=config.usage.allowed_timeshift_paths,
-				autoAdd=True,
-				editDir=True,
-				inhibitDirs=defaultInhibitDirs,
-				minFree=1024 # the same requirement is hardcoded in servicedvb.cpp
+			self,
+			session,
+			text=_("Where to save temporary timeshift recordings?"),
+			currDir=config.usage.timeshift_path.value,
+			bookmarks=config.usage.allowed_timeshift_paths,
+			autoAdd=True,
+			editDir=True,
+			inhibitDirs=defaultInhibitDirs,
+			minFree=1024 # the same requirement is hardcoded in servicedvb.cpp
 		)
 		self.skinName = "LocationBox"
 

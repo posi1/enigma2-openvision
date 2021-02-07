@@ -29,7 +29,7 @@ class OverscanTestScreen(Screen):
 			</screen>""" % (getDesktop(0).size().height() == 1080 and ("overscan1920x1080.png", 1920, 1080) or ("overscan1280x720.png", 1280, 720))
 
 		self["actions"] = NumberActionMap(["InputActions", "OkCancelActions"],
-		{
+										  {
 			"1": self.keyNumber,
 			"2": self.keyNumber,
 			"3": self.keyNumber,
@@ -69,7 +69,7 @@ class FullHDTestScreen(OverscanTestScreen):
 			self.onClose.append(self.__close)
 
 		self["actions"] = NumberActionMap(["InputActions", "OkCancelActions"],
-		{
+										  {
 			"1": self.keyNumber,
 			"2": self.keyNumber,
 			"3": self.keyNumber,
@@ -99,7 +99,7 @@ class FullUHDTestScreen(OverscanTestScreen):
 		self.onClose.append(self.__close)
 
 		self["actions"] = NumberActionMap(["InputActions", "OkCancelActions"],
-		{
+										  {
 			"1": self.keyNumber,
 			"2": self.keyNumber,
 			"3": self.keyNumber,
@@ -147,7 +147,7 @@ class VideoFinetune(Screen):
 				self.onClose.append(self.__close)
 
 		self["actions"] = NumberActionMap(["InputActions", "OkCancelActions"],
-		{
+										  {
 			"1": self.keyNumber,
 			"2": self.keyNumber,
 			"3": self.keyNumber,
@@ -208,15 +208,15 @@ class VideoFinetune(Screen):
 				c.writeText(x + width, offset, width, eh, RGB(255, 255, 255), RGB(0, 0, 0), gFont("Regular", self.fontsize), "%d." % (i + 1))
 
 		c.writeText(xres / 10, yres / 6 - self.fontsize * 2, xres * 3 / 5, 40, RGB(128, 255, 255), RGB(0, 0, 0), gFont("Regular", self.fontsize * 2),
-			_("Brightness"))
+					_("Brightness"))
 		c.writeText(xres / 10, yres / 6, xres / 2, yres * 4 / 6, RGB(255, 255, 255), RGB(0, 0, 0), gFont("Regular", self.fontsize),
-			_("If your TV has a brightness or contrast enhancement, disable it. If there is something called \"dynamic\", "
-				"set it to standard. Adjust the backlight level to a value suiting your taste. "
-				"Turn down contrast on your TV as much as possible.\nThen turn the brightness setting as "
-				"low as possible, but make sure that the two lowermost shades of gray stay distinguishable.\n"
-				"Do not care about the bright shades now. They will be set up in the next step.\n"
-				"If you are happy with the result, press OK."),
-				RT_WRAP)
+					_("If your TV has a brightness or contrast enhancement, disable it. If there is something called \"dynamic\", "
+					  "set it to standard. Adjust the backlight level to a value suiting your taste. "
+						"Turn down contrast on your TV as much as possible.\nThen turn the brightness setting as "
+						"low as possible, but make sure that the two lowermost shades of gray stay distinguishable.\n"
+						"Do not care about the bright shades now. They will be set up in the next step.\n"
+						"If you are happy with the result, press OK."),
+					RT_WRAP)
 
 		c.flush()
 
@@ -250,12 +250,12 @@ class VideoFinetune(Screen):
 				c.writeText(x + width, offset, width, eh, RGB(0, 0, 0), RGB(255, 255, 255), gFont("Regular", self.fontsize), "%d." % (i - 13 + 1))
 
 		c.writeText(xres / 10, yres / 6 - self.fontsize * 2, xres * 3 / 5, 40, RGB(128, 0, 0), RGB(255, 255, 255), gFont("Regular", self.fontsize * 2),
-			_("Contrast"))
+					_("Contrast"))
 		c.writeText(xres / 10, yres / 6, xres / 2, yres * 4 / 6, RGB(0, 0, 0), RGB(255, 255, 255), gFont("Regular", self.fontsize),
-			_("Now, use the contrast setting to turn up the brightness of the background as much as possible, "
-				"but make sure that you can still see the difference between the two brightest levels of shades."
-				"If you have done that, press OK."),
-				RT_WRAP)
+					_("Now, use the contrast setting to turn up the brightness of the background as much as possible, "
+					  "but make sure that you can still see the difference between the two brightest levels of shades."
+						"If you have done that, press OK."),
+					RT_WRAP)
 
 		c.flush()
 
@@ -309,11 +309,11 @@ class VideoFinetune(Screen):
 					self.bbox(x, offset, width, eh, RGB(0, 0, 0), bbw, bbh)
 
 		c.writeText(xres / 10, yres / 6 - self.fontsize * 2, xres * 3 / 5, 40, RGB(128, 0, 0), RGB(255, 255, 255), gFont("Regular", self.fontsize * 2),
-			_("Color"))
+					_("Color"))
 		c.writeText(xres / 10, yres / 6, xres / 2, yres * 4 / 6, RGB(0, 0, 0), RGB(255, 255, 255), gFont("Regular", self.fontsize),
-			_("Adjust the color settings so that all the color shades are distinguishable, but appear as saturated as possible. "
-				"If you are happy with the result, press OK to close the video fine-tuning, or use the number keys to select other test screens."),
-				RT_WRAP)
+					_("Adjust the color settings so that all the color shades are distinguishable, but appear as saturated as possible. "
+					  "If you are happy with the result, press OK to close the video fine-tuning, or use the number keys to select other test screens."),
+					RT_WRAP)
 
 		c.flush()
 
@@ -434,7 +434,7 @@ class PixelsTestScreen(Screen):
 		self.xres, self.yres = getDesktop(0).size().width(), getDesktop(0).size().height()
 
 		self["actions"] = NumberActionMap(["InputActions", "OkCancelActions", "ColorActions"],
-		{
+										  {
 			"1": self.keyNumber,
 			"2": self.keyNumber,
 			"3": self.keyNumber,
@@ -458,14 +458,14 @@ class PixelsTestScreen(Screen):
 		c = self["Canvas"]
 		c.fill(0, 0, self.xres, self.yres, RGB(0, 0, 0))
 		c.writeText(self.xres / 10, self.yres / 6 - self.fontsize * 2, self.xres * 3 / 5, 40, RGB(255, 128, 255), RGB(0, 0, 0), gFont("Regular", self.fontsize * 2),
-			_("Pixels\n"))
+					_("Pixels\n"))
 		c.writeText(self.xres / 10, self.yres / 6, self.xres / 2, self.yres * 4 / 6, RGB(255, 255, 255), RGB(0, 0, 0), gFont("Regular", self.fontsize),
-			_("Can be used to test defect pixels on TV screen.\n\n"
-			"Available color test screens:\n\n"
-			"red\ngreen\nblue\nwhite\nblack\ncyan\nmagenta\nyellow\n\n"
-			"Screens change with left/right buttons or use red, green, blue to toggle.\n"
-			"Yellow for returning back to this intro"),
-			RT_WRAP)
+					_("Can be used to test defect pixels on TV screen.\n\n"
+					  "Available color test screens:\n\n"
+					  "red\ngreen\nblue\nwhite\nblack\ncyan\nmagenta\nyellow\n\n"
+					  "Screens change with left/right buttons or use red, green, blue to toggle.\n"
+					  "Yellow for returning back to this intro"),
+					RT_WRAP)
 		c.flush()
 		self.color = 8
 

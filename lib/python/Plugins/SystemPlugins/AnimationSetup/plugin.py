@@ -20,13 +20,13 @@ if brand == 'gigablue':
 	g_default = {
 		"current": 0,
 		"speed": 20,
-		}
+	}
 else:
 	g_default = {
 		"current": 0,
 		"speed": 20,
 		"listbox": "0",
-		}
+	}
 
 g_max_speed = 30
 
@@ -177,13 +177,13 @@ class AnimationSetupScreen(Screen):
 		self["key_blue"] = StaticText(_("Preview"))
 
 		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-			{
-				"cancel": self.keyclose,
-				"save": self.ok,
-				"ok": self.ok,
-				"yellow": self.config,
-				"blue": self.preview
-			}, -3)
+									{
+			"cancel": self.keyclose,
+			"save": self.ok,
+			"ok": self.ok,
+			"yellow": self.config,
+			"blue": self.preview
+		}, -3)
 
 		self["list"] = MenuList(self.animationList)
 

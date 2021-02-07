@@ -141,7 +141,7 @@ class TempFanControl(Screen, ConfigListScreen):
 		self["config"].l.setSeperation(seperation)
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "MenuActions"],
-		{
+									{
 			"ok": self.save,
 			"cancel": self.revert,
 			"red": self.revert,

@@ -15,10 +15,10 @@ class ConfigMenu(Screen):
 		Screen.__init__(self, session)
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self.okbuttonClick,
-				"cancel": self.close
-			})
+									{
+			"ok": self.okbuttonClick,
+			"cancel": self.close
+		})
 
 
 class configTest(Screen):
@@ -33,7 +33,7 @@ class configTest(Screen):
 			])
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"ok": self["config"].toggle,
-				"cancel": self.close
-			})
+									{
+			"ok": self["config"].toggle,
+			"cancel": self.close
+		})

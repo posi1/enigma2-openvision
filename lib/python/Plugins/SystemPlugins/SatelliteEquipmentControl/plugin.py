@@ -21,7 +21,7 @@ class SecParameterSetup(Screen, ConfigListScreen):
 		self["key_blue"] = StaticText(_("Restore defaults"))
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions", "ColorActions"],
-		{
+									{
 			"ok": self.keySave,
 			"green": self.keySave,
 			"cancel": self.keyCancel,

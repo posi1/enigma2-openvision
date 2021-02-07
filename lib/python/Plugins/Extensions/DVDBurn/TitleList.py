@@ -48,7 +48,7 @@ class TitleList(Screen, HelpableScreen):
 			<ePixmap pixmap="div-h.png" position="0,390" zPosition="10" size="560,2" />
 			<ePixmap pixmap="buttons/key_menu.png" position="10,394" size="35,25" alphatest="on" />
 			<widget source="hint" render="Label" position="50,396" size="540,22" font="Regular;18" halign="left" />
-			<widget name="medium_label"  position="10,420" size="540,22" font="Regular;18" halign="left" foregroundColors="#FFFFFF,#FFFF00,#FF0000" />
+			<widget name="medium_label"	 position="10,420" size="540,22" font="Regular;18" halign="left" foregroundColors="#FFFFFF,#FFFF00,#FF0000" />
 			<widget source="space_bar_single" render="Progress" position="10,446" size="270,24" borderWidth="1" zPosition="2" backgroundColor="#254f7497" />
 			<widget source="space_label_single" render="Label" position="10,449" size="270,22" zPosition="3" font="Regular;18" halign="center" transparent="1" foregroundColor="#000000" />
 			<widget source="space_bar_dual" render="Progress" position="10,446" size="540,24" borderWidth="1" backgroundColor="#254f7497" />
@@ -61,23 +61,23 @@ class TitleList(Screen, HelpableScreen):
 		HelpableScreen.__init__(self)
 
 		self["titleactions"] = HelpableActionMap(self, ["DVDTitleList"],
-			{
-				"addTitle": (self.addTitle, _("Add a new title"), _("Add title")),
-				"titleProperties": (self.titleProperties, _("Properties of current title"), _("Title properties")),
-				"removeCurrentTitle": (self.removeCurrentTitle, _("Remove currently selected title"), _("Remove title")),
-				"settings": (self.settings, _("Collection settings"), _("Settings")),
-				"burnProject": (self.askBurnProject, _("Burn DVD"), _("Burn DVD")),
-			})
+												 {
+			"addTitle": (self.addTitle, _("Add a new title"), _("Add title")),
+			"titleProperties": (self.titleProperties, _("Properties of current title"), _("Title properties")),
+			"removeCurrentTitle": (self.removeCurrentTitle, _("Remove currently selected title"), _("Remove title")),
+			"settings": (self.settings, _("Collection settings"), _("Settings")),
+			"burnProject": (self.askBurnProject, _("Burn DVD"), _("Burn DVD")),
+		})
 
 		self["MovieSelectionActions"] = HelpableActionMap(self, ["MovieSelectionActions"],
-			{
-				"contextMenu": (self.showMenu, _("menu")),
-			})
+														  {
+			"contextMenu": (self.showMenu, _("menu")),
+		})
 
 		self["actions"] = ActionMap(["OkCancelActions"],
-			{
-				"cancel": self.leave
-			})
+									{
+			"cancel": self.leave
+		})
 
 		self["key_red"] = StaticText()
 		self["key_green"] = StaticText(_("Add title"))
@@ -192,7 +192,7 @@ class TitleList(Screen, HelpableScreen):
 				self["key_green"] = StaticText(_("Add"))
 				self["key_yellow"] = StaticText(_("Edit title"))
 				self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-				{
+														 {
 					"red": (self.close, _("Close title selection")),
 					"green": (self.insertWithoutEdit, ("insert without cutlist editor")),
 					"yellow": (self.movieSelected, _("Add a new title"))

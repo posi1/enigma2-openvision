@@ -106,7 +106,7 @@ class ServiceScan(Screen):
 		self["key_green"] = Label(_("OK"))
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
-		{
+									{
 			"ok": self.ok,
 			"save": self.ok,
 			"cancel": self.cancel,
