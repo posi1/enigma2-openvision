@@ -9,6 +9,7 @@ from Tools.Profile import profile
 from Plugins.Plugin import PluginDescriptor
 import keymapparser
 
+
 class PluginComponent:
 	firstRun = True
 	restartRequired = False

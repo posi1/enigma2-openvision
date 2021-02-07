@@ -17,6 +17,7 @@ from Components.Label import MultiColorLabel
 from enigma import gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
+
 class TitleList(Screen, HelpableScreen):
 	skin = """
 		<screen name="TitleList" position="center,center" size="560,470" title="DVD Tool" >

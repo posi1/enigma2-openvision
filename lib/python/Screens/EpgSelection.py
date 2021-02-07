@@ -34,6 +34,7 @@ import six
 
 mepg_config_initialized = False
 
+
 class EPGSelection(Screen):
 	EMPTY = 0
 	ADD_TIMER = 1

@@ -8,6 +8,7 @@ from Components.config import config
 import NavigationInstance
 import os
 
+
 class CIHelper:
 
 	CI_ASSIGNMENT_LIST = None
@@ -191,6 +192,7 @@ class CIHelper:
 
 
 cihelper = CIHelper()
+
 
 def isPlayable(service):
 	ret = cihelper.isPlayable(service)

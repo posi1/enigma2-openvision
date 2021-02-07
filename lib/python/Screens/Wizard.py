@@ -17,6 +17,7 @@ import boxbranding
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
+
 class WizardSummary(Screen):
 	def __init__(self, session, parent):
 		Screen.__init__(self, session, parent)
@@ -28,6 +29,7 @@ class WizardSummary(Screen):
 
 	def setText(self, text):
 		self["text"].setText(text)
+
 
 class Wizard(Screen):
 	instance = None

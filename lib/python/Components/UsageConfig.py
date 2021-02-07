@@ -20,6 +20,7 @@ from keyids import KEYIDS
 model = getBoxType()
 displaytype = getDisplayType()
 
+
 def InitUsageConfig():
 	config.usage = ConfigSubsection()
 	if fileHas("/etc/network/interfaces", "iface eth0 inet static") and not fileHas("/etc/network/interfaces", "iface wlan0 inet dhcp") or fileHas("/etc/network/interfaces", "iface wlan0 inet static") and fileHas("/run/ifstate", "wlan0=wlan0"):
@@ -1404,6 +1405,7 @@ def InitUsageConfig():
 	config.ntp.timesync.addNotifier(timesyncChanged)
 	config.ntp.server = ConfigText("pool.ntp.org", fixed_size=False)
 
+
 def updateChoices(sel, choices):
 	if choices:
 		defval = None
@@ -1417,6 +1419,7 @@ def updateChoices(sel, choices):
 					break
 		sel.setChoices(map(str, choices), defval)
 
+
 def preferredPath(path):
 	if config.usage.setup_level.index < 2 or path == "<default>" or not path:
 		return None	 # config.usage.default_path.value, but delay lookup until usage
@@ -1427,14 +1430,18 @@ def preferredPath(path):
 	else:
 		return path
 
+
 def preferredTimerPath():
 	return preferredPath(config.usage.timer_path.value)
+
 
 def preferredInstantRecordPath():
 	return preferredPath(config.usage.instantrec_path.value)
 
+
 def defaultMoviePath():
 	return defaultRecordingLocation(config.usage.default_path.value)
+
 
 def patchTuxtxtConfFile(dummyConfigElement):
 	print("[UsageConfig] patching tuxtxt2.conf")

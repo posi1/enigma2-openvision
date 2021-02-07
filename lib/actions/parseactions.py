@@ -5,6 +5,7 @@ from __future__ import print_function
 
 import tokenize, sys
 
+
 def filter(g):
 	while 1:
 		t = g.next()
@@ -20,6 +21,7 @@ def filter(g):
 		if t[1] != "\n":
 #			print(t)
 			yield t[1]
+
 
 def do_file(f, mode):
 	tokens = filter(tokenize.generate_tokens(open(f, 'r').readline))

@@ -12,6 +12,7 @@ model = getBoxType()
 
 config.misc.fsbl_update_never = ConfigBoolean(default=False)
 
+
 class FSBLUpdateHandler(object):
 	def __init__(self):
 		self._session = None
@@ -46,10 +47,13 @@ class FSBLUpdateHandler(object):
 
 global updateHandler
 updateHandler = None
+
+
 def sessionstart(session, *args, **kwargs):
 	global updateHandler
 	updateHandler = FSBLUpdateHandler()
 	updateHandler.check(session)
+
 
 def Plugins(path, **kwargs):
 	global plugin_path

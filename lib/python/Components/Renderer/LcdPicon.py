@@ -8,11 +8,13 @@ from boxbranding import getDisplayType
 from Components.config import config
 from Components.Renderer.Picon import PiconLocator
 
+
 def useLcdPicons():
 	return getDisplayType() in ("bwlcd255", "bwlcd140", "bwlcd128") or config.lcd.picon_pack.value
 
 
 lcdPiconLocator = None
+
 
 def initPiconPaths(_=None):
 	global lcdPiconLocator
@@ -20,6 +22,7 @@ def initPiconPaths(_=None):
 
 
 config.lcd.picon_pack.addNotifier(initPiconPaths)
+
 
 class LcdPicon(Renderer):
 	def __init__(self):

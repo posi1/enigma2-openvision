@@ -11,6 +11,7 @@ from enigma import iRecordableService, getBoxType
 
 model = getBoxType()
 
+
 class FanControl:
 	# ATM there's only support for one fan
 	def __init__(self):

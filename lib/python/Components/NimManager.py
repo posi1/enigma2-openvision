@@ -19,6 +19,7 @@ socfamily = getSoCFamily()
 
 config.unicable = ConfigSubsection()
 
+
 def getConfigSatlist(orbpos, satlist):
 	if not satlist:
 		return None
@@ -28,6 +29,7 @@ def getConfigSatlist(orbpos, satlist):
 			default_orbpos = orbpos
 			break
 	return ConfigSatlist(satlist, default_orbpos)
+
 
 class SecConfigure:
 	def getConfiguredSats(self):
@@ -503,6 +505,7 @@ class SecConfigure:
 		self.configuredSatellites = set()
 		self.update()
 
+
 class NIM(object):
 	def __init__(self, slot, type, description, has_outputs=True, internally_connectable=None, multi_type={}, frontend_id=None, i2c=None, is_empty=False, supports_blind_scan=False, number_of_slots=0):
 		nim_types = ["DVB-S", "DVB-S2", "DVB-S2X", "DVB-C", "DVB-T", "DVB-T2", "ATSC"]
@@ -700,6 +703,7 @@ class NIM(object):
 	config = property(lambda self: config.Nims[self.slot])
 	empty = property(lambda self: self.getType() is None)
 	enabled = property(isEnabled)
+
 
 class NimManager:
 	def getConfiguredSats(self):
@@ -1168,6 +1172,7 @@ class NimManager:
 								list.append(user_sat)
 		return list
 
+
 def InitSecParams():
 	config.sec = ConfigSubsection()
 	config.sec.delay_after_continuous_tone_disable_before_diseqc = ConfigInteger(default=25, limits=(0, 9999))
@@ -1219,6 +1224,7 @@ def InitSecParams():
 # diseqc 1.0 / diseqc 1.1 / toneburst switch
 # the C(++) part should can handle this
 # the configElement should be only visible when diseqc 1.2 is disabled
+
 
 def InitNimManager(nimmgr, update_slots=[]):
 	if not hasattr(config, "Nims"):

@@ -29,9 +29,11 @@ else:
 
 loadSkin('/usr/share/enigma2/VirtualKeyBoard_Icons/vkskin.xml')
 
+
 def getDesktopSize():
     s = getDesktop(0).size()
     return (s.width(), s.height())
+
 
 def isHD():
     desktopSize = getDesktopSize()

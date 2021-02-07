@@ -54,6 +54,8 @@ from sys import stdout
 profile("Bouquets")
 from Components.config import config, configfile, ConfigText, ConfigYesNo, ConfigInteger, ConfigSelection, NoSave
 config.misc.load_unlinked_userbouquets = ConfigYesNo(default=True)
+
+
 def setLoadUnlinkedUserbouquets(configElement):
 	enigma.eDVBDB.getInstance().setLoadUnlinkedUserbouquets(configElement.value)
 
@@ -89,6 +91,7 @@ config.misc.prev_wakeup_time_type = ConfigInteger(default=0)
 # 0 = RecordTimer, 1 = ZapTimer, 2 = Plugins, 3 = WakeupTimer
 config.misc.epgcache_filename = ConfigText(default="/hdd/epg.dat", fixed_size=False)
 
+
 def setEPGCachePath(configElement):
 	if os.path.isdir(configElement.value) or os.path.islink(configElement.value):
 		configElement.value = os.path.join(configElement.value, "epg.dat")
@@ -120,6 +123,7 @@ try:
 		reactor.run(installSignalHandlers=False)
 except ImportError as e:
 	print("[mytest] twisted not available")
+
 	def runReactor():
 		enigma.runMainloop()
 
@@ -148,6 +152,7 @@ from Plugins.Plugin import PluginDescriptor
 
 profile("misc")
 had = dict()
+
 
 def dump(dir, p=""):
 	if isinstance(dir, dict):
@@ -200,6 +205,7 @@ Screen.globalScreen = Globals()
 # .. a moment later:
 # Session.doClose:
 # * destroy screen
+
 
 class Session:
 	def __init__(self, desktop=None, summary_desktop=None, navigation=None):
@@ -384,6 +390,7 @@ import Screens.Standby
 from Screens.Menu import MainMenu, mdom
 from GlobalActions import globalActionMap
 
+
 class PowerKey:
 	""" PowerKey stuff - handles the powerkey press and powerkey release actions"""
 
@@ -442,6 +449,7 @@ class PowerKey:
 profile("Scart")
 from Screens.Scart import Scart
 
+
 class AutoScartControl:
 	def __init__(self, session):
 		self.force = False
@@ -475,6 +483,7 @@ from Components.VolumeControl import VolumeControl
 profile("Load:StackTracePrinter")
 from Components.StackTrace import StackTracePrinter
 StackTracePrinterInst = StackTracePrinter()
+
 
 def runScreenTest():
 	config.misc.startCounter.value += 1

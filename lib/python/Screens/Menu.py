@@ -30,10 +30,12 @@ mdom = xml.etree.cElementTree.parse(resolveFilename(SCOPE_SKIN, 'menu.xml'))
 
 lastMenuID = None
 
+
 def default_skin():
 	for line in open("/etc/enigma2/settings"):
 		if not "config.skin.primary_skin" in line:
 			return default_skin
+
 
 def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 	png = png_cache.get(entryID, None)
@@ -56,6 +58,7 @@ def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 			png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, 'mainmenu/missing.png'), cached=True)
 			png_cache['missing'] = png
 	return png
+
 
 def MenuEntryName(name):
 	def splitUpperCase(name, maxlen):
@@ -98,6 +101,7 @@ def MenuEntryName(name):
 				break
 	return name if len(namesplit) < 2 else "\n".join(namesplit)
 
+
 class title_History():
 
 	def __init__(self):
@@ -121,6 +125,7 @@ class title_History():
 
 
 t_history = title_History()
+
 
 class MenuUpdater:
 	def __init__(self):
@@ -521,6 +526,7 @@ class Menu(Screen, ProtectedScreen):
 			self.list.append(('', None, 'dummy', '10', 10))
 		self.list.sort(key=lambda listweight: int(listweight[4]))
 
+
 class MenuSort(Menu):
 	def __init__(self, session, parent):
 		self.somethingChanged = False
@@ -626,6 +632,7 @@ class MenuSort(Menu):
 			self["menu"].down()
 		else:
 			self["menu"].up()
+
 
 class AnimMain(Screen):
 
@@ -766,6 +773,7 @@ class AnimMain(Screen):
 		selection = self.tlist[idx]
 		if selection is not None:
 			selection[1]()
+
 
 class IconMain(Screen):
 
@@ -1009,6 +1017,7 @@ class IconMain(Screen):
 		selection = self.tlist[idx]
 		if selection is not None:
 			selection[1]()
+
 
 class MainMenu(Menu):
 	#add file load functions for the xml-file

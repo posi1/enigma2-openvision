@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 # fake-enigma
+
+
 class slot:
 	def __init__(self):
 		self.list = []
@@ -21,6 +23,7 @@ import time
 from events import eventfnc
 
 ##################### ENIGMA BASE
+
 
 class eTimer:
 	def __init__(self):
@@ -47,6 +50,7 @@ class eTimer:
 		self.next_activation += self.msec / 1000.0
 		self.timeout()
 
+
 def runIteration():
 	running_timers = list(timers)
 	assert len(running_timers), "no running timers, so nothing will ever happen!"
@@ -70,9 +74,11 @@ def runIteration():
 
 stopped = False
 
+
 def stop():
 	global stopped
 	stopped = True
+
 
 def run(duration=1000):
 	stoptimer = eTimer()
@@ -100,6 +106,7 @@ eListboxPythonStringContent = None
 eListbox = None
 eSubtitleWidget = None
 
+
 class eEPGCache:
 	@classmethod
 	def getInstance(self):
@@ -117,6 +124,7 @@ class eEPGCache:
 eEPGCache()
 
 getBestPlayableServiceReference = None
+
 
 class pNavigation:
 	def __init__(self):
@@ -142,6 +150,7 @@ class pNavigation:
 eRCInput = None
 getPrevAsciiCode = None
 
+
 class eServiceReference:
 
 	isDirectory = 1
@@ -164,6 +173,7 @@ class eServiceReference:
 	def __repr__(self):
 		return self.toString()
 
+
 class iRecordableService:
 	def __init__(self, ref):
 		self.ref = ref
@@ -185,6 +195,7 @@ class iRecordableService:
 
 
 quitMainloop = None
+
 
 class eAVSwitch:
 	@classmethod
@@ -218,6 +229,7 @@ class eAVSwitch:
 eAVSwitch()
 
 eDVBVolumecontrol = None
+
 
 class eRFmod:
 	@classmethod
@@ -278,6 +290,7 @@ eDBoxLCD()
 
 Misc_Options = None
 
+
 class eServiceCenter:
 	@classmethod
 	def getInstance(self):
@@ -322,6 +335,7 @@ Components.config.config.unpickle(my_config)
 
 ##################### ENIGMA ACTIONS
 
+
 class eActionMap:
 	def __init__(self):
 		pass
@@ -334,15 +348,18 @@ def init_nav():
 	import Navigation, NavigationInstance
 	NavigationInstance.instance = Navigation.Navigation()
 
+
 def init_record_config():
 	print("[enigma] init recording")
 	import Components.RecordingConfig
 	Components.RecordingConfig.InitRecordingConfig()
 
+
 def init_parental_control():
 	print("[enigma] init parental")
 	from Components.ParentalControl import InitParentalControl
 	InitParentalControl()
+
 
 def init_all():
 	# this is stuff from mytest.py

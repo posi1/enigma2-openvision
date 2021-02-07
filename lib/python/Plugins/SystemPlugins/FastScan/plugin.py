@@ -50,8 +50,10 @@ transponders = ((12515000, 22000000, eDVBFrontendParametersSatellite.FEC_5_6, 19
 	eDVBFrontendParametersSatellite.System_DVB_S, eDVBFrontendParametersSatellite.Modulation_QPSK,
 	eDVBFrontendParametersSatellite.RollOff_alpha_0_35, eDVBFrontendParametersSatellite.Pilot_Off))
 
+
 def getProviderList():
 	return [x[0] for x in providers if nimmanager.getNimListForSat(transponders[x[1][0]][3])]
+
 
 class FastScanStatus(Screen):
 	skin = """
@@ -144,6 +146,7 @@ class FastScanStatus(Screen):
 			refreshServiceList()
 		self.restoreService()
 		self.close()
+
 
 class FastScanScreen(ConfigListScreen, Screen):
 	skin = """
@@ -283,6 +286,7 @@ class FastScanScreen(ConfigListScreen, Screen):
 	def keyCancel(self):
 		self.close()
 
+
 class FastScanAutoScreen(FastScanScreen):
 
 	def __init__(self, session, lastConfiguration):
@@ -331,6 +335,7 @@ class FastScanAutoScreen(FastScanScreen):
 		from Screens.Standby import StandbySummary
 		return StandbySummary
 
+
 def FastScanMain(session, **kwargs):
 	if session.nav.RecordTimer.isRecording():
 		session.open(MessageBox, _("A recording is currently running. Please stop the recording before trying to scan."), MessageBox.TYPE_ERROR)
@@ -341,6 +346,7 @@ def FastScanMain(session, **kwargs):
 Session = None
 FastScanAutoStartTimer = eTimer()
 autoproviders = []
+
 
 def restartScanAutoStartTimer(reply=False):
 	if not reply:
@@ -356,6 +362,7 @@ def restartScanAutoStartTimer(reply=False):
 				Session.openWithCallback(restartScanAutoStartTimer, FastScanAutoScreen, lastConfiguration)
 				return
 		FastScanAutoStartTimer.startLongTimer(86400)
+
 
 def FastScanAuto():
 	lastConfiguration = eval(config.misc.fastscan.last_configuration.value)
@@ -374,14 +381,17 @@ def FastScanAuto():
 
 FastScanAutoStartTimer.callback.append(FastScanAuto)
 
+
 def leaveStandby():
 	FastScanAutoStartTimer.stop()
+
 
 def standbyCountChanged(value):
 	if config.misc.fastscan.auto.value != "false" and eval(config.misc.fastscan.last_configuration.value):
 		from Screens.Standby import inStandby
 		inStandby.onClose.append(leaveStandby)
 		FastScanAutoStartTimer.startLongTimer(90)
+
 
 def autostart(reason, **kwargs):
 	global Session
@@ -392,11 +402,13 @@ def autostart(reason, **kwargs):
 		Session = None
 		config.misc.standbyCounter.removeNotifier(standbyCountChanged)
 
+
 def FastScanStart(menuid, **kwargs):
 	if menuid == "scan" and getProviderList():
 		return [(_("FastScan"), FastScanMain, "fastscan", None)]
 	else:
 		return []
+
 
 def Plugins(**kwargs):
 	if (nimmanager.hasNimType("DVB-S")):

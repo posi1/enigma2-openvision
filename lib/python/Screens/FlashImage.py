@@ -21,8 +21,10 @@ from enigma import eEPGCache, getBoxType
 
 model = getBoxType()
 
+
 def checkimagefiles(files):
 	return len([x for x in files if 'kernel' in x and '.bin' in x or x in ('uImage', 'rootfs.bin', 'root_cfe_auto.bin', 'root_cfe_auto.jffs2', 'oe_rootfs.bin', 'e2jffs2.img', 'rootfs.tar.bz2', 'rootfs.ubi')]) == 2
+
 
 class SelectImage(Screen):
 	def __init__(self, session, *args):
@@ -174,6 +176,7 @@ class SelectImage(Screen):
 	def keyDown(self):
 		self["list"].instance.moveSelection(self["list"].instance.moveDown)
 		self.selectionChanged()
+
 
 class FlashImage(Screen):
 	skin = """<screen position="center,center" size="640,150" flags="wfNoBorder" backgroundColor="#54242424">
@@ -394,6 +397,7 @@ class FlashImage(Screen):
 			self.session.openWithCallback(self.abort, MultibootSelection)
 		else:
 			return 0
+
 
 class MultibootSelection(SelectImage):
 	def __init__(self, session, *args):

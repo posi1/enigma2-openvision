@@ -12,6 +12,7 @@ from Tools.TextBoundary import getTextBoundarySize
 from timer import TimerEntry
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
 
+
 class TimerList(GUIComponent, object):
 #
 #  | <Name of the Timer>     <Service>  |

@@ -28,6 +28,7 @@ has_avjack = getHaveAVJACK() == "True"
 
 config.av.edid_override = ConfigYesNo(default=True)
 
+
 class VideoHardware:
 	rates = {} # high-level, use selectable modes.
 

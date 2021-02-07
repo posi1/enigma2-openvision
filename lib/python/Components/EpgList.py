@@ -18,6 +18,7 @@ EPG_TYPE_SINGLE = 0
 EPG_TYPE_MULTI = 1
 EPG_TYPE_SIMILAR = 2
 
+
 class Rect:
 	def __init__(self, x, y, width, height):
 		self.x = x
@@ -37,6 +38,7 @@ class Rect:
 
 	def width(self):
 		return self.w
+
 
 class EPGList(GUIComponent):
 	def __init__(self, type=EPG_TYPE_SINGLE, selChangedCB=None, timer=None):

@@ -4,6 +4,7 @@ import os
 from Tools.Directories import SCOPE_SKIN, resolveFilename
 from boxbranding import getRCName
 
+
 class RcModel:
 	def __init__(self):
 		pass

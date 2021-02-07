@@ -20,6 +20,7 @@ from boxbranding import getMachineBuild
 FOCUS_CONFIG, FOCUS_STREAMS = range(2)
 [PAGE_AUDIO, PAGE_SUBTITLES] = ["audio", "subtitles"]
 
+
 class AudioSelection(Screen, ConfigListScreen):
 	def __init__(self, session, infobar=None, page=PAGE_AUDIO):
 		Screen.__init__(self, session)
@@ -484,10 +485,12 @@ class AudioSelection(Screen, ConfigListScreen):
 	def cancel(self):
 		self.close(0)
 
+
 class SubtitleSelection(AudioSelection):
 	def __init__(self, session, infobar=None):
 		AudioSelection.__init__(self, session, infobar, page=PAGE_SUBTITLES)
 		self.skinName = ["AudioSelection"]
+
 
 class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 	skin = """

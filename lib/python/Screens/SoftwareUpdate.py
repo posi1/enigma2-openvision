@@ -26,6 +26,7 @@ import calendar
 brand = getBoxBrand()
 model = getBoxType()
 
+
 class UpdatePlugin(Screen, ProtectedScreen):
 	skin = """
 		<screen name="UpdatePlugin" position="center,center" size="550,300">

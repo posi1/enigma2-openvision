@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from Components.FanControl import fancontrol
 
+
 class Sensors:
 	# (type, name, unit, directory)
 	TYPE_TEMPERATURE = 0
@@ -31,7 +32,6 @@ class Sensors:
 			if self.sensors_list[sensorid][0] == type:
 				list.append(sensorid)
 		return list
-
 
 	def getSensorType(self, sensorid):
 		return self.sensors_list[sensorid][0]

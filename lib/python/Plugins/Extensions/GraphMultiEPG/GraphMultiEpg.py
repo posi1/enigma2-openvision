@@ -81,6 +81,7 @@ config.misc.graph_mepg.zap_blind_bouquets = ConfigYesNo(default=False)
 
 listscreen = config.misc.graph_mepg.default_mode.value
 
+
 class EPGList(GUIComponent):
 	def __init__(self, selChangedCB=None, timer=None, time_epoch=120, overjump_empty=True, epg_bouquet=None):
 		GUIComponent.__init__(self)
@@ -764,6 +765,7 @@ class EPGList(GUIComponent):
 	def resetOffset(self):
 		self.offs = 0
 
+
 class TimelineText(GUIComponent):
 	def __init__(self):
 		GUIComponent.__init__(self)
@@ -870,6 +872,7 @@ class TimelineText(GUIComponent):
 			timeline_now.visible = config.misc.graph_mepg.show_timelines.value in ("all", "now")
 		else:
 			timeline_now.visible = False
+
 
 class GraphMultiEPG(Screen, HelpableScreen):
 	EMPTY = 0

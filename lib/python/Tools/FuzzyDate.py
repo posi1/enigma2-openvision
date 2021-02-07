@@ -4,6 +4,7 @@ from __future__ import print_function
 from Components.config import config
 from time import localtime, time, strftime
 
+
 def FuzzyTime(t, inPast=False):
 	d = localtime(t)
 	nt = time()

@@ -7,6 +7,7 @@ from Components.SystemInfo import SystemInfo
 
 # The "VideoEnhancement" is the interface to /proc/stb/vmpeg/0.
 
+
 class VideoEnhancement:
 	firstRun = True
 

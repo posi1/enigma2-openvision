@@ -28,6 +28,7 @@ import six
 if six.PY3:
 	import functools
 
+
 class TimerEditList(Screen, ProtectedScreen):
 	EMPTY = 0
 	ENABLE = 1
@@ -411,6 +412,7 @@ class TimerEditList(Screen, ProtectedScreen):
 
 	def onStateChange(self, entry):
 		self.refill()
+
 
 class TimerSanityConflict(Screen):
 	def __init__(self, session, timer):

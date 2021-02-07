@@ -24,6 +24,7 @@ from time import localtime, strftime
 from Components.config import config
 import six
 
+
 class EventViewBase:
 	ADD_TIMER = 0
 	REMOVE_TIMER = 1
@@ -369,11 +370,13 @@ class EventViewBase:
 	def runPlugin(self, plugin):
 		plugin.__call__(session=self.session, service=self.currentService, event=self.event, eventName=self.event.getEventName())
 
+
 class EventViewSimple(Screen, EventViewBase):
 	def __init__(self, session, Event, Ref, callback=None, similarEPGCB=None, parent=None):
 		Screen.__init__(self, session)
 		self.skinName = "EventView"
 		EventViewBase.__init__(self, Event, Ref, callback, similarEPGCB, parent)
+
 
 class EventViewEPGSelect(Screen, EventViewBase):
 	def __init__(self, session, Event, Ref, callback=None, singleEPGCB=None, multiEPGCB=None, similarEPGCB=None, parent=None):
