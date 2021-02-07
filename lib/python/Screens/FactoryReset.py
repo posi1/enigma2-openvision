@@ -163,5 +163,5 @@ class FactoryReset(Setup, ProtectedScreen):
 				if err.errno != ENOENT:
 					print("[FactoryReset] Error: Unable to delete '%s'!	 (%s)" % (target, str(err)))
 
-	def closeConfigList(self, closeParameters=()):	# Suppress the save settings pop up on exit.
+	def closeConfigList(self, closeParameters=()):  # Suppress the save settings pop up on exit.
 		self.close(*closeParameters)

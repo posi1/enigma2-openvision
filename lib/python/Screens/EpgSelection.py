@@ -46,7 +46,7 @@ class EPGSelection(Screen):
 		Screen.__init__(self, session)
 		self.bouquetChangeCB = bouquetChangeCB
 		self.serviceChangeCB = serviceChangeCB
-		self.ask_time = -1 #now
+		self.ask_time = -1  # now
 		self["key_red"] = StaticText("")
 		self.closeRecursive = False
 		self.saved_title = None
@@ -112,10 +112,10 @@ class EPGSelection(Screen):
 			"blue": self.blueButtonPressed,
 			"info": self.infoKeyPressed,
 			"menu": self.furtherOptions,
-			"nextBouquet": self.nextBouquet, # just used in multi epg yet
-			"prevBouquet": self.prevBouquet, # just used in multi epg yet
-			"nextService": self.nextService, # just used in single epg yet
-			"prevService": self.prevService, # just used in single epg yet
+			"nextBouquet": self.nextBouquet,  # just used in multi epg yet
+			"prevBouquet": self.prevBouquet,  # just used in multi epg yet
+			"nextService": self.nextService,  # just used in single epg yet
+			"prevService": self.prevService,  # just used in single epg yet
 			"preview": self.eventPreview,
 		})
 
@@ -292,7 +292,7 @@ class EPGSelection(Screen):
 		self.currentService = service
 		self.onCreate()
 
-	#just used in multipeg
+	# just used in multipeg
 	def onCreate(self):
 		l = self["list"]
 		l.recalcEntrySize()

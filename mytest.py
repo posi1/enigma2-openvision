@@ -81,12 +81,12 @@ InitFallbackFiles()
 profile("config.misc")
 config.misc.radiopic = ConfigText(default=resolveFilename(SCOPE_CURRENT_SKIN, "radio.mvi"))
 config.misc.blackradiopic = ConfigText(default=resolveFilename(SCOPE_CURRENT_SKIN, "black.mvi"))
-config.misc.startCounter = ConfigInteger(default=0) # number of e2 starts...
-config.misc.standbyCounter = NoSave(ConfigInteger(default=0)) # number of standby
-config.misc.DeepStandby = NoSave(ConfigYesNo(default=False)) # detect deepstandby
-config.misc.RestartUI = ConfigYesNo(default=False) # detect user interface restart
+config.misc.startCounter = ConfigInteger(default=0)  # number of e2 starts...
+config.misc.standbyCounter = NoSave(ConfigInteger(default=0))  # number of standby
+config.misc.DeepStandby = NoSave(ConfigYesNo(default=False))  # detect deepstandby
+config.misc.RestartUI = ConfigYesNo(default=False)  # detect user interface restart
 config.misc.prev_wakeup_time = ConfigInteger(default=0)
-#config.misc.prev_wakeup_time_type is only valid when wakeup_time is not 0
+# config.misc.prev_wakeup_time_type is only valid when wakeup_time is not 0
 config.misc.prev_wakeup_time_type = ConfigInteger(default=0)
 # 0 = RecordTimer, 1 = ZapTimer, 2 = Plugins, 3 = WakeupTimer
 config.misc.epgcache_filename = ConfigText(default="/hdd/epg.dat", fixed_size=False)
@@ -97,11 +97,11 @@ def setEPGCachePath(configElement):
 		configElement.value = os.path.join(configElement.value, "epg.dat")
 	enigma.eEPGCache.getInstance().setCacheFile(configElement.value)
 
-#demo code for use of standby enter leave callbacks
-#def leaveStandby():
+# demo code for use of standby enter leave callbacks
+# def leaveStandby():
 #	print("!!!!!!!!!!!!!!!!!leave standby")
 
-#def standbyCountChanged(configElement):
+# def standbyCountChanged(configElement):
 #	print("!!!!!!!!!!!!!!!!!enter standby num", configElement.value)
 #	from Screens.Standby import inStandby
 #	inStandby.onClose.append(leaveStandby)
@@ -329,7 +329,7 @@ class Session:
 		self.pushCurrent()
 		self.current_dialog = dialog
 		self.current_dialog.isTmp = False
-		self.current_dialog.callback = None # would cause re-entrancy problems.
+		self.current_dialog.callback = None  # would cause re-entrancy problems.
 		self.execBegin()
 
 	def openWithCallback(self, callback, screen, *arguments, **kwargs):
@@ -399,7 +399,7 @@ class PowerKey:
 		globalActionMap.actions["power_down"] = lambda *args: None
 		globalActionMap.actions["power_up"] = self.powerup
 		globalActionMap.actions["power_long"] = self.powerlong
-		globalActionMap.actions["deepstandby"] = self.shutdown # front panel long power button press
+		globalActionMap.actions["deepstandby"] = self.shutdown  # front panel long power button press
 		globalActionMap.actions["discrete_off"] = self.standby
 
 	def shutdown(self):
@@ -554,7 +554,7 @@ def runScreenTest():
 	from time import strftime, localtime
 	from Tools.StbHardware import setFPWakeuptime, setRTCtime
 	from Screens.SleepTimerEdit import isNextWakeupTime
-	#get currentTime
+	# get currentTime
 	nowTime = time()
 	wakeupList = [
 		x for x in ((session.nav.RecordTimer.getNextRecordingTime(), 0),
@@ -567,11 +567,11 @@ def runScreenTest():
 	if wakeupList:
 		from time import strftime
 		startTime = wakeupList[0]
-		if (startTime[0] - nowTime) < 270: # no time to switch box back on
+		if (startTime[0] - nowTime) < 270:  # no time to switch box back on
 			wptime = nowTime + 30  # so switch back on in 30 seconds
 		else:
 			if brand == "gigablue":
-				wptime = startTime[0] - 120 # GigaBlue already starts 2 min. before wakeup time
+				wptime = startTime[0] - 120  # GigaBlue already starts 2 min. before wakeup time
 			else:
 				wptime = startTime[0] - 240
 		if brand == "gigablue":
@@ -688,8 +688,8 @@ if os.path.exists('/etc/enigma2/ipv6'):
 
 #from enigma import dump_malloc_stats
 #t = eTimer()
-#t.callback.append(dump_malloc_stats)
-#t.start(1000)
+# t.callback.append(dump_malloc_stats)
+# t.start(1000)
 
 # first, setup a screen
 try:

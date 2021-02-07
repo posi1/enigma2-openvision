@@ -46,7 +46,7 @@ class TimerList(GUIComponent, object):
 			if self.iconRepeat:
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin / 2, self.rowSplit + (self.itemHeight - self.rowSplit - self.iconHeight) / 2, self.iconWidth, self.iconHeight, self.iconRepeat))
 		else:
-			repeatedtext = begin[0] # date
+			repeatedtext = begin[0]  # date
 			if "autotimer" in timer.flags:
 				self.iconAutoTimer and res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin / 2, self.rowSplit + (self.itemHeight - self.rowSplit - self.iconHeight) / 2, self.iconWidth, self.iconHeight, self.iconAutoTimer))
 		if timer.justplay:
@@ -110,7 +110,7 @@ class TimerList(GUIComponent, object):
 		self.satPosLeft = 160
 		self.backupColor = self.backupColorSel = 0x00CCAC68
 		self.iconWait = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/timer_wait.png"))
-		#currently intended that all icons have the same size
+		# currently intended that all icons have the same size
 		self.iconWidth = self.iconWait.size().width()
 		self.iconHeight = self.iconWait.size().height()
 		self.iconRecording = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/timer_rec.png"))

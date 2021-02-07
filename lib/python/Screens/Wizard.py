@@ -85,7 +85,7 @@ class Wizard(Screen):
 						self.wizard[self.lastStep]["dynamiclist"] = attrs.get("source")
 					#self.wizard[self.lastStep]["list"].append(("Hallo", "test"))
 				if "evaluation" in attrs:
-					#print("evaluation")
+					# print("evaluation")
 					self.wizard[self.lastStep]["listevaluation"] = attrs.get("evaluation")
 				if "onselect" in attrs:
 					self.wizard[self.lastStep]["onselect"] = attrs.get("onselect")
@@ -154,7 +154,7 @@ class Wizard(Screen):
 	def __init__(self, session, showSteps=True, showStepSlider=True, showList=True, showConfig=True):
 		Screen.__init__(self, session)
 
-		self.isLastWizard = False # can be used to skip a "goodbye"-screen in a wizard
+		self.isLastWizard = False  # can be used to skip a "goodbye"-screen in a wizard
 
 		self.stepHistory = []
 
@@ -344,7 +344,7 @@ class Wizard(Screen):
 					self.currStep = self.getStepWithID(nextStep)
 
 		print_now = True
-		if (currStep == self.numSteps and self.wizard[currStep]["nextstep"] is None) or self.wizard[currStep]["id"] == "end": # wizard finished
+		if (currStep == self.numSteps and self.wizard[currStep]["nextstep"] is None) or self.wizard[currStep]["id"] == "end":  # wizard finished
 			print("[Wizard] wizard finished")
 			self.markDone()
 			self.exit()
@@ -436,7 +436,7 @@ class Wizard(Screen):
 			self["config"].instance.moveSelection(self["config"].instance.moveDown)
 			self.handleInputHelpers()
 		elif self.showList and len(self.wizard[self.currStep]["evaluatedlist"]) > 0:
-			#self["list"].instance.moveSelection(self["list"].instance.moveDown)
+			# self["list"].instance.moveSelection(self["list"].instance.moveDown)
 			self["list"].selectNext()
 			if "onselect" in self.wizard[self.currStep]:
 				print("[Wizard] current:", self["list"].current)
@@ -502,7 +502,7 @@ class Wizard(Screen):
 		exec(self.wizard[self.currStep]["condition"])
 		if not self.condition:
 			print("keys*******************:", self.wizard[self.currStep].keys())
-			if "laststep" in self.wizard[self.currStep]: # exit wizard, if condition of laststep doesn't hold
+			if "laststep" in self.wizard[self.currStep]:  # exit wizard, if condition of laststep doesn't hold
 				self.markDone()
 				self.exit()
 				return
@@ -568,18 +568,18 @@ class Wizard(Screen):
 							rootrenderer.instance.setZPosition(1)
 						renderer = renderer.source
 
-				#self["list"].instance.setZPosition(1)
+				# self["list"].instance.setZPosition(1)
 				self.list = []
 				if "dynamiclist" in self.wizard[self.currStep]:
 					print("[Wizard] dynamic list, calling", self.wizard[self.currStep]["dynamiclist"])
 					newlist = eval("self." + self.wizard[self.currStep]["dynamiclist"] + "()")
 					#self.wizard[self.currStep]["evaluatedlist"] = []
 					for entry in newlist:
-						#self.wizard[self.currStep]["evaluatedlist"].append(entry)
+						# self.wizard[self.currStep]["evaluatedlist"].append(entry)
 						self.list.append(entry)
 					#del self.wizard[self.currStep]["dynamiclist"]
 				if len(self.wizard[self.currStep]["list"]) > 0:
-					#self["list"].instance.setZPosition(2)
+					# self["list"].instance.setZPosition(2)
 					for x in self.wizard[self.currStep]["list"]:
 						self.list.append((self.getTranslation(x[0]), x[1]))
 				self.wizard[self.currStep]["evaluatedlist"] = self.list

@@ -164,7 +164,7 @@ class NetworkWizard(WizardLanguage, Rc):
 			self.Adapterlist = iNetwork.getAdapterList()
 		if self.NextStep is not 'end':
 			if len(self.Adapterlist) == 0:
-				#Reset Network to defaults if network broken
+				# Reset Network to defaults if network broken
 				iNetwork.resetNetworkConfig('lan', self.resetNetworkConfigCB)
 				self.resetRef = self.session.openWithCallback(self.resetNetworkConfigFinished, MessageBox, _("Please wait while we prepare your network interfaces..."), type=MessageBox.TYPE_INFO, enable_input=False)
 			if iface in iNetwork.getInstalledAdapters():

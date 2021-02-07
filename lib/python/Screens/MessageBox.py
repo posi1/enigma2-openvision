@@ -24,7 +24,7 @@ class MessageBox(Screen):
 
 		self.msgBoxID = msgBoxID
 
-		self["autoresize"] = Label("") #do not remove, used for autoResize()
+		self["autoresize"] = Label("")  # do not remove, used for autoResize()
 		self["text"] = Label(text)
 		self["Text"] = StaticText(text)
 		self["selectedChoice"] = StaticText()

@@ -24,7 +24,7 @@ GUI_SKIN_ID = 0	 # Main frame-buffer.
 DISPLAY_SKIN_ID = 1	 # Front panel / display / LCD.
 
 domScreens = {}	 # Dictionary of skin based screens.
-colors = {	# Dictionary of skin color names.
+colors = {  # Dictionary of skin color names.
 	"key_back": gRGB(0x00313131),
 	"key_blue": gRGB(0x0018188b),
 	"key_green": gRGB(0x001f771f),
@@ -36,7 +36,7 @@ fonts = {  # Dictionary of predefined and skin defined font aliases.
 	"Body": ("Regular", 18, 22, 16),
 	"ChoiceList": ("Regular", 20, 24, 18)
 }
-menus = {}	# Dictionary of images associated with menu entries.
+menus = {}  # Dictionary of images associated with menu entries.
 parameters = {}	 # Dictionary of skin parameters used to modify code behavior.
 setups = {}	 # Dictionary of images associated with setup menus.
 switchPixmap = {}  # Dictionary of switch images.
@@ -80,7 +80,7 @@ def InitSkins():
 	# Add the front panel / display / lcd skin.
 	result = []
 	for skin, name in [(config.skin.display_skin.value, "current"), (DEFAULT_DISPLAY_SKIN, "default")]:
-		if skin in result:	# Don't try to add a skin that has already failed.
+		if skin in result:  # Don't try to add a skin that has already failed.
 			continue
 		config.skin.display_skin.value = skin
 		if loadSkin(config.skin.display_skin.value, scope=SCOPE_CURRENT_LCDSKIN, desktop=getDesktop(DISPLAY_SKIN_ID), screenID=DISPLAY_SKIN_ID):
@@ -91,7 +91,7 @@ def InitSkins():
 	# Add the main GUI skin.
 	result = []
 	for skin, name in [(config.skin.primary_skin.value, "current"), (DEFAULT_SKIN, "default")]:
-		if skin in result:	# Don't try to add a skin that has already failed.
+		if skin in result:  # Don't try to add a skin that has already failed.
 			continue
 		config.skin.primary_skin.value = skin
 		if loadSkin(config.skin.primary_skin.value, scope=SCOPE_CURRENT_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID):
@@ -141,9 +141,9 @@ def loadSkin(filename, scope=SCOPE_SKIN, desktop=getDesktop(GUI_SKIN_ID), screen
 							if scrnID is None or scrnID == screenID:  # If there is a screen ID is it for this display.
 								# print("[Skin] DEBUG: Extracting screen '%s' from '%s'.  (scope='%s')" % (name, filename, scope))
 								domScreens[name] = (element, "%s/" % dirname(filename))
-					elif element.tag == "windowstyle":	# Process the windowstyle element.
+					elif element.tag == "windowstyle":  # Process the windowstyle element.
 						scrnID = element.attrib.get("id", None)
-						if scrnID is not None:	# Without an scrnID, it is useless!
+						if scrnID is not None:  # Without an scrnID, it is useless!
 							scrnID = int(scrnID)
 							# print("[Skin] DEBUG: Processing a windowstyle ID='%s'." % scrnID)
 							domStyle = xml.etree.cElementTree.ElementTree(xml.etree.cElementTree.Element("skin"))
@@ -365,7 +365,7 @@ def parseParameter(value):
 		return int(value[1:], 16)
 	elif value[:2] == "0x":	 # HEX Integer.
 		return int(value, 16)
-	elif "." in value:	# Float number.
+	elif "." in value:  # Float number.
 		return float(value)
 	elif value in colors:  # Named color.
 		return colors[value].argb()
@@ -411,7 +411,7 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 	size = None
 	pos = None
 	font = None
-	for attrib, value in node.items():	# Walk all attributes.
+	for attrib, value in node.items():  # Walk all attributes.
 		if attrib not in ignore:
 			if attrib in filenames:
 				value = resolveFilename(SCOPE_CURRENT_SKIN, value, path_prefix=skinPath)
@@ -628,7 +628,7 @@ class AttributeParser:
 	def overScan(self, value):
 		self.guiObject.setOverscan(value)
 
-	def OverScan(self, value):	# This legacy definition uses an inconsistent name!
+	def OverScan(self, value):  # This legacy definition uses an inconsistent name!
 		self.overScan(value)
 
 	def pixmap(self, value):
@@ -696,7 +696,7 @@ class AttributeParser:
 		pos = parsePosition(pos, self.scaleTuple)
 		self.guiObject.setPointer(1, ptr, pos)
 
-	def seek_pointer(self, value):	# This legacy definition uses an inconsistent name!
+	def seek_pointer(self, value):  # This legacy definition uses an inconsistent name!
 		self.seekPointer(value)
 
 	def selection(self, value):
@@ -904,7 +904,7 @@ def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT
 			font = alias.attrib.get("font")
 			size = int(alias.attrib.get("size"))
 			# size = int(size) if size and size.isdigit() else 0  # This assumes that the attributes are always strings!
-			height = int(alias.attrib.get("height", size))	# To be calculated some day.
+			height = int(alias.attrib.get("height", size))  # To be calculated some day.
 			width = int(alias.attrib.get("width", size))  # To be calculated some day.
 			if name and font and size:
 				fonts[name] = (font, size, height, width)
@@ -1133,7 +1133,7 @@ def readSkin(screen, skin, names, desktop):
 		name = "<embedded-in-%s>" % screen.__class__.__name__
 	if myScreen is None:  # Otherwise try embedded skin.
 		myScreen = getattr(screen, "parsedSkin", None)
-	if myScreen is None and getattr(screen, "skin", None):	# Try uncompiled embedded skin.
+	if myScreen is None and getattr(screen, "skin", None):  # Try uncompiled embedded skin.
 		if isinstance(screen.skin, list):
 			print("[Skin] Resizable embedded skin template found in '%s'." % name)
 			skin = screen.skin[0] % tuple([int(x * getSkinFactor()) for x in screen.skin[1:]])
@@ -1245,7 +1245,7 @@ def readSkin(screen, skin, names, desktop):
 				rendererClass = my_import(".".join(("Components", "Renderer", wrender))).__dict__.get(wrender)
 			except ImportError as err:
 				raise SkinError("Renderer '%s' not found" % wrender)
-			renderer = rendererClass()	# Instantiate renderer.
+			renderer = rendererClass()  # Instantiate renderer.
 			renderer.connect(source)  # Connect to source.
 			attributes = renderer.skinAttributes = []
 			collectAttributes(attributes, widget, context, skinPath, ignore=("render", "source"))
@@ -1392,7 +1392,7 @@ def getSkinFactor():
 def findSkinScreen(names):
 	if not isinstance(names, list):
 		names = [names]
-	for name in names:	# Try all names given, the first one found is the one that will be used by the skin engine.
+	for name in names:  # Try all names given, the first one found is the one that will be used by the skin engine.
 		screen, path = domScreens.get(name, (None, None))
 		if screen is not None:
 			return name

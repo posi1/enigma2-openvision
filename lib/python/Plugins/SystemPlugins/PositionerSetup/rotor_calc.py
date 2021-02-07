@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 import math
 
-f = 1.00 / 298.257 # Earth flattning factor
-r_sat = 42164.57 # Distance from earth centre to satellite
-r_eq = 6378.14	# Earth radius
+f = 1.00 / 298.257  # Earth flattning factor
+r_sat = 42164.57  # Distance from earth centre to satellite
+r_eq = 6378.14  # Earth radius
 
 
 def calcElevation(SatLon, SiteLat, SiteLon, Height_over_ocean=0):

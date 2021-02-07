@@ -21,7 +21,7 @@ to generate HTML."""
 		self.fonts = fonts
 		self.disable_callbacks = False
 		self.enableWrapAround = enableWrapAround
-		self.__style = "default" # style might be an optional string which can be used to define different visualisations in the skin
+		self.__style = "default"  # style might be an optional string which can be used to define different visualisations in the skin
 
 	def setList(self, list):
 		self.__list = list

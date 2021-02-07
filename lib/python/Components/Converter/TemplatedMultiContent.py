@@ -55,12 +55,12 @@ class TemplatedMultiContent(StringList):
 			style = self.source.style
 			if style == self.active_style:
 				return
-			templates = self.template.get("templates")	# If skin defined "templates", that means that it defines multiple styles in a dict. template should still be a default.
+			templates = self.template.get("templates")  # If skin defined "templates", that means that it defines multiple styles in a dict. template should still be a default.
 			template = self.template.get("template")
 			itemheight = self.template["itemHeight"]
 			selectionEnabled = self.template.get("selectionEnabled", True)
 			scrollbarMode = self.template.get("scrollbarMode", "showOnDemand")
-			if templates and style and style in templates:	# If we have a custom style defined in the source, and different templates in the skin, look it up
+			if templates and style and style in templates:  # If we have a custom style defined in the source, and different templates in the skin, look it up
 				template = templates[style][1]
 				itemheight = templates[style][0]
 				if len(templates[style]) > 2:

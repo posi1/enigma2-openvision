@@ -182,10 +182,10 @@ class Menu(Screen, ProtectedScreen):
 			exec("from %s import %s" % (arg[0], arg[1].split(",")[0]))
 			self.openDialog(*eval(arg[1]))
 
-	def nothing(self): #dummy
+	def nothing(self):  # dummy
 		pass
 
-	def openDialog(self, *dialog): # in every layer needed
+	def openDialog(self, *dialog):  # in every layer needed
 		self.session.openWithCallback(self.menuClosed, *dialog)
 
 	def openSetup(self, dialog):
@@ -207,7 +207,7 @@ class Menu(Screen, ProtectedScreen):
 			a = boundFunction(self.session.openWithCallback, self.menuClosedWithConfigFlush, Menu, node)
 		else:
 			a = boundFunction(self.session.openWithCallback, self.menuClosed, Menu, node)
-		#TODO add check if !empty(node.childNodes)
+		# TODO add check if !empty(node.childNodes)
 		destList.append((MenuTitle, a, entryID, weight))
 
 	def menuClosedWithConfigFlush(self, *res):
@@ -397,7 +397,7 @@ class Menu(Screen, ProtectedScreen):
 		self["key_blue"].text = _("Edit menu") if config.usage.menu_sort_mode.value == "user" else ""
 		self.list = []
 		self.menuID = None
-		for x in self.parentmenu: #walk through the actual nodelist
+		for x in self.parentmenu:  # walk through the actual nodelist
 			if not x.tag:
 				continue
 			if x.tag == 'item':
@@ -1020,7 +1020,7 @@ class IconMain(Screen):
 
 
 class MainMenu(Menu):
-	#add file load functions for the xml-file
+	# add file load functions for the xml-file
 
 	def __init__(self, *x):
 		self.skinName = "Menu"

@@ -141,7 +141,7 @@ class ConfigElement(object):
 	def getValue(self):
 		return self._value
 
-	def setValue(self, value):	# You need to override this to do input validation.
+	def setValue(self, value):  # You need to override this to do input validation.
 		self._value = value
 		self.changed()
 
@@ -452,11 +452,11 @@ class ConfigBoolean(ConfigElement):
 			self.last_value = self.value
 
 	# For HTML Interface - Is this still used?
-	def getHTML(self, id):	# DEBUG: Is this still used?
+	def getHTML(self, id):  # DEBUG: Is this still used?
 		return "<input type=\"checkbox\" name=\"%s\" value=\"1\"%s />" % (id, " checked=\"checked\"" if self.value else "")
 
 	# This is FLAWED. and must be fixed!
-	def unsafeAssign(self, value):	# DEBUG: Is this still used?
+	def unsafeAssign(self, value):  # DEBUG: Is this still used?
 		self.value = value.lower() in self.trueValues
 
 
@@ -996,7 +996,7 @@ class ConfigSelection(ConfigElement):
 		return res
 
 	def unsafeAssign(self, value):
-		self.value = value	# setValue does check if value is in choices. This is safe enough.
+		self.value = value  # setValue does check if value is in choices. This is safe enough.
 
 	description = property(lambda self: descriptionList(self.choices.choices, self.choices.type))
 
@@ -1151,7 +1151,7 @@ class ConfigSequence(ConfigElement):
 					pass
 				else:
 					blocknumber += 1
-			number_len = len(str(self.limits[blocknumber][1]))	# Length of number block.
+			number_len = len(str(self.limits[blocknumber][1]))  # Length of number block.
 			posinblock = self.marked_pos - block_len_total[blocknumber]	 # Position in the block.
 			oldvalue = abs(self._value[blocknumber])  # We are using abs() in order to allow change negative values like default -1.
 			olddec = oldvalue % 10 ** (number_len - posinblock) - (oldvalue % 10 ** (number_len - posinblock - 1))
@@ -1298,7 +1298,7 @@ class ConfigClock(ConfigSequence):
 			self._value[1] = 0
 		else:  # Increment Minutes.
 			self._value[1] += 1
-		self.changed()	# Trigger change.
+		self.changed()  # Trigger change.
 
 	def decrement(self):
 		if self._value[1] == 0:	 # Check if Minutes is minimum, decrement Hour, set Minutes to 59.
@@ -1309,7 +1309,7 @@ class ConfigClock(ConfigSequence):
 			self._value[1] = 59
 		else:  # Decrement Minutes.
 			self._value[1] -= 1
-		self.changed()	# Trigger change.
+		self.changed()  # Trigger change.
 
 	def handleKey(self, key):
 		if key == ACTIONKEY_DELETE and config.usage.time.wide.value:
@@ -1356,7 +1356,7 @@ class ConfigClock(ConfigSequence):
 			hour = int(value[:2])
 			minute = int(value[2:])
 			if config.usage.time.wide.value:
-				if hour == 12:	# 12AM & 12PM map to back to 00.
+				if hour == 12:  # 12AM & 12PM map to back to 00.
 					hour = 0
 				elif hour > 12:
 					hour = 10
@@ -1417,7 +1417,7 @@ class ConfigInteger(ConfigSequence):
 	def __init__(self, default, limits=integer_limits):
 		ConfigSequence.__init__(self, seperator=":", limits=[limits], default=default)
 
-	def setValue(self, value):	# You need to override this to do input validation.
+	def setValue(self, value):  # You need to override this to do input validation.
 		self._value = [value]
 		self.changed()
 
@@ -1864,10 +1864,10 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		if session is not None and self.help_window is not None:
 			self.help_window.hide()
 
-	def getHTML(self, id):	# DEBUG: Is this still used?
+	def getHTML(self, id):  # DEBUG: Is this still used?
 		return "<input type=\"text\" name=\"" + id + "\" value=\"" + self.value + "\" /><br>\n"
 
-	def unsafeAssign(self, value):	# DEBUG: Is this still used?
+	def unsafeAssign(self, value):  # DEBUG: Is this still used?
 		self.value = str(value)
 
 

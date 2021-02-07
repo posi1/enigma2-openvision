@@ -119,7 +119,7 @@ class Geolocation:
 				else:
 					print("[Geolocation] Warning: Ignoring invalid geolocation field '%s'!" % field)
 		# print("[Geolocation] DEBUG: fields='%s' -> number=%d." % (sorted(fields), number))
-		return number | 0x0000C000	# Always get "status" and "message".
+		return number | 0x0000C000  # Always get "status" and "message".
 
 	def checkGeolocationData(self, fields):
 		keys = list(self.geolocation.keys())

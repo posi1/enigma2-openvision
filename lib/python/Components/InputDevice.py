@@ -114,12 +114,12 @@ class inputDevices:
 		#print("[InputDevice] setName for device %s to %s" % (device,value))
 		self.setDeviceAttribute(device, 'configuredName', value)
 
-	#struct input_event {
+	# struct input_event {
 	#	struct timeval time;	-> ignored
 	#	__u16 type;				-> EV_REP (0x14)
 	#	__u16 code;				-> REP_DELAY (0x00) or REP_PERIOD (0x01)
 	#	__s32 value;			-> DEFAULTS: 700(REP_DELAY) or 100(REP_PERIOD)
-	#}; -> size = 16
+	# }; -> size = 16
 
 	def setDefaults(self, device):
 		print("[InputDevice] setDefaults for device %s" % device)
@@ -131,7 +131,7 @@ class inputDevices:
 		os.write(fd, event_delay)
 		os.close(fd)
 
-	def setRepeat(self, device, value): #REP_PERIOD
+	def setRepeat(self, device, value):  # REP_PERIOD
 		if self.getDeviceAttribute(device, 'enabled'):
 			print("[InputDevice] setRepeat for device %s to %d ms" % (device, value))
 			event = struct.pack('LLHHi', 0, 0, 0x14, 0x01, int(value))
@@ -139,7 +139,7 @@ class inputDevices:
 			os.write(fd, event)
 			os.close(fd)
 
-	def setDelay(self, device, value): #REP_DELAY
+	def setDelay(self, device, value):  # REP_DELAY
 		if self.getDeviceAttribute(device, 'enabled'):
 			print("[InputDevice] setDelay for device %s to %d ms" % (device, value))
 			event = struct.pack('LLHHi', 0, 0, 0x14, 0x00, int(value))

@@ -82,8 +82,8 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 
 	def adaptConfigModeChoices(self):
 		if self.nim.isCompatible("DVB-S") and not self.nim.isFBCLink():
-			#redefine configMode choices with only the possible/required options.
-			#We have to pre-define them here as here all tuner configs are known
+			# redefine configMode choices with only the possible/required options.
+			# We have to pre-define them here as here all tuner configs are known
 			config_mode_choices = {"simple": _("Simple"), "advanced": _("Advanced")}
 			if not self.nim.multi_type:
 				config_mode_choices["nothing"] = _("Disabled")
@@ -131,7 +131,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 			if (not self.nim.isMultiType() or self.nimConfig.configMode.value != "nothing") and (not self.nim.isCombined() or self.nimConfig.configModeDVBS.value):
 				self.configMode = getConfigListEntry(self.indent % _("Configuration mode"), self.nimConfig.configMode, _("Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'.") if self.nim.isFBCLink() else _("Configure this tuner using simple or advanced options, or loop it through to another tuner, or copy a configuration from another tuner, or disable it."))
 				self.list.append(self.configMode)
-				if self.nimConfig.configMode.value == "simple":			#simple setup
+				if self.nimConfig.configMode.value == "simple":  # simple setup
 					self.diseqcModeEntry = getConfigListEntry(self.indent % pgettext("Satellite configuration mode", "Mode"), self.nimConfig.diseqcMode, _("Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiSEqC switch, positioner, etc."))
 					self.list.append(self.diseqcModeEntry)
 					if self.nimConfig.diseqcMode.value in ("single", "toneburst_a_b", "diseqc_a_b", "diseqc_a_b_c_d"):
@@ -438,7 +438,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 						self.nimConfig.advanced.unicableconnectedTo.setChoices(choices)
 						self.list.append(getConfigListEntry(self.indent % _("Connected to"), self.nimConfig.advanced.unicableconnectedTo, _("Select the tuner to which the signal cable of the SCR device is connected.")))
 
-			else:	#Not Unicable
+			else:  # Not Unicable
 				self.list.append(getConfigListEntry(self.indent % _("Voltage mode"), Sat.voltage, _("Select 'polarisation' if using a 'universal' LNB, otherwise consult your LNB spec sheet.")))
 				self.list.append(getConfigListEntry(self.indent % _("Tone mode"), Sat.tonemode, _("Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet.")))
 			self.list.append(getConfigListEntry(self.indent % _("Increased voltage"), currLnb.increased_voltage))
@@ -568,7 +568,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 				# why we need this cast?
 				sat_name = str(nimmanager.getSatDescription(orbpos))
 			except:
-				if orbpos > 1800: # west
+				if orbpos > 1800:  # west
 					orbpos = 3600 - orbpos
 					h = _("W")
 				else:

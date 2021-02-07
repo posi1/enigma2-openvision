@@ -23,7 +23,7 @@ class ConsoleItem:
 			self.appResults = []
 			self.container.dataAvail.append(self.dataAvailCB)
 		self.container.appClosed.append(self.finishedCB)
-		if isinstance(cmd, str): # until .execute supports a better api
+		if isinstance(cmd, str):  # until .execute supports a better api
 			cmd = [cmd]
 		retval = self.container.execute(*cmd)
 		if retval:

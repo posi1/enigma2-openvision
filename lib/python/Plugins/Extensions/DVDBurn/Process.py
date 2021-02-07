@@ -339,7 +339,7 @@ class BurnTask(Task):
 	def __init__(self, job, extra_args=[], tool="growisofs"):
 		Task.__init__(self, job, job.name)
 		self.weighting = 500
-		self.end = 120 # 100 for writing, 10 for buffer flush, 10 for closing disc
+		self.end = 120  # 100 for writing, 10 for buffer flush, 10 for closing disc
 		self.postconditions.append(BurnTaskPostcondition())
 		self.setTool(tool)
 		self.args += extra_args
@@ -410,7 +410,7 @@ class RemoveDVDFolder(Task):
 class CheckDiskspaceTask(Task):
 	def __init__(self, job):
 		Task.__init__(self, job, "Checking free space")
-		totalsize = 0 # require an extra safety 50 MB
+		totalsize = 0  # require an extra safety 50 MB
 		maxsize = 0
 		for title in job.project.titles:
 			titlesize = title.estimatedDiskspace
@@ -418,7 +418,7 @@ class CheckDiskspaceTask(Task):
 			totalsize += titlesize
 		diskSpaceNeeded = totalsize + maxsize
 		job.estimateddvdsize = totalsize / 1024 / 1024
-		totalsize += 50 * 1024 * 1024 # require an extra safety 50 MB
+		totalsize += 50 * 1024 * 1024  # require an extra safety 50 MB
 		self.global_preconditions.append(DiskspacePrecondition(diskSpaceNeeded))
 		self.weighting = 5
 
@@ -543,7 +543,7 @@ class MenuImageTask(Task):
 
 	def run(self, callback):
 		self.callback = callback
-		#try:
+		# try:
 		import ImageDraw, Image, os
 		s = self.job.project.menutemplate.settings
 		s_top = s.margin_top.getValue()
@@ -672,7 +672,7 @@ class MenuImageTask(Task):
 
 		open(self.spuxmlfilename, "w").write(spuxml)
 		Task.processFinished(self, 0)
-		#except:
+		# except:
 		#Task.processFinished(self, 1)
 
 	def getPosition(self, offset, left, top, right, bottom, size):
@@ -707,7 +707,7 @@ class Menus:
 
 		job.nr_menus = ((nr_titles + job.titles_per_menu - 1) / job.titles_per_menu)
 
-		#a new menu_count every 4 titles (1,2,3,4->1 ; 5,6,7,8->2 etc.)
+		# a new menu_count every 4 titles (1,2,3,4->1 ; 5,6,7,8->2 etc.)
 		for menu_count in range(1, job.nr_menus + 1):
 			num = str(menu_count)
 			spuxmlfilename = job.workspace + "/spumux" + num + ".xml"

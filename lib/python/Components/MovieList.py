@@ -26,7 +26,7 @@ IMAGE_EXTENSIONS = frozenset((".jpg", ".png", ".gif", ".bmp", ".jpeg", ".jpe", "
 MOVIE_EXTENSIONS = frozenset((".mpg", ".vob", ".m4v", ".mkv", ".avi", ".divx", ".dat", ".flv", ".mp4", ".mov", ".wmv", ".asf", ".3gp", ".3g2", ".mpeg", ".mpe", ".rm", ".rmvb", ".ogm", ".ogv", ".m2ts", ".mts", ".webm", ".pva", ".wtv", ".ts"))
 KNOWN_EXTENSIONS = MOVIE_EXTENSIONS.union(IMAGE_EXTENSIONS, DVD_EXTENSIONS, AUDIO_EXTENSIONS)
 
-cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type
+cutsParser = struct.Struct('>QI')  # big-endian, 64-bit PTS and 32-bit type
 
 
 def getDesktopSize():
@@ -94,7 +94,7 @@ def moviePlayState(cutsFileName, ref, length):
 			if len(data) < cutsParser.size:
 				break
 			cut, cutType = cutsParser.unpack(data)
-			if cutType == 3: # undocumented, but 3 appears to be the stop
+			if cutType == 3:  # undocumented, but 3 appears to be the stop
 				lastPosition = cut
 		f.close()
 		# See what we have in RAM (it might help)
@@ -370,7 +370,7 @@ class MovieList(GUIComponent):
 		if self.listHeight > 0:
 			itemHeight = self.listHeight / config.movielist.itemsperpage.getValue()
 		else:
-			itemHeight = 25 # some default (270/5)
+			itemHeight = 25  # some default (270/5)
 		self.itemHeight = itemHeight
 		self.l.setItemHeight(itemHeight)
 		self.instance.resize(eSize(self.listWidth, self.listHeight / itemHeight * itemHeight))
@@ -433,12 +433,12 @@ class MovieList(GUIComponent):
 		if data == -1 or data is None:
 			data = MovieListData()
 			cur_idx = self.l.getCurrentSelectionIndex()
-			x = self.list[cur_idx] # x = ref,info,begin,...
+			x = self.list[cur_idx]  # x = ref,info,begin,...
 			if config.usage.load_length_of_movies_in_moviellist.getValue():
-				data.len = x[1].getLength(x[0]) #recalc the movie length...
+				data.len = x[1].getLength(x[0])  # recalc the movie length...
 			else:
-				data.len = 0 #dont recalc movielist to speedup loading the list
-			self.list[cur_idx] = (x[0], x[1], x[2], data) #update entry in list... so next time we don't need to recalc
+				data.len = 0  # dont recalc movielist to speedup loading the list
+			self.list[cur_idx] = (x[0], x[1], x[2], data)  # update entry in list... so next time we don't need to recalc
 			if config.movielist.show_underlines.value:
 				data.txt = info.getName(serviceref)
 			else:
@@ -463,7 +463,7 @@ class MovieList(GUIComponent):
 						data.partcol = self.pbarColourRec
 			elif (self.playInBackground or self.playInForeground) and serviceref == (self.playInBackground or self.playInForeground):
 				data.icon = self.iconMoviePlay
-			elif pathName.endswith(".tmpcut.ts"): # cutting with moviecut plugin to same filename
+			elif pathName.endswith(".tmpcut.ts"):  # cutting with moviecut plugin to same filename
 				data.icon = self.iconCutting
 			else:
 				data.part = moviePlayState(pathName + '.cuts', serviceref, data.len)
@@ -679,7 +679,7 @@ class MovieList(GUIComponent):
 			begin2 = 0
 			if MovieList.UsingTrashSort:
 				f_path = serviceref.getPath()
-				if os.path.exists(f_path):	# Override with deltime for sorting
+				if os.path.exists(f_path):  # Override with deltime for sorting
 					if MovieList.UsingTrashSort == MovieList.TRASHSORT_SHOWRECORD:
 						begin2 = begin		# Save for later re-instatement
 					begin = os.stat(f_path).st_ctime
@@ -702,7 +702,7 @@ class MovieList(GUIComponent):
 				# No tags? Auto tag!
 				this_tags = name.replace(',', ' ').replace('.', ' ').replace('_', ' ').replace(':', ' ').split()
 				# For auto tags, we are keeping a (tag, movies) dictionary.
-				#It will be used later to check if movies have a complete sentence in common.
+				# It will be used later to check if movies have a complete sentence in common.
 				for tag in this_tags:
 					if tag in autotags:
 						autotags[tag].append(name)
@@ -810,7 +810,7 @@ class MovieList(GUIComponent):
 		rautotags = {}
 		for tag, movies in autotags.items():
 			if (len(movies) > 1):
-				movies = tuple(movies) # a tuple can be hashed, but a list not
+				movies = tuple(movies)  # a tuple can be hashed, but a list not
 				item = rautotags.get(movies, [])
 				if not item: rautotags[movies] = item
 				item.append(tag)
@@ -840,7 +840,7 @@ class MovieList(GUIComponent):
 				self.tags[match] = set(tags)
 			else:
 				match = ' '.join(tags)
-				if (len(match) > 2) or (match in realtags): #Omit small words, only for auto tags
+				if (len(match) > 2) or (match in realtags):  # Omit small words, only for auto tags
 					self.tags[match] = set(tags)
 		# Adding the realtags to the tag list
 		for tag in realtags:
@@ -924,7 +924,7 @@ class MovieList(GUIComponent):
 			lbl.visible = True
 		self.moveToCharTimer = eTimer()
 		self.moveToCharTimer.callback.append(self._moveToChrStr)
-		self.moveToCharTimer.start(1000, True) #time to wait for next key press to decide which letter to use...
+		self.moveToCharTimer.start(1000, True)  # time to wait for next key press to decide which letter to use...
 
 	def moveToString(self, char, lbl=None):
 		self._char = self._char + char.upper()
@@ -934,14 +934,14 @@ class MovieList(GUIComponent):
 			lbl.visible = True
 		self.moveToCharTimer = eTimer()
 		self.moveToCharTimer.callback.append(self._moveToChrStr)
-		self.moveToCharTimer.start(1000, True) #time to wait for next key press to decide which letter to use...
+		self.moveToCharTimer.start(1000, True)  # time to wait for next key press to decide which letter to use...
 
 	def _moveToChrStr(self):
 		currentIndex = self.instance.getCurrentIndex()
 		found = False
 		if currentIndex < (len(self.list) - 1):
 			itemsBelow = self.list[currentIndex + 1:]
-			#first search the items below the selection
+			# first search the items below the selection
 			for index, item in enumerate(itemsBelow):
 				ref = item[0]
 				itemName = getShortName(item[1].getName(ref).upper(), ref)
@@ -954,7 +954,7 @@ class MovieList(GUIComponent):
 					self.instance.moveSelectionTo(index + currentIndex + 1)
 					break
 		if found == False and currentIndex > 0:
-			itemsAbove = self.list[1:currentIndex] #first item (0) points parent folder - no point to include
+			itemsAbove = self.list[1:currentIndex]  # first item (0) points parent folder - no point to include
 			for index, item in enumerate(itemsAbove):
 				ref = item[0]
 				itemName = getShortName(item[1].getName(ref).upper(), ref)
@@ -973,10 +973,10 @@ class MovieList(GUIComponent):
 
 
 def getShortName(name, serviceref):
-	if serviceref.flags & eServiceReference.mustDescent: #Directory
+	if serviceref.flags & eServiceReference.mustDescent:  # Directory
 		pathName = serviceref.getPath()
 		p = os.path.split(pathName)
-		if not p[1]: #if path ends in '/', p is blank.
+		if not p[1]:  # if path ends in '/', p is blank.
 			p = os.path.split(p[0])
 		return p[1].upper()
 	else:

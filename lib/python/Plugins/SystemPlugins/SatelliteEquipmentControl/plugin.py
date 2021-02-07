@@ -62,7 +62,7 @@ class SecParameterSetup(Screen, ConfigListScreen):
 	def resetDefaults(self):
 		for secItem in self.secList:
 			secItem[1].value = secItem[1].default
-		self.createSetup() # force new values to show
+		self.createSetup()  # force new values to show
 
 
 def SecSetupMain(session, **kwargs):

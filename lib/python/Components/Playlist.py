@@ -115,7 +115,7 @@ class PlaylistIOPLS(PlaylistIO):
 		except IOError:
 			return None
 		entry = file.readline().strip()
-		if entry == "[playlist]": # extended pls
+		if entry == "[playlist]":  # extended pls
 			while True:
 				entry = file.readline().strip()
 				if entry == "":

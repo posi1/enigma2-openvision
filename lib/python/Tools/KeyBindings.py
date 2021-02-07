@@ -373,7 +373,7 @@ def getKeyDescription(key):
 	# print("[KeyBindings] RC type is '%s'." % rcType)
 	if rcType == 14:  # XP1000
 		idx = 3
-	elif rcType == 18:	# F1
+	elif rcType == 18:  # F1
 		idx = 4
 	else:
 		idx = 2

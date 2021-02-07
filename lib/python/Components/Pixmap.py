@@ -75,14 +75,14 @@ class MovingPixmap(Pixmap):
 		self.time -= 1
 		try:
 			self.move(int(self.x), int(self.y))
-		except: # moving not possible... widget not there any more... stop moving
+		except:  # moving not possible... widget not there any more... stop moving
 			self.stopMoving()
 
 		if self.time == 0:
 			self.currDest += 1
 			self.moveTimer.stop()
 			self.moving = False
-			if self.currDest >= len(self.path): # end of path
+			if self.currDest >= len(self.path):  # end of path
 				if self.repeated:
 					self.currDest = 0
 					self.moving = False

@@ -15,7 +15,7 @@ brand = getBoxBrand()
 model = getBoxType()
 platform = getMachineBuild()
 
-POLLTIME = 5 # seconds
+POLLTIME = 5  # seconds
 
 
 def SymbolsCheck(session, **kwargs):

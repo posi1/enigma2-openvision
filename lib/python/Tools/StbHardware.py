@@ -98,7 +98,7 @@ def setFPWakeuptime(wutime):
 	except IOError:
 		try:
 			fp = open("/dev/dbox/fp0")
-			ioctl(fp.fileno(), 6, pack('L', wutime)) # set wake up
+			ioctl(fp.fileno(), 6, pack('L', wutime))  # set wake up
 		except IOError:
 			print("[StbHardware] setFPWakeupTime failed!")
 
@@ -128,7 +128,7 @@ def setRTCtime(wutime):
 	except IOError:
 		try:
 			fp = open("/dev/dbox/fp0")
-			ioctl(fp.fileno(), 0x101, pack('L', wutime)) # set wake up
+			ioctl(fp.fileno(), 0x101, pack('L', wutime))  # set wake up
 		except IOError:
 			print("[StbHardware] setRTCtime failed!")
 
@@ -140,7 +140,7 @@ def getFPWakeuptime():
 	except IOError:
 		try:
 			fp = open("/dev/dbox/fp0")
-			ret = unpack('L', ioctl(fp.fileno(), 5, '	 '))[0] # get wakeuptime
+			ret = unpack('L', ioctl(fp.fileno(), 5, '	 '))[0]  # get wakeuptime
 		except IOError:
 			print("[StbHardware] getFPWakeupTime failed!")
 	return ret

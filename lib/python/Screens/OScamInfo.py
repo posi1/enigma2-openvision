@@ -25,7 +25,7 @@ except:
 import skin
 import six
 
-###global
+# global
 f = 1
 sizeH = 700
 HDSKIN = False
@@ -41,7 +41,7 @@ elif screenwidth and screenwidth > 1920:
 elif screenwidth and screenwidth > 1024:
 	sizeH = screenwidth - 100
 	HDSKIN = True
-###global
+# global
 
 
 class OscamInfo:
@@ -363,7 +363,7 @@ class OscamInfo:
 								readers.append((_("%s ( %s Cards )") % (name, cards), name))
 						else:
 							if cl.attrib["name"] != "" and cl.attrib["name"] != "" and cl.attrib["protocol"] != "":
-								readers.append((cl.attrib["name"], cl.attrib["name"]))	# return tuple for later use in Choicebox
+								readers.append((cl.attrib["name"], cl.attrib["name"]))  # return tuple for later use in Choicebox
 			return readers
 		else:
 			return None
@@ -378,7 +378,7 @@ class OscamInfo:
 			for cl in clients:
 				if "type" in cl.attrib:
 					if cl.attrib["type"] == "c":
-						readers.append((cl.attrib["name"], cl.attrib["name"]))	# return tuple for later use in Choicebox
+						readers.append((cl.attrib["name"], cl.attrib["name"]))  # return tuple for later use in Choicebox
 			return clientnames
 		else:
 			return None
@@ -905,7 +905,7 @@ class oscInfo(Screen, OscamInfo):
 		if self.listchange:
 			self.listchange = False
 			self["output"].l.setItemHeight(int(self.itemheight * f))
-			self["output"].instance.setScrollbarMode(0) #"showOnDemand"
+			self["output"].instance.setScrollbarMode(0)  # "showOnDemand"
 			self.rows = int(self["output"].instance.size().height() / (self.itemheight * f))
 			if self.what != "l" and self.rows < len(self.out):
 				self.enableScrolling(True)

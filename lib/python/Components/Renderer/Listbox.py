@@ -40,9 +40,9 @@ class Listbox(Renderer, object):
 		if self.__content is not None:
 			instance.setContent(self.__content)
 		instance.selectionChanged.get().append(self.selectionChanged)
-		self.wrap_around = self.wrap_around # trigger
-		self.selection_enabled = self.selection_enabled # trigger
-		self.scrollbarMode = self.scrollbarMode # trigger
+		self.wrap_around = self.wrap_around  # trigger
+		self.selection_enabled = self.selection_enabled  # trigger
+		self.scrollbarMode = self.scrollbarMode  # trigger
 
 	def preWidgetRemove(self, instance):
 		instance.setContent(None)

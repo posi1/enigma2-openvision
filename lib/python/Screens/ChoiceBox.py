@@ -23,7 +23,7 @@ class ChoiceBox(Screen):
 		self.skinName = skin_name + ["ChoiceBox"]
 
 		self.reorderConfig = reorderConfig
-		self["autoresize"] = Label("") # do not remove, used for autoResize()
+		self["autoresize"] = Label("")  # do not remove, used for autoResize()
 		self["description"] = Label()
 		self["text"] = Label(title)
 		self.list = []
@@ -121,7 +121,7 @@ class ChoiceBox(Screen):
 		count, scrollbar = (10, self["list"].instance.getScrollbarWidth() + 5) if count > 10 else (count, 0)
 		offset = self["list"].l.getItemSize().height() * count
 		wsizex = x_width(textsize[0]) + x_offset() + 10 + scrollbar
-		#precount description size
+		# precount description size
 		descrsize = self["description"].getSize()
 		self["description"].instance.resize(enigma.eSize(*(wsizex - 20, descrsize[1] if descrsize[1] > 0 else 0)))
 		# then get true description height

@@ -427,5 +427,5 @@ class ConfigListScreen:
 		from Screens.Setup import SetupSummary
 		return SetupSummary
 
-	def run(self):	# Allow ConfigList based screens to be processed from the Wizard.
+	def run(self):  # Allow ConfigList based screens to be processed from the Wizard.
 		self.keySave()

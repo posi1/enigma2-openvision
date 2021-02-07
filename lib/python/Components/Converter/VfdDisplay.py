@@ -15,12 +15,12 @@ class VfdDisplay(Poll, Converter, object):
 		self.delay = 5000
 		self.loop = -1
 		self.type = type.lower().split(';')
-		if 'number' in self.type and 'clock' not in self.type:	# Only channel number
+		if 'number' in self.type and 'clock' not in self.type:  # Only channel number
 			self.delay = 0
 			self.poll_enabled = False
 		else:
 			self.poll_enabled = True
-			if 'clock' in self.type and 'number' not in self.type:	# Only clock
+			if 'clock' in self.type and 'number' not in self.type:  # Only clock
 				self.showclock = 1
 				self.delay = -1
 			else:

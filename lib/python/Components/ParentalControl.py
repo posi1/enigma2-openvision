@@ -45,7 +45,7 @@ def InitParentalControl():
 	config.ParentalControl.config_sections.context_menus = ConfigYesNo(default=False)
 	config.ParentalControl.config_sections.menu_sort = ConfigYesNo(default=False)
 
-	#Added for backwards compatibility with some 3rd party plugins that depend on this config
+	# Added for backwards compatibility with some 3rd party plugins that depend on this config
 	config.ParentalControl.servicepinactive = config.ParentalControl.configured
 	config.ParentalControl.setuppin = config.ParentalControl.servicepin[0]
 	config.ParentalControl.retries.setuppin = config.ParentalControl.retries.servicepin
