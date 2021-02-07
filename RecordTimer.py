@@ -1257,7 +1257,8 @@ class RecordTimer(timer.Timer):
 		checking_time = timer.begin < begin or begin <= timer.begin <= end
 		if xbt.tm_yday != xet.tm_yday:
 			oday = bday - 1
-			if oday == -1: oday = 6
+			if oday == -1:
+				oday = 6
 			offset_day = timer.repeated & (1 << oday)
 		xbegin = 1440 + xbt.tm_hour * 60 + xbt.tm_min
 		xend = xbegin + ((timer_end - timer.begin) / 60)
@@ -1386,7 +1387,8 @@ class RecordTimer(timer.Timer):
 					checking_time = x.begin < begin or begin <= x.begin <= end
 					if xbt.tm_yday != xet.tm_yday:
 						oday = bday - 1
-						if oday == -1: oday = 6
+						if oday == -1:
+							oday = 6
 						offset_day = x.repeated & (1 << oday)
 					xbegin = 1440 + xbt.tm_hour * 60 + xbt.tm_min
 					xend = xbegin + ((timer_end - x.begin) / 60)

@@ -753,7 +753,8 @@ class NimSelection(Screen):
 		self.resultclass = NimSetup
 
 	def OrbToStr(self, orbpos=-1):
-		if orbpos == -1 or orbpos > 3600: return "??"
+		if orbpos == -1 or orbpos > 3600:
+			return "??"
 		if orbpos > 1800:
 			orbpos = 3600 - orbpos
 			return "%d.%dW" % (orbpos / 10, orbpos % 10)
