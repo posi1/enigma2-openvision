@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
+"POT-Creation-Date: 2021-02-08 11:56+0330\n"
 "PO-Revision-Date: 2020-12-05 15:11+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -1098,6 +1098,10 @@ msgstr ""
 msgid "%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "%s\t (Default: %s)"
+msgstr "Alapértelmezett"
+
 #, python-format
 msgid ""
 "%s\n"
@@ -1116,10 +1120,6 @@ msgstr ""
 "%s\n"
 "Nyomja meg az 'OK'-t a multiboot kiválasztásához\n"
 "Nyomja meg az 'Exit'-et a kilépéshez"
-
-#, python-format
-msgid "%s  (Default: %s)"
-msgstr ""
 
 #, python-format
 msgid "%s %s free disk space"
@@ -10969,7 +10969,7 @@ msgstr "Válassza az 'Unicable'-t, ha az ön tunere Unicable eszközhöz csatlak
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
-msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.\tThis will also cause Enigma2 to run the Welcome Wizard on restart."
 msgstr ""
 
 msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."

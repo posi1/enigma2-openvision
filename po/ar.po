@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OBH enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
+"POT-Creation-Date: 2021-02-08 11:56+0330\n"
 "PO-Revision-Date: 2019-04-12 12:36+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -1143,6 +1143,10 @@ msgid "%s"
 msgstr "CH%s"
 
 #, fuzzy, python-format
+msgid "%s\t (Default: %s)"
+msgstr "الإفتراضي"
+
+#, fuzzy, python-format
 msgid ""
 "%s\n"
 "Do you still want to flash image\n"
@@ -1154,10 +1158,6 @@ msgid ""
 "%s\n"
 "Press ok for multiboot selection\n"
 "Press exit to close"
-msgstr ""
-
-#, python-format
-msgid "%s  (Default: %s)"
 msgstr ""
 
 #, fuzzy, python-format
@@ -11466,7 +11466,7 @@ msgstr "حدد 'بدون كيبل' إذا استخدم هذا المؤالف ج�
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
-msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.\tThis will also cause Enigma2 to run the Welcome Wizard on restart."
 msgstr ""
 
 msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."

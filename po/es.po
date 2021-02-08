@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
+"POT-Creation-Date: 2021-02-08 11:56+0330\n"
 "PO-Revision-Date: 2019-10-16 22:14+0200\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -1106,6 +1106,10 @@ msgid "%s"
 msgstr "%s"
 
 #, fuzzy, python-format
+msgid "%s\t (Default: %s)"
+msgstr "%s  (Por Defecto: %s)"
+
+#, fuzzy, python-format
 msgid ""
 "%s\n"
 "Do you still want to flash image\n"
@@ -1123,10 +1127,6 @@ msgstr ""
 "%s\n"
 "Presiona OK para la selección de arranque múltiple\n"
 "Pulsa exit para cerrar"
-
-#, python-format
-msgid "%s  (Default: %s)"
-msgstr "%s  (Por Defecto: %s)"
 
 #, python-format
 msgid "%s %s free disk space"
@@ -1504,26 +1504,26 @@ msgstr "Un archivo desde los medios está en uso!"
 #, fuzzy
 msgid "A finished powertimer wants to reboot your receiver. Do that now?"
 msgstr ""
-"Un Powertimer ha terminado quiere reiniciar su %s %s.\n"
+"Un Powertimer ha terminado y quiere reiniciar su %s %s.\n"
 "Hacerlo Ahora?"
 
 msgid ""
 "A finished powertimer wants to restart the user interface.\n"
 "Do that now?"
 msgstr ""
-"Un Powertimer ha terminado quiere reiniciar la interfaz de usuario.\n"
+"Un Powertimer ha terminado y quiere reiniciar enigma2.\n"
 "Hacerlo Ahora?"
 
 #, fuzzy
 msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
 msgstr ""
-"Un temporizador acabado quiere poner tu\n"
-"receptor en reposo. Hacerlo ahora?"
+"Un Powertimer ha terminado y quiere poner su receptor en standby.\n"
+"Hacerlo Ahora?"
 
 #, fuzzy
 msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
 msgstr ""
-"Un Powertimer ha terminado quiere apagar su %s %s.\n"
+"Un Powertimer ha terminado y quiere apagar profundo su %s %s.\n"
 "Hacerlo Ahora?"
 
 msgid ""
@@ -2356,9 +2356,8 @@ msgstr "Nivel de volumen de audio automático"
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto separación de capítulos cada ? Minutos (0=nunca)"
 
-#, fuzzy
 msgid "Auto deep standby"
-msgstr "modo reposo profundo automático"
+msgstr "Modo espera profundo automático"
 
 msgid "Auto flesh"
 msgstr "Auto flesh"
@@ -2372,9 +2371,8 @@ msgstr "Auto focus comenzando …"
 msgid "Auto play blu-ray file"
 msgstr "Auto reproducir fichero Blu-ray"
 
-#, fuzzy
 msgid "Auto play last service in radio mode"
-msgstr "Búsqueda rápida de canales"
+msgstr "Reproducción automática del último canal en modo radio"
 
 msgid "Auto scart switching"
 msgstr "Cambio de scart automático"
@@ -3441,8 +3439,9 @@ msgstr "Configure si y cómo se mostrarán los iconos de tipo de canal en la lis
 msgid "Configure if and how the record indicator will be shown in the channel selection list."
 msgstr "Configure si y cómo se mostrará el indicador de grabación en la lista de canales."
 
+#, fuzzy
 msgid "Configure if and how wide columns will be shown in the channel selection list."
-msgstr "Configure si y cómo se mostrará el ancho de las columnas en la lista de canales."
+msgstr "Configure si y cómo se mostrarán los iconos de cifrado en la lista de canales."
 
 msgid "Configure if behind the subtitles a background is shown."
 msgstr "Configure si detrás de los subtítulos se muestra un fondo."
@@ -4427,9 +4426,8 @@ msgstr "Retardo en milisegundos antes de comenzar el desplazamiento del texto en
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Retardo en milisegundos entre el desplazamiento del caracteres en pantalla."
 
-#, fuzzy
 msgid "Delay:"
-msgstr "Retraso débil"
+msgstr "Retraso:"
 
 msgid "Delete"
 msgstr "Borrar"
@@ -5144,9 +5142,8 @@ msgstr "Activar el estilo de zapeo neutrino"
 msgid "Enable 5V for active antenna"
 msgstr "Activar 5V para antena activa"
 
-#, fuzzy
 msgid "Enable Autostart"
-msgstr "Autoinicio"
+msgstr "Activar Inicio Automático"
 
 #, fuzzy
 msgid "Enable BT audio"
@@ -8114,7 +8111,6 @@ msgstr "MultiTipo"
 msgid "Multiboot Image Selector"
 msgstr "Seleccionar Imagen Multiboot"
 
-#, fuzzy
 msgid "Multiboot image selector"
 msgstr "Seleccionar Imagen Multiboot"
 
@@ -10508,12 +10504,12 @@ msgstr "SABnzbd"
 msgid "SABnzbd setup"
 msgstr "Configurar SABnzbd"
 
-msgid "SATPI"
-msgstr ""
-
 #, fuzzy
+msgid "SATPI"
+msgstr "Ajustes SATPI"
+
 msgid "SATPI Setup"
-msgstr "Configurar AFP"
+msgstr "Ajustes SATPI"
 
 msgid "SCPC optimized search range"
 msgstr "Rango de búsqueda optimizada SCPC"
@@ -10882,7 +10878,8 @@ msgstr "Seleccione 'FBC SCR' si este sintonizador se conectará a un dispositivo
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr "Seleccione 'Sí' para eliminar todos los datos de configuración de teclas. Al seleccionar esta opción, se eliminarán todos los datos de teclas y se restaurarán las definiciones predeterminadas del mapa de teclas."
 
-msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+#, fuzzy
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.\tThis will also cause Enigma2 to run the Welcome Wizard on restart."
 msgstr "Seleccione 'Sí' para eliminar todos los datos de configuración de los ajustes principales. Al seleccionar esta opción, todos los ajustes de Enigma2 volverán a sus valores de fábrica. Esto también hace que Enigma2 ejecute el Asistente wizard al reiniciar."
 
 msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."
@@ -11655,8 +11652,9 @@ msgstr "Mostrar indicador de ocupado cuando el sistema esté ocupado."
 msgid "Show channel numbers in channel selection"
 msgstr "Mostrar números de canal en la lista de canales"
 
+#, fuzzy
 msgid "Show columns"
-msgstr "Mostrar columnas"
+msgstr "Mostrar Clientes"
 
 msgid "Show crypto icons"
 msgstr "Mostrar iconos de encriptado"
@@ -11853,7 +11851,7 @@ msgid "Show the radio player..."
 msgstr "Mostrar el reproductor de radio…"
 
 msgid "Show the service information on two lines in the channel selection screen. You can choose between the current event description below the channel name, or the current event description next to the channel name, and the next event description on the second line."
-msgstr "Muestra la información del servicio en dos líneas en la pantalla de selección de canal. Puede elegir entre la descripción del evento actual debajo del nombre del canal, o la descripción del evento actual junto al nombre del canal y la descripción del evento siguiente en la segunda línea."
+msgstr ""
 
 msgid "Show the tv player..."
 msgstr "Mostrar el reproductor de TV…"
@@ -11871,7 +11869,7 @@ msgid "Show transponder remaining/elapsed as"
 msgstr "Mostrar transpondedor restante/transcurrido como"
 
 msgid "Show two lines per entry"
-msgstr "Mostrar dos líneas por entrada"
+msgstr ""
 
 msgid "Show underline characters in filenames"
 msgstr "Mostrar caracteres subrayados en nombres de archivo"
@@ -12531,9 +12529,8 @@ msgstr "Dejar de usar como canal de inicio"
 msgid "Stopped"
 msgstr "Detenido"
 
-#, fuzzy
 msgid "Stop|Disable Autostart"
-msgstr "Deshabilitar el guardado automático?"
+msgstr "Detener|Desactivado Autoinicio"
 
 msgid "Storage"
 msgstr "Almacenamiento"
@@ -14726,10 +14723,11 @@ msgstr "Cuando está habilitado los botones izquierdo, derecho, CH +/-, B +/-, P
 
 #, fuzzy
 msgid "When enabled the receiver will automatically return to standby when the TV is turned off."
-msgstr "Cuando está habilitado, su %s %s utilizará automáticamente la pista de audio que seleccionó anteriormente."
+msgstr "Cuando está habilitado, se reproducirá automáticamente el último canal de radio guardado al cambiar al modo de radio."
 
+#, fuzzy
 msgid "When enabled the receiver will automatically wake from standby when the TV is turned on."
-msgstr ""
+msgstr "Cuando está habilitado, se reproducirá automáticamente el último canal de radio guardado al cambiar al modo de radio."
 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Cuando está habilitado, el receptor se puede activar desde su LAN"
@@ -14833,9 +14831,8 @@ msgstr "Cuando está habilitado, los stremas http se descodifican en el lado del
 msgid "When enabled, it is possible to leave the movieplayer with exit."
 msgstr "Cuando está habilitado, es posible abandonar el reproductor de películas con exit."
 
-#, fuzzy
 msgid "When enabled, it will automatically play to the last saved radio service when switching to radio mode."
-msgstr "Cuando está habilitado, su %s %s utilizará automáticamente la pista de audio que seleccionó anteriormente."
+msgstr "Cuando está habilitado, se reproducirá automáticamente el último canal de radio guardado al cambiar al modo de radio."
 
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr "Cuando esté habilitado, mida el consumo de energía para detectar cuándo el motor deja de girar (cuando es compatible con el sintonizador)."
@@ -16378,9 +16375,8 @@ msgstr "eliminar esta marca"
 msgid "repeated"
 msgstr "repetido"
 
-#, fuzzy
 msgid "restart GUI"
-msgstr "Reiniciar Enigma2"
+msgstr "reiniciar enigma2"
 
 #, fuzzy
 msgid "restore previous cuts"

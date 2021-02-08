@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
+"POT-Creation-Date: 2021-02-08 11:56+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -1131,6 +1131,11 @@ msgstr ""
 msgid "%s"
 msgstr "K%s"
 
+#
+#, fuzzy, python-format
+msgid "%s\t (Default: %s)"
+msgstr "Standardní"
+
 #, python-format
 msgid ""
 "%s\n"
@@ -1150,10 +1155,6 @@ msgstr ""
 "%s\n"
 "\n"
 "Stiskněte 'OK' pro Multiboot nebo 'Exit' pro zavření"
-
-#, python-format
-msgid "%s  (Default: %s)"
-msgstr ""
 
 #
 #, python-format
@@ -12370,7 +12371,7 @@ msgstr "Jestliže tuner bude připojen k SRC zařízení (Unicable/JESS), nastav
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
-msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.\tThis will also cause Enigma2 to run the Welcome Wizard on restart."
 msgstr ""
 
 msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
-"PO-Revision-Date: 2020-12-27 12:25+0100\n"
+"POT-Creation-Date: 2021-02-08 11:56+0330\n"
+"PO-Revision-Date: 2021-02-06 18:51+0100\n"
 "Last-Translator: Luis A. Martínez <luis.a.martinez@gmail.com>\n"
 "Language-Team: LAMS\n"
 "Language: gl\n"
@@ -1121,6 +1121,10 @@ msgid "%s"
 msgstr "CANLE %s"
 
 #, python-format
+msgid "%s\t (Default: %s)"
+msgstr ""
+
+#, python-format
 msgid ""
 "%s\n"
 "Do you still want to flash image\n"
@@ -1139,10 +1143,6 @@ msgstr ""
 "%s\n"
 "Preme ok para ir á selección de arranque múltiple\n"
 "Preme saír para pechar"
-
-#, python-format
-msgid "%s  (Default: %s)"
-msgstr ""
 
 #
 #, python-format
@@ -3741,8 +3741,9 @@ msgstr "Configurar se, e como, se amosan as iconas do tipo de servizo na lista d
 msgid "Configure if and how the record indicator will be shown in the channel selection list."
 msgstr "Configurar se, e como, se amosa o indicador de gravación na lista de selección de canles."
 
+#, fuzzy
 msgid "Configure if and how wide columns will be shown in the channel selection list."
-msgstr "Configurar se, e como, se amosan as columnas anchas na lista de selección de canles."
+msgstr "Configurar se, e como, se amosan as iconas de criptografía na lista de selección de canles."
 
 msgid "Configure if behind the subtitles a background is shown."
 msgstr "Configurar se detrás dos subtítulos se amosa un fondo."
@@ -7294,8 +7295,9 @@ msgstr "Aínda non se recibiron datos"
 msgid "Host receiver streaming port"
 msgstr "O receptor está a reiniciar"
 
+#, fuzzy
 msgid "Hostname:"
-msgstr ""
+msgstr "Nome de servidor NTP"
 
 msgid "HotKey Setup"
 msgstr "Configuración de HotKey"
@@ -7790,7 +7792,7 @@ msgid "Internet"
 msgstr "Interno"
 
 msgid "Internet (ntp)"
-msgstr ""
+msgstr "Internet (ntp)"
 
 msgid "Interval between keys when repeating:"
 msgstr "Intervalo entre teclas ao repetir:"
@@ -9051,7 +9053,7 @@ msgid "NOW"
 msgstr "AGORA"
 
 msgid "NTP Hostname"
-msgstr ""
+msgstr "Nome de servidor NTP"
 
 #
 msgid "NTSC"
@@ -12104,7 +12106,7 @@ msgstr "Selecciona ‘FBC SCR’ se este sintonizador se conectará a un disposi
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
-msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.\tThis will also cause Enigma2 to run the Welcome Wizard on restart."
 msgstr ""
 
 msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."
@@ -12288,7 +12290,7 @@ msgid "Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiS
 msgstr "Seleccionar como se configura a antena parabólica, é dicir, plato fixo, LNB único, conmutador DiSEqC, posicionador, etc."
 
 msgid "Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet using NTP. Or use Auto, which will favour using NTP, but will fall back to transponder time when no internet connection is available."
-msgstr ""
+msgstr "Selecciona como queres que o teu receptor manteña a hora correcta, ben desde o transpondedor DVB, ben desde un servidor NTP en internet. Ou usa Auto, que favorece o uso de NTP pero usa a hora do transpondedor cando non haxa conexión a internet."
 
 msgid "Select input device"
 msgstr "Seleccionar dispositivo de entrada"
@@ -12960,8 +12962,9 @@ msgstr "Amosar indicador de ocupación cando o sistema está ocupado."
 msgid "Show channel numbers in channel selection"
 msgstr "Amosar números de canles na selección de canles"
 
+#, fuzzy
 msgid "Show columns"
-msgstr "Amosar columnas"
+msgstr "Amosar películas"
 
 msgid "Show crypto icons"
 msgstr "Amosar iconas de criptografía"
@@ -13131,9 +13134,8 @@ msgstr "Amosar indicador de gravación"
 msgid "Show recording symbol"
 msgstr "Deter as gravacións:"
 
-#, fuzzy
 msgid "Show satellites list"
-msgstr "Amosar lista de servizos"
+msgstr "Amosar lista de satélites"
 
 msgid "Show screen path"
 msgstr "Amosar ruta da pantalla"
@@ -13182,7 +13184,7 @@ msgid "Show the radio player..."
 msgstr "Amosar reprodutor de radio…"
 
 msgid "Show the service information on two lines in the channel selection screen. You can choose between the current event description below the channel name, or the current event description next to the channel name, and the next event description on the second line."
-msgstr "Amosar a información de servizo en dúas liñas na pantalla de selección de canle. Podes elixir situar a descrición do evento actual debaixo ou a carón do nome da cale, e a descrición do seguinte evento na seguinte liña."
+msgstr ""
 
 #
 msgid "Show the tv player..."
@@ -13204,7 +13206,7 @@ msgid "Show transponder remaining/elapsed as"
 msgstr "Amosar información do transpondedor"
 
 msgid "Show two lines per entry"
-msgstr "Amosar dúas liñas por entrada"
+msgstr ""
 
 #
 msgid "Show underline characters in filenames"
@@ -13323,8 +13325,9 @@ msgid "Single EPG"
 msgstr "EPG único"
 
 #
+#, fuzzy
 msgid "Single line mode"
-msgstr "Modo de liña única"
+msgstr "Activar o modo movemento"
 
 #
 msgid "Single satellite"
@@ -14524,7 +14527,7 @@ msgid "The height of the picture. The input will be scaled to match this value."
 msgstr ""
 
 msgid "The hostname or the IP address of the NTP server to synchronise the time with."
-msgstr ""
+msgstr "Nome ou o enderezo IP do servidor NTP co que sincronizar a hora."
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -14729,6 +14732,9 @@ msgid ""
 "No support will be provided!\n"
 "Do you understand this?"
 msgstr ""
+"Esta imaxe está destinada a desevolvedores e probadores\n"
+"Non ten soporte!\n"
+"Entendes isto?"
 
 msgid ""
 "This info is for developers only.\n"
@@ -15057,7 +15063,7 @@ msgid "Time style"
 msgstr "Escala de tempo"
 
 msgid "Time synchronization method"
-msgstr ""
+msgstr "Método de sincronización horaria"
 
 msgid "Time to execute command or script"
 msgstr ""
@@ -15327,9 +15333,8 @@ msgid "Transponder"
 msgstr "Transpondedor"
 
 #
-#, fuzzy
 msgid "Transponder Time"
-msgstr "Transpondedor"
+msgstr "Hora do transpondedor"
 
 msgid "Transport Stream Type"
 msgstr "Tipo de fluxo de transporte"
@@ -15479,12 +15484,14 @@ msgid "Two"
 msgstr "Dous"
 
 #
+#, fuzzy
 msgid "Two lines"
-msgstr "Dúas liñas"
+msgstr "Amosar liña de información"
 
 #
+#, fuzzy
 msgid "Two lines and next event"
-msgstr "Dúas liñas e seguinte evento"
+msgstr "Ir ao seguinte evento"
 
 #
 msgid "Type"

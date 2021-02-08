@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
+"POT-Creation-Date: 2021-02-08 11:56+0330\n"
 "PO-Revision-Date: 2020-11-29 22:07+0200\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -1098,6 +1098,10 @@ msgstr ""
 msgid "%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "%s\t (Default: %s)"
+msgstr "По подразбиране"
+
 #, python-format
 msgid ""
 "%s\n"
@@ -1117,10 +1121,6 @@ msgstr ""
 "%s\n"
 "Натиснете ОК за избор на мултибуут\n"
 "Натиснете Изход за затваряне"
-
-#, python-format
-msgid "%s  (Default: %s)"
-msgstr ""
 
 #, python-format
 msgid "%s %s free disk space"
@@ -10978,7 +10978,7 @@ msgstr "Изберете „FBC SCR“, ако този тунер ще се с�
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
-msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.\tThis will also cause Enigma2 to run the Welcome Wizard on restart."
 msgstr ""
 
 msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."
