@@ -345,7 +345,8 @@ class eActionMap:
 
 def init_nav():
 	print("[enigma] init nav")
-	import Navigation, NavigationInstance
+	import Navigation
+	import NavigationInstance
 	NavigationInstance.instance = Navigation.Navigation()
 
 
